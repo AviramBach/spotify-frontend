@@ -15,11 +15,6 @@ const routes = [
         label: 'Home 🏠',
     },
 
-    // {
-    //     path: 'survey',
-    //     component: <SurveyIndex />,
-    //     label: 'Take our survey'
-    // },
     {
         path: 'car',
         component: <CarIndex />,
@@ -29,11 +24,6 @@ const routes = [
     //     path: 'review',
     //     component: <ReviewIndex />,
     //     label: 'Reviews'
-    // },
-    // {
-    //     path: 'chat',
-    //     component: <ChatApp />,
-    //     label: 'Chat'
     // },
     // {
     //     path: 'about',
