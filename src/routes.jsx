@@ -5,7 +5,7 @@ import { ReviewIndex } from './pages/ReviewIndex.jsx'
 import { ChatApp } from './pages/Chat.jsx'
 import { AdminApp } from './pages/AdminIndex.jsx'
 import { SurveyIndex } from './pages/SurveyIndex.jsx'
-import { BabaIndex } from './pages/BabaIndex.jsx'
+
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -14,11 +14,7 @@ const routes = [
         component: <HomePage />,
         label: 'Home 🏠',
     },
-    {
-        path: 'baba',
-        component: <BabaIndex />,
-        label: 'Meet our Babas'
-    },
+
     // {
     //     path: 'survey',
     //     component: <SurveyIndex />,
