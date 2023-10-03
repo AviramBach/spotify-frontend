@@ -1,5 +1,7 @@
 import { HomePage } from './pages/HomePage.jsx'
-import { CarIndex } from './pages/CarIndex.jsx'
+import { SearchPage } from './pages/SearchPage.jsx'
+import { SongDetails } from './pages/SongDetails.jsx'
+import { StationDetails } from './pages/StationDetails.jsx'
 
 
 
@@ -10,11 +12,20 @@ const routes = [
         component: <HomePage />,
         label: 'Home 🏠',
     },
-
     {
-        path: 'car',
-        component: <CarIndex />,
-        label: 'Cars'
+        path: 'search',
+        component: <SearchPage />,
+        label: 'search'
+    },
+    {
+        path: 'station-details',
+        component: <StationDetails />,
+        label: 'station details'
+    },
+    {
+        path: 'song-details',
+        component: <SongDetails />,
+        label: 'song details'
     },
 ]
 

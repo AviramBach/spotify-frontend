@@ -6,7 +6,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { carService } from '../services/car.service.js'
 
-export function CarIndex() {
+export function SearchPage() {
 
     const cars = useSelector(storeState => storeState.carModule.cars)
 
@@ -17,7 +17,7 @@ export function CarIndex() {
     async function onRemoveCar(carId) {
         try {
             await removeCar(carId)
-            showSuccessMsg('Car removed')            
+            showSuccessMsg('Car removed')
         } catch (err) {
             showErrorMsg('Cannot remove car')
         }
@@ -31,7 +31,7 @@ export function CarIndex() {
             showSuccessMsg(`Car added (id: ${savedCar._id})`)
         } catch (err) {
             showErrorMsg('Cannot add car')
-        }        
+        }
     }
 
     async function onUpdateCar(car) {
@@ -42,10 +42,10 @@ export function CarIndex() {
             showSuccessMsg(`Car updated, new price: ${savedCar.price}`)
         } catch (err) {
             showErrorMsg('Cannot update car')
-        }        
+        }
     }
 
-    function onAddToCart(car){
+    function onAddToCart(car) {
         console.log(`Adding ${car.vendor} to Cart`)
         addToCart(car)
         showSuccessMsg('Added to Cart')
