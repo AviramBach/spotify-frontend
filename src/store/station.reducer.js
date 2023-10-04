@@ -4,9 +4,12 @@ export const ADD_STATION = 'ADD_STATION'
 export const UPDATE_STATION = 'UPDATE_STATION'
 export const UNDO_REMOVE_STATION = 'UNDO_REMOVE_STATION'
 
+export const SET_FILTER_BY = 'SET_FILTER_BY'
+
 const initialState = {
     stations: [],
-    lastRemovedStation: null
+    lastRemovedStation: null,
+    filterBy: { txt: '', sortBy: 'createdAt' },
 }
 
 export function stationReducer(state = initialState, action) {
@@ -27,6 +30,9 @@ export function stationReducer(state = initialState, action) {
         case UPDATE_STATION:
             stations = state.stations.map(station => (station._id === action.station._id) ? action.station : station)
             newState = { ...state, stations }
+            break
+        case SET_FILTER_BY:
+            newState = { ...state, filterBy: { ...action.filterBy } }
             break
         case UNDO_REMOVE_STATION:
             if (state.lastRemovedStation) {
