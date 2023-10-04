@@ -1,0 +1,111 @@
+// .homepage {
+//     li {
+//         color: $white;
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         border-radius: .5rem;
+//         // background-color: rgba(255, 255, 255, 0.19);
+//         background-color: $spotify-black;
+//         padding: 1rem;
+//         margin-top: 1rem;
+
+//         h1 {
+//             margin: 0;
+//         }
+
+//         p {
+//             display: none;
+//         }
+
+//         article:hover {
+//             cursor: pointer;
+//         }
+//     }
+
+//     li:hover {
+//         background-color: lighten($color: $light-spotify-black, $amount: 10%);
+//     }
+// }
+
+.library {
+    color: darken($color: $white, $amount: 20%);
+    border-radius: .5rem;
+    background-color: $light-spotify-black;
+
+    .library-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .5rem;
+
+        h1 {
+            margin: 0;
+        }
+
+        button {
+            font-size: larger;
+            margin: 0;
+        }
+    }
+
+    .library-filter {
+        padding: .5rem;
+        display: flex;
+        justify-content: space-between;
+
+        input {
+            color: darken($color: $white, $amount: 20%);
+            background-color: $light-spotify-black;
+            border: none;
+        }
+
+        input:focus-visible {
+            background-color: lighten($color: $light-spotify-black, $amount: 10%);
+        }
+
+        select {
+            border: none;
+            color: $white;
+            background-color: $light-spotify-black;
+        }
+    }
+
+    li {
+        color: $white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .5rem;
+        border-radius: .5rem;
+        background-color: $light-spotify-black;
+        margin-top: 0;
+
+        h1 {
+            margin: 0;
+        }
+
+        p {
+            font-size: smaller;
+            display: inline;
+            color: darken($color: $white, $amount: 20%);
+            margin: 0;
+        }
+
+        article:hover {
+            cursor: pointer;
+        }
+
+    }
+
+    li:hover {
+        background-color: lighten($color: $light-spotify-black, $amount: 10%);
+    }
+}
+
+// .homepage {
+//     li {
+//         background-color: lighten($color: $light-spotify-black, $amount: 10%);
+//         padding: 1rem;
+//     }
+// }
