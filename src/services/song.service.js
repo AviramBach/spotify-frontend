@@ -13,7 +13,7 @@ export const songService = {
     getById,
     save,
     remove,
-    // getEmptySong,
+    getRandomSong,
     // addSongMsg
 }
 window.cs = songService
@@ -63,14 +63,16 @@ async function save(song) {
 // }
 
 
-// function getEmptySong() {
-//     return {
-//         name: '',
-//         tags: [],
-//         songs: [],
-//         likedByUsers: [],
-//     }
-// }
+function getRandomSong() {
+    return {
+            id: utilService.makeId(),
+            title: utilService.makeLorem(4),
+            url: 'youtube/song.mp4',
+            imgUrl: '',
+            addedBy: 'guest',
+            addedAt: utilService.randomPastTime()
+    }
+}
 
 
 
