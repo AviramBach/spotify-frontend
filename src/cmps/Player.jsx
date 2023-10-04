@@ -6,7 +6,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { removeFromCart, checkout } from '../store/car.actions'
 import { UserMsg } from './UserMsg.jsx'
 
-export function AppFooter() {
+export function Player() {
     const [isCartShown, setIsCartShown] = useState(false)
     const cart = useSelector(storeState => storeState.carModule.cart)
     const count = useSelector(storeState => storeState.userModule.count)
@@ -16,7 +16,7 @@ export function AppFooter() {
         try {
             const score = await checkout(cartTotal)
             showSuccessMsg(`Charged, your new score: ${score.toLocaleString()}`)
-        } catch(err) {
+        } catch (err) {
             showErrorMsg('Cannot checkout')
         }
     }

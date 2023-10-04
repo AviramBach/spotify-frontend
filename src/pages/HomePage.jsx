@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CHANGE_COUNT } from '../store/user.reducer'
 
 import { utilService } from '../services/util.service'
+import { Aside } from '../cmps/Aside'
+import { StationList } from '../cmps/StationList'
 
 
 export function HomePage() {
@@ -26,6 +28,8 @@ export function HomePage() {
                 }}>+10</button>
             </h2 >
             <img src={utilService.getAssetSrc('react.svg')} />
+            <Aside />
+            <StationList />
         </section >
     )
 }
