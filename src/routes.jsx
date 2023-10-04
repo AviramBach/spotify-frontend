@@ -13,7 +13,7 @@ const routes = [
         label: 'Home 🏠',
     },
     {
-        path: 'search',
+        path: '/search',
         component: <SearchPage />,
         label: 'search'
     },

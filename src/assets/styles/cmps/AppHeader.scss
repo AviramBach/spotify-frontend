@@ -1,53 +1,29 @@
 .app-header {
-    background-color: $spotify-green;
-    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: $light-spotify-black;
+    width: 1000px;
+    height: 65px;
+    padding-block: 15px;
+    padding-inline: 12px;
+}
+.arrow-button{
+    border:none;
+    margin-inline: 5px;
+    border-radius: 50%;
+    background-color:rgba(0,0,0,.7);
+    height: 32px;
+    width: 32px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.signup-a{
+    @include link(16);
+    padding-inline-end:24px;
+}
 
-    .user-info {
-        // background-color: $spotify-green;
-        // padding: 2px 8px;
-        padding-left: 100px;
-        color: $spotify-green;
-
-        .score {
-            background-color: $spotify-green;
-            color: $white;
-            padding: 8px;
-            margin: 10px;
-            border-radius: 50%;
-        }
-
-        img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-    }
-
-    .user-info .btn-link {
-        color: $spotify-green;
-    }
-
-    nav {
-        font-size: .8em;
-        background-color: $spotify-green;
-        padding: 5px;
-
-    }
-
-    nav a:first-child {
-        margin-right: 30px;
-    }
-
-    nav a:not(:first-child) {
-        border-top: 1px solid $spotify-green;
-        padding: 0 5px;
-        margin: 10px;
-    }
-
-    nav .active {
-        color: $spotify-green;
-    }
-
+.login-button{
+    @include round-button('login');
 }

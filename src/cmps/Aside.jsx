@@ -1,7 +1,8 @@
+import { Navbar } from './Navbar'
 import { Library } from "./Library";
 export function Aside() {
-    return <div>
-        <h1>hi</h1>
+    return <nav className='aside'>
+        <Navbar />
         <Library />
-    </div>
+    </nav>
 }
