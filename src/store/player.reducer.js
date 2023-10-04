@@ -31,12 +31,12 @@ export function playerReducer(state = initialState, action) {
         case SET_PREV_SONG:
             newState = { ...state, prevSong: action.prevSong }
             break
-        case REMOVE_SONG:
-            newState = {
-                ...state,
-                songs: state.songs.filter(song => song._id !== action.songId) // songs? how to get to remove the song from the station?
-            }
-            break
+        // case REMOVE_SONG:
+        //     newState = {
+        //         ...state,
+        //         songs: state.songs.filter(song => song._id !== action.songId) // songs? how to get to remove the song from the station?
+        //     }
+        // break
         case SONG_PROGRESS:
             newState = { ...state, songProgress: action.songProgress }
             break

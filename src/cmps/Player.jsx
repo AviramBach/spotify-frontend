@@ -12,9 +12,9 @@ export function Player(duration) {
     // const [songProgress, setProgress] = useState(0)
     const songProgress = useSelector(storeState => storeState.playerModule.songProgress)
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
-    const nextSong = useSelector(storeState => storeState.playerModule.nextSong)
+    // const nextSong = useSelector(storeState => storeState.playerModule.nextSong)
     const currSong = useSelector(storeState => storeState.playerModule.currSong)
-    const prevSong = useSelector(storeState => storeState.playerModule.prevSong)
+    // const prevSong = useSelector(storeState => storeState.playerModule.prevSong)
     const [volume, setVolume] = useState(50)
 
     // const [songName, setSongName] = useState('Song Title');
