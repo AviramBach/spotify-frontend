@@ -57,28 +57,57 @@
     }
   }
 
-  @mixin filtet-button(){
+  @mixin round-button($type){
     display: inline-flex;
     align-items: center;
     text-align: center;
-    font-size: 0.875rem;
+    margin: 0;
     line-height: 14px;
     font-weight: 400;
     border-radius: 2em;
     border: none;
     margin-inline-end: 0.5em;
-    color: $white;
-    background-color: $light-spotify-black;
-    &:hover{
-        cursor: pointer;
-        background-color: lighten($color:  $light-spotify-black, $amount: 10%);
+    @if($type=='filter'){
+        color: $white;
+        background-color: $light-spotify-black;
+        font-size: 14px;
+        &:hover{
+            cursor: pointer;
+            background-color: lighten($color:  $light-spotify-black, $amount: 10%);
+        }
+        &:checked{
+            color: $black;
+            background-color: $white;
+        }
     }
-    &:checked{
+    @else if($type=='login'){
         color: $black;
         background-color: $white;
+        font-size: 16px;
+        height: 32px;
+        padding-inline: 32px;
+        padding-block: 8px;
+        text-align: center;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+  }
+
+  @mixin link($font-size){
+    text-decoration: none;
+    color: $spotify-grey;
+    line-height: 25px;
+    font-weight: 700;
+    font-size: $font-size'px';
+    padding: 8px;
+    &:hover{
+        color: $white;
+        font-size: calc($font-size + 2)'px';
     }
   }
 
-  @mixin big-green-play-button(){
 
-  }
+
+  

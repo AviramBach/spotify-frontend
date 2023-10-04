@@ -22,8 +22,17 @@
     &.justify-center {
         justify-content: center;
     }
+    &.justify-left {
+        justify-content: start;
+    }
     &.align-center {
         align-items: center;
+    }
+    &.align-left {
+        align-items:start;
+    }
+    &.align-right {
+        align-items:end;
     }
 }
 
@@ -37,4 +46,8 @@
 }
 .portrait-ratio {
     @include aspect-ratio(9, 16);
+}
+
+.clean-list{
+    list-style: none;
 }

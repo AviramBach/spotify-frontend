@@ -1,0 +1,36 @@
+.navbar-container{
+    border: none;
+    border-radius: 0.5em;
+    background-color: $spotify-black;
+    width: 278px;
+    height: 112px;
+}
+
+.navbar{
+    margin: 0;
+    padding-inline: 12px;
+    padding-block: 8px;
+    width: 274px;
+    height: 96px;
+}
+
+.navbar-li{
+    display: flex;
+    justify-content: start;
+    padding-inline: 12px;
+    padding-block: 4px;
+    width: 265px;
+    height: 40px;
+}
+.navbar-li-img{
+    height: 24px;
+    width: 24px;
+    margin-inline-end: 20px;
+}
+.nav-link{
+    @include link(16);
+    &:active{
+        color: $white;
+        text-decoration: none;
+    }
+}

@@ -1,10 +1,8 @@
+import { Navbar } from './Navbar'
 import { Library } from "./Library";
-import { Navbar } from "./Navbar";
-
 export function Aside() {
-    return <div>
-        <h1>hi</h1>
+    return <nav className='aside'>
         <Navbar />
         <Library />
-    </div>
+    </nav>
 }
