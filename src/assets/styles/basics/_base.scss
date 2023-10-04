@@ -1,9 +1,10 @@
 * {
     box-sizing: border-box;
+    font-family:circular;
 }
 
 ::selection {
-    background-color: $clr6;
+    background-color: $white;
     color: $spotify-green;
 }
 

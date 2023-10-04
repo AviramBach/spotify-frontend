@@ -56,3 +56,29 @@
         }
     }
   }
+
+  @mixin filtet-button(){
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 14px;
+    font-weight: 400;
+    border-radius: 2em;
+    border: none;
+    margin-inline-end: 0.5em;
+    color: $white;
+    background-color: $light-spotify-black;
+    &:hover{
+        cursor: pointer;
+        background-color: lighten($color:  $light-spotify-black, $amount: 10%);
+    }
+    &:checked{
+        color: $black;
+        background-color: $white;
+    }
+  }
+
+  @mixin big-green-play-button(){
+
+  }
