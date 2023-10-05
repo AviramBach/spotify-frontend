@@ -60,11 +60,12 @@ export function StationDetails() {
   }
 
   if (!currStation) return <div>loading...</div>
-  const { name, tags, songs } = currStation
+  const { name, tags, songs, imgUrl } = currStation
   return (
-    <div>
-      <div>
-        <h1>{name}</h1>
+    <div className="station-details">
+      <div className="station-details-header">
+        <img src={imgUrl} alt={name} />
+        <h1 >{name}</h1>
         <p>{tags.join()}</p>
         <div>
           <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>

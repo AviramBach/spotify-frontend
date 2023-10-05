@@ -1,0 +1,9 @@
+.station-details-header{
+
+    h1{
+        @include headline
+    }
+    p{
+        @include body-text('secondary')
+    }
+}
