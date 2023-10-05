@@ -86,10 +86,10 @@ export function Player() {
                         {/* {isLooped ? 'is looping' : 'no looping'} */}
                     </button>
                         <button onClick={prevSong}>Previous</button>
-                    <button onClick={playSong}>
-                        {isPlaying ? 'Pause' : 'Play'}
-                        {/* {isPlaying ? <img className='play-button-icon' src="public/img/spotify android icons 24px (Community)/Play Buttom.png" alt="" /> : 
-                        <img className='pause-button-icon' src="public/img/spotify android icons 24px (Community)/Pause Buttom.png" alt="" />} */}
+                    <button className='play-pause-button' onClick={playSong}>
+                        {/* {isPlaying ? 'Pause' : 'Play'} */}
+                        {isPlaying ?  <img className='pause-icon' src="public\img\spotify android icons 24px (Community)\Pause Button.png" alt="" /> : 
+                        <img className='play-icon' src="public/img/spotify android icons 24px (Community)/Play Button.png" alt="" />}
                     </button>
                         <button onClick={nextSong}>Next</button>
                     <button onClick={shuffelSong}>Shuffel</button>
