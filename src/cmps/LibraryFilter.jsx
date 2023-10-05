@@ -21,7 +21,7 @@ export function LibraryFilter({ filterBy, onSetFilter }) {
         <section className="library-filter">
             <label htmlFor="txt">
                 <img src="public/img/spotify android icons 24px (Community)/Search Icon.png" alt="" />
-                <input type="text" name="txt" id="txt" placeholder="Search in Your Library" onInput={setNewFilter} />
+                <input type="text" name="txt" id="txt" onInput={setNewFilter} />
             </label>
             <select name="sortBy" onChange={setNewFilter}>
                 <option value="createdAt">Recents</option>

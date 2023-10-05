@@ -7,23 +7,25 @@ import { StationList } from "./StationList"
 import { stationService } from '../services/station.service.js'
 import { LibraryFilter } from './LibraryFilter.jsx'
 import { SET_FILTER_BY } from '../store/station.reducer.js'
+import { useNavigate } from 'react-router'
 
 export function Library() {
     const dispatch = useDispatch()
     const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
     const stations = useSelector(storeState => storeState.stationModule.stations)
-
+    const navigate = useNavigate()
     useEffect(() => {
         loadStations()
     }, [filterBy])
 
     async function onAddStation() {
         const station = stationService.getEmptyStation()
-        station.name = prompt('Playlist name?')
+        // station.name = prompt('Playlist name?')
         station.createdAt = Date.now()
         station.createdBy = 'Me'
         try {
             const savedStation = await addStation(station)
+            navigate(`/station-details/${savedStation._id}`)
             showSuccessMsg(`Station added (id: ${savedStation._id})`)
         } catch (err) {
             showErrorMsg('Cannot add station')
@@ -37,8 +39,13 @@ export function Library() {
 
     return <section className='library'>
         <div className='library-header'>
-            <h1>Your Library</h1>
-            <button onClick={onAddStation}>+</button>
+            <div>
+                <img className='library-icon' src="public/img/spotify android icons 24px (Community)/Your Playlist.png" alt="" />
+                <h1>Your Library</h1>
+            </div>
+            <button onClick={onAddStation}>
+                <img className='add-icon' src="public/img/spotify android icons 24px (Community)/Add Icon.png" alt="" />
+            </button>
         </div>
         <LibraryFilter filterBy={filterBy} onSetFilter={onSetFilter} />
         <StationList stations={stations} />

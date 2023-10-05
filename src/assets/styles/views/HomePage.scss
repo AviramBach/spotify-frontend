@@ -3,10 +3,10 @@
     .station-list {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: .5rem;
+        gap: .75rem;
 
         .station-preview {
-            height: 80px;
+            height: 64px;
             min-width: 250px;
             margin-top: 0;
             color: $white;
@@ -14,7 +14,7 @@
             justify-content: space-between;
             align-items: center;
             border-radius: .5rem;
-            background-color: rgba(255, 255, 255, 0.073);
+            background-color: rgba(255, 255, 255, 0.104);
 
             h1 {
                 margin: 0;
@@ -27,7 +27,7 @@
             article {
                 display: flex;
                 justify-content: start;
-                gap: .5rem;
+                gap: 1rem;
                 align-items: center;
             }
 
@@ -40,13 +40,14 @@
             }
 
             img {
-                height: 80px;
-                width: 80px;
+                height: 64px;
+                width: 64px;
+                border-radius: .25rem;
             }
         }
 
         .station-preview:hover {
-            background-color: lighten($color: $light-spotify-black, $amount: 5%);
+            background-color: rgba(255, 255, 255, 0.232);
         }
     }
 }
