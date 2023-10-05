@@ -75,7 +75,7 @@
             cursor: pointer;
             background-color: lighten($color:  $light-spotify-black, $amount: 10%);
         }
-        &:checked{
+        &:active{
             color: $black;
             background-color: $white;
         }
@@ -107,7 +107,26 @@
         font-size: calc($font-size + 2)'px';
     }
   }
+@mixin headline(){
+    margin: 0.08em 0px 0.12em;
+    width: 100%;
+    font-size: 4.5rem;
+    font-weight: 900;
+}
 
-
-
+@mixin body-text($type){
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: $white;
+    @if($type=='body'){
+        color: $spotify-grey;
+    }
+    @else if($type=='secondary'){
+        font-size: 1rem;
+    }
+    @else if($type=='primary'){
+        font-size: 1rem;
+        font-weight: 700;
+    }
+}
   

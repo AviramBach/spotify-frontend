@@ -1,0 +1,36 @@
+.info-line{
+    border-bottom: 1px solid hsla(0,0%,100%,.1);
+    @include body-text('body');
+    vertical-align: baseline;
+    display: grid; 
+    grid-template-columns: 16px 6fr 4fr 3fr minmax(120px,1fr); 
+    grid-template-rows: 36px; 
+    gap: 0 16px; 
+    grid-template-areas: 
+      "index title album added duration"; 
+}
+.info-line-index{
+    grid-area: index;
+}
+.info-line-title{
+    grid-area: title;
+}
+.info-line-album{
+    grid-area: album;
+}.info-line-added-at{
+    grid-area: added;
+}
+.info-line-duration{
+    grid-area: duration;
+    height: 16px;
+    width: 16px;
+    filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%) contrast(87%);
+}
+
+.song-list-item{
+    grid-template-columns: 16px 6fr 4fr 3fr minmax(120px,1fr); 
+    grid-template-rows: 36px; 
+    gap: 0 16px; 
+    grid-template-areas: 
+      "song-index song-preview song-album song-added song-duration"; 
+}
