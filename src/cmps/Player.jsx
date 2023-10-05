@@ -12,28 +12,24 @@ import { setSongProgress, toggelIsPlaying, setCurrSong, setNextSong, setPrevSong
 export function Player() {
 
     // const songProgress = useSelector(storeState => storeState.playerModule.songProgress)
-    
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
     const currSong = useSelector(storeState => storeState.playerModule.currSong)
     const [volume, setVolume] = useState(0.5)
     const [isMuted, setIsMuted] = useState(false)
     const [isLooped, setIsLooped] = useState(false)
-    
-
     const playerRef = useRef(null)
     const [currentTime, setCurrentTime] = useState(0)
 
     const handleProgress = (state) => {
         if (!state.loaded) return
         setCurrentTime(state.playedSeconds)
-    };
+    }
 
     const handleSeek = (e) => {
         const seekTime = e.target.value
         setCurrentTime(seekTime)
         playerRef.current.seekTo(seekTime)
     }
-
 
     function nextSong() {
         // Implement logic to switch to the next song
@@ -42,12 +38,10 @@ export function Player() {
     function prevSong() {
         // Implement logic to switch to the prev song
     }
-
-    
+   
     function playSong() {
         toggelIsPlaying(isPlaying)
     }
-
 
     function shuffelSong() {
         // Implement logic to shuffel a song
@@ -82,14 +76,13 @@ export function Player() {
 
             <div className='player-song-preview'>
                 {/* <SongPreview props={props}/> */}
-                <button onClick={heartSong}>heart(not working)</button>
+                <button onClick={heartSong}>heart</button>
             </div>
 
             <div className='player-main'>
-
                 <div className="main-controls">
                     <button onClick={loopSong}>
-                        loop(not working)
+                        loop
                         {/* {isLooped ? 'is looping' : 'no looping'} */}
                     </button>
                         <button onClick={prevSong}>Previous</button>
@@ -101,7 +94,6 @@ export function Player() {
                         <button onClick={nextSong}>Next</button>
                     <button onClick={shuffelSong}>Shuffel</button>
                 </div>
-
 
                 <ReactPlayer
                     className='react-player'
@@ -138,11 +130,9 @@ export function Player() {
                         onChange={handleSeek}
                     />
                 </div>
-
             </div>
 
             <div className='player-side-controls'>
-
                 <button onClick={muteSong}>mute</button>
                 <div className="volume-bar">
                     <label htmlFor="volumeRange"></label>
@@ -157,7 +147,6 @@ export function Player() {
                         onChange={handleVolumeChange}
                     />
                 </div>
-
             </div>
 
         </footer>
