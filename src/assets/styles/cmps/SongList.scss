@@ -1,4 +1,12 @@
+.song-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 .info-line{
+    align-items: center;
+    margin-block-end: 12.547px;
     border-bottom: 1px solid hsla(0,0%,100%,.1);
     @include body-text('body');
     vertical-align: baseline;
@@ -28,9 +36,60 @@
 }
 
 .song-list-item{
+    align-items: center;
+    border-radius: 4px;
+    display: grid; 
     grid-template-columns: 16px 6fr 4fr 3fr minmax(120px,1fr); 
-    grid-template-rows: 36px; 
+    grid-template-rows: 56px; 
     gap: 0 16px; 
     grid-template-areas: 
       "song-index song-preview song-album song-added song-duration"; 
+
+}
+.song-list-item:hover{
+    background-color: $light-spotify-black;
+
+}
+.song-list-item-index{
+    grid-area:song-index ;
+    @include body-text('body');
+}
+.song-list-item-preview{
+    grid-area:song-preview ;
+}
+.song-list-item-album{
+    grid-area:song-album ;
+    @include body-text('body');
+    margin: 0;
+
+}
+.song-list-item-added-at{
+    grid-area:song-added ;
+    @include body-text('body');
+    margin: 0;
+
+}
+.song-list-item-duration-container{
+    display: flex;
+    justify-self: end;
+    align-items: center;
+    grid-area:song-duration ;
+}
+.song-list-item-btn{
+    background-color: transparent;
+    border: none;
+    height: 32px;
+    width: 32px;
+    padding-block: 8px;
+    margin-inline-end: 16px;
+}
+.song-list-item-btn-img{
+    height: 16px;
+    width: 16px;
+    filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%) contrast(87%);
+}
+.song-list-item-duration{
+    margin-inline-end: 16px;
+    margin-block-end: 0;
+    @include body-text('body');
 }

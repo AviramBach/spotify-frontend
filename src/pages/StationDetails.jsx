@@ -75,15 +75,18 @@ export function StationDetails() {
   const { name, tags, songs, imgUrl } = currStation
   return (
     <div className="station-details">
-      <div className="station-details-header">
-        <img src={imgUrl} alt={name} />
-        <h1 >{name}</h1>
-        <p>{tags.join()}</p>
-        <div>
-          <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>
-          <button className="btn-add" onClick={() => onUpdateStation()}>Add song</button>
-          <button className="btn-edit" onClick={() => onUpdateStationDetails()}>Edit station</button>
+      <div className="station-details-header-container">
+        <img className="station-details-img" src={imgUrl} alt={name} />
+        <div className="station-details-header">
+          <h1 className="station-details-headline">{name}</h1>
+          <p className="station-details-tags">{tags.join()}</p>
+          <p className="station-details-count">{songs.length} songs</p>
         </div>
+      </div>
+      <div className="station-details-button-container">
+        <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>
+        <button className="btn-add" onClick={() => onUpdateStation()}>Add song</button>
+        <button className="btn-edit" onClick={() => onUpdateStationDetails()}>Edit station</button>
       </div>
       <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation}></SongList>
     </div>

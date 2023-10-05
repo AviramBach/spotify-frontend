@@ -28,7 +28,7 @@
     margin-inline-end: 20px;
 }
 .nav-link{
-    @include link(16);
+    @include link();
     &:active{
         color: $white;
         text-decoration: none;

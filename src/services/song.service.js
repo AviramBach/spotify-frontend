@@ -63,11 +63,12 @@ async function save(song) {
 // }
 
 
-function getRandomSong(title) {
+function getRandomSong(title, album) {
     return {
         id: utilService.makeId(),
         title,
         artist: utilService.makeLorem(2),
+        album,
         url: 'youtube/song.mp4',
         imgUrl: '',
         addedBy: 'guest',

@@ -20,7 +20,7 @@
 }
 
 .signup-a{
-    @include link(16);
+    @include link();
     padding-inline-end:24px;
 }
 

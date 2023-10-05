@@ -1,9 +1,9 @@
 export function SongPreview({ song }) {
-    return <div>
-        {song.imgUrl && <img height={'40px'} src={song.imgUrl} alt="" />}
-        <div>
-            <h3>{song.title}</h3>
-            <p>{song.artist}</p>
+    return <div className="song-preview">
+        {song.imgUrl && <img className="song-preview-img" src={song.imgUrl} alt={song.title} />}
+        <div className="song-preview-details">
+            <a href="#" className="song-preview-title">{song.title}</a>
+            <a href="#" className="song-preview-artist">{song.artist}</a>
         </div>
     </div>
 }

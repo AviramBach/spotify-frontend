@@ -25,7 +25,7 @@
 }
 
 /* Media  Mixins */
-@mixin aspect-ratio($width, $height) {
+@mixin aspect-ratio($width:1, $height:1) {
     position: relative;
     overflow: hidden;
     &::before {
@@ -95,17 +95,38 @@
 
   }
 
-  @mixin link($font-size){
+  @mixin link(){
     text-decoration: none;
     color: $spotify-grey;
     line-height: 25px;
     font-weight: 700;
-    font-size: $font-size'px';
-    padding: 8px;
+    font-size: 1em;
+    padding: 0.5em;
     &:hover{
         color: $white;
-        font-size: calc($font-size + 2)'px';
+        font-size: 1.1em;
     }
+  }
+
+  @mixin body-link($type){
+    text-decoration: none;
+    @if($type=='primary'){
+        font-weight: 500;
+        font-size: 16px;
+        color: $white;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    @if($type=='secondary'){
+        font-weight: 400;
+        font-size: 14px;
+        color: $spotify-grey;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+
   }
 @mixin headline(){
     margin: 0.08em 0px 0.12em;
@@ -122,10 +143,10 @@
         color: $spotify-grey;
     }
     @else if($type=='secondary'){
-        font-size: 1rem;
+        font-size: 1em;
     }
     @else if($type=='primary'){
-        font-size: 1rem;
+        font-size: 1em;
         font-weight: 700;
     }
 }

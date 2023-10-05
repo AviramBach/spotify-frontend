@@ -14,7 +14,7 @@
 
 // Views
 @import "views/HomePage";
-@import "views/StationDetails.scss";
+@import "views/StationDetails";
 
 
 // Components
@@ -25,7 +25,8 @@
 @import "cmps/Library";
 @import "cmps/StationList";
 @import "cmps/Player";
-@import "cmps/SongList.scss"
+@import "cmps/SongList.scss";
+@import "cmps/SongPreview.scss"
 
 
 
