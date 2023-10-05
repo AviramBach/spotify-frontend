@@ -1,27 +1,27 @@
-import { useParams, useNavigate } from "react-router";
-import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router"
+import { useEffect, useState } from "react"
 import { stationService } from '../services/station.service.js'
-import { SongList } from "../cmps/SongList.jsx";
+import { SongList } from "../cmps/SongList.jsx"
 import { removeStation, updateStation } from '../store/station.actions.js'
 import { songService } from '../services/song.service.js'
 
 export function StationDetails() {
-  const params = useParams();
-  const navigate = useNavigate();
-  const [currStation, setCurrStation] = useState(null);
+  const params = useParams()
+  const navigate = useNavigate()
+  const [currStation, setCurrStation] = useState(null)
   useEffect(() => {
-    const { id } = params;
-    console.log(params);
+    const { id } = params
+    console.log(params)
     stationService
       .getById(id)
       .then((station) => {
-        if (!station) return navigate("/");
-        setCurrStation(station);
+        if (!station) return navigate("/")
+        setCurrStation(station)
       })
       .catch((err) => {
-        console.log(err);
-      });
-  }, [params]);
+        console.log(err)
+      })
+  }, [params])
 
 
   async function onRemoveStation() {
@@ -36,31 +36,30 @@ export function StationDetails() {
   async function onUpdateStation() {
     const title = prompt('Song name?')
     const songToAdd = songService.getRandomSong(title)
-    const updatdStation = { ...currStation, songs: [songToAdd, ...currStation.songs] };
+    const updatdStation = { ...currStation, songs: [songToAdd, ...currStation.songs] }
     setCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
-      console.log(currStation.songs);
+      console.log(currStation.songs)
     } catch (err) {
       // showErrorMsg('Cannot update station')
-      console.error(err);
+      console.error(err)
     }
   }
 
   async function onUpdateStationDetails() {
     const name = prompt('new name')
-    const updatdStation = { ...currStation, name: name };
+    const updatdStation = { ...currStation, name: name }
     setCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
-      console.log(currStation.name);
+      console.log(currStation.name)
     } catch (err) {
-      // showErrorMsg('Cannot update station')
-      console.error(err);
+      console.error(err)
     }
   }
 
-  if (!currStation) return <div>loading...</div>;
+  if (!currStation) return <div>loading...</div>
   const { name, tags, songs } = currStation
   return (
     <div>
