@@ -67,23 +67,79 @@ async function save(station) {
 
 function getEmptyStation() {
     return {
-        name: '',
-        tags: ['hi', 'hi'],
+        name: 'New Playlist',
+        tags: ['By you'],
         songs: [],
         likedByUsers: [],
+        imgUrl: 'public/img/spotify.png'
     }
+}
+
+const sTime = {
+    id: utilService.makeId(),
+    title: 'Time',
+    artist: 'Pink Floyd',
+    url: 'youtube/song.mp4',
+    imgUrl: 'public/img/Album_cover4.jpg',
+    addedBy: 'Gilad',
+    addedAt: utilService.randomPastTime()
+}
+const sConsideration = {
+    id: utilService.makeId(),
+    title: 'Consideration',
+    artist: 'Rihanna',
+    url: 'youtube/song.mp4',
+    imgUrl: 'public/img/Album_cover1.png',
+    addedBy: 'Guest',
+    addedAt: utilService.randomPastTime()
+}
+const sDang = {
+    id: utilService.makeId(),
+    title: 'Dang!',
+    artist: 'Mac Miller',
+    url: 'youtube/song.mp4',
+    imgUrl: 'public/img/Album-cover2.jpg',
+    addedBy: 'Guest',
+    addedAt: utilService.randomPastTime()
+}
+const sJuicy = {
+    id: utilService.makeId(),
+    title: 'Juicy',
+    artist: 'B.I.G',
+    url: 'youtube/song.mp4',
+    imgUrl: 'public/img/Album-cover2.jpg',
+    addedBy: 'Gilad',
+    addedAt: utilService.randomPastTime()
+}
+const sZion = {
+    id: utilService.makeId(),
+    title: 'Zion',
+    artist: 'Lauryn Hill',
+    url: 'youtube/song.mp4',
+    imgUrl: 'public/img/Album_cover3.jpg',
+    addedBy: 'Guest',
+    addedAt: utilService.randomPastTime()
+}
+const sWork = {
+    id: utilService.makeId(),
+    title: 'Work',
+    artist: 'Rihanna',
+    url: 'youtube/song.mp4',
+    imgUrl: 'public/img/Album_cover1.png',
+    addedBy: 'Gilad',
+    addedAt: utilService.randomPastTime()
 }
 
 function _createStations() {
     return [
-        _createStation('Liked songs', 'public/img/Album_cover4.jpg', [{title: 'Time', id: utilService.makeId(), length: '3:58'},{title: 'Ex-factor', id: utilService.makeId(), length: '4:08'},{title: 'Consideration', id: utilService.makeId(), length: '2:43'}, {title: 'Juicy', id: utilService.makeId(), length: '3:36'}], 'Me'),
-        _createStation('ANTI', 'public/img/Album_cover1.png', [{title: "Consideration", id: "v1gLJa", length: "2:43"}, {title: "Work", id: utilService.makeId(), length: "3:47"},{title: "Woo", id: utilService.makeId(), length: "2:43"}]),
-        _createStation('R&B', 'public/img/Album_cover3.jpg', [{title: "Ex-factor", id: "5ldxtw", length: "4:08"},{title: "In My Room", id: utilService.makeId(), length: "2:12"}]),
-        _createStation('Hip hop', 'public/img/Album-cover2.jpg', [{title: "Juicy", id: "vMHAPE", length: "3:36"}, 'Everday', 'Dang!'], 'Gilad')
+        _createStation('Liked Songs', 'public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy], 'Me', ['Yours', 'Playlist']),
+        _createStation('ANTI', 'public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'Album']),
+        _createStation('R&B', 'public/img/Album_cover3.jpg', [sDang, sConsideration, sZion], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
+        _createStation('Daily Mix 1', 'public/img/Album-cover2.jpg', [sDang, sConsideration, sZion, sTime, sWork, sJuicy])
     ]
 }
 
-function _createStation(name = '', imgUrl = '', songs = [], createdBy = 'Spotify', tags = []) {
+function _createStation(name = 'New Playlist', imgUrl = '', songs = [], createdBy = 'Spotify', tags = []) {
     return {
         _id: utilService.makeId(),
         name,
@@ -94,8 +150,4 @@ function _createStation(name = '', imgUrl = '', songs = [], createdBy = 'Spotify
         createdBy,
     }
 }
-
-
-
-
 
