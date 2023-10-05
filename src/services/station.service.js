@@ -8,6 +8,7 @@ import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'station'
 
+
 export const stationService = {
     query,
     getById,
@@ -21,6 +22,10 @@ window.cs = stationService
 
 async function query(filterBy = { txt: '', tags: [] }) {
     let stations = await storageService.query(STORAGE_KEY)
+    if (!stations || !stations.length) {
+        stations = _createStations()
+        utilService.saveToStorage(STORAGE_KEY, stations)
+    }
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i')
         stations = stations.filter(station => regex.test(station.name))
@@ -65,6 +70,27 @@ function getEmptyStation() {
         tags: [],
         songs: [],
         likedByUsers: [],
+    }
+}
+
+function _createStations() {
+    return [
+        _createStation('Liked songs', 'public/img/Album_cover4.jpg', [{title: 'Time', id: utilService.makeId(), length: '3:58'},{title: 'Ex-factor', id: utilService.makeId(), length: '4:08'},{title: 'Consideration', id: utilService.makeId(), length: '2:43'}, {title: 'Juicy', id: utilService.makeId(), length: '3:36'}], 'Me'),
+        _createStation('ANTI', 'public/img/Album_cover1.png', [{title: "Consideration", id: "v1gLJa", length: "2:43"}, {title: "Work", id: utilService.makeId(), length: "3:47"},{title: "Woo", id: utilService.makeId(), length: "2:43"}]),
+        _createStation('R&B', 'public/img/Album_cover3.jpg', [{title: "Ex-factor", id: "5ldxtw", length: "4:08"},{title: "In My Room", id: utilService.makeId(), length: "2:12"}]),
+        _createStation('Hip hop', 'public/img/Album-cover2.jpg', [{title: "Juicy", id: "vMHAPE", length: "3:36"}, 'Everday', 'Dang!'], 'Gilad')
+    ]
+}
+
+function _createStation(name = '', imgUrl = '', songs = [], createdBy = 'Spotify', tags = []) {
+    return {
+        _id: utilService.makeId(),
+        name,
+        tags,
+        songs,
+        likedByUsers: [],
+        imgUrl,
+        createdBy,
     }
 }
 

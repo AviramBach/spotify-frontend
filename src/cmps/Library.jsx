@@ -31,6 +31,7 @@ export function Library() {
         const station = stationService.getEmptyStation()
         station.name = prompt('Playlist name?')
         station.createdAt = Date.now()
+        station.createdBy = 'Me'
         try {
             const savedStation = await addStation(station)
             showSuccessMsg(`Station added (id: ${savedStation._id})`)

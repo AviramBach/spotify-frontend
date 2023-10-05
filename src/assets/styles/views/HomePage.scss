@@ -1,2 +1,52 @@
+.homepage {
 
+    .station-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: .5rem;
 
+        .station-preview {
+            height: 80px;
+            min-width: 250px;
+            margin-top: 0;
+            color: $white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: .5rem;
+            background-color: rgba(255, 255, 255, 0.073);
+
+            h1 {
+                margin: 0;
+            }
+
+            p {
+                display: none;
+            }
+
+            article {
+                display: flex;
+                justify-content: start;
+                gap: .5rem;
+                align-items: center;
+            }
+
+            article:hover {
+                cursor: pointer;
+            }
+
+            button {
+                display: none;
+            }
+
+            img {
+                height: 80px;
+                width: 80px;
+            }
+        }
+
+        .station-preview:hover {
+            background-color: lighten($color: $light-spotify-black, $amount: 5%);
+        }
+    }
+}

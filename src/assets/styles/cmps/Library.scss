@@ -1,37 +1,9 @@
-// .homepage {
-//     li {
-//         color: $white;
-//         display: flex;
-//         justify-content: space-between;
-//         align-items: center;
-//         border-radius: .5rem;
-//         // background-color: rgba(255, 255, 255, 0.19);
-//         background-color: $spotify-black;
-//         padding: 1rem;
-//         margin-top: 1rem;
-
-//         h1 {
-//             margin: 0;
-//         }
-
-//         p {
-//             display: none;
-//         }
-
-//         article:hover {
-//             cursor: pointer;
-//         }
-//     }
-
-//     li:hover {
-//         background-color: lighten($color: $light-spotify-black, $amount: 10%);
-//     }
-// }
 
 .library {
+    margin-top: 12px;
     color: darken($color: $white, $amount: 20%);
     border-radius: .5rem;
-    background-color: $light-spotify-black;
+    background-color: $spotify-black;
 
     .library-header {
         display: flex;
@@ -44,8 +16,17 @@
         }
 
         button {
+            color: $white;
             font-size: larger;
             margin: 0;
+            border: none;
+            border-radius: 1rem;
+            background-color: $spotify-black;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: $light-spotify-black;
         }
     }
 
@@ -54,9 +35,13 @@
         display: flex;
         justify-content: space-between;
 
+        label {
+            display: flex;
+        }
+
         input {
             color: darken($color: $white, $amount: 20%);
-            background-color: $light-spotify-black;
+            background-color: $spotify-black;
             border: none;
         }
 
@@ -67,7 +52,12 @@
         select {
             border: none;
             color: $white;
-            background-color: $light-spotify-black;
+            background-color: $spotify-black;
+        }
+
+        img {
+            height: 16px;
+            width: 16px;
         }
     }
 
@@ -78,22 +68,39 @@
         align-items: center;
         padding: .5rem;
         border-radius: .5rem;
-        background-color: $light-spotify-black;
+        background-color: $spotify-black;
         margin-top: 0;
 
-        h1 {
-            margin: 0;
-        }
+        article {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
 
-        p {
-            font-size: smaller;
-            display: inline;
-            color: darken($color: $white, $amount: 20%);
-            margin: 0;
+            h1 {
+                margin: 0;
+                width: max-content;
+            }
+
+            p {
+                font-size: smaller;
+                width: max-content;
+                color: darken($color: $white, $amount: 20%);
+                margin: 0;
+            }
+
         }
 
         article:hover {
             cursor: pointer;
+        }
+
+        img {
+            height: 64px;
+            width: 64px;
+        }
+
+        button {
+            display: none;
         }
 
     }
