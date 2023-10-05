@@ -11,7 +11,7 @@ import { StationDetails } from './pages/StationDetails'
 export function RootCmp() {
 
     return (          
-        <div className='root flex'>
+        <div className='root app-layout'>
             <Aside />
             <div className='root-main'>
                 <AppHeader />

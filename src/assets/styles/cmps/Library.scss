@@ -4,6 +4,9 @@
     border-radius: .5rem;
     background-color: $spotify-black;
     width: 278px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 
     .library-header {
         display: flex;

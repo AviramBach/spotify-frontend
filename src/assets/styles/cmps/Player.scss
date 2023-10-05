@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     height: 72px;
-    position: fixed;
+    // position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -11,6 +11,9 @@
     // background-color:black;
     color: #fff;
     text-align: center;
+
+    grid-column: 1/3;
+    grid-row: 2/3;
 }
 
 .player-song-preview {

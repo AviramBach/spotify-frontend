@@ -4,6 +4,8 @@
     align-items: center;
     background-color: $black;
     width: 287px;
-    height: 100vh;
+    height: 100%;
     padding: 12px;
+
+    grid-column: 1/2;
 }
