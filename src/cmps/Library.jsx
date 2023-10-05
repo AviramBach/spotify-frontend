@@ -5,7 +5,6 @@ import { addStation, loadStations, removeStation, updateStation } from '../store
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { StationList } from "./StationList"
 import { stationService } from '../services/station.service.js'
-import { utilService } from '../services/util.service.js'
 import { LibraryFilter } from './LibraryFilter.jsx'
 import { SET_FILTER_BY } from '../store/station.reducer.js'
 
@@ -18,15 +17,6 @@ export function Library() {
         loadStations()
     }, [filterBy])
 
-    async function onRemoveStation(stationId) {
-        try {
-            await removeStation(stationId)
-            showSuccessMsg('Station removed')
-        } catch (err) {
-            showErrorMsg('Cannot remove station')
-        }
-    }
-
     async function onAddStation() {
         const station = stationService.getEmptyStation()
         station.name = prompt('Playlist name?')
@@ -38,20 +28,8 @@ export function Library() {
         } catch (err) {
             showErrorMsg('Cannot add station')
         }
-    }
 
-    async function onUpdateStation(station) {
-        const songToAdd = prompt('Song name?')
-        station.songs.push({ title: songToAdd })
-        const stationToSave = { ...station }
-        try {
-            const savedStation = await updateStation(stationToSave)
-            showSuccessMsg(`Station updated, new name: ${savedStation.price}`)
-        } catch (err) {
-            showErrorMsg('Cannot update station')
-        }
     }
-
     function onSetFilter(filterBy) {
         dispatch({ type: SET_FILTER_BY, filterBy })
         // console.log(filterBy)
@@ -63,6 +41,6 @@ export function Library() {
             <button onClick={onAddStation}>+</button>
         </div>
         <LibraryFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-        <StationList stations={stations} onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} />
+        <StationList stations={stations} />
     </section>
 }

@@ -1,9 +1,9 @@
 
 import { storageService } from './async-storage.service.js'
-import { httpService } from './http.service.js'
+// import { httpService } from './http.service.js'
 
 import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
+// import { userService } from './user.service.js'
 
 
 const STORAGE_KEY = 'song'
@@ -19,7 +19,7 @@ export const songService = {
 window.cs = songService
 
 
-async function query(filterBy = { txt: ''}) {
+async function query(filterBy = { txt: '' }) {
     let songs = await storageService.query(STORAGE_KEY)
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i')
@@ -63,14 +63,15 @@ async function save(song) {
 // }
 
 
-function getRandomSong() {
+function getRandomSong(title) {
     return {
-            id: utilService.makeId(),
-            title: utilService.makeLorem(4),
-            url: 'youtube/song.mp4',
-            imgUrl: '',
-            addedBy: 'guest',
-            addedAt: utilService.randomPastTime()
+        id: utilService.makeId(),
+        title,
+        artist: utilService.makeLorem(2),
+        url: 'youtube/song.mp4',
+        imgUrl: '',
+        addedBy: 'guest',
+        addedAt: utilService.randomPastTime()
     }
 }
 
