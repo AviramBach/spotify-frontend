@@ -1,48 +1,79 @@
-import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-
-import { loadUser } from '../store/user.actions'
-import { store } from '../store/store'
-import { showSuccessMsg } from '../services/event-bus.service'
-import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from '../services/socket.service'
+import { useParams, useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { stationService } from '../services/station.service.js'
+import { SongList } from "../cmps/SongList.jsx";
+import { removeStation, updateStation } from '../store/station.actions.js'
+import { songService } from '../services/song.service.js'
 
 export function StationDetails() {
-
-  const params = useParams()
-  const user = useSelector(storeState => storeState.userModule.watchedUser)
-
+  const params = useParams();
+  const navigate = useNavigate();
+  const [currStation, setCurrStation] = useState(null);
   useEffect(() => {
-    loadUser(params.id)
+    const { id } = params;
+    console.log(params);
+    stationService
+      .getById(id)
+      .then((station) => {
+        if (!station) return navigate("/");
+        setCurrStation(station);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [params]);
 
-    socketService.emit(SOCKET_EMIT_USER_WATCH, params.id)
-    socketService.on(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
 
-    return () => {
-      socketService.off(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
+  async function onRemoveStation() {
+    try {
+      await removeStation(currStation._id)
+      navigate("/")
+      showSuccessMsg('Station removed')
+    } catch (err) {
+      showErrorMsg('Cannot remove station')
     }
-
-  }, [params.id])
-
-  function onUserUpdate(user) {
-    showSuccessMsg(`This user ${user.fullname} just got updated from socket, new score: ${user.score}`)
-    store.dispatch({ type: 'SET_WATCHED_USER', user })
+  }
+  async function onUpdateStation() {
+    const title = prompt('Song name?')
+    const songToAdd = songService.getRandomSong(title)
+    const updatdStation = { ...currStation, songs: [songToAdd, ...currStation.songs] };
+    setCurrStation(updatdStation)
+    try {
+      await updateStation(updatdStation)
+      console.log(currStation.songs);
+    } catch (err) {
+      // showErrorMsg('Cannot update station')
+      console.error(err);
+    }
   }
 
+  async function onUpdateStationDetails() {
+    const name = prompt('new name')
+    const updatdStation = { ...currStation, name: name };
+    setCurrStation(updatdStation)
+    try {
+      await updateStation(updatdStation)
+      console.log(currStation.name);
+    } catch (err) {
+      // showErrorMsg('Cannot update station')
+      console.error(err);
+    }
+  }
+
+  if (!currStation) return <div>loading...</div>;
+  const { name, tags, songs } = currStation
   return (
-    <section className="user-details">
-      <h1>User Details</h1>
-      {user && <div>
-        <h3>
-          {user.fullname}
-        </h3>
-        {/* Demo for dynamic images: */}
-        <div className="user-img" style={{ backgroundImage: `url('/img/u${0}.png')` }}>
+    <div>
+      <div>
+        <h1>{name}</h1>
+        <p>{tags.join()}</p>
+        <div>
+          <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>
+          <button className="btn-add" onClick={() => onUpdateStation()}>Add song</button>
+          <button className="btn-edit" onClick={() => onUpdateStationDetails()}>Edit station</button>
         </div>
-        <pre>
-          {JSON.stringify(user, null, 2)}
-        </pre>
-      </div>}
-    </section>
+      </div>
+      <SongList songs={songs}></SongList>
+    </div>
   )
 }

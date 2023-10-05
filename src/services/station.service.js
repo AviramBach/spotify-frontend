@@ -42,6 +42,7 @@ async function save(station) {
     let savedStation
     if (station._id) {
         savedStation = await storageService.put(STORAGE_KEY, station)
+        console.log(station);
         // savedStation = await httpService.put(`station/${station._id}`, station)
 
     } else {
@@ -62,7 +63,7 @@ async function save(station) {
 function getEmptyStation() {
     return {
         name: '',
-        tags: [],
+        tags: ['hi', 'hi'],
         songs: [],
         likedByUsers: [],
     }
