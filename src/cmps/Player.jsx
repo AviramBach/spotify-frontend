@@ -15,6 +15,7 @@ export function Player() {
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
     const currSong = useSelector(storeState => storeState.playerModule.currSong)
     const [volume, setVolume] = useState(0.5)
+    const [prevVolume, setPrevVolume] = useState(volume)
     const [isMuted, setIsMuted] = useState(false)
     const [isLooped, setIsLooped] = useState(false)
     const playerRef = useRef(null)
@@ -38,7 +39,7 @@ export function Player() {
     function prevSong() {
         // Implement logic to switch to the prev song
     }
-   
+
     function playSong() {
         toggelIsPlaying(isPlaying)
     }
@@ -49,6 +50,8 @@ export function Player() {
 
     function muteSong() {
         setIsMuted(!isMuted)
+        setPrevVolume(volume)
+        !isMuted ? setVolume(0) : setVolume(prevVolume)
     }
 
     function loopSong() {
@@ -65,34 +68,44 @@ export function Player() {
 
     const handleEnded = () => {
         if (isLooped) {
-        setCurrentTime(0)
-        playerRef.current.seekTo(0) 
-      }
+            setCurrentTime(0)
+            playerRef.current.seekTo(0)
+        }
     }
 
 
     return (
-        <footer className="app-player">
+        <footer className='app-player'>
 
             <div className='player-song-preview'>
                 {/* <SongPreview props={props}/> */}
-                <button onClick={heartSong}>heart</button>
+                <button className='player-btn' onClick={heartSong}><img className='heart-icon' src="public\img\spotify android icons 24px (Community)\Heart Icon.png" alt="" /></button>
             </div>
 
             <div className='player-main'>
-                <div className="main-controls">
-                    <button onClick={loopSong}>
-                        loop
-                        {/* {isLooped ? 'is looping' : 'no looping'} */}
+                <div className='main-controls'>
+                    <div className='player-controls-left'>
+                        <button className='player-btn' onClick={shuffelSong}>
+                            <img className='unshuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon.png" alt="" />
+                            {/* {isShuffle ? <img className='shuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon A.png" alt="" /> :
+                            <img className='unshuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon.png" alt="" />} */}
+                        </button>
+                        <button className='player-btn' onClick={prevSong}><img className='prev-song-icon' src="public/img/spotify android icons 24px (Community)/Previous Icon.png" alt="" /></button>
+                    </div>
+
+                    <button className='player-btn play-pause-button' onClick={playSong}>
+                        {isPlaying ? <img className='pause-icon' src="public\img\spotify android icons 24px (Community)\Pause Button.png" alt="" /> :
+                            <img className='play-icon' src="public/img/spotify android icons 24px (Community)/Play Button.png" alt="" />}
                     </button>
-                        <button onClick={prevSong}>Previous</button>
-                    <button className='play-pause-button' onClick={playSong}>
-                        {/* {isPlaying ? 'Pause' : 'Play'} */}
-                        {isPlaying ?  <img className='pause-icon' src="public\img\spotify android icons 24px (Community)\Pause Button.png" alt="" /> : 
-                        <img className='play-icon' src="public/img/spotify android icons 24px (Community)/Play Button.png" alt="" />}
-                    </button>
-                        <button onClick={nextSong}>Next</button>
-                    <button onClick={shuffelSong}>Shuffel</button>
+
+                    <div className='player-controls-right'>
+                        <button className='player-btn' onClick={nextSong}>  <img className='next-song-icon' src="public/img/spotify android icons 24px (Community)/Next Icon.png" alt="" /></button>
+                        <button className='player-btn' onClick={loopSong}>
+                            {isLooped ? <img className='looped-icon' src="public\img\spotify android icons 24px (Community)\Repeat Song Icon.png" alt="" /> :
+                                <img className='unlooped-icon' src="public\img\spotify android icons 24px (Community)\Repeat.png" alt="" />}
+                        </button>
+                    </div>
+
                 </div>
 
                 <ReactPlayer
@@ -102,7 +115,7 @@ export function Player() {
                     config={{
                         youtube: {
                             playerVars: {
-                                showinfo: 1, 
+                                showinfo: 1,
                             }
                         }
                     }}
@@ -133,10 +146,16 @@ export function Player() {
             </div>
 
             <div className='player-side-controls'>
-                <button onClick={muteSong}>mute</button>
+
+                <button className='player-btn' onClick={muteSong}>
+                    {isMuted ? <img className='mute-icon' src="public\img\spotify android icons 24px (Community)\Pause Button.png" alt="" /> :
+                        <img className='unmute-icon' src="public/img/spotify android icons 24px (Community)/Play Button.png" alt="" />}
+                </button>
+
                 <div className="volume-bar">
                     <label htmlFor="volumeRange"></label>
                     <input
+                        className="bar"
                         type="range"
                         id="volumeRange"
                         name="volumeRange"
@@ -147,6 +166,7 @@ export function Player() {
                         onChange={handleVolumeChange}
                     />
                 </div>
+
             </div>
 
         </footer>
