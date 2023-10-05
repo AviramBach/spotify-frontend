@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router'
 import routes from './routes'
 
 import { AppHeader } from './cmps/AppHeader'
-// import { Player } from './cmps/Player'
+import { Player } from './cmps/Player'
 import { Aside } from './cmps/Aside'
 import { StationDetails } from './pages/StationDetails'
 
@@ -22,7 +22,7 @@ export function RootCmp() {
                     </Routes>
                 </main>
             </div>
-            {/* <Player/> */}
+            <Player/>
         </div>
     )
 }

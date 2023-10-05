@@ -4,7 +4,7 @@ export const IS_PLAYING = 'IS_PLAYING'
 export const SET_NEXT_SONG = 'SET_NEXT_SONG'
 export const SET_PREV_SONG = 'SET_PREV_SONG'
 export const REMOVE_SONG = 'REMOVE_SONG'
-export const SONG_PROGRESS = 'SONG_PROGRESS'
+export const SET_SONG_PROGRESS = 'SET_SONG_PROGRESS'
 
 
 const initialState = {
@@ -37,7 +37,7 @@ export function playerReducer(state = initialState, action) {
         //         songs: state.songs.filter(song => song._id !== action.songId) // songs? how to get to remove the song from the station?
         //     }
         // break
-        case SONG_PROGRESS:
+        case SET_SONG_PROGRESS:
             newState = { ...state, songProgress: action.songProgress }
             break
         default:

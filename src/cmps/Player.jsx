@@ -1,122 +1,138 @@
-import { useState } from 'react'
+import React from 'react'
+import ReactPlayer from 'react-player'
+import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 // import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 // import { UserMsg } from './UserMsg.jsx'
 
-import { SongPreview } from './SongPreview'
-import {setSongProgress, toggelIsPlaying, setCurrSong, setNextSong, setPrevSong  } from '../store/player.actions'
+// import { SongPreview } from './SongPreview.jsx'
+import { setSongProgress, toggelIsPlaying, setCurrSong, setNextSong, setPrevSong } from '../store/player.actions'
 
 
-export function Player(duration) {
+export function Player() {
 
-    // const [songProgress, setProgress] = useState(0)
-    const songProgress = useSelector(storeState => storeState.playerModule.songProgress)
+    // const songProgress = useSelector(storeState => storeState.playerModule.songProgress)
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
-    // const nextSong = useSelector(storeState => storeState.playerModule.nextSong)
     const currSong = useSelector(storeState => storeState.playerModule.currSong)
-    // const prevSong = useSelector(storeState => storeState.playerModule.prevSong)
-    const [volume, setVolume] = useState(50)
+    const [volume, setVolume] = useState(0.5)
+    const [isMuted, setIsMuted] = useState(false)
+    const [isLooped, setIsLooped] = useState(false)
+    const playerRef = useRef(null)
+    const [currentTime, setCurrentTime] = useState(0)
 
-    // const [songName, setSongName] = useState('Song Title');
-    // const [artistName, setArtistName] = useState('Artist');
+    const handleProgress = (state) => {
+        if (!state.loaded) return
+        setCurrentTime(state.playedSeconds)
+    }
 
-    
-    function repeatSong() {
-        // Implement logic to switch to the next song
+    const handleSeek = (e) => {
+        const seekTime = e.target.value
+        setCurrentTime(seekTime)
+        playerRef.current.seekTo(seekTime)
     }
 
     function nextSong() {
         // Implement logic to switch to the next song
     }
 
-    //TODO connect to store
-    function playSong() {
-        if (audioRef.current.paused) {
-            audioRef.current.play()
-            toggelIsPlaying(isPlaying) 
-        } else {
-            audioRef.current.pause()
-            toggelIsPlaying(!isPlaying)
-        }
-    }
-
     function prevSong() {
-        // Implement logic to switch to the next song
+        // Implement logic to switch to the prev song
+    }
+   
+    function playSong() {
+        toggelIsPlaying(isPlaying)
     }
 
     function shuffelSong() {
-        // Implement logic to switch to the next song
+        // Implement logic to shuffel a song
     }
 
-    function muteSong(){
-        handleVolumeChange({target} = 0)
+    function muteSong() {
+        setIsMuted(!isMuted)
     }
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (isPlaying && songProgress < duration) {
-                setProgress(songProgress + 1)
-            }
-        }, 1000)
+    function loopSong() {
+        setIsLooped(!isLooped)
+    }
 
-        return () => clearInterval(interval)
-    }, [isPlaying, songProgress, duration])
-
+    function heartSong() {
+    }
 
     const handleVolumeChange = (event) => {
         const newVolume = parseFloat(event.target.value)
         setVolume(newVolume)
-        audioRef.current.volume = newVolume
     }
 
-    const handleProgressChange = (event) => {
-        const newProgress = (event.target.value / 100) * audioRef.current.duration
-        setSongProgress(newProgress)
-        audioRef.current.currentTime = newProgress
-    };
+    const handleEnded = () => {
+        if (isLooped) {
+        setCurrentTime(0)
+        playerRef.current.seekTo(0) 
+      }
+    }
+
 
     return (
         <footer className="app-player">
 
             <div className='player-song-preview'>
-                <SongPreview props={props}/>
-                <button onClick={removeSong}>heart</button>
+                {/* <SongPreview props={props}/> */}
+                <button onClick={heartSong}>heart</button>
             </div>
 
             <div className='player-main'>
-
                 <div className="main-controls">
-                    <button onClick={repeatSong}>Repeat</button>
-                    <button onClick={nextSong}>Next</button>
+                    <button onClick={loopSong}>
+                        loop
+                        {/* {isLooped ? 'is looping' : 'no looping'} */}
+                    </button>
+                        <button onClick={prevSong}>Previous</button>
                     <button onClick={playSong}>
                         {isPlaying ? 'Pause' : 'Play'}
+                        {/* {isPlaying ? <img className='play-button-icon' src="public/img/spotify android icons 24px (Community)/Play Buttom.png" alt="" /> : 
+                        <img className='pause-button-icon' src="public/img/spotify android icons 24px (Community)/Pause Buttom.png" alt="" />} */}
                     </button>
-                    <button onClick={prevSong}>Previous</button>
+                        <button onClick={nextSong}>Next</button>
                     <button onClick={shuffelSong}>Shuffel</button>
                 </div>
 
-                <audio ref={audioRef}>
-                    <source src={currSong} type="audio/mpeg" />
-                </audio>
+                <ReactPlayer
+                    className='react-player'
+                    ref={playerRef}
+                    url={'https://www.youtube.com/watch?v=WYpjUEPbL-o&list=RDWYpjUEPbL-o&start_radio=1'}
+                    config={{
+                        youtube: {
+                            playerVars: {
+                                showinfo: 1, 
+                            }
+                        }
+                    }}
+                    width='0%'
+                    height='0%'
+                    playing={isPlaying}
+                    volume={volume}
+                    muted={isMuted}
+                    // loop={isLooped}
+                    onProgress={handleProgress}
+                    onEnded={handleEnded}
+                />
 
                 <div className="progress-bar">
                     <label htmlFor="progressBar"></label>
                     <input
+                        className="bar"
                         type="range"
                         id="progressBar"
                         name="progressBar"
-                        min="0"
-                        max="100"
-                        step="1"
-                        value={(songProgress / duration) * 100}
-                        onChange={handleProgressChange}
+                        min={0}
+                        max={playerRef.current ? playerRef.current.getDuration() : 0}
+                        value={currentTime}
+                        step={0.1}
+                        onChange={handleSeek}
                     />
                 </div>
-
             </div>
 
             <div className='player-side-controls'>
-
                 <button onClick={muteSong}>mute</button>
                 <div className="volume-bar">
                     <label htmlFor="volumeRange"></label>
@@ -125,13 +141,12 @@ export function Player(duration) {
                         id="volumeRange"
                         name="volumeRange"
                         min="0"
-                        max="100"
-                        step="1"
+                        max="1"
+                        step="0.01"
                         value={volume}
                         onChange={handleVolumeChange}
                     />
                 </div>
-
             </div>
 
         </footer>
