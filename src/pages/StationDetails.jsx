@@ -47,6 +47,18 @@ export function StationDetails() {
     }
   }
 
+  async function onRemoveSongFromStation(songId) {
+    const updatedSongs = currStation.songs.filter(song => songId !== song.id)
+    const updatdStation = { ...currStation, songs: updatedSongs }
+    setCurrStation(updatdStation)
+    try {
+      await updateStation(updatdStation)
+      console.log('Song removed')
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   async function onUpdateStationDetails() {
     const name = prompt('new name')
     const updatdStation = { ...currStation, name: name }
@@ -73,7 +85,7 @@ export function StationDetails() {
           <button className="btn-edit" onClick={() => onUpdateStationDetails()}>Edit station</button>
         </div>
       </div>
-      <SongList songs={songs}></SongList>
+      <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation}></SongList>
     </div>
   )
 }

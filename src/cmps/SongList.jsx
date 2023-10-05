@@ -1,5 +1,5 @@
 import { SongPreview } from "./SongPreview"
-export function SongList({ songs }) {
+export function SongList({ songs, onRemoveSongFromStation }) {
     return <div>
         <div className="info-line">
             <span className="info-line-index">#</span>
@@ -21,6 +21,7 @@ export function SongList({ songs }) {
                         <div className="song-list-item-duration-container">
                             <button className="song-list-item-like-btn">like</button>
                             <p className="song-list-item-duration">duration</p>
+                            <button onClick={() => onRemoveSongFromStation(song.id)}>remove</button>
                         </div>
                     </li>)}
             </ul>}
