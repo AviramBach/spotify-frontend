@@ -4,7 +4,7 @@
     justify-content: space-between;
 
     height: 72px;
-    
+
     position: fixed;
     bottom: 0;
     left: 0;
@@ -14,42 +14,37 @@
     text-align: center;
 }
 
-.player-song-preview{
+.player-song-preview {
     display: flex;
     align-items: center;
 }
 
-.player-main{
+.player-main {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
 
-    .play-button-icon{
-        background-color: white;
-        color: black;
+    .play-button-icon {
+       
     }
-    .pause-button-icon{
-        background-color: white;
-        color: black;
+
+    .pause-button-icon {
+        
     }
 }
 
-.player-side-controls{
+.player-side-controls {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.progress-bar{
-   
-    .bar{
+.progress-bar {
+
+    .bar {
         width: 100%;
         accent-color: white;
-        
-    } 
+
+    }
 }
-
-
-
-
