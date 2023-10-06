@@ -2,12 +2,11 @@
 
     .station-list {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: .75rem;
 
         .station-preview {
             height: 64px;
-            min-width: 250px;
             margin-top: 0;
             color: $white;
             display: flex;
@@ -36,18 +35,54 @@
             }
 
             button {
+                width: 42px;
+                height: 42px;
+                margin: 0 1rem;
+                border: none;
+                border-radius: 50%;
+                background-color: black;
+                box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
                 display: none;
+
+                img {
+                    width: 48px;
+                    height: 48px;
+                }
+            }
+
+            button:hover {
+                cursor: pointer;
             }
 
             img {
-                height: 64px;
                 width: 64px;
+                height: 64px;
+            }
+
+            .play-button-icon {
+                height: 48px;
+                width: 48px;
                 border-radius: .25rem;
+                filter: invert(63%) sepia(62%) saturate(4488%) hue-rotate(104deg) brightness(99%) contrast(79%);
             }
         }
 
         .station-preview:hover {
             background-color: rgba(255, 255, 255, 0.232);
+
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        @include for-normal-layout {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include for-wide-layout {
+            grid-template-columns: 1fr 1fr 1fr;
         }
     }
 }
