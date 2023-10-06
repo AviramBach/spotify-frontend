@@ -23,7 +23,7 @@ export function SongList({ songs, onRemoveSongFromStation }) {
                             <button className="song-list-item-btn">
                                 <img className="song-list-item-btn-img" src="./../../public/img/heart.svg" alt="" />
                             </button>
-                            <p className="song-list-item-duration">3:39</p>
+                            <p className="song-list-item-duration">{song.duration}</p>
                             <button className="song-list-item-btn" onClick={() => onRemoveSongFromStation(song.id)}>
                                 <img className="song-list-item-btn-img" src="./../../public/img/options.svg" alt="" />
                             </button>

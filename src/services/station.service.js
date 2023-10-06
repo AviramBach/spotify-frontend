@@ -145,8 +145,9 @@ const sWash = {
     id: utilService.makeId(),
     title: 'Wash.',
     artist: 'Bon Iver',
+    album: ' Bon Iver',
     url: 'https://www.youtube.com/watch?v=KMfL7rVAu0U&ab_channel=BonIver',
-    imgUrl: 'public/img/Album_cover3.jpg',
+    imgUrl: './../../public/img/Album_cover3.jpg',
     addedBy: 'Spotify',
     duration: '4:54',
     addedAt: utilService.randomPastTime()
@@ -155,6 +156,7 @@ const sRoses = {
     id: utilService.makeId(),
     title: 'Roses',
     artist: 'Bon Iver',
+    album: ' Bon Iver',
     url: 'https://www.youtube.com/watch?v=sZ1vT0aPcYE&ab_channel=Outkast-Topic',
     imgUrl: './../../public/img/Album_cover3.jpg',
     addedBy: 'Guest',
