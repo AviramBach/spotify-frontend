@@ -169,7 +169,14 @@ function _createStations() {
         _createStation('R&B', './../../public/img/Album_cover3.jpg', [sDang, sConsideration, sZion], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
         _createStation('Daily Mix 1', './../../public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify',),
         _createStation('Hip hop', './../../public/img/Album-cover2.jpg', [sDang, sJuicy, sRoses, sWork], 'Gilad', ['Hip hop', 'Rap', 'Playlist']),
+        _createStation('Daily Mix 3', './../../public/img/daily_mix_3.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify'),
+        _createStation('Liked Songs', './../../public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy, sWash], 'Me', ['Yours', 'Playlist']),
+        _createStation('ANTI', './../../public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'Album']),
+        _createStation('R&B', './../../public/img/Album_cover3.jpg', [sDang, sConsideration, sZion], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
+        _createStation('Daily Mix 1', './../../public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify',),
+        _createStation('Hip hop', './../../public/img/Album-cover2.jpg', [sDang, sJuicy, sRoses, sWork], 'Gilad', ['Hip hop', 'Rap', 'Playlist']),
         _createStation('Daily Mix 3', './../../public/img/daily_mix_3.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify')
+
     ]
 }
 

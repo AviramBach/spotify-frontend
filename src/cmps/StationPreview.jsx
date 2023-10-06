@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 export function StationPreview({ station }) {
     const navigate = useNavigate()
     return (
-        <article onClick={() => navigate(`/station-details/${station._id}`)}>
+        <article onClick={() => navigate(`/station/${station._id}`)}>
             {station.imgUrl && <img src={station.imgUrl} alt="" />}
             {!station.imgUrl && <img src="public/img/spotify.png" alt="" />}
             <div>

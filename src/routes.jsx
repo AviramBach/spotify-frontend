@@ -18,7 +18,7 @@ const routes = [
         label: 'search'
     },
     {
-        path: 'station-details/:id',
+        path: 'station/:id',
         component: <StationDetails />,
         label: 'station details'
     },

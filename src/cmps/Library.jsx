@@ -25,7 +25,7 @@ export function Library() {
         station.createdBy = 'Me'
         try {
             const savedStation = await addStation(station)
-            navigate(`/station-details/${savedStation._id}`)
+            navigate(`/station/${savedStation._id}`)
             showSuccessMsg(`Station added (id: ${savedStation._id})`)
         } catch (err) {
             showErrorMsg('Cannot add station')
