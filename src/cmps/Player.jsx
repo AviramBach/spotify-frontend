@@ -18,12 +18,20 @@ export function Player() {
     const [prevVolume, setPrevVolume] = useState(volume)
     const [isMuted, setIsMuted] = useState(false)
     const [isLooped, setIsLooped] = useState(false)
+    const [isLiked, setIsLiked] = useState(false) // this is cmp state that will be getting the global state of the current song:  const [isLiked, setIsLiked] = useState(currSong.isliked)
     const playerRef = useRef(null)
     const [currentTime, setCurrentTime] = useState(0)
+
+    const [timeElapsed, setTimeElapsed] = useState(0);
+    const [timeRemaining, setTimeRemaining] = useState(0);
 
     const handleProgress = (state) => {
         if (!state.loaded) return
         setCurrentTime(state.playedSeconds)
+
+        const totalDuration = playerRef.current ? playerRef.current.getDuration() : 0;
+        setTimeElapsed(state.playedSeconds);
+        setTimeRemaining(totalDuration);
     }
 
     const handleSeek = (e) => {
@@ -59,6 +67,7 @@ export function Player() {
     }
 
     function heartSong() {
+        setIsLiked(!isLiked)
     }
 
     const handleVolumeChange = (event) => {
@@ -67,19 +76,34 @@ export function Player() {
     }
 
     const handleEnded = () => {
-        if (isLooped) {
+        // if (isLooped) {
+            console.log('Song ended');
             setCurrentTime(0)
             playerRef.current.seekTo(0)
-        }
+            if (isPlaying) {
+                playerRef.current.play();
+                console.log('Song restarted');
+            }
+        // }
     }
 
+
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    }
 
     return (
         <footer className='app-player'>
 
             <div className='player-song-preview'>
                 {/* <SongPreview props={props}/> */}
-                <button className='player-btn' onClick={heartSong}><img className='heart-icon' src="public\img\spotify android icons 24px (Community)\Heart Icon.png" alt="" /></button>
+                <button className='player-btn' onClick={heartSong}>
+                    {isLiked ? <img className='full-heart-icon' src="public\img\spotify android icons 24px (Community)\heart-full.svg" alt="" /> :
+                        <img className='empty-heart-icon' src="public\img\spotify android icons 24px (Community)\heart-empty.svg" alt="" />}
+                </button>
             </div>
 
             <div className='player-main'>
@@ -130,6 +154,8 @@ export function Player() {
                 />
 
                 <div className="progress-bar">
+                    <span className="elapsed-time">{formatTime(timeElapsed)}</span>
+
                     <label htmlFor="progressBar"></label>
                     <input
                         className="bar"
@@ -142,14 +168,16 @@ export function Player() {
                         step={0.1}
                         onChange={handleSeek}
                     />
+                    <span className="remaining-time">{formatTime(timeRemaining)}</span>
                 </div>
+
             </div>
 
             <div className='player-side-controls'>
 
                 <button className='player-btn' onClick={muteSong}>
-                    {isMuted ? <img className='mute-icon' src="public\img\spotify android icons 24px (Community)\Pause Button.png" alt="" /> :
-                        <img className='unmute-icon' src="public/img/spotify android icons 24px (Community)/Play Button.png" alt="" />}
+                    {isMuted ? <img className='mute-icon' src="public\img\spotify android icons 24px (Community)\mute.svg" alt="" /> :
+                        <img className='unmute-icon' src="public\img\spotify android icons 24px (Community)\mute1.svg" alt="" />}
                 </button>
 
                 <div className="volume-bar">
