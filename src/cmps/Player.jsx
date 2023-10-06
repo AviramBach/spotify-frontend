@@ -22,16 +22,16 @@ export function Player() {
     const playerRef = useRef(null)
     const [currentTime, setCurrentTime] = useState(0)
 
-    const [timeElapsed, setTimeElapsed] = useState(0);
-    const [timeRemaining, setTimeRemaining] = useState(0);
+    const [timeElapsed, setTimeElapsed] = useState(0)
+    const [timeRemaining, setTimeRemaining] = useState(0)
 
     const handleProgress = (state) => {
         if (!state.loaded) return
         setCurrentTime(state.playedSeconds)
 
         const totalDuration = playerRef.current ? playerRef.current.getDuration() : 0;
-        setTimeElapsed(state.playedSeconds);
-        setTimeRemaining(totalDuration);
+        setTimeElapsed(state.playedSeconds)
+        setTimeRemaining(totalDuration)
     }
 
     const handleSeek = (e) => {
@@ -92,7 +92,7 @@ export function Player() {
     function formatTime(seconds) {
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = Math.floor(seconds % 60);
-        return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+        return `${String(minutes).padStart(1, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
     }
 
     return (
@@ -110,7 +110,7 @@ export function Player() {
                 <div className='main-controls'>
                     <div className='player-controls-left'>
                         <button className='player-btn' onClick={shuffelSong}>
-                            <img className='unshuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon.png" alt="" />
+                            <img className='unshuffeld-icon' src="public\img\spotify android icons 24px (Community)\shuffel1.svg" alt="" />
                             {/* {isShuffle ? <img className='shuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon A.png" alt="" /> :
                             <img className='unshuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon.png" alt="" />} */}
                         </button>
@@ -118,15 +118,15 @@ export function Player() {
                     </div>
 
                     <button className='player-btn play-pause-button' onClick={playSong}>
-                        {isPlaying ? <img className='pause-icon' src="public\img\spotify android icons 24px (Community)\Pause Button.png" alt="" /> :
-                            <img className='play-icon' src="public/img/spotify android icons 24px (Community)/Play Button.png" alt="" />}
+                        {isPlaying ? <img className='pause-icon' src="public\img\spotify android icons 24px (Community)\pause.svg" alt="" /> :
+                            <img className='play-icon' src="public/img/spotify android icons 24px (Community)/play.svg" alt="" />}
                     </button>
 
                     <div className='player-controls-right'>
                         <button className='player-btn' onClick={nextSong}>  <img className='next-song-icon' src="public/img/spotify android icons 24px (Community)/Next Icon.png" alt="" /></button>
                         <button className='player-btn' onClick={loopSong}>
-                            {isLooped ? <img className='looped-icon' src="public\img\spotify android icons 24px (Community)\Repeat Song Icon.png" alt="" /> :
-                                <img className='unlooped-icon' src="public\img\spotify android icons 24px (Community)\Repeat.png" alt="" />}
+                            {isLooped ? <img className='looped-icon' src="public\img\spotify android icons 24px (Community)\loop-icon.svg" alt="" /> :
+                                <img className='unlooped-icon' src="public\img\spotify android icons 24px (Community)\loop-icon.svg" alt="" />}
                         </button>
                     </div>
 
