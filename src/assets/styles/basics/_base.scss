@@ -7,11 +7,12 @@
 
 ::selection {
     background-color: $white;
-    color: $spotify-green;
+    opacity: 10%;
+    color: inherit;
 }
 
 html {
-    font-family: montserrat;
+    font-family:circular,sans-serif;
     line-height: 1.6;
     color: $white;
 }

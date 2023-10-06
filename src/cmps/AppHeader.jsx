@@ -1,19 +1,23 @@
-import { Link, NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import routes from '../routes'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { login, logout, signup } from '../store/user.actions.js'
-import { LoginSignup } from './LoginSignup.jsx'
-
+import { useNavigate } from "react-router-dom"
 export function AppHeader() {
+    const navigate = useNavigate();
+    const goBack = () => {
+        navigate(-1);
+        console.log('back');
+
+    };
+    const goForward = () => {
+        navigate(1);
+        console.log('forward');
+    };
     return (
         <header className="app-header flex">
             <div className='arrow-button-container flex'>
-                <button className='arrow-button'>
-                    <img className='arrow-button-icon' src="public/img/spotify android icons 24px (Community)/Back Navigation.png" alt="" />
+                <button onClick={goBack} className='arrow-button'>
+                    <img className='arrow-button-icon' src="./../../public/img/back.svg" alt="" />
                 </button>
-                <button className='arrow-button'>
-                    <img className='arrow-button-icon' src="public/img/spotify android icons 24px (Community)/Forward Navigation.png" alt="" />
+                <button onClick={goForward} className='arrow-button'>
+                    <img className='arrow-button-icon' src="./../../public/img/forward.svg" alt="" />
                 </button>
             </div>
 

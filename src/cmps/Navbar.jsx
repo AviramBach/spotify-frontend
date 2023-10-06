@@ -1,21 +1,11 @@
-import { Link, NavLink } from "react-router-dom"
-
-import(Link)
+import { useState } from "react"
+import { NavbarLink } from "./NavbarLink"
 export function Navbar() {
+    const [selected, setSelected] = useState('home');
     return <div className="navbar-container flex justify-left align-center">
         <ul className="navbar clean-list">
-            <li className="navbar-li">
-                <NavLink to="/">
-                    <img className="navbar-li-img" src="public/img/spotify android icons 24px (Community)/Home Icon.png" alt="" />
-                    <span className="nav-link">Home</span>
-                </NavLink>
-            </li>
-            <li className="navbar-li">
-                <NavLink to='/search'>
-                    <img className="navbar-li-img" src="public/img/spotify android icons 24px (Community)/Search Icon.png" alt="" />
-                    <span className="nav-link" >Search</span>
-                </NavLink>
-            </li>
+            <NavbarLink route='/' onSelected={() => setSelected('home')} isSelected={selected === 'home'} selectedSource="./../../public/img/selected-home.svg" source="./../../public/img/home.svg" text="Home" />
+            <NavbarLink route='/search' onSelected={() => setSelected('search')} isSelected={selected === 'search'} selectedSource="./../../public/img/selected-search.svg" source="./../../public/img/search.svg" text="Search" />
         </ul>
-    </div>
+    </div >
 }

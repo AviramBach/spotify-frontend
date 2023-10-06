@@ -1,29 +1,33 @@
 .app-header {
-    display: flex;
-    justify-content: space-between;
-    background-color: transparent;
-    // width: 1000px;
-    height: 65px;
-    padding-block: 15px;
-    padding-inline: 12px;
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  // width: 1000px;
+  height: 65px;
+  padding-block: 15px;
+  padding-inline: 12px;
 }
-.arrow-button{
-    border:none;
-    margin-inline: 5px;
-    border-radius: 50%;
-    background-color:rgba(0,0,0,.7);
-    height: 32px;
-    width: 32px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+.arrow-button {
+  border: none;
+  margin-inline: 5px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.arrow-button-icon {
+  filter: invert(100%) sepia(1%) saturate(379%) hue-rotate(279deg)
+    brightness(108%) contrast(100%);
 }
 
-.signup-a{
-    @include link();
-    padding-inline-end:24px;
+.signup-a {
+  @include link();
+  padding-inline-end: 24px;
 }
 
-.login-button{
-    @include round-button('login');
+.login-button {
+  @include round-button("login");
 }

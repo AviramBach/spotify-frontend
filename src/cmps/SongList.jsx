@@ -1,4 +1,5 @@
-import { SongPreview } from "./SongPreview"
+import { SongPreview } from "./SongPreview.jsx"
+import moment from "moment";
 export function SongList({ songs, onRemoveSongFromStation }) {
     console.log(songs);
     return <div>
@@ -18,7 +19,7 @@ export function SongList({ songs, onRemoveSongFromStation }) {
                             <SongPreview song={song}></SongPreview>
                         </div>
                         <p className="song-list-item-album">{song.album}</p>
-                        <p className="song-list-item-added-at" >X time ago</p>
+                        <p className="song-list-item-added-at" >{moment(song.addedAt).fromNow()}</p>
                         <div className="song-list-item-duration-container">
                             <button className="song-list-item-btn">
                                 <img className="song-list-item-btn-img" src="./../../public/img/heart.svg" alt="" />
