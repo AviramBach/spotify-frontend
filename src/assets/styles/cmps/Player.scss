@@ -41,7 +41,9 @@
 .player-side-controls {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-self: center;
+    align-items: baseline
+
 }
 
 
@@ -63,7 +65,8 @@
 
 
 .player-btn {
-    color: white;
+    
+    
     border: none;
     background: none;
     padding: 0;
@@ -75,74 +78,78 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
     width: 32px;
     height: 32px;
 
-    img{
+    img {
         width: 16px;
         height: 16px;
     }
 
-    img.play-icon{
+    img.play-icon {
+        width: 100%;
+        height: 100%; 
+    }
+    img.play-icon:hover{
+        width: 105%;
+        height: 105%;
+    }
+    
+    img.pause-icon {
         width: 100%;
         height: 100%;
     }
-    img.pause-icon{
-        width: 100%;
-        height: 100%;
+    
+    img.mute-icon {
+       
+        filter: grayscale(100%);
+    }
+    
+    img.unmute-icon {  
+        filter: grayscale(100%);
+    }
+    
+    img.next-song-icon,
+    img.prev-song-icon,
+    img.unshuffeld-icon,
+    img.unlooped-icon {
+        filter: brightness(70%);
+        transition: filter 0.1s ease; /* Add a smooth transition for a nice effect */
+    }
+    
+    img.next-song-icon:hover,
+    img.prev-song-icon:hover,
+    img.unshuffeld-icon:hover,
+    img.unlooped-icon:hover {
+        filter: brightness(100%); /* Return the brightness to its original value */
+    }
+
+    img.full-heart-icon{
+        filter: invert(50%) sepia(67%) saturate(1934%) hue-rotate(104deg) brightness(99%) contrast(79%);
     }
 }
 
 
 
+.progress-bar {
+    display:flex;
+    flex-direction: row;
+    gap: 2px;
 
+    .elapsed-time{
+        font-size: 14px;
+    }
 
-
-.progress-bar {}
+    .remaining-time{
+        font-size: 14px;
+    }
+}
 
 .bar {
     width: 100%;
     accent-color: white;
-
-
-    &::-webkit-slider-thumb {
-        background-color: #007bff;
-        border: 2px solid #0056b3;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        cursor: pointer;
-    }
+    
 }
 
 
 
-// .progress-bar input[type="range"] {
-//   -webkit-appearance: none;
-//   width: 100%; 
-//   height: 10px; 
-
-// }
-
-// .progress-bar input[type="range"]::-webkit-slider-thumb {
-//     -webkit-appearance: none; 
-//     appearance: none;
-//     width: 0px; 
-//     height: 0px; 
-//     background: #fff; 
-//     border: 2px solid #333; 
-//     border-radius: 50%; 
-//     cursor: pointer; 
-//   }
-
-//   .progress-bar input[type="range"]::-webkit-slider-runnable-track {
-//     width: 100%; 
-//     // height: 10px;
-//     // background: #333; 
-//     border-radius: 5px; 
-//   }
-
-//   .progress-bar input[type="range"]:focus {
-//     outline: none;
-//   }
