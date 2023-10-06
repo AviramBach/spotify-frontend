@@ -1,5 +1,6 @@
 .library {
     margin-top: .5rem;
+    height: 100%;
     color: darken($color: $white, $amount: 20%);
     border-radius: .5rem;
     background-color: $spotify-black;
@@ -83,7 +84,7 @@
 
     ul {
         margin: 0 0 1rem;
-        max-height:550px;
+        height:550px;
         overflow-y: auto;
 
     }

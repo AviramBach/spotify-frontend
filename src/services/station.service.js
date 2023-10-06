@@ -156,7 +156,7 @@ const sRoses = {
     title: 'Roses',
     artist: 'Bon Iver',
     url: 'https://www.youtube.com/watch?v=sZ1vT0aPcYE&ab_channel=Outkast-Topic',
-    imgUrl: 'public/img/Album_cover3.jpg',
+    imgUrl: './../../public/img/Album_cover3.jpg',
     addedBy: 'Guest',
     duration: '6:10',
     addedAt: utilService.randomPastTime()
