@@ -5,6 +5,7 @@
 }
 
 .info-line{
+    padding-inline: 1em;
     align-items: center;
     margin-block-end: 12.547px;
     border-bottom: 1px solid hsla(0,0%,100%,.1);
@@ -36,6 +37,7 @@
 }
 
 .song-list-item{
+    padding-inline: 1em;
     align-items: center;
     border-radius: 4px;
     display: grid; 
@@ -52,6 +54,7 @@
 }
 .song-list-item-index{
     grid-area:song-index ;
+    margin: 0;
     @include body-text('body');
 }
 .song-list-item-preview{

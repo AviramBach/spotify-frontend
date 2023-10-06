@@ -71,7 +71,7 @@ function getEmptyStation() {
         tags: ['By you'],
         songs: [],
         likedByUsers: [],
-        imgUrl: 'public/img/spotify.png'
+        imgUrl: './../../public/img/spotify.png'
     }
 }
 
@@ -81,7 +81,7 @@ const sTime = {
     artist: 'Pink Floyd',
     album: 'Dark side of thr moon',
     url: 'youtube/song.mp4',
-    imgUrl: 'public/img/Album_cover4.jpg',
+    imgUrl: './../../public/img/Album_cover4.jpg',
     addedBy: 'Gilad',
     addedAt: utilService.randomPastTime()
 }
@@ -91,7 +91,7 @@ const sConsideration = {
     artist: 'Rihanna',
     album: 'Anti',
     url: 'youtube/song.mp4',
-    imgUrl: 'public/img/Album_cover1.png',
+    imgUrl: './../../public/img/Album_cover1.png',
     addedBy: 'Guest',
     addedAt: utilService.randomPastTime()
 }
@@ -101,7 +101,7 @@ const sDang = {
     artist: 'Mac Miller',
     album: 'The Divine Feminine',
     url: 'youtube/song.mp4',
-    imgUrl: 'public/img/Album-cover2.jpg',
+    imgUrl: './../../public/img/Album-cover2.jpg',
     addedBy: 'Guest',
     addedAt: utilService.randomPastTime()
 }
@@ -111,7 +111,7 @@ const sJuicy = {
     artist: 'B.I.G',
     album: 'Ready to Die.',
     url: 'youtube/song.mp4',
-    imgUrl: 'public/img/Album-cover2.jpg',
+    imgUrl: './../../public/img/Album-cover2.jpg',
     addedBy: 'Gilad',
     addedAt: utilService.randomPastTime()
 }
@@ -121,7 +121,7 @@ const sZion = {
     artist: 'Lauryn Hill',
     album: ' The Miseducation of Lauryn Hill',
     url: 'youtube/song.mp4',
-    imgUrl: 'public/img/Album_cover3.jpg',
+    imgUrl: './../../public/img/Album_cover3.jpg',
     addedBy: 'Guest',
     addedAt: utilService.randomPastTime()
 }
@@ -138,10 +138,10 @@ const sWork = {
 
 function _createStations() {
     return [
-        _createStation('Liked Songs', 'public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy], 'Me', ['Yours', 'Playlist']),
-        _createStation('ANTI', 'public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'Album']),
-        _createStation('R&B', 'public/img/Album_cover3.jpg', [sDang, sConsideration, sZion], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
-        _createStation('Daily Mix 1', 'public/img/Album-cover2.jpg', [sDang, sConsideration, sZion, sTime, sWork, sJuicy])
+        _createStation('Liked Songs', './../../public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy], 'Me', ['Yours', 'Playlist']),
+        _createStation('ANTI', './../../public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'Album']),
+        _createStation('R&B', './../../public/img/Album_cover3.jpg', [sDang, sConsideration, sZion], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
+        _createStation('Daily Mix 1', './../../public/img/Album-cover2.jpg', [sDang, sConsideration, sZion, sTime, sWork, sJuicy])
     ]
 }
 

@@ -17,7 +17,7 @@ export function SongList({ songs, onRemoveSongFromStation }) {
                         <div className="song-list-item-preview">
                             <SongPreview song={song}></SongPreview>
                         </div>
-                        <p className="song-list-item-album">{song.album} album</p>
+                        <p className="song-list-item-album">{song.album}</p>
                         <p className="song-list-item-added-at" >X time ago</p>
                         <div className="song-list-item-duration-container">
                             <button className="song-list-item-btn">
