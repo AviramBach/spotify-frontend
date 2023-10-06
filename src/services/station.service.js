@@ -79,63 +79,91 @@ const sTime = {
     id: utilService.makeId(),
     title: 'Time',
     artist: 'Pink Floyd',
-    url: 'youtube/song.mp4',
+    url: 'https://www.youtube.com/watch?v=Qr0-7Ds79zo&ab_channel=PinkFloyd',
     imgUrl: 'public/img/Album_cover4.jpg',
     addedBy: 'Gilad',
+    duration: '3:33',
     addedAt: utilService.randomPastTime()
 }
 const sConsideration = {
     id: utilService.makeId(),
     title: 'Consideration',
     artist: 'Rihanna',
-    url: 'youtube/song.mp4',
+    url: 'https://www.youtube.com/watch?v=WSSShAOKYfo&ab_channel=Rihanna-Topic',
     imgUrl: 'public/img/Album_cover1.png',
     addedBy: 'Guest',
+    duration: '2:41',
     addedAt: utilService.randomPastTime()
 }
 const sDang = {
     id: utilService.makeId(),
     title: 'Dang!',
     artist: 'Mac Miller',
-    url: 'youtube/song.mp4',
+    url: 'https://www.youtube.com/watch?v=LR3GQfryp9M&ab_channel=MacMiller',
     imgUrl: 'public/img/Album-cover2.jpg',
     addedBy: 'Guest',
+    duration: '4:39',
     addedAt: utilService.randomPastTime()
 }
 const sJuicy = {
     id: utilService.makeId(),
     title: 'Juicy',
     artist: 'B.I.G',
-    url: 'youtube/song.mp4',
+    url: 'https://www.youtube.com/watch?v=7Y8VPQcPHhY&ab_channel=TheNotoriousB.I.G.-Topic',
     imgUrl: 'public/img/Album-cover2.jpg',
     addedBy: 'Gilad',
+    duration: '4:13',
     addedAt: utilService.randomPastTime()
 }
 const sZion = {
     id: utilService.makeId(),
-    title: 'Zion',
+    title: 'To Zion',
     artist: 'Lauryn Hill',
-    url: 'youtube/song.mp4',
+    url: 'https://www.youtube.com/watch?v=1sQjh261rU8&ab_channel=JeNnILoVeSmUsIc',
     imgUrl: 'public/img/Album_cover3.jpg',
     addedBy: 'Guest',
+    duration: '6:09',
     addedAt: utilService.randomPastTime()
 }
 const sWork = {
     id: utilService.makeId(),
     title: 'Work',
     artist: 'Rihanna',
-    url: 'youtube/song.mp4',
+    url: 'https://www.youtube.com/watch?v=puxjq3p-fU0&ab_channel=Rihanna-Topic',
     imgUrl: 'public/img/Album_cover1.png',
     addedBy: 'Gilad',
+    duration: '3:39',
+    addedAt: utilService.randomPastTime()
+}
+const sWash = {
+    id: utilService.makeId(),
+    title: 'Wash.',
+    artist: 'Bon Iver',
+    url: 'https://www.youtube.com/watch?v=KMfL7rVAu0U&ab_channel=BonIver',
+    imgUrl: 'public/img/Album_cover3.jpg',
+    addedBy: 'Spotify',
+    duration: '4:54',
+    addedAt: utilService.randomPastTime()
+}
+const sRoses = {
+    id: utilService.makeId(),
+    title: 'Roses',
+    artist: 'Bon Iver',
+    url: 'https://www.youtube.com/watch?v=sZ1vT0aPcYE&ab_channel=Outkast-Topic',
+    imgUrl: 'public/img/Album_cover3.jpg',
+    addedBy: 'Guest',
+    duration: '6:10',
     addedAt: utilService.randomPastTime()
 }
 
 function _createStations() {
     return [
-        _createStation('Liked Songs', 'public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy], 'Me', ['Yours', 'Playlist']),
+        _createStation('Liked Songs', 'public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy, sWash], 'Me', ['Yours', 'Playlist']),
         _createStation('ANTI', 'public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'Album']),
         _createStation('R&B', 'public/img/Album_cover3.jpg', [sDang, sConsideration, sZion], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
-        _createStation('Daily Mix 1', 'public/img/Album-cover2.jpg', [sDang, sConsideration, sZion, sTime, sWork, sJuicy])
+        _createStation('Daily Mix 1', 'public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify',),
+        _createStation('Hip hop', 'public/img/Album-cover2.jpg', [sDang, sJuicy, sRoses, sWork], 'Gilad', ['Hip hop', 'Rap', 'Playlist']),
+        _createStation('Daily Mix 3', 'public/img/daily_mix_3.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify')
     ]
 }
 
@@ -148,6 +176,7 @@ function _createStation(name = 'New Playlist', imgUrl = '', songs = [], createdB
         likedByUsers: [],
         imgUrl,
         createdBy,
+        createdAt: utilService.randomPastTime()
     }
 }
 
