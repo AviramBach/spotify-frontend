@@ -1,69 +1,83 @@
 // Font Sizes
-.fs12 { font-size: rem(12px); }
-.fs14 { font-size: rem(14px); }
-.fs18 { font-size: rem(18px); }
-.fs20 { font-size: rem(20px); }
-.fs24 { font-size: rem(24px); }
-.fs28 { font-size: rem(28px); }
-.fs30 { font-size: rem(30px); }
+.fs12 {
+  font-size: rem(12px);
+}
+.fs14 {
+  font-size: rem(14px);
+}
+.fs18 {
+  font-size: rem(18px);
+}
+.fs20 {
+  font-size: rem(20px);
+}
+.fs24 {
+  font-size: rem(24px);
+}
+.fs28 {
+  font-size: rem(28px);
+}
+.fs30 {
+  font-size: rem(30px);
+}
 
 // flex helpers
 
 .flex {
+  display: flex;
 
-    display: flex;
-
-    > *.full {
-        flex: 1;
-    }
-    &.column {
-        flex-direction: column;
-    }
-    &.justify-center {
-        justify-content: center;
-    }
-    &.justify-left {
-        justify-content: start;
-    }
-    &.align-center {
-        align-items: center;
-    }
-    &.align-left {
-        align-items:start;
-    }
-    &.align-right {
-        align-items:end;
-    }
+  > *.full {
+    flex: 1;
+  }
+  &.column {
+    flex-direction: column;
+  }
+  &.justify-center {
+    justify-content: center;
+  }
+  &.justify-left {
+    justify-content: start;
+  }
+  &.align-center {
+    align-items: center;
+  }
+  &.align-left {
+    align-items: start;
+  }
+  &.align-right {
+    align-items: end;
+  }
 }
 
 // Media helpers
 
 .square-ratio {
-    @include aspect-ratio(1, 1);
+  @include aspect-ratio(1, 1);
 }
 .video-ratio {
-    @include aspect-ratio(16, 9);
+  @include aspect-ratio(16, 9);
 }
 .portrait-ratio {
-    @include aspect-ratio(9, 16);
+  @include aspect-ratio(9, 16);
 }
 
-.clean-list{
-    list-style: none;
+.clean-list {
+  list-style: none;
 }
-.primary-play-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 55px;
-    width: 55px;
-    background-color:$spotify-green;
-    border: 0;
-    border-radius: 50%;
-    margin-inline-end: 24px;
+.primary-play-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 55px;
+  width: 55px;
+  background-color: $spotify-green;
+  border: 0;
+  border-radius: 50%;
+  margin-inline-end: 24px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
 }
 
-.primary-play-button-img{
-    height: 24px;
-    width: 24px;
+.primary-play-button-img {
+  height: 24px;
+  width: 24px;
 }

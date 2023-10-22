@@ -83,15 +83,19 @@ export function StationDetails() {
           <p className="station-details-count">{songs.length} songs</p>
         </div>
       </div>
-      <div className="station-details-button-container">
-        <button className="primary-play-button">
-          <img className="primary-play-button-img" src="./../../public/img/play.svg" alt="" />
-        </button>
-        <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>
-        <button className="btn-add" onClick={() => onUpdateStation()}>Add song</button>
-        <button className="btn-edit" onClick={() => onUpdateStationDetails()}>Edit station</button>
+      <div className="main-station-details-container">
+        <div className="main-station-details">
+          <div className="station-details-button-container">
+            <button className="primary-play-button">
+              <img className="primary-play-button-img" src="./../../public/img/play.svg" alt="" />
+            </button>
+            <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>
+            <button className="btn-add" onClick={() => onUpdateStation()}>Add song</button>
+            <button className="btn-edit" onClick={() => onUpdateStationDetails()}>Edit station</button>
+          </div>
+          <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation}></SongList>
+        </div>
       </div>
-      <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation}></SongList>
     </div>
   )
 }

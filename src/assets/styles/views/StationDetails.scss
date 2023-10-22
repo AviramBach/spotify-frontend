@@ -1,23 +1,39 @@
-.station-details-header-container{
-    padding-inline: 1em;
-    display: flex;
+.station-details {
+  //   background: linear-gradient(
+  //     0deg,
+  //     rgba(0, 0, 0, 1) 0%,
+  //     rgba(76, 55, 150, 1) 100%
+  //   );
+  overflow-y: scroll;
 }
-.station-details-img{
-    height: 192px;
-    width: 192px;
-    margin-inline-end: 18.623px;
+.station-details-header-container {
+  margin-block-start: 60px;
+  margin-block-end: 20px;
+  padding-inline: 1em;
+  display: flex;
 }
-.station-details-button-container{
-    padding: 1em;
-    display: flex;
+// .main-station-details-container {
+//   background-color: $black;
+// }
+.main-station-details {
+  background-color: transparent;
+}
+.station-details-img {
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+  height: 192px;
+  width: 192px;
+  margin-inline-end: 18.623px;
+}
+.station-details-button-container {
+  padding: 1em;
+  display: flex;
 }
 
-.station-details-header{
-
-    h1{
-        @include headline
-    }
-    p{
-        @include body-text('secondary')
-    }
+.station-details-header {
+  h1 {
+    @include headline;
+  }
+  p {
+    @include body-text("secondary");
+  }
 }

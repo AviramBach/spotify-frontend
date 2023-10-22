@@ -1,98 +1,99 @@
-.song-list{
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.song-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.info-line{
-    padding-inline: 1em;
-    align-items: center;
-    margin-block-end: 12.547px;
-    border-bottom: 1px solid hsla(0,0%,100%,.1);
-    @include body-text('body');
-    vertical-align: baseline;
-    display: grid; 
-    grid-template-columns: 16px 6fr 4fr 3fr minmax(120px,1fr); 
-    grid-template-rows: 36px; 
-    gap: 0 16px; 
-    grid-template-areas: 
-      "index title album added duration"; 
+.info-line {
+  padding-inline: 1em;
+  align-items: center;
+  margin-block-end: 12.547px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+  @include body-text("body");
+  vertical-align: baseline;
+  display: grid;
+  grid-template-columns: 16px 6fr 4fr 3fr minmax(120px, 1fr);
+  grid-template-rows: 36px;
+  gap: 0 16px;
+  grid-template-areas: "index title album added duration";
 }
-.info-line-index{
-    grid-area: index;
+.info-line-index {
+  grid-area: index;
 }
-.info-line-title{
-    grid-area: title;
+.info-line-title {
+  grid-area: title;
 }
-.info-line-album{
-    grid-area: album;
-}.info-line-added-at{
-    grid-area: added;
+.info-line-album {
+  grid-area: album;
 }
-.info-line-duration{
-    grid-area: duration;
-    height: 16px;
-    width: 16px;
-    filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%) contrast(87%);
+.info-line-added-at {
+  grid-area: added;
+}
+.info-line-duration {
+  grid-area: duration;
+  height: 16px;
+  width: 16px;
+  filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%)
+    contrast(87%);
 }
 
-.song-list-item{
-    padding-inline: 1em;
-    align-items: center;
-    border-radius: 4px;
-    display: grid; 
-    grid-template-columns: 16px 6fr 4fr 3fr minmax(120px,1fr); 
-    grid-template-rows: 56px; 
-    gap: 0 16px; 
-    grid-template-areas: 
-      "song-index song-preview song-album song-added song-duration"; 
-
+.song-list-item {
+  padding-inline: 1em;
+  align-items: center;
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 16px 6fr 4fr 3fr minmax(120px, 1fr);
+  grid-template-rows: 56px;
+  gap: 0 16px;
+  grid-template-areas: "song-index song-preview song-album song-added song-duration";
 }
-.song-list-item:hover{
-    background-color: $light-spotify-black;
-
+.song-list-item:hover {
+  background-color: $light-spotify-black;
 }
-.song-list-item-index{
-    grid-area:song-index ;
-    margin: 0;
-    @include body-text('body');
+.song-list-item-index {
+  grid-area: song-index;
+  margin: 0;
+  @include body-text("body");
 }
-.song-list-item-preview{
-    grid-area:song-preview ;
+.song-list-item-preview {
+  grid-area: song-preview;
 }
-.song-list-item-album{
-    grid-area:song-album ;
-    @include body-text('body');
-    margin: 0;
-
+.song-list-item-album {
+  grid-area: song-album;
+  @include body-text("body");
+  margin: 0;
 }
-.song-list-item-added-at{
-    grid-area:song-added ;
-    @include body-text('body');
-    margin: 0;
-
+.song-list-item-added-at {
+  grid-area: song-added;
+  @include body-text("body");
+  margin: 0;
 }
-.song-list-item-duration-container{
-    display: flex;
-    justify-self: end;
-    align-items: center;
-    grid-area:song-duration ;
+.song-list-item-duration-container {
+  display: flex;
+  justify-self: end;
+  align-items: center;
+  grid-area: song-duration;
 }
-.song-list-item-btn{
-    background-color: transparent;
-    border: none;
-    height: 32px;
-    width: 32px;
-    padding-block: 8px;
-    margin-inline-end: 16px;
+.song-list-item-btn {
+  background-color: transparent;
+  border: none;
+  height: 32px;
+  width: 32px;
+  padding-block: 8px;
+  margin-inline-end: 16px;
 }
-.song-list-item-btn-img{
-    height: 16px;
-    width: 16px;
-    filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%) contrast(87%);
+.song-list-item-btn-img {
+  height: 16px;
+  width: 16px;
+  filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%)
+    contrast(87%);
 }
-.song-list-item-duration{
-    margin-inline-end: 16px;
-    margin-block-end: 0;
-    @include body-text('body');
+.song-list-item-duration {
+  margin-inline-end: 16px;
+  margin-block-end: 0;
+  @include body-text("body");
+}
+.liked {
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
+    brightness(91%) contrast(79%);
 }
