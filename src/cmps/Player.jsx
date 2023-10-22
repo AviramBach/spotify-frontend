@@ -100,9 +100,9 @@ export function Player() {
 
             <div className='player-song-preview'>
                 <SongPreview song={currSong} />
-                <button className='player-btn player-btn-img' onClick={heartSong}>
+                <button className='player-btn' onClick={heartSong}>
                     {isLiked ? <img className='full-heart-icon' src="./../../public/img/selected-heart.svg" alt="" /> :
-                        <img className='empty-heart-icon' src="./../../public/img/heart.svg" alt="" />}
+                        <img className='empty-heart-icon player-btn-img' src="./../../public/img/heart.svg" alt="" />}
                 </button>
             </div>
 
@@ -176,8 +176,8 @@ export function Player() {
             <div className='player-side-controls'>
 
                 <button className='player-btn player-btn-img' onClick={muteSong}>
-                    {isMuted ? <img className='mute-icon' src="public\img\spotify android icons 24px (Community)\mute.svg" alt="" /> :
-                        <img className='unmute-icon' src="public\img\spotify android icons 24px (Community)\mute1.svg" alt="" />}
+                    {isMuted ? <img className='mute-icon' src="./../../public/img/mute.svg" alt="" /> :
+                        <img className='unmute-icon' src="./../../public/img/unmute.svg" alt="" />}
                 </button>
 
                 <div className="volume-bar">
