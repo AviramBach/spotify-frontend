@@ -13,10 +13,10 @@ export function getActionIsPlaying(isPlaying) {
     }
 }
 
-export function getActionCurrSong(song) {
+export function getActionCurrSong(currSong) {
     return {
         type: SET_CURR_SONG,
-        song
+        currSong
     }
 }
 

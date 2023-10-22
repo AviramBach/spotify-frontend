@@ -20,7 +20,7 @@ export function playerReducer(state = initialState, action) {
     switch (action.type) {
 
         case SET_CURR_SONG:
-            newState = { ...state, song: action.currSong }
+            newState = { ...state, currSong: action.currSong }
             break
         case IS_PLAYING:
             newState = { ...state, isPlaying: action.isPlaying }

@@ -130,6 +130,17 @@ const sZion = {
     duration: '6:09',
     addedAt: utilService.randomPastTime()
 }
+const sDooWop = {
+    id: utilService.makeId(),
+    title: 'Doo Wop',
+    artist: 'Lauryn Hill',
+    album: ' The Miseducation of Lauryn Hill',
+    url: 'https://www.youtube.com/watch?v=T6QKqFPRZSA&ab_channel=laurynhillvevo',
+    imgUrl: './../../public/img/Album_cover3.jpg',
+    addedBy: 'Guest',
+    duration: '3:56',
+    addedAt: utilService.randomPastTime()
+}
 const sWork = {
     id: utilService.makeId(),
     title: 'Work',
@@ -145,20 +156,55 @@ const sWash = {
     id: utilService.makeId(),
     title: 'Wash.',
     artist: 'Bon Iver',
+    album: 'Bon Iver',
     url: 'https://www.youtube.com/watch?v=KMfL7rVAu0U&ab_channel=BonIver',
-    imgUrl: 'public/img/Album_cover3.jpg',
+    imgUrl: './../../public/img/Album_cover3.jpg',
     addedBy: 'Spotify',
     duration: '4:54',
+    addedAt: utilService.randomPastTime()
+}
+const sHeyYa = {
+    id: utilService.makeId(),
+    title: 'Hey Ya!',
+    artist: 'Outkast',
+    album: 'Speakerboxxx',
+    url: 'https://www.youtube.com/watch?v=JzqYDWBkX_Q&ab_channel=AOK',
+    imgUrl: './../../public/img/Outkast.jpg',
+    addedBy: 'Gilad',
+    duration: '3:52',
     addedAt: utilService.randomPastTime()
 }
 const sRoses = {
     id: utilService.makeId(),
     title: 'Roses',
-    artist: 'Bon Iver',
+    artist: 'Outkast',
+    album: 'Speakerboxxx',
     url: 'https://www.youtube.com/watch?v=sZ1vT0aPcYE&ab_channel=Outkast-Topic',
-    imgUrl: './../../public/img/Album_cover3.jpg',
+    imgUrl: './../../public/img/Outkast.jpg',
     addedBy: 'Guest',
     duration: '6:10',
+    addedAt: utilService.randomPastTime()
+}
+const sAdorn = {
+    id: utilService.makeId(),
+    title: 'Adorn',
+    artist: 'Miguel',
+    album: 'Dream',
+    url: 'https://www.youtube.com/watch?v=rtHhxrgfOcw&ab_channel=MiguelVEVO',
+    imgUrl: './../../public/img/Album_cover4.jpg',
+    addedBy: 'Guest',
+    duration: '3:15',
+    addedAt: utilService.randomPastTime()
+}
+const sJump = {
+    id: utilService.makeId(),
+    title: 'Jump',
+    artist: 'Van Halen',
+    album: '1984',
+    url: 'https://www.youtube.com/watch?v=ggJI9dKBk48&ab_channel=VanHalen-Topic',
+    imgUrl: './../../public/img/Album_cover4.jpg',
+    addedBy: 'Gilad',
+    duration: '3:59',
     addedAt: utilService.randomPastTime()
 }
 
@@ -166,17 +212,16 @@ function _createStations() {
     return [
         _createStation('Liked Songs', './../../public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy, sWash], 'Me', ['Yours', 'Playlist']),
         _createStation('ANTI', './../../public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'Album']),
-        _createStation('R&B', './../../public/img/Album_cover3.jpg', [sDang, sConsideration, sZion], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
+        _createStation('R&B', './../../public/img/Album_cover3.jpg', [sZion, sWork, sDooWop, sConsideration], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
         _createStation('Daily Mix 1', './../../public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify',),
-        _createStation('Hip hop', './../../public/img/Album-cover2.jpg', [sDang, sJuicy, sRoses, sWork], 'Gilad', ['Hip hop', 'Rap', 'Playlist']),
+        _createStation('Hip hop', './../../public/img/Album-cover2.jpg', [sJuicy, sDang, sRoses, sWork], 'Gilad', ['Hip hop', 'Rap', 'Playlist']),
         _createStation('Daily Mix 3', './../../public/img/daily_mix_3.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify'),
-        _createStation('Liked Songs', './../../public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy, sWash], 'Me', ['Yours', 'Playlist']),
-        _createStation('ANTI', './../../public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'Album']),
-        _createStation('R&B', './../../public/img/Album_cover3.jpg', [sDang, sConsideration, sZion], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
-        _createStation('Daily Mix 1', './../../public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify',),
-        _createStation('Hip hop', './../../public/img/Album-cover2.jpg', [sDang, sJuicy, sRoses, sWork], 'Gilad', ['Hip hop', 'Rap', 'Playlist']),
-        _createStation('Daily Mix 3', './../../public/img/daily_mix_3.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify')
-
+        _createStation('Soul Mix', './../../public/img/Album_cover3.jpg', [sDooWop, sConsideration, sWash], 'Songify', ['Mix']),
+        _createStation('Rock', './../../public/img/Album_cover4.jpg', [sJump, sTime, sWash], 'Rihanna', ['Rock', 'Playlist']),
+        _createStation('On Repeat', './../../public/img/Outkast.jpg', [sRoses, sWork, sDooWop], 'Gilad', ['Playlist']),
+        _createStation('2010s Mix', './../../public/img/Album_cover1.png', [sWork, sConsideration, sDang,], 'Songify',),
+        _createStation('Chill Mix', './../../public/img/Album-cover2.jpg', [sAdorn, sDang, sJuicy, sRoses, sWork], 'Gilad', ['Hip hop', 'Rap', 'Playlist']),
+        _createStation('Outkast Mix', './../../public/img/Outkast.jpg', [sHeyYa, sRoses, sJuicy, sDang], 'Songify')
     ]
 }
 
