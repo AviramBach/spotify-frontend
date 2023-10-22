@@ -156,11 +156,7 @@ const sWash = {
     id: utilService.makeId(),
     title: 'Wash.',
     artist: 'Bon Iver',
-<<<<<<< HEAD
-    album: ' Bon Iver',
-=======
     album: 'Bon Iver',
->>>>>>> main
     url: 'https://www.youtube.com/watch?v=KMfL7rVAu0U&ab_channel=BonIver',
     imgUrl: './../../public/img/Album_cover3.jpg',
     addedBy: 'Spotify',
@@ -181,13 +177,8 @@ const sHeyYa = {
 const sRoses = {
     id: utilService.makeId(),
     title: 'Roses',
-<<<<<<< HEAD
-    artist: 'Bon Iver',
-    album: ' Bon Iver',
-=======
     artist: 'Outkast',
     album: 'Speakerboxxx',
->>>>>>> main
     url: 'https://www.youtube.com/watch?v=sZ1vT0aPcYE&ab_channel=Outkast-Topic',
     imgUrl: './../../public/img/Outkast.jpg',
     addedBy: 'Guest',

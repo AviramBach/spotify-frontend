@@ -77,13 +77,13 @@ export function Player() {
 
     const handleEnded = () => {
         // if (isLooped) {
-            console.log('Song ended');
-            setCurrentTime(0)
-            playerRef.current.seekTo(0)
-            if (isPlaying) {
-                playerRef.current.play();
-                console.log('Song restarted');
-            }
+        console.log('Song ended');
+        setCurrentTime(0)
+        playerRef.current.seekTo(0)
+        if (isPlaying) {
+            playerRef.current.play();
+            console.log('Song restarted');
+        }
         // }
     }
 
@@ -135,7 +135,7 @@ export function Player() {
                 <ReactPlayer
                     className='react-player'
                     ref={playerRef}
-                    url={'https://www.youtube.com/watch?v=WYpjUEPbL-o&list=RDWYpjUEPbL-o&start_radio=1'}
+                    url={currSong.url}
                     config={{
                         youtube: {
                             playerVars: {
