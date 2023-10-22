@@ -65,19 +65,21 @@
   list-style: none;
 }
 .primary-play-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 55px;
-  width: 55px;
-  background-color: $spotify-green;
-  border: 0;
-  border-radius: 50%;
-  margin-inline-end: 24px;
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+  @include play-button("primary");
+}
+.secondary-play-button {
+  @include play-button("secondary");
 }
 
 .primary-play-button-img {
   height: 24px;
   width: 24px;
+}
+.secondary-play-button-img {
+  height: 15px;
+  width: 15px;
+}
+.liked {
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
+    brightness(91%) contrast(79%);
 }

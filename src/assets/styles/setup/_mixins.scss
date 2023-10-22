@@ -1,154 +1,165 @@
 /* Breakpoint mixins */
 
 @mixin for-mobile-layout {
-    @media (max-width: calc($mobile-breakpoint + 40px)) {
-        @content;
-    }
+  @media (max-width: calc($mobile-breakpoint + 40px)) {
+    @content;
+  }
 }
 
 @mixin for-narrow-layout {
-    @media (min-width: calc($mobile-breakpoint + 40px)) {
-        @content;
-    }
+  @media (min-width: calc($mobile-breakpoint + 40px)) {
+    @content;
+  }
 }
 
 @mixin for-normal-layout {
-    @media (min-width: calc($narrow-breakpoint + 40px)) {
-        @content;
-    }
+  @media (min-width: calc($narrow-breakpoint + 40px)) {
+    @content;
+  }
 }
 
 @mixin for-wide-layout {
-    @media (min-width: calc($normal-breakpoint + 40px)) {
-        @content;
-    }
+  @media (min-width: calc($normal-breakpoint + 40px)) {
+    @content;
+  }
 }
 
 /* Media  Mixins */
-@mixin aspect-ratio($width:1, $height:1) {
-    position: relative;
-    overflow: hidden;
-    &::before {
-      display: block;
-      content: "";
-      width: 100%;
-      padding-top: calc(($height / $width) * 100%);
-    }
-    > * {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-  
-    > img {
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  
-  // Mixin for removing hover efects on iphone screen
-  @mixin hover-supported {    
-    @media not all and (pointer: coarse) {
-        &:hover {
-            @content;
-        }
-    }
-  }
-
-  @mixin round-button($type){
-    display: inline-flex;
-    align-items: center;
-    text-align: center;
-    margin: 0;
-    line-height: 14px;
-    font-weight: 400;
-    border-radius: 2em;
-    border: none;
-    margin-inline-end: 0.5em;
-    @if($type=='filter'){
-        color: $white;
-        background-color: $light-spotify-black;
-        font-size: 14px;
-        &:hover{
-            cursor: pointer;
-            background-color: lighten($color:  $light-spotify-black, $amount: 10%);
-        }
-        &:active{
-            color: $black;
-            background-color: $white;
-        }
-    }
-    @else if($type=='login'){
-        color: $black;
-        background-color: $white;
-        font-size: 16px;
-        height: 32px;
-        padding-inline: 32px;
-        padding-block: 8px;
-        text-align: center;
-        &:hover{
-            cursor: pointer;
-
-        }
-    }
-
-  }
-
-  @mixin link(){
-    text-decoration: none;
-    color: $spotify-grey;
-    line-height: 25px;
-    font-weight: 700;
-    font-size: 1em;
-    padding: 0.5em;
-    &:hover{
-        color: $white;
-        font-size: 1.1em;
-    }
-  }
-
-  @mixin body-link($type){
-    text-decoration: none;
-    @if($type=='primary'){
-        font-weight: 500;
-        font-size: 16px;
-        color: $white;
-        &:hover{
-            text-decoration: underline;
-        }
-    }
-    @if($type=='secondary'){
-        font-weight: 400;
-        font-size: 14px;
-        color: $spotify-grey;
-        &:hover{
-            text-decoration: underline;
-        }
-    }
-
-  }
-@mixin headline(){
-    margin: 0.08em 0px 0.12em;
+@mixin aspect-ratio($width: 1, $height: 1) {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    display: block;
+    content: "";
     width: 100%;
-    font-size: 4.5rem;
-    font-weight: 900;
+    padding-top: calc(($height / $width) * 100%);
+  }
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
-@mixin body-text($type){
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: $white;
-    @if($type=='body'){
-        color: $spotify-grey;
+// Mixin for removing hover efects on iphone screen
+@mixin hover-supported {
+  @media not all and (pointer: coarse) {
+    &:hover {
+      @content;
     }
-    @else if($type=='secondary'){
-        font-size: 1em;
-    }
-    @else if($type=='primary'){
-        font-size: 1em;
-        font-weight: 700;
-    }
+  }
 }
-  
+
+@mixin round-button($type) {
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  line-height: 14px;
+  font-weight: 400;
+  border-radius: 2em;
+  border: none;
+  margin-inline-end: 0.5em;
+  @if ($type== "filter") {
+    color: $white;
+    background-color: $light-spotify-black;
+    font-size: 14px;
+    &:hover {
+      cursor: pointer;
+      background-color: lighten($color: $light-spotify-black, $amount: 10%);
+    }
+    &:active {
+      color: $black;
+      background-color: $white;
+    }
+  } @else if($type== "login") {
+    color: $black;
+    background-color: $white;
+    font-size: 16px;
+    height: 32px;
+    padding-inline: 32px;
+    padding-block: 8px;
+    text-align: center;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@mixin link() {
+  text-decoration: none;
+  color: $spotify-grey;
+  line-height: 25px;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 0.5em;
+  &:hover {
+    color: $white;
+    font-size: 1.1em;
+  }
+}
+
+@mixin body-link($type) {
+  text-decoration: none;
+  @if ($type== "primary") {
+    font-weight: 500;
+    font-size: 16px;
+    color: $white;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  @if ($type== "secondary") {
+    font-weight: 400;
+    font-size: 14px;
+    color: $spotify-grey;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+@mixin headline() {
+  margin: 0.08em 0px 0.12em;
+  width: 100%;
+  font-size: 4.5rem;
+  font-weight: 900;
+}
+
+@mixin body-text($type) {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: $white;
+  @if ($type== "body") {
+    color: $spotify-grey;
+  } @else if($type== "secondary") {
+    font-size: 1em;
+  } @else if($type== "primary") {
+    font-size: 1em;
+    font-weight: 700;
+  }
+}
+@mixin play-button($type) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+  @if ($type== "primary") {
+    margin-inline-end: 24px;
+    height: 55px;
+    width: 55px;
+    background-color: $spotify-green;
+  } @else if ($type== "secondary") {
+    height: 31px;
+    width: 31px;
+    background-color: $white;
+  }
+}

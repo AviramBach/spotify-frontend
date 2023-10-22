@@ -5,11 +5,14 @@ import { SongList } from "../cmps/SongList.jsx"
 import { removeStation, updateStation } from '../store/station.actions.js'
 import { songService } from '../services/song.service.js'
 import { setCurrSong, toggelIsPlaying } from "../store/player.actions.js"
+import { useSelector } from "react-redux"
 
 export function StationDetails() {
   const params = useParams()
   const navigate = useNavigate()
   const [currStation, setCurrStation] = useState(null)
+  const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
+
   useEffect(() => {
     const { id } = params
     console.log(params)
@@ -94,7 +97,8 @@ export function StationDetails() {
         <div className="main-station-details">
           <div className="station-details-button-container">
             <button className="primary-play-button" onClick={() => onPlaySongFromStation(currStation)}>
-              <img className="primary-play-button-img" src="./../../public/img/play.svg" alt="" />
+              {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
+                <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
             </button>
             <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>
             <button className="btn-add" onClick={() => onUpdateStation()}>Add song</button>
