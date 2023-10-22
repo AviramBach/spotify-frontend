@@ -101,8 +101,8 @@ export function Player() {
             <div className='player-song-preview'>
                 {/* <SongPreview props={props}/> */}
                 <button className='player-btn' onClick={heartSong}>
-                    {isLiked ? <img className='full-heart-icon' src="public\img\spotify android icons 24px (Community)\heart-full.svg" alt="" /> :
-                        <img className='empty-heart-icon' src="public\img\spotify android icons 24px (Community)\heart-empty.svg" alt="" />}
+                    {isLiked ? <img className='full-heart-icon' src="./../../public/img/selected-heart.svg" alt="" /> :
+                        <img className='empty-heart-icon' src="./../../public/img/heart.svg" alt="" />}
                 </button>
             </div>
 
