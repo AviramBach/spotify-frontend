@@ -1,7 +1,7 @@
 import { SongPreview } from "./SongPreview.jsx"
 import moment from "moment";
 import { useState } from "react"
-export function SongList({ songs, onRemoveSongFromStation }) {
+export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation, currStation }) {
     const [isLiked, setIsLiked] = useState(null)
     return <div>
         <div className="info-line">
@@ -14,7 +14,7 @@ export function SongList({ songs, onRemoveSongFromStation }) {
         {songs &&
             <ul className="song-list">
                 {songs.reverse().map((song, idx) =>
-                    <li key={idx} className="song-list-item">
+                    <li key={idx} className="song-list-item" onClick={() => onPlaySongFromStation(currStation, song)}>
                         <p className="song-list-item-index">{idx + 1}</p>
                         <div className="song-list-item-preview">
                             <SongPreview song={song}></SongPreview>

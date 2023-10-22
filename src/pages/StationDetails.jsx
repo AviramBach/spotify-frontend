@@ -4,6 +4,7 @@ import { stationService } from '../services/station.service.js'
 import { SongList } from "../cmps/SongList.jsx"
 import { removeStation, updateStation } from '../store/station.actions.js'
 import { songService } from '../services/song.service.js'
+import { setCurrSong, toggelIsPlaying } from "../store/player.actions.js"
 
 export function StationDetails() {
   const params = useParams()
@@ -23,6 +24,12 @@ export function StationDetails() {
       })
   }, [params])
 
+  function onPlaySongFromStation(station, song) {
+    if (!song) song = station.songs[0]
+    console.log(song)
+    setCurrSong(song)
+    toggelIsPlaying(false)
+  }
 
   async function onRemoveStation() {
     try {
@@ -86,14 +93,14 @@ export function StationDetails() {
       <div className="main-station-details-container">
         <div className="main-station-details">
           <div className="station-details-button-container">
-            <button className="primary-play-button">
+            <button className="primary-play-button" onClick={() => onPlaySongFromStation(currStation)}>
               <img className="primary-play-button-img" src="./../../public/img/play.svg" alt="" />
             </button>
             <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>
             <button className="btn-add" onClick={() => onUpdateStation()}>Add song</button>
             <button className="btn-edit" onClick={() => onUpdateStationDetails()}>Edit station</button>
           </div>
-          <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation}></SongList>
+          <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} currStation={currStation}></SongList>
         </div>
       </div>
     </div>
