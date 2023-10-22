@@ -1,4 +1,5 @@
 export const SET_STATIONS = 'SET_STATIONS'
+export const SET_HOME_STATIONS = 'SET_HOME_STATIONS'
 export const REMOVE_STATION = 'REMOVE_STATION'
 export const ADD_STATION = 'ADD_STATION'
 export const UPDATE_STATION = 'UPDATE_STATION'
@@ -8,6 +9,7 @@ export const SET_FILTER_BY = 'SET_FILTER_BY'
 
 const initialState = {
     stations: [],
+    homeStations: [],
     lastRemovedStation: null,
     filterBy: { txt: '', sortBy: 'createdAt' },
 }
@@ -18,6 +20,9 @@ export function stationReducer(state = initialState, action) {
     switch (action.type) {
         case SET_STATIONS:
             newState = { ...state, stations: action.stations }
+            break
+        case SET_HOME_STATIONS:
+            newState = { ...state, homeStations: action.homeStations }
             break
         case REMOVE_STATION:
             const lastRemovedStation = state.stations.find(station => station._id === action.stationId)
