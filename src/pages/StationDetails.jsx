@@ -6,6 +6,7 @@ import { removeStation, updateStation } from '../store/station.actions.js'
 import { songService } from '../services/song.service.js'
 import { setCurrSong, toggelIsPlaying } from "../store/player.actions.js"
 import { useSelector } from "react-redux"
+import { imageService } from "../services/image.service.js"
 
 export function StationDetails() {
   const params = useParams()
@@ -13,6 +14,19 @@ export function StationDetails() {
   const [currStation, setCurrStation] = useState(null)
   const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
 
+  useEffect(() => {
+    gc();
+  }, [currStation])
+
+  async function gc() {
+    try {
+      const color = await imageService.getColorFromImage(currStation.imgUrl)
+      console.log("color", color);
+    } catch (ex) {
+      console.log('error', ex)
+    }
+
+  }
   useEffect(() => {
     const { id } = params
     console.log(params)
