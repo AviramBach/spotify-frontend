@@ -210,7 +210,7 @@ const sJump = {
 
 function _createStations() {
     return [
-        _createStation('Liked Songs', './../../public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy, sWash, sTime, sConsideration, sDang, sJuicy, sWash], 'Me', ['Yours', 'Playlist']),
+        _createStation('Liked Songs', './../../public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy, sWash, sRoses, sDooWop, sAdorn, sHeyYa, sJump], 'Me', ['Yours', 'Playlist']),
         _createStation('ANTI', './../../public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'Album']),
         _createStation('R&B', './../../public/img/Album_cover3.jpg', [sZion, sWork, sDooWop, sConsideration], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
         _createStation('Daily Mix 1', './../../public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify',),

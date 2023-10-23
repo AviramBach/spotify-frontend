@@ -1,4 +1,4 @@
-import { setCurrSong, toggelIsPlaying } from "../store/player.actions"
+import { setCurrSong, setCurrStation, setNextSong, setPrevSong, toggelIsPlaying } from "../store/player.actions"
 import { StationPreview } from "./StationPreview"
 import { useSelector } from "react-redux"
 
@@ -8,7 +8,10 @@ export function StationList({ stations }) {
     function onPlaySongFromStation(station, song) {
         if (!song) song = station.songs[0]
         console.log(song)
+        setCurrStation(station)
         setCurrSong(song)
+        setNextSong(song, station)
+        setPrevSong(song, station)
         toggelIsPlaying(false)
     }
 

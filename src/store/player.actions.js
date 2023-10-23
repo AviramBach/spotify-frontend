@@ -2,7 +2,7 @@ import { songService } from "../services/song.service.js";
 import { stationService } from "../services/station.service.js";
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { store } from '../store/store.js'
-import { SET_CURR_SONG, IS_PLAYING, SET_NEXT_SONG, SET_PREV_SONG, REMOVE_SONG, SET_SONG_PROGRESS } from "./player.reducer.js";
+import { SET_CURR_SONG, IS_PLAYING, SET_NEXT_SONG, SET_PREV_SONG, REMOVE_SONG, SET_SONG_PROGRESS, SET_CURR_STATION } from "./player.reducer.js";
 
 
 // Action Creators:
@@ -20,17 +20,24 @@ export function getActionCurrSong(currSong) {
     }
 }
 
-export function getActionNextSong(song) {
+export function getActionCurrStation(currStation) {
     return {
-        type: SET_NEXT_SONG,
-        song
+        type: SET_CURR_STATION,
+        currStation
     }
 }
 
-export function getActionPrevSong(song) {
+export function getActionNextSong(nextSong) {
+    return {
+        type: SET_NEXT_SONG,
+        nextSong
+    }
+}
+
+export function getActionPrevSong(prevSong) {
     return {
         type: SET_PREV_SONG,
-        song
+        prevSong
     }
 }
 
@@ -69,24 +76,36 @@ export async function setCurrSong(song) {
     }
 }
 
-export async function setNextSong(song) {
+export async function setCurrStation(station) {
     try {
-        const nextSong = await stationService.query(song)
-        store.dispatch(getActionNextSong(nextSong))
-        return nextSong
+        store.dispatch(getActionCurrStation(station))
+        return station
     } catch (err) {
-        console.log('cannot play next song', err)
+        console.log('cannot set station', err)
         throw err
     }
 }
 
-export async function setPrevSong(song) {
+export async function setNextSong(song, station) {
     try {
-        const prevSong = await stationService.query(song)
+        const songIdx = station.songs.findIndex(s => s.id === song.id)
+        const nextSong = (songIdx + 1 < station.songs.length) ? station.songs[songIdx + 1] : station.songs[0]
+        store.dispatch(getActionNextSong(nextSong))
+        return nextSong
+    } catch (err) {
+        console.log('cannot set next song', err)
+        throw err
+    }
+}
+
+export async function setPrevSong(song, station) {
+    try {
+        const songIdx = station.songs.findIndex(s => s.id === song.id)
+        const prevSong = (songIdx - 1 < 0) ? station.songs[station.songs.length - 1] : station.songs[songIdx - 1]
         store.dispatch(getActionPrevSong(prevSong))
         return prevSong
     } catch (err) {
-        console.log('cannot play next song', err)
+        console.log('cannot set prev song', err)
         throw err
     }
 }
