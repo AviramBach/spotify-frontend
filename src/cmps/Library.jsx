@@ -12,11 +12,21 @@ import { useNavigate } from 'react-router'
 export function Library() {
     const dispatch = useDispatch()
     const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
-    const stations = useSelector(storeState => storeState.stationModule.stations)
+    const stationsFromStore = useSelector(storeState => storeState.stationModule.stations)
+    const regex = new RegExp(filterBy.txt, 'i')
+    const stations = stationsFromStore.filter(station => regex.test(station.name))
+    const { sortBy } = filterBy
     const navigate = useNavigate()
+
+    stations.sort((station1, station2) => {
+        if (sortBy === 'createdAt') return station2[sortBy] - station1[sortBy]
+        if (station2[sortBy] < station1[sortBy]) return 1
+        return -1
+    })
+
     useEffect(() => {
         loadStations()
-    }, [filterBy])
+    }, [])
 
     async function onAddStation() {
         const station = stationService.getEmptyStation()

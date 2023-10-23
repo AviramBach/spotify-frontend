@@ -23,6 +23,7 @@
                 align-items: center;
                 border-radius: .5rem;
                 background-color: rgba(255, 255, 255, 0.104);
+                transition: background-color .3s;
 
                 h1 {
                     margin: 0;
@@ -44,18 +45,11 @@
                 }
 
                 button {
-                    width: 42px;
-                    height: 42px;
-                    margin: 0 1rem;
-                    border: none;
-                    border-radius: 50%;
-                    background-color: black;
-                    box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
                     display: none;
-
+                    
                     img {
-                        width: 48px;
-                        height: 48px;
+                        width: 24px;
+                        height: 24px;
                     }
                 }
 
@@ -69,12 +63,12 @@
                     border-radius: .25rem;
                 }
 
-                .play-button-icon {
-                    height: 48px;
-                    width: 48px;
-                    border-radius: .25rem;
-                    filter: invert(63%) sepia(62%) saturate(4488%) hue-rotate(104deg) brightness(99%) contrast(79%);
-                }
+                // .play-button-icon {
+                //     height: 48px;
+                //     width: 48px;
+                //     border-radius: .25rem;
+                //     filter: invert(63%) sepia(62%) saturate(4488%) hue-rotate(104deg) brightness(99%) contrast(79%);
+                // }
             }
 
             .station-preview:hover {
@@ -130,6 +124,7 @@
                 justify-content: center;
                 border-radius: .5rem;
                 background-color: rgba(255, 255, 255, 0.104);
+                transition: background-color .3s;
 
                 article {
                     margin: 1rem;
@@ -157,13 +152,7 @@
                 }
 
                 button {
-                    width: 42px;
-                    height: 42px;
-                    border: none;
-                    border-radius: 50%;
                     display: none;
-                    background-color: rgba(0, 0, 0, 0);
-                    box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
                 }
             }
 
@@ -172,8 +161,8 @@
 
                 button {
                     position: absolute;
-                    bottom: 35%;
-                    right: 10%;
+                    bottom: 40%;
+                    right: 0;
                     display: flex;
                     align-items: center;
                     justify-content: center;

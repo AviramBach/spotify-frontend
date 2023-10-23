@@ -25,15 +25,15 @@ export function getActionUpdateStation(station) {
 }
 
 export async function loadStations() {
-    const { filterBy } = store.getState().stationModule
-    const { sortBy } = filterBy
+    // const { filterBy } = store.getState().stationModule
+    // const { sortBy } = filterBy
     try {
-        const stations = await stationService.query(filterBy)
-        stations.sort((station1, station2) => {
-            if (sortBy === 'createdAt') return station2[sortBy] - station1[sortBy]
-            if (station2[sortBy] < station1[sortBy]) return 1
-            return -1
-        })
+        const stations = await stationService.query()
+        // stations.sort((station1, station2) => {
+        //     if (sortBy === 'createdAt') return station2[sortBy] - station1[sortBy]
+        //     if (station2[sortBy] < station1[sortBy]) return 1
+        //     return -1
+        // })
         console.log('Stations from DB:', stations)
         store.dispatch({
             type: SET_STATIONS,
