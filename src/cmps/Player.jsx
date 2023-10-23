@@ -14,6 +14,9 @@ export function Player() {
     // const songProgress = useSelector(storeState => storeState.playerModule.songProgress)
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
     const currSong = useSelector(storeState => storeState.playerModule.currSong)
+    const currStation = useSelector(storeState => storeState.playerModule.currStation)
+    const nextSong = useSelector(storeState => storeState.playerModule.nextSong)
+    const prevSong = useSelector(storeState => storeState.playerModule.prevSong)
     const [volume, setVolume] = useState(0.5)
     const [prevVolume, setPrevVolume] = useState(volume)
     const [isMuted, setIsMuted] = useState(false)
@@ -40,12 +43,18 @@ export function Player() {
         playerRef.current.seekTo(seekTime)
     }
 
-    function nextSong() {
+    function goToNextSong() {
         // Implement logic to switch to the next song
+        setCurrSong(nextSong)
+        setNextSong(nextSong, currStation)
+        setPrevSong(nextSong, currStation)
     }
 
-    function prevSong() {
+    function goToPrevSong() {
         // Implement logic to switch to the prev song
+        setCurrSong(prevSong)
+        setNextSong(prevSong, currStation)
+        setPrevSong(prevSong, currStation)
     }
 
     function playSong() {
@@ -76,15 +85,15 @@ export function Player() {
     }
 
     const handleEnded = () => {
-        // if (isLooped) {
-        console.log('Song ended');
-        setCurrentTime(0)
-        playerRef.current.seekTo(0)
-        if (isPlaying) {
-            playerRef.current.play();
-            console.log('Song restarted');
-        }
-        // }
+        if (isLooped) {
+            console.log('Song ended');
+            setCurrentTime(0)
+            playerRef.current.seekTo(0)
+            if (isPlaying) {
+                playerRef.current.play();
+                console.log('Song restarted');
+            }
+        } else goToNextSong()
     }
 
 
@@ -114,7 +123,7 @@ export function Player() {
                             {/* {isShuffle ? <img className='shuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon A.png" alt="" /> :
                             <img className='unshuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon.png" alt="" />} */}
                         </button>
-                        <button className='player-btn player-btn-img' onClick={prevSong}><img className='prev-song-icon' src="./../../public/img/prev-song.svg" alt="" /></button>
+                        <button className='player-btn player-btn-img' onClick={goToPrevSong}><img className='prev-song-icon' src="./../../public/img/prev-song.svg" alt="" /></button>
                     </div>
 
                     <button className='secondary-play-button' onClick={playSong}>
@@ -123,7 +132,7 @@ export function Player() {
                     </button>
 
                     <div className='player-controls-right'>
-                        <button className='player-btn player-btn-img' onClick={nextSong}>  <img className='next-song-icon' src="./../../public/img/next-song.svg" alt="" /></button>
+                        <button className='player-btn player-btn-img' onClick={goToNextSong}>  <img className='next-song-icon' src="./../../public/img/next-song.svg" alt="" /></button>
                         <button className='player-btn ' onClick={loopSong}>
                             <img className={`looped-icon player-btn-img ${isLooped ? 'active-loop-btn' : ''}`} src="./../../public/img/repeat.svg" alt="" /> :
 
