@@ -63,15 +63,16 @@ async function save(song) {
 // }
 
 
-function getRandomSong(title, album) {
+function getRandomSong(title) {
     return {
         id: utilService.makeId(),
         title,
         artist: utilService.makeLorem(2),
-        album,
-        url: 'youtube/song.mp4',
-        imgUrl: '',
+        album: utilService.makeLorem(2),
+        url: 'https://www.youtube.com/watch?v=sZ1vT0aPcYE&ab_channel=Outkast-Topic',
+        imgUrl: './../../public/img/Album_cover4.jpg',
         addedBy: 'guest',
+        duration: '6:10',
         addedAt: utilService.randomPastTime()
     }
 }

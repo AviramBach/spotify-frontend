@@ -115,6 +115,9 @@ export function StationDetails() {
                 {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
                   <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
               </button>
+              <button className="station-details-svg-btn">
+                <img className="station-details-svg-btn-img" src="./../../public/img/options.svg" alt="" />
+              </button>
               <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>
               <button className="btn-add" onClick={() => onUpdateStation()}>Add song</button>
               <button className="btn-edit" onClick={() => onUpdateStationDetails()}>Edit station</button>
