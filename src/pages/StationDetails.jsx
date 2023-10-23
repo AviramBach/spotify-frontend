@@ -108,17 +108,19 @@ export function StationDetails() {
         </div>
       </div>
       <div className="main-station-details-container">
-        <div className="main-station-details">
-          <div className="station-details-button-container">
-            <button className="primary-play-button" onClick={() => onPlaySongFromStation(currStation)}>
-              {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
-                <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
-            </button>
-            <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>
-            <button className="btn-add" onClick={() => onUpdateStation()}>Add song</button>
-            <button className="btn-edit" onClick={() => onUpdateStationDetails()}>Edit station</button>
+        <div className="main-station-details-black">
+          <div className="main-station-details-transparent">
+            <div className="station-details-button-container">
+              <button className="primary-play-button" onClick={() => onPlaySongFromStation(currStation)}>
+                {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
+                  <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
+              </button>
+              <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>
+              <button className="btn-add" onClick={() => onUpdateStation()}>Add song</button>
+              <button className="btn-edit" onClick={() => onUpdateStationDetails()}>Edit station</button>
+            </div>
+            <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} currStation={currStation}></SongList>
           </div>
-          <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} currStation={currStation}></SongList>
         </div>
       </div>
     </div>
