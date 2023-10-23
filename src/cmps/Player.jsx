@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 // import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 // import { UserMsg } from './UserMsg.jsx'
 
-// import { SongPreview } from './SongPreview.jsx'
+import { SongPreview } from './SongPreview.jsx'
 import { setSongProgress, toggelIsPlaying, setCurrSong, setNextSong, setPrevSong } from '../store/player.actions'
 
 
@@ -99,10 +99,10 @@ export function Player() {
         <footer className='app-player'>
 
             <div className='player-song-preview'>
-                {/* <SongPreview props={props}/> */}
+                <SongPreview song={currSong} />
                 <button className='player-btn' onClick={heartSong}>
-                    {isLiked ? <img className='full-heart-icon' src="public\img\spotify android icons 24px (Community)\heart-full.svg" alt="" /> :
-                        <img className='empty-heart-icon' src="public\img\spotify android icons 24px (Community)\heart-empty.svg" alt="" />}
+                    {isLiked ? <img className='full-heart-icon' src="./../../public/img/selected-heart.svg" alt="" /> :
+                        <img className='empty-heart-icon player-btn-img' src="./../../public/img/heart.svg" alt="" />}
                 </button>
             </div>
 
@@ -110,23 +110,23 @@ export function Player() {
                 <div className='main-controls'>
                     <div className='player-controls-left'>
                         <button className='player-btn' onClick={shuffelSong}>
-                            <img className='unshuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon.png" alt="" />
+                            <img className=' player-btn-img' src="./../../public/img/shuffle.svg" alt="" />
                             {/* {isShuffle ? <img className='shuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon A.png" alt="" /> :
                             <img className='unshuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon.png" alt="" />} */}
                         </button>
-                        <button className='player-btn' onClick={prevSong}><img className='prev-song-icon' src="public/img/spotify android icons 24px (Community)/Previous Icon.png" alt="" /></button>
+                        <button className='player-btn player-btn-img' onClick={prevSong}><img className='prev-song-icon' src="./../../public/img/prev-song.svg" alt="" /></button>
                     </div>
 
-                    <button className='player-btn play-pause-button' onClick={playSong}>
-                        {isPlaying ? <img className='pause-icon' src="public\img\spotify android icons 24px (Community)\Pause Button.png" alt="" /> :
-                            <img className='play-icon' src="public/img/spotify android icons 24px (Community)/Play Button.png" alt="" />}
+                    <button className='secondary-play-button' onClick={playSong}>
+                        {isPlaying ? <img className='pause-icon secondary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
+                            <img className='play-icon secondary-play-button-img' src="./../../public/img/play.svg" alt="" />}
                     </button>
 
                     <div className='player-controls-right'>
-                        <button className='player-btn' onClick={nextSong}>  <img className='next-song-icon' src="public/img/spotify android icons 24px (Community)/Next Icon.png" alt="" /></button>
-                        <button className='player-btn' onClick={loopSong}>
-                            {isLooped ? <img className='looped-icon' src="public\img\spotify android icons 24px (Community)\Repeat Song Icon.png" alt="" /> :
-                                <img className='unlooped-icon' src="public\img\spotify android icons 24px (Community)\Repeat.png" alt="" />}
+                        <button className='player-btn player-btn-img' onClick={nextSong}>  <img className='next-song-icon' src="./../../public/img/next-song.svg" alt="" /></button>
+                        <button className='player-btn ' onClick={loopSong}>
+                            <img className={`looped-icon player-btn-img ${isLooped ? 'active-loop-btn' : ''}`} src="./../../public/img/repeat.svg" alt="" /> :
+
                         </button>
                     </div>
 
@@ -175,9 +175,9 @@ export function Player() {
 
             <div className='player-side-controls'>
 
-                <button className='player-btn' onClick={muteSong}>
-                    {isMuted ? <img className='mute-icon' src="public\img\spotify android icons 24px (Community)\mute.svg" alt="" /> :
-                        <img className='unmute-icon' src="public\img\spotify android icons 24px (Community)\mute1.svg" alt="" />}
+                <button className='player-btn player-btn-img' onClick={muteSong}>
+                    {isMuted ? <img className='mute-icon' src="./../../public/img/mute.svg" alt="" /> :
+                        <img className='unmute-icon' src="./../../public/img/unmute.svg" alt="" />}
                 </button>
 
                 <div className="volume-bar">
