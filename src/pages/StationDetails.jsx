@@ -7,11 +7,13 @@ import { songService } from '../services/song.service.js'
 import { setCurrSong, toggelIsPlaying } from "../store/player.actions.js"
 import { useSelector } from "react-redux"
 import { imageService } from "../services/image.service.js"
+import { StationDetailsOptionMenu } from "../cmps/StationDetailsOptionMenu.jsx"
 
 export function StationDetails() {
   const params = useParams()
   const navigate = useNavigate()
   const [currStation, setCurrStation] = useState(null)
+  const [isOption, setIsOption] = useState(false)
   const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
 
   useEffect(() => {
@@ -109,23 +111,19 @@ export function StationDetails() {
       </div>
       <div className="main-station-details-container">
         <div className="main-station-details-black">
-          <div className="main-station-details-transparent">
-            <div className="station-details-button-container">
-              <button className="primary-play-button" onClick={() => onPlaySongFromStation(currStation)}>
-                {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
-                  <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
-              </button>
-              <button className="station-details-svg-btn">
-                <img className="station-details-svg-btn-img" src="./../../public/img/options.svg" alt="" />
-              </button>
-              <button className="btn-remove" onClick={() => onRemoveStation()}>X</button>
-              <button className="btn-add" onClick={() => onUpdateStation()}>Add song</button>
-              <button className="btn-edit" onClick={() => onUpdateStationDetails()}>Edit station</button>
-            </div>
-            <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} currStation={currStation}></SongList>
+          <div className="station-details-button-container">
+            <button className="primary-play-button" onClick={() => onPlaySongFromStation(currStation)}>
+              {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
+                <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
+            </button>
+            <button className="station-details-svg-btn station-details-options-btn" onClick={() => setIsOption(true)}>
+              <img className="station-details-svg-btn-img" src="./../../public/img/options.svg" alt="" />
+            </button>
           </div>
+          <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} currStation={currStation}></SongList>
         </div>
       </div>
+      {isOption && <StationDetailsOptionMenu onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} onUpdateStationDetails={onUpdateStationDetails} isOption={isOption} setIsOption={setIsOption}></StationDetailsOptionMenu>}
     </div>
   )
 }
