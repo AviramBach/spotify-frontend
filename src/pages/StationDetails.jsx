@@ -4,7 +4,7 @@ import { stationService } from '../services/station.service.js'
 import { SongList } from "../cmps/SongList.jsx"
 import { removeStation, updateStation } from '../store/station.actions.js'
 import { songService } from '../services/song.service.js'
-import { setCurrSong, toggelIsPlaying } from "../store/player.actions.js"
+import { setCurrSong, setNextSong, setPrevSong, toggelIsPlaying } from "../store/player.actions.js"
 import { useSelector } from "react-redux"
 import { imageService } from "../services/image.service.js"
 import { StationDetailsOptionMenu } from "../cmps/StationDetailsOptionMenu.jsx"
@@ -46,11 +46,15 @@ export function StationDetails() {
   function onPlaySongFromStation(station, song) {
     if (!song) song = station.songs[0]
     console.log(song)
+    setCurrStation(station)
     setCurrSong(song)
+    setNextSong(song, station)
+    setPrevSong(song, station)
     toggelIsPlaying(false)
   }
 
   async function onRemoveStation() {
+    setIsOption(false)
     try {
       await removeStation(currStation._id)
       navigate("/")
@@ -60,6 +64,7 @@ export function StationDetails() {
     }
   }
   async function onUpdateStation() {
+    setIsOption(false)
     const title = prompt('Song name?')
     const songToAdd = songService.getRandomSong(title)
     const updatdStation = { ...currStation, songs: [songToAdd, ...currStation.songs] }
@@ -86,6 +91,7 @@ export function StationDetails() {
   }
 
   async function onUpdateStationDetails() {
+    setIsOption(false)
     const name = prompt('new name')
     const updatdStation = { ...currStation, name: name }
     setCurrStation(updatdStation)
@@ -116,14 +122,14 @@ export function StationDetails() {
               {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
                 <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
             </button>
-            <button className="station-details-svg-btn station-details-options-btn" onClick={() => setIsOption(true)}>
+            <button className="station-details-svg-btn station-details-options-btn" onClick={() => setIsOption(!isOption)}>
               <img className="station-details-svg-btn-img" src="./../../public/img/options.svg" alt="" />
             </button>
           </div>
+          {isOption && <StationDetailsOptionMenu onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} onUpdateStationDetails={onUpdateStationDetails} ></StationDetailsOptionMenu>}
           <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} currStation={currStation}></SongList>
         </div>
       </div>
-      {isOption && <StationDetailsOptionMenu onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} onUpdateStationDetails={onUpdateStationDetails} isOption={isOption} setIsOption={setIsOption}></StationDetailsOptionMenu>}
     </div>
   )
 }
