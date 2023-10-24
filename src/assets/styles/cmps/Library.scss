@@ -1,178 +1,175 @@
 .library {
-    margin-top: .5rem;
-    // height: 100%;
-    color: darken($color: $white, $amount: 20%);
-    border-radius: .5rem;
-    background-color: $spotify-black;
-    width: 278px;
+  margin-top: 0.5rem;
+  // height: 100%;
+  color: darken($color: $white, $amount: 20%);
+  border-radius: 0.5rem;
+  background-color: $spotify-black;
+  width: 278px;
+  display: flex;
+  flex-direction: column;
+  // flex-grow: 1;
+
+  h1 {
+    margin: 1rem;
+  }
+
+  .library-header {
     display: flex;
-    flex-direction: column;
-    // flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+
+    div {
+      padding: 0.25rem 0.25rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    img {
+      width: 24px;
+    }
 
     h1 {
-        margin: 1rem;
+      color: $spotify-grey;
+      margin: 0;
+      font-size: smaller;
     }
 
-    .library-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: .5rem 1rem;
+    button {
+      margin: 0;
+      border: none;
+      border-radius: 1rem;
+      background-color: $spotify-black;
 
-        div {
-            padding: .25rem .25rem;
-            display: flex;
-            gap: .5rem;
-        }
-
-        img {
-            width: 24px;
-        }
-
-        h1 {
-            color: $spotify-grey;
-            margin: 0;
-            font-size: smaller;
-        }
-
-        button {
-            margin: 0;
-            border: none;
-            border-radius: 1rem;
-            background-color: $spotify-black;
-
-            img {
-                width: 16px;
-            }
-        }
-
-        button:hover {
-            cursor: pointer;
-            background-color: $light-spotify-black;
-        }
+      img {
+        width: 16px;
+      }
     }
 
-    .library-filter {
-        padding: .5rem 1.25rem;
-        // margin: .5rem 1rem;
-        display: flex;
-        justify-content: space-between;
+    button:hover {
+      cursor: pointer;
+      background-color: $light-spotify-black;
+    }
+  }
 
-        label {
-            display: flex;
-        }
+  .library-filter {
+    padding: 0.5rem 1.25rem;
+    // margin: .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
 
-        input {
-            color: darken($color: $white, $amount: 20%);
-            background-color: $spotify-black;
-            border: none;
-            width: 7rem;
-        }
-
-        input:focus-visible {
-            background-color: lighten($color: $light-spotify-black, $amount: 10%);
-        }
-
-        select {
-            border: none;
-            width: 6rem;
-            color: $spotify-grey;
-            background-color: $spotify-black;
-        }
-
-        select:focus-visible {
-            outline: none;
-        }
-
-        img {
-            height: 16px;
-            width: 16px;
-        }
+    label {
+      display: flex;
     }
 
-    ul {
-        margin: 0;
-        height: 410px;
-        overflow-y: auto;
-
+    input {
+      color: darken($color: $white, $amount: 20%);
+      background-color: $spotify-black;
+      border: none;
+      width: 7rem;
     }
 
-    &:hover {
-        ::-webkit-scrollbar-thumb {
-            background: #555;
-        }
+    input:focus-visible {
+      background-color: lighten($color: $light-spotify-black, $amount: 10%);
     }
 
-    ::-webkit-scrollbar {
-        width: 12px;
-        height: 16px;
-        padding: 2px;
+    select {
+      border: none;
+      width: 6rem;
+      color: $spotify-grey;
+      background-color: $spotify-black;
     }
 
-    ::-webkit-scrollbar-track {
-        background: $spotify-black;
-        border-radius: .5rem;
+    select:focus-visible {
+      outline: none;
     }
 
+    img {
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  ul {
+    margin: 0;
+    height: calc(100vh - 72px - 112px - 16px - 33.5px - 48px);
+    overflow-y: auto;
+  }
+
+  &:hover {
     ::-webkit-scrollbar-thumb {
-        background: #55555500;
+      background: #555;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 16px;
+    padding: 2px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $spotify-black;
+    border-radius: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #55555500;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3b6;
+  }
+
+  li {
+    color: $white;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.5rem;
+    background-color: $spotify-black;
+    margin-top: 0;
+    margin: 0 0 0 0.5rem;
+
+    article {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      h1 {
+        margin: 0;
+        font-size: smaller;
+        font-weight: lighter;
+        width: max-content;
+      }
+
+      p {
+        font-size: smaller;
+        width: max-content;
+        color: darken($color: $white, $amount: 20%);
+        margin: 0;
+      }
     }
 
-    ::-webkit-scrollbar-thumb:hover {
-        background: #b3b3b3b6;
+    article:hover {
+      cursor: pointer;
     }
 
-    li {
-        color: $white;
-        padding: .5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: .5rem;
-        background-color: $spotify-black;
-        margin-top: 0;
-        margin: 0 0 0 .5rem;
-
-        article {
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-
-            h1 {
-                margin: 0;
-                font-size: smaller;
-                font-weight: lighter;
-                width: max-content;
-            }
-
-            p {
-                font-size: smaller;
-                width: max-content;
-                color: darken($color: $white, $amount: 20%);
-                margin: 0;
-            }
-
-        }
-
-        article:hover {
-            cursor: pointer;
-        }
-
-        img {
-            height: 48px;
-            width: 48px;
-            border-radius: .25rem;
-        }
-
-        button {
-            display: none;
-        }
-
+    img {
+      height: 48px;
+      width: 48px;
+      border-radius: 0.25rem;
     }
 
-    li:hover {
-        background-color: $light-spotify-black;
+    button {
+      display: none;
     }
+  }
+
+  li:hover {
+    background-color: $light-spotify-black;
+  }
 }
 
 // .homepage {
