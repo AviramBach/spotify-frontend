@@ -4,7 +4,30 @@
     rgba(0, 0, 0, 1) 0%,
     rgba(76, 55, 150, 1) 100%
   );
-  overflow-y: scroll;
+  &:hover {
+    ::-webkit-scrollbar-thumb {
+      background: #555;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 16px;
+    padding: 2px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $spotify-black;
+    border-radius: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #55555500;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3b6;
+  }
 }
 .station-details-header-container {
   margin-block-start: 60px;
@@ -12,12 +35,14 @@
   padding-inline: 1em;
   display: flex;
 }
-// .main-station-details-container {
-//   background-color: $black;
-// }
-.main-station-details {
+
+.main-station-details-container {
   background-color: transparent;
 }
+.main-station-details-black {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .station-details-img {
   box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
   height: 192px;
@@ -35,5 +60,23 @@
   }
   p {
     @include body-text("secondary");
+  }
+}
+.station-details-svg-btn {
+  background-color: transparent;
+  border: none;
+  height: 32px;
+  width: 32px;
+  padding-block: 8px;
+  margin-inline-end: 16px;
+}
+.station-details-svg-btn-img {
+  height: 31px;
+  width: 31px;
+  filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%)
+    contrast(87%);
+  &:hover {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg)
+      brightness(108%) contrast(102%);
   }
 }

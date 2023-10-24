@@ -11,25 +11,19 @@
 @import "basics/links";
 @import "basics/forms";
 
-
 // Views
 @import "views/HomePage";
 @import "views/StationDetails";
 
-
 // Components
 @import "cmps/AppHeader";
 @import "cmps/Navbar";
-@import"cmps/Aside";
+@import "cmps/Aside";
 @import "cmps/UserMsg";
 @import "cmps/Library";
 @import "cmps/StationList";
 @import "cmps/Player";
 @import "cmps/SongList.scss";
-@import "cmps/SongPreview.scss"
-
-
-
-
-
-
+@import "cmps/SongPreview.scss";
+@import "cmps/StationDetailsOptionMenu.scss";
+@import "cmps/StationDetailsModal.scss";
