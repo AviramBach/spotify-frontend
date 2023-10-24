@@ -1,10 +1,17 @@
 .homepage {
     h1 {
         margin: 1rem;
+        margin-top: .5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin: 1rem;
+        margin-top: 1.5rem;
     }
 
     overflow-y: auto;
-    height: 545px;
+    height: calc(100vh - 72px - 65px - 16px);
 
     .top-station-list {
 
@@ -15,17 +22,18 @@
             gap: .75rem;
 
             .station-preview {
-                height: 64px;
+                height: 48px;
                 margin-top: 0;
                 color: $white;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                border-radius: .5rem;
+                border-radius: .25rem;
                 background-color: rgba(255, 255, 255, 0.104);
                 transition: background-color .3s;
 
                 h1 {
+                    font-size: 1rem;
                     margin: 0;
                 }
 
@@ -46,10 +54,12 @@
 
                 button {
                     display: none;
-                    
+                    height: 32px;
+                    width: 32px;
+
                     img {
-                        width: 24px;
-                        height: 24px;
+                        width: 16px;
+                        height: 16px;
                     }
                 }
 
@@ -58,8 +68,8 @@
                 }
 
                 img {
-                    width: 64px;
-                    height: 64px;
+                    width: 48px;
+                    height: 48px;
                     border-radius: .25rem;
                 }
 
@@ -81,33 +91,48 @@
                 }
             }
 
-            @include for-normal-layout {
+            @media screen and (min-width: 850px) {
                 grid-template-columns: 1fr 1fr;
             }
 
-            @include for-wide-layout {
+            @media screen and (min-width: 1200px) {
                 grid-template-columns: 1fr 1fr 1fr;
+            }
 
+            @media screen and (min-width: 1400px) {
                 .station-preview {
-                    height: 80px;
+                    height: 64px;
 
                     img {
-                        width: 80px;
-                        height: 80px;
+                        width: 64px;
+                        height: 64px;
+                    }
+
+                    button {
+                        width: 48px;
+                        height: 48px;
+
+                        img {
+                            width: 24px;
+                            height: 24px;
+                        }
                     }
                 }
             }
+
         }
 
     }
 
     .bottom-station-list {
 
+        display: flex;
+
         .station-list {
             margin: 0 1rem;
             display: grid;
             // height: 285px;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             grid-template-rows: 1fr;
             justify-content: center;
             gap: 1rem;
@@ -116,14 +141,15 @@
             .station-preview {
                 position: relative;
                 display: flex;
-                height: 200px;
+                // height: 200px;
                 min-width: 150px;
+                max-width: 200px;
                 flex-direction: column;
-                height: max-content;
+                // height: max-content;
                 align-items: center;
                 justify-content: center;
-                border-radius: .5rem;
-                background-color: rgba(255, 255, 255, 0.104);
+                border-radius: .25rem;
+                background-color: rgba(255, 255, 255, 6%);
                 transition: background-color .3s;
 
                 article {
@@ -153,6 +179,8 @@
 
                 button {
                     display: none;
+                    height: 48px;
+                    width: 48px;
                 }
             }
 
@@ -169,13 +197,17 @@
                 }
             }
 
-            @media (min-width: 1000px) {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
+            @media screen and (min-width: 850px) {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
             }
 
-            @media (min-width: 1150px) {
-                grid-template-columns: repeat(5, minmax(0, 1fr));
-                gap: 24px;
+            @media (min-width: 1050px) {
+                grid-template-columns: repeat(4, minmax(0, 200px));
+            }
+
+            @media (min-width: 1400px) {
+                grid-template-columns: repeat(5, minmax(0, 200px));
+                gap: 1rem;
                 // height: 335px;
             }
 
