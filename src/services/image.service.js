@@ -8,7 +8,6 @@ export const imageService = {
 async function getColorFromImage(src) {
     const image = await loadImage(src)
     const col = await thief.getColor(image);
-    console.log(col);
     return col;
 }
 

@@ -4,6 +4,7 @@ import { httpService } from './http.service.js'
 
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { songService } from './song.service.js'
 
 
 const STORAGE_KEY = 'station'
@@ -84,7 +85,8 @@ const sTime = {
     imgUrl: './../../public/img/Album_cover4.jpg',
     addedBy: 'Gilad',
     duration: '3:33',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: false
 }
 const sConsideration = {
     id: utilService.makeId(),
@@ -95,7 +97,8 @@ const sConsideration = {
     imgUrl: './../../public/img/Album_cover1.png',
     addedBy: 'Guest',
     duration: '2:41',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: false
 }
 const sDang = {
     id: utilService.makeId(),
@@ -106,7 +109,8 @@ const sDang = {
     imgUrl: './../../public/img/Album-cover2.jpg',
     addedBy: 'Guest',
     duration: '4:39',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: false
 }
 const sJuicy = {
     id: utilService.makeId(),
@@ -117,7 +121,8 @@ const sJuicy = {
     imgUrl: './../../public/img/Album-cover2.jpg',
     addedBy: 'Gilad',
     duration: '4:13',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: false
 }
 const sZion = {
     id: utilService.makeId(),
@@ -128,7 +133,8 @@ const sZion = {
     imgUrl: './../../public/img/Album_cover3.jpg',
     addedBy: 'Guest',
     duration: '6:09',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: true
 }
 const sDooWop = {
     id: utilService.makeId(),
@@ -139,7 +145,8 @@ const sDooWop = {
     imgUrl: './../../public/img/Album_cover3.jpg',
     addedBy: 'Guest',
     duration: '3:56',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: true
 }
 const sWork = {
     id: utilService.makeId(),
@@ -150,7 +157,8 @@ const sWork = {
     imgUrl: './../../public/img/Album_cover1.png',
     addedBy: 'Gilad',
     duration: '3:39',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: false
 }
 const sWash = {
     id: utilService.makeId(),
@@ -161,7 +169,8 @@ const sWash = {
     imgUrl: './../../public/img/Album_cover3.jpg',
     addedBy: 'Spotify',
     duration: '4:54',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: false
 }
 const sHeyYa = {
     id: utilService.makeId(),
@@ -172,7 +181,8 @@ const sHeyYa = {
     imgUrl: './../../public/img/Outkast.jpg',
     addedBy: 'Gilad',
     duration: '3:52',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: true
 }
 const sRoses = {
     id: utilService.makeId(),
@@ -183,7 +193,8 @@ const sRoses = {
     imgUrl: './../../public/img/Outkast.jpg',
     addedBy: 'Guest',
     duration: '6:10',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: false
 }
 const sAdorn = {
     id: utilService.makeId(),
@@ -194,7 +205,8 @@ const sAdorn = {
     imgUrl: './../../public/img/Album_cover4.jpg',
     addedBy: 'Guest',
     duration: '3:15',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: true
 }
 const sJump = {
     id: utilService.makeId(),
@@ -205,12 +217,17 @@ const sJump = {
     imgUrl: './../../public/img/Album_cover4.jpg',
     addedBy: 'Gilad',
     duration: '3:59',
-    addedAt: utilService.randomPastTime()
+    addedAt: utilService.randomPastTime(),
+    isLiked: false
 }
+
+
+
 
 function _createStations() {
     return [
-        _createStation('Liked Songs', './../../public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy, sWash, sRoses, sDooWop, sAdorn, sHeyYa, sJump], 'Me', ['Yours', 'Playlist']),
+        _createStation('Liked songs', './../../public/img/liked-songs-300.png.jpg', [songService.getLikedSongs()], 'Me', ['Yours', 'Liked', 'Playlist']),
+        _createStation('My Favs', './../../public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy, sWash, sRoses, sDooWop, sAdorn, sHeyYa, sJump], 'Me', ['Yours', 'Playlist']),
         _createStation('ANTI', './../../public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'Album']),
         _createStation('R&B', './../../public/img/Album_cover3.jpg', [sZion, sWork, sDooWop, sConsideration], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
         _createStation('Daily Mix 1', './../../public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify',),

@@ -44,7 +44,7 @@ export function Library() {
     }
     function onSetFilter(filterBy) {
         dispatch({ type: SET_FILTER_BY, filterBy })
-        // console.log(filterBy)
+
     }
 
     return <section className='library'>

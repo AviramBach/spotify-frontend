@@ -23,7 +23,6 @@ export function StationDetails() {
   async function gc() {
     try {
       const color = await imageService.getColorFromImage(currStation.imgUrl)
-      console.log("color", color);
     } catch (ex) {
       console.log('error', ex)
     }
@@ -31,7 +30,6 @@ export function StationDetails() {
   }
   useEffect(() => {
     const { id } = params
-    console.log(params)
     stationService
       .getById(id)
       .then((station) => {
@@ -45,7 +43,6 @@ export function StationDetails() {
 
   function onPlaySongFromStation(station, song) {
     if (!song) song = station.songs[0]
-    console.log(song)
     setCurrStation(station)
     setCurrSong(song)
     setNextSong(song, station)
@@ -71,10 +68,29 @@ export function StationDetails() {
     setCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
-      console.log(currStation.songs)
     } catch (err) {
       // showErrorMsg('Cannot update station')
       console.error(err)
+    }
+  }
+
+  async function onLikedClicked(song) {
+    song.isLiked = !song.isLiked
+    if (song.isLiked === true) {
+      try {
+        await songService.saveToLikedSongs(song)
+      } catch (err) {
+        // showErrorMsg('Cannot update station')
+        console.error(err)
+      }
+    }
+    if (song.isLiked === false) {
+      try {
+        await songService.removeFromLikedSongs(song)
+      } catch (err) {
+        // showErrorMsg('Cannot update station')
+        console.error(err)
+      }
     }
   }
 
@@ -84,7 +100,6 @@ export function StationDetails() {
     setCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
-      console.log('Song removed')
     } catch (err) {
       console.error(err)
     }
@@ -97,7 +112,6 @@ export function StationDetails() {
     setCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
-      console.log(currStation.name)
     } catch (err) {
       console.error(err)
     }
@@ -127,7 +141,7 @@ export function StationDetails() {
             </button>
           </div>
           {isOption && <StationDetailsOptionMenu onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} onUpdateStationDetails={onUpdateStationDetails} ></StationDetailsOptionMenu>}
-          <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} currStation={currStation}></SongList>
+          <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} onLikedClicked={onLikedClicked} currStation={currStation}></SongList>
         </div>
       </div>
     </div>

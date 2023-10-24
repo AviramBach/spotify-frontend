@@ -1,8 +1,6 @@
 import { SongPreview } from "./SongPreview.jsx"
 import moment from "moment";
-import { useState } from "react"
-export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation, currStation }) {
-    const [isLiked, setIsLiked] = useState(null)
+export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation, onLikedClicked, currStation }) {
     return <div>
         <div className="info-line">
             <span className="info-line-index">#</span>
@@ -22,8 +20,8 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                         <p className="song-list-item-album">{song.album}</p>
                         <p className="song-list-item-added-at" >{moment(song.addedAt).fromNow()}</p>
                         <div className="song-list-item-duration-container">
-                            <button className="song-list-item-btn" onClick={() => { isLiked ? setIsLiked(null) : setIsLiked('liked') }}>
-                                <img className={`song-list-item-btn-img ${isLiked ? 'liked' : ''}`} src={isLiked ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />
+                            <button className="song-list-item-btn" onClick={() => { onLikedClicked(song) }}>
+                                <img className={`song-list-item-btn-img ${song.isLiked ? 'liked' : ''}`} src={song.isLiked ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />
                             </button>
                             <p className="song-list-item-duration">{song.duration}</p>
                             <button className="song-list-item-btn" onClick={() => onRemoveSongFromStation(song.id)}>

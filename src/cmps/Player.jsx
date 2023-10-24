@@ -86,12 +86,10 @@ export function Player() {
 
     const handleEnded = () => {
         if (isLooped) {
-            console.log('Song ended');
             setCurrentTime(0)
             playerRef.current.seekTo(0)
             if (isPlaying) {
                 playerRef.current.play();
-                console.log('Song restarted');
             }
         } else goToNextSong()
     }

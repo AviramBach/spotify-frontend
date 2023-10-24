@@ -7,7 +7,6 @@ export function StationList({ stations }) {
 
     function onPlaySongFromStation(station, song) {
         if (!song) song = station.songs[0]
-        console.log(song)
         setCurrStation(station)
         setCurrSong(song)
         setNextSong(song, station)
