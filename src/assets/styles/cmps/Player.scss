@@ -81,6 +81,7 @@
     width: 100%;
     height: 100%;
   }
+
   img.play-icon:hover {
     width: 105%;
     height: 105%;
@@ -106,28 +107,92 @@
   }
 }
 
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+
+  // &::-ms-track {
+  //   width: 300px;
+  //   height: 5px;
+  //   background: transparent;
+  //   border-color: transparent;
+  //   border-width: 6px 0;
+  //   color: transparent;
+  // }
+
+  // &::-ms-fill-lower {
+  //   background: white;
+  //   border-radius: 10px;
+  // }
+
+  &::-webkit-slider-thumb {
+    // box-shadow: 1px 1px 1px #000031;
+    // border: 1px solid #00001E;
+    height: 12px;
+    width: 12px;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -5px;
+    display: none;
+
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 3px;
+    animate: 0.2s;
+    background: $spotify-grey;
+    border-radius: 5px;
+  }
+
+  &:hover {
+    &::-webkit-slider-thumb {
+      display: block;
+    }
+
+    &::-webkit-slider-runnable-track {
+      background: $spotify-green;
+    }
+  }
+
+}
+
+// input[type=range]:focus {
+//   outline: none;
+// }
+
+
+
+
+
+
+
 .bar {
   width: 100%;
   accent-color: white;
 }
+
 .player-btn-img {
-  filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%)
-    contrast(87%);
+  filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%) contrast(87%);
+
   &:hover {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg)
-      brightness(108%) contrast(102%);
-    transition: filter 0.1s ease; /* Add a smooth transition for a nice effect */
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg) brightness(108%) contrast(102%);
+    transition: filter 0.1s ease;
+    /* Add a smooth transition for a nice effect */
   }
 }
+
 .active-player-btn-img {
-  filter: invert(100%) sepia(1%) saturate(379%) hue-rotate(279deg)
-    brightness(108%) contrast(100%);
+  filter: invert(100%) sepia(1%) saturate(379%) hue-rotate(279deg) brightness(108%) contrast(100%);
 }
+
 .full-heart-icon {
-  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
-    brightness(91%) contrast(79%);
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg) brightness(91%) contrast(79%);
 }
+
 .active-loop-btn {
-  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
-    brightness(91%) contrast(79%);
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg) brightness(91%) contrast(79%);
 }
