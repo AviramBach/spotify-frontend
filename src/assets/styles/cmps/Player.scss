@@ -18,12 +18,25 @@
 .player-song-preview {
   display: flex;
   align-items: center;
+  min-width: 200px;
+  padding: 16px;
+
+  img {
+    width: 56px;
+    height: 56px;
+    border-radius: .25rem;
+  }
 }
 
 .player-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 300px;
+
+  @media screen and (min-width: 1000px) {
+    min-width: 500px;
+  }
 }
 
 .main-controls {
@@ -31,17 +44,43 @@
   justify-content: center;
   align-items: center;
 
-  margin: 8px;
+  // margin: 8px;
   flex-flow: row nowrap;
   gap: 8px;
   width: 100%;
 }
 
 .player-side-controls {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-self: center;
-  align-items: baseline;
+  align-items: center;
+
+  .volume-bar {
+    display: flex;
+    align-items: center;
+  }
+
+  .volume-level {
+    position: absolute;
+    top: 50%;
+    left: 32px;
+    height: 3px;
+    transform: translate(0, -50%);
+    border-radius: 2px;
+    background-color: white;
+  }
+
+  &:hover {
+    .volume-level {
+      background-color: $spotify-green;
+    }
+
+    ::-webkit-slider-thumb {
+      display: block;
+    }
+  }
 }
 
 .player-controls-left {
@@ -81,6 +120,7 @@
     width: 100%;
     height: 100%;
   }
+
   img.play-icon:hover {
     width: 105%;
     height: 105%;
@@ -93,41 +133,133 @@
 }
 
 .progress-bar {
+  position: relative;
   display: flex;
   flex-direction: row;
   gap: 2px;
 
   .elapsed-time {
-    font-size: 14px;
+    width: 2.5rem;
+    font-size: 11px;
+    color: $spotify-grey;
+  }
+
+  .progress-elapsed {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    height: 3px;
+    transform: translate(0, -50%);
+    border-radius: 2px;
+    background-color: white;
+  }
+
+  &:hover {
+    .progress-elapsed {
+      background-color: $spotify-green;
+    }
+
+    ::-webkit-slider-thumb {
+      display: block;
+    }
   }
 
   .remaining-time {
-    font-size: 14px;
+    width: 2.5rem;
+    font-size: 11px;
+    color: $spotify-grey;
   }
 }
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+
+  // &::-ms-track {
+  //   width: 300px;
+  //   height: 5px;
+  //   background: transparent;
+  //   border-color: transparent;
+  //   border-width: 6px 0;
+  //   color: transparent;
+  // }
+
+  // &::-ms-fill-lower {
+  //   background: white;
+  //   border-radius: 10px;
+  // }
+
+  &::-webkit-slider-thumb {
+    // box-shadow: 1px 1px 1px #000031;
+    // border: 1px solid #00001E;
+    position: relative;
+    height: 12px;
+    width: 12px;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -5px;
+    display: none;
+    z-index: 10;
+
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 3px;
+    // animate: 0.2s;
+    background: $spotify-grey;
+    border-radius: 5px;
+  }
+
+  &:hover {
+    &::-webkit-slider-thumb {
+      display: block;
+    }
+
+    // &::-webkit-slider-runnable-track {
+    //   background: $spotify-green;
+    // }
+  }
+
+}
+
+// input[type=range]:focus {
+//   outline: none;
+// }
+
+
+
+
+
+
 
 .bar {
   width: 100%;
   accent-color: white;
 }
+
+
 .player-btn-img {
-  filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%)
-    contrast(87%);
+  filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%) contrast(87%);
+
   &:hover {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg)
-      brightness(108%) contrast(102%);
-    transition: filter 0.1s ease; /* Add a smooth transition for a nice effect */
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg) brightness(108%) contrast(102%);
+    transition: filter 0.1s ease;
+    /* Add a smooth transition for a nice effect */
   }
 }
+
 .active-player-btn-img {
-  filter: invert(100%) sepia(1%) saturate(379%) hue-rotate(279deg)
-    brightness(108%) contrast(100%);
+  filter: invert(100%) sepia(1%) saturate(379%) hue-rotate(279deg) brightness(108%) contrast(100%);
 }
+
 .full-heart-icon {
-  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
-    brightness(91%) contrast(79%);
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg) brightness(91%) contrast(79%);
 }
+
 .active-loop-btn {
-  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
-    brightness(91%) contrast(79%);
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg) brightness(91%) contrast(79%);
 }

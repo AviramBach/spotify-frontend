@@ -175,6 +175,9 @@ export function Player() {
                         step={0.1}
                         onChange={handleSeek}
                     />
+
+                    <div className="progress-elapsed" style={{ width: `${0.84 * (timeElapsed / timeRemaining) * 100}%` }}>
+                    </div>
                     <span className="remaining-time">{formatTime(timeRemaining)}</span>
                 </div>
 
@@ -200,6 +203,8 @@ export function Player() {
                         value={volume}
                         onChange={handleVolumeChange}
                     />
+                </div>
+                <div className="volume-level" style={{ width: `${0.78 * volume * 100}%` }}>
                 </div>
 
             </div>
