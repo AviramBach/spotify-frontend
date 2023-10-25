@@ -14,32 +14,37 @@ export function StationDetails() {
   const navigate = useNavigate()
   const [currStation, setCurrStation] = useState(null)
   const [isOption, setIsOption] = useState(false)
+  const [gradientColor, setGradientColor] = useState('0,0,0')
   const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
 
   useEffect(() => {
-    gc();
+    getColor()
   }, [currStation])
 
-  async function gc() {
+  async function getColor() {
     try {
       const color = await imageService.getColorFromImage(currStation.imgUrl)
+      const formattedColor = color.join(',')
+      setGradientColor(formattedColor);
+      return color
     } catch (ex) {
       console.log('error', ex)
     }
-
   }
   useEffect(() => {
-    const { id } = params
-    stationService
-      .getById(id)
-      .then((station) => {
-        if (!station) return navigate("/")
-        setCurrStation(station)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    getStation()
   }, [params])
+
+  async function getStation() {
+    try {
+      const { id } = params
+      const station = await stationService.getById(id)
+      if (!station) return navigate("/")
+      setCurrStation(station)
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   function onPlaySongFromStation(station, song) {
     if (!song) song = station.songs[0]
@@ -75,23 +80,7 @@ export function StationDetails() {
   }
 
   async function onLikedClicked(song) {
-    song.isLiked = !song.isLiked
-    if (song.isLiked === true) {
-      try {
-        await songService.saveToLikedSongs(song)
-      } catch (err) {
-        // showErrorMsg('Cannot update station')
-        console.error(err)
-      }
-    }
-    if (song.isLiked === false) {
-      try {
-        await songService.removeFromLikedSongs(song)
-      } catch (err) {
-        // showErrorMsg('Cannot update station')
-        console.error(err)
-      }
-    }
+    !song.isLiked ? await songService.saveToLikedSongs(song) : await songService.removeFromLikedSongs(song);
   }
 
   async function onRemoveSongFromStation(songId) {
@@ -120,7 +109,12 @@ export function StationDetails() {
   if (!currStation) return <div>loading...</div>
   const { name, tags, songs, imgUrl } = currStation
   return (
-    <div className="station-details">
+    <div className="station-details" style={{
+      background: `linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(${gradientColor}, 1) 100%
+    )` }}>
       <div className="station-details-header-container">
         <img className="station-details-img" src={imgUrl} alt={name} />
         <div className="station-details-header">

@@ -27,6 +27,8 @@
 
     img {
       width: 24px;
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg)
+        brightness(108%) contrast(102%);
     }
 
     h1 {
@@ -87,6 +89,8 @@
     img {
       height: 16px;
       width: 16px;
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg)
+        brightness(108%) contrast(102%);
     }
   }
 

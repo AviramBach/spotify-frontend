@@ -18,7 +18,6 @@ export const songService = {
     getLikedSongs,
     removeFromLikedSongs,
     saveToLikedSongs
-    // addSongMsg
 }
 window.cs = songService
 
@@ -43,9 +42,6 @@ async function remove(songId) {
     // return httpService.delete(`song/${songId}`)
 }
 
-
-
-
 async function save(song) {
     let savedSong
     if (song._id) {
@@ -59,12 +55,9 @@ async function save(song) {
     return savedSong
 }
 
-async function getLikedSongs(filterBy = isLiked) {
-    let likedSongs = await storageService.query(LIKED_SONGS_KEY)
-    if (filterBy === isLiked) {
-        likedSongs = songsList.filter((song) => song.isLiked)
-    }
-    return likedSongs
+async function getLikedSongs() {
+
+    return (await storageService.query(LIKED_SONGS_KEY)).filter()
 }
 
 async function saveToLikedSongs(song) {

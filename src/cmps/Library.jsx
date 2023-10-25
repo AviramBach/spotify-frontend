@@ -50,11 +50,11 @@ export function Library() {
     return <section className='library'>
         <div className='library-header'>
             <div>
-                <img className='library-icon' src="public/img/spotify android icons 24px (Community)/Your Playlist.png" alt="" />
+                <img className='library-icon' src="./../../public/img/library.svg" alt="" />
                 <h1>Your Library</h1>
             </div>
             <button onClick={onAddStation}>
-                <img className='add-icon' src="public/img/spotify android icons 24px (Community)/Add Icon.png" alt="" />
+                <img className='add-icon' src="./../../public/img/plus.svg" alt="" />
             </button>
         </div>
         <LibraryFilter filterBy={filterBy} onSetFilter={onSetFilter} />

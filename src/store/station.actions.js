@@ -1,5 +1,4 @@
 import { stationService } from "../services/station.service.js";
-import { userService } from "../services/user.service.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ADD_STATION, REMOVE_STATION, SET_STATIONS, UNDO_REMOVE_STATION, UPDATE_STATION } from "./station.reducer.js";
@@ -34,7 +33,7 @@ export async function loadStations() {
         //     if (station2[sortBy] < station1[sortBy]) return 1
         //     return -1
         // })
-        console.log('Stations from DB:', stations)
+        // console.log('Stations from DB:', stations)
         store.dispatch({
             type: SET_STATIONS,
             stations

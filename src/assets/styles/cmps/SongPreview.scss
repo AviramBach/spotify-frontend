@@ -1,27 +1,26 @@
-.song-preview{
-    display: flex;
-    align-items: center;
+.song-preview {
+  display: flex;
+  align-items: center;
 }
-.song-preview-img{
-    height: 40px;
-    width: 40px;
-    margin-inline-end: 16px;
+.song-preview-img {
+  height: 40px;
+  width: 40px;
+  margin-inline-end: 16px;
 }
-.song-preview-details{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    align-content: center;
-    justify-items: start;
+.song-preview-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  align-content: center;
+  justify-items: start;
 }
-.song-preview-title{
-    margin: 0;
-    grid-row: 1/2;
-    @include body-link('primary');
-
+.song-preview-title {
+  margin: 0;
+  grid-row: 1/2;
+  @include body-link("primary");
 }
-.song-preview-artist{
-    margin: 0;
-    grid-row: 2/3;
-    @include body-link('secondary');
+.song-preview-artist {
+  margin: 0;
+  grid-row: 2/3;
+  @include body-link("secondary");
 }
