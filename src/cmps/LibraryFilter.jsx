@@ -20,7 +20,7 @@ export function LibraryFilter({ filterBy, onSetFilter }) {
     return (
         <section className="library-filter">
             <label htmlFor="txt">
-                <img src="public/img/spotify android icons 24px (Community)/Search Icon.png" alt="" />
+                <img src="./../../public/img/search.svg" alt="" />
                 <input type="text" name="txt" id="txt" onInput={setNewFilter} />
             </label>
             <select name="sortBy" onChange={setNewFilter}>

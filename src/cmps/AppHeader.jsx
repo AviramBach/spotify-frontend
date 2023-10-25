@@ -3,12 +3,12 @@ export function AppHeader() {
     const navigate = useNavigate();
     const goBack = () => {
         navigate(-1);
-
+        console.log('back');
 
     };
     const goForward = () => {
         navigate(1);
-
+        console.log('forward');
     };
     return (
         <header className="app-header flex">
