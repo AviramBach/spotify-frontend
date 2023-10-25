@@ -106,7 +106,9 @@ export function Player() {
         <footer className='app-player'>
 
             <div className='player-song-preview'>
-                <SongPreview song={currSong} />
+                <div className='player-song-preview-comp'>
+                    <SongPreview song={currSong} />
+                </div>
                 <button className='player-btn' onClick={heartSong}>
                     {isLiked ? <img className='full-heart-icon' src="./../../public/img/selected-heart.svg" alt="" /> :
                         <img className='empty-heart-icon player-btn-img' src="./../../public/img/heart.svg" alt="" />}

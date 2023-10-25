@@ -20,14 +20,16 @@
   align-items: center;
   min-width: 200px;
   padding: 16px;
-
   img {
     width: 56px;
     height: 56px;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
   }
 }
 
+.player-song-preview-comp {
+  width: 190px;
+}
 .player-main {
   display: flex;
   flex-direction: column;
@@ -171,7 +173,7 @@
   }
 }
 
-input[type=range] {
+input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
   background: transparent;
@@ -203,7 +205,6 @@ input[type=range] {
     margin-top: -5px;
     display: none;
     z-index: 10;
-
   }
 
   &::-webkit-slider-runnable-track {
@@ -223,43 +224,40 @@ input[type=range] {
     //   background: $spotify-green;
     // }
   }
-
 }
 
 // input[type=range]:focus {
 //   outline: none;
 // }
 
-
-
-
-
-
-
 .bar {
   width: 100%;
   accent-color: white;
 }
 
-
 .player-btn-img {
-  filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%) contrast(87%);
+  filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%)
+    contrast(87%);
 
   &:hover {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg) brightness(108%) contrast(102%);
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg)
+      brightness(108%) contrast(102%);
     transition: filter 0.1s ease;
     /* Add a smooth transition for a nice effect */
   }
 }
 
 .active-player-btn-img {
-  filter: invert(100%) sepia(1%) saturate(379%) hue-rotate(279deg) brightness(108%) contrast(100%);
+  filter: invert(100%) sepia(1%) saturate(379%) hue-rotate(279deg)
+    brightness(108%) contrast(100%);
 }
 
 .full-heart-icon {
-  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg) brightness(91%) contrast(79%);
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
+    brightness(91%) contrast(79%);
 }
 
 .active-loop-btn {
-  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg) brightness(91%) contrast(79%);
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
+    brightness(91%) contrast(79%);
 }

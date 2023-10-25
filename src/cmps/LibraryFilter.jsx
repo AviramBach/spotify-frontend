@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react"
-import { utilService } from "../services/util.service"
 
 export function LibraryFilter({ filterBy, onSetFilter }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })

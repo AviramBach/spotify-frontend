@@ -40,8 +40,9 @@
     button {
       margin: 0;
       border: none;
-      border-radius: 1rem;
+      border-radius: 50%;
       background-color: $spotify-black;
+      height: 24px;
 
       img {
         width: 16px;

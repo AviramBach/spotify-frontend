@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addStation, loadStations, removeStation, updateStation } from '../store/station.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { StationList } from "./StationList"
+import { StationList } from "./StationList.jsx"
 import { stationService } from '../services/station.service.js'
 import { LibraryFilter } from './LibraryFilter.jsx'
 import { SET_FILTER_BY } from '../store/station.reducer.js'
@@ -58,6 +58,6 @@ export function Library() {
             </button>
         </div>
         <LibraryFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-        <StationList stations={stations} />
+        <StationList stations={stations} isHideBodyContainer={false} />
     </section>
 }

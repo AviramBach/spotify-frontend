@@ -1,6 +1,6 @@
 import { Draggable, Droppable } from "react-beautiful-dnd";
 import { SongPreview } from "./SongPreview.jsx"
-
+import { utilService } from "../services/util.service.js";
 import moment from "moment";
 export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation, onLikedClicked, currStation }) {
     return <div>
@@ -32,9 +32,9 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                     >
                                         <p className="song-list-item-index">{idx + 1}</p>
                                         <div className="song-list-item-preview">
-                                            <SongPreview song={song}></SongPreview>
+                                            <SongPreview song={song} />
                                         </div>
-                                        <p className="song-list-item-album">{song.album}</p>
+                                        <p className="song-list-item-album"> {utilService.getTxtToShow(song.album, 15)}</p>
                                         <p className="song-list-item-added-at" >{moment(song.addedAt).fromNow()}</p>
                                         <div className="song-list-item-duration-container">
                                             <button className="song-list-item-btn" onClick={(ev) => {

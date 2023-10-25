@@ -6,7 +6,8 @@ export const utilService = {
     randomPastTime,
     saveToStorage,
     loadFromStorage,
-    getAssetSrc
+    getAssetSrc,
+    getTxtToShow
 }
 
 function makeId(length = 6) {
@@ -69,4 +70,11 @@ function getAssetSrc(name) {
     const modules = import.meta.glob('/src/assets/*', { eager: true })
     const mod = modules[path]
     return mod.default
+}
+
+function getTxtToShow(txt, length) {
+    if (txt && txt.length <= length) return txt;
+    else {
+        return txt?.substring(0, length) + "...";
+    }
 }

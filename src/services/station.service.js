@@ -231,13 +231,13 @@ function _createStations() {
         _createStation('R&B', './../../public/img/Album_cover3.jpg', [sZion, sWork, sDooWop, sConsideration], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
         _createStation('Daily Mix 1', './../../public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify',),
         _createStation('Hip hop', './../../public/img/Album-cover2.jpg', [sJuicy, sDang, sRoses, sWork], 'Gilad', ['Hip hop', 'Rap', 'Playlist']),
-        _createStation('Daily Mix 3', './../../public/img/daily_mix_3.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify'),
+        _createStation('Daily Mix 3', './../../public/img/daily_mix_3.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify', ['daily mix', 'Vibe', 'Playlist']),
         _createStation('Soul Mix', './../../public/img/Album_cover3.jpg', [sDooWop, sConsideration, sWash], 'Songify', ['Mix']),
         _createStation('Rock', './../../public/img/Album_cover4.jpg', [sJump, sTime, sWash], 'Rihanna', ['Rock', 'Playlist']),
         _createStation('On Repeat', './../../public/img/Outkast.jpg', [sRoses, sWork, sDooWop], 'Gilad', ['Playlist']),
-        _createStation('2010s Mix', './../../public/img/Album_cover1.png', [sWork, sConsideration, sDang,], 'Songify',),
+        _createStation('2010s Mix', './../../public/img/Album_cover1.png', [sWork, sConsideration, sDang,], 'Songify', ['daily mix', 'Vibe', 'Playlist']),
         _createStation('Chill Mix', './../../public/img/Album-cover2.jpg', [sAdorn, sDang, sJuicy, sRoses, sWork], 'Gilad', ['Hip hop', 'Rap', 'Playlist']),
-        _createStation('Outkast Mix', './../../public/img/Outkast.jpg', [sHeyYa, sRoses, sJuicy, sDang], 'Songify')
+        _createStation('Outkast Mix', './../../public/img/Outkast.jpg', [sHeyYa, sRoses, sJuicy, sDang], 'Songify', ['chill', 'Vibe', 'Playlist'])
     ]
 }
 
