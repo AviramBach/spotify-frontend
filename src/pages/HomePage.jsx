@@ -7,17 +7,17 @@ export function HomePage() {
     // const dispatch = useDispatch()
     const stations = useSelector(storeState => storeState.stationModule.stations)
     let time = new Date().getHours()
-    const greeting = (time > 18) ? 'Good Evening' : (time > 12) ? 'Good Afternoon' : 'Good Morning'
+    const greeting = (time > 18) ? 'Good evening' : (time > 12) ? 'Good afternoon' : 'Good morning'
 
     return (
         <section className='homepage'>
             <h1>{greeting}</h1>
             <div className='top-station-list'>
-                <StationList stations={stations.slice(0, 6)} isHome={true} dropId={'topHome'} />
+                <StationList stations={stations.slice(0, 6)} isHome={true} />
             </div>
             <h2>Your Top Mixes</h2>
             <div className='bottom-station-list'>
-                <StationList stations={stations.slice(6, 11)} isHome={true}dropId={'bottomHome'}  />
+                <StationList stations={stations.slice(6, 11)} isHome={true} />
             </div>
         </section >
     )
