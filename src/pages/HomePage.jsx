@@ -13,11 +13,11 @@ export function HomePage() {
         <section className='homepage'>
             <h1>{greeting}</h1>
             <div className='top-station-list'>
-                <StationList stations={stations.slice(0, 6)} isHome={true} />
+                <StationList stations={stations.slice(0, 6)} isHome={true} dropId={'topHome'} />
             </div>
             <h2>Your Top Mixes</h2>
             <div className='bottom-station-list'>
-                <StationList stations={stations.slice(6, 11)} isHome={true} />
+                <StationList stations={stations.slice(6, 11)} isHome={true}dropId={'bottomHome'}  />
             </div>
         </section >
     )

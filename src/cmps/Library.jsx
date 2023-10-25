@@ -58,6 +58,6 @@ export function Library() {
             </button>
         </div>
         <LibraryFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-        <StationList stations={stations} />
+        <StationList stations={stations} dropId={'library'} />
     </section>
 }
