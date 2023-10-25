@@ -8,13 +8,15 @@ import { setCurrSong, setNextSong, setPrevSong, toggelIsPlaying } from "../store
 import { useSelector } from "react-redux"
 import { imageService } from "../services/image.service.js"
 import { StationDetailsOptionMenu } from "../cmps/StationDetailsOptionMenu.jsx"
+import moment from "moment";
+
 
 export function StationDetails() {
   const params = useParams()
   const navigate = useNavigate()
   const [currStation, setCurrStation] = useState(null)
   const [isOption, setIsOption] = useState(false)
-  const [gradientColor, setGradientColor] = useState('0,0,0')
+  const [gradientColor, setGradientColor] = useState('35, 35, 35')
   const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
 
   useEffect(() => {
@@ -107,20 +109,23 @@ export function StationDetails() {
   }
 
   if (!currStation) return <div>loading...</div>
-  const { name, tags, songs, imgUrl } = currStation
+  const { name, tags, songs, imgUrl, createdBy, createdAt } = currStation
   return (
     <div className="station-details" style={{
       background: `linear-gradient(
       0deg,
-      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 40%,
       rgba(${gradientColor}, 1) 100%
     )` }}>
       <div className="station-details-header-container">
         <img className="station-details-img" src={imgUrl} alt={name} />
         <div className="station-details-header">
           <h1 className="station-details-headline">{name}</h1>
-          <p className="station-details-tags">{tags.join()}</p>
-          <p className="station-details-count">{songs.length} songs</p>
+          <a className="station-details-created-by" href="#">{createdBy}</a>
+          <span className="dot">•</span>
+          <span className="station-details-tags">{tags.join()}</span>
+          <span className="dot">•</span>
+          <span className="station-details-count">{songs.length} songs,  <span className="station-details-created-at">{moment(createdAt).fromNow()}</span></span>
         </div>
       </div>
       <div className="main-station-details-container">

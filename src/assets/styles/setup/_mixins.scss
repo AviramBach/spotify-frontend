@@ -108,21 +108,20 @@
 
 @mixin body-link($type) {
   text-decoration: none;
+  color: $white;
   @if ($type== "primary") {
     font-weight: 500;
     font-size: 16px;
-    color: $white;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-  @if ($type== "secondary") {
+  } @else if ($type== "primary-small") {
+    font-weight: 700;
+    font-size: 14px;
+  } @else if ($type== "secondary") {
     font-weight: 400;
     font-size: 14px;
     color: $spotify-grey;
-    &:hover {
-      text-decoration: underline;
-    }
+  }
+  &:hover {
+    text-decoration: underline;
   }
 }
 @mixin headline() {
@@ -135,9 +134,10 @@
 @mixin body-text($type) {
   font-size: 0.875rem;
   font-weight: 400;
-  color: $white;
   @if ($type== "body") {
     color: $spotify-grey;
+  } @else if($type== "secondary-small") {
+    color: $white;
   } @else if($type== "secondary") {
     font-size: 1em;
   } @else if($type== "primary") {

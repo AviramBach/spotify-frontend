@@ -1,0 +1,22 @@
+.station-preview-title {
+  grid-row: 1/2;
+  @include body-text("secondary");
+}
+.station-preview-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  align-content: center;
+  justify-items: start;
+}
+.station-preview-body-container {
+  grid-row: 2/3;
+  display: flex;
+  align-items: start;
+}
+.station-preview-songs {
+  @include body-text("body");
+}
+.station-preview-created-by {
+  @include body-text("body");
+}

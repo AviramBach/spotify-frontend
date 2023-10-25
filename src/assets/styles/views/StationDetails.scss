@@ -59,6 +59,19 @@
     @include body-text("secondary");
   }
 }
+.dot {
+  margin-inline: 4px;
+}
+.station-details-created-by {
+  @include body-link("primary-small");
+}
+.station-details-tags,
+.station-details-count {
+  @include body-text("secondary-small");
+}
+.station-details-created-at {
+  @include body-text("body");
+}
 .station-details-svg-btn {
   background-color: transparent;
   border: none;
