@@ -4,26 +4,30 @@ import { stationService } from '../services/station.service.js'
 import { SongList } from "../cmps/SongList.jsx"
 import { removeStation, updateStation } from '../store/station.actions.js'
 import { songService } from '../services/song.service.js'
-import { setCurrSong, setNextSong, setPrevSong, toggelIsPlaying } from "../store/player.actions.js"
+import { setCurrSong, setCurrStation, setNextSong, setPrevSong, toggelIsPlaying } from "../store/player.actions.js"
 import { useSelector } from "react-redux"
 import { imageService } from "../services/image.service.js"
 import { StationDetailsOptionMenu } from "../cmps/StationDetailsOptionMenu.jsx"
+import { DragDropContext } from "react-beautiful-dnd"
+
 
 export function StationDetails() {
   const params = useParams()
   const navigate = useNavigate()
-  const [currStation, setCurrStation] = useState(null)
+  const [mycurrStation, setMyCurrStation] = useState(null)
   const [isOption, setIsOption] = useState(false)
   const [gradientColor, setGradientColor] = useState('0,0,0')
   const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
+  const currSong = useSelector(storeState => storeState.playerModule.currSong)
+
 
   useEffect(() => {
     getColor()
-  }, [currStation])
+  }, [mycurrStation])
 
   async function getColor() {
     try {
-      const color = await imageService.getColorFromImage(currStation.imgUrl)
+      const color = await imageService.getColorFromImage(mycurrStation.imgUrl)
       const formattedColor = color.join(',')
       setGradientColor(formattedColor);
       return color
@@ -40,7 +44,7 @@ export function StationDetails() {
       const { id } = params
       const station = await stationService.getById(id)
       if (!station) return navigate("/")
-      setCurrStation(station)
+      setMyCurrStation(station)
     } catch (err) {
       console.log(err);
     }
@@ -58,7 +62,7 @@ export function StationDetails() {
   async function onRemoveStation() {
     setIsOption(false)
     try {
-      await removeStation(currStation._id)
+      await removeStation(mycurrStation._id)
       navigate("/")
       showSuccessMsg('Station removed')
     } catch (err) {
@@ -69,8 +73,8 @@ export function StationDetails() {
     setIsOption(false)
     const title = prompt('Song name?')
     const songToAdd = songService.getRandomSong(title)
-    const updatdStation = { ...currStation, songs: [songToAdd, ...currStation.songs] }
-    setCurrStation(updatdStation)
+    const updatdStation = { ...mycurrStation, songs: [songToAdd, ...mycurrStation.songs] }
+    setMyCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
     } catch (err) {
@@ -84,9 +88,9 @@ export function StationDetails() {
   }
 
   async function onRemoveSongFromStation(songId) {
-    const updatedSongs = currStation.songs.filter(song => songId !== song.id)
-    const updatdStation = { ...currStation, songs: updatedSongs }
-    setCurrStation(updatdStation)
+    const updatedSongs = mycurrStation.songs.filter(song => songId !== song.id)
+    const updatdStation = { ...mycurrStation, songs: updatedSongs }
+    setMyCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
     } catch (err) {
@@ -97,8 +101,8 @@ export function StationDetails() {
   async function onUpdateStationDetails() {
     setIsOption(false)
     const name = prompt('new name')
-    const updatdStation = { ...currStation, name: name }
-    setCurrStation(updatdStation)
+    const updatdStation = { ...mycurrStation, name: name }
+    setMyCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
     } catch (err) {
@@ -106,8 +110,28 @@ export function StationDetails() {
     }
   }
 
-  if (!currStation) return <div>loading...</div>
-  const { name, tags, songs, imgUrl } = currStation
+  async function onDragEnd(result) {
+    if (!result.destination) return
+    const { source, destination } = result
+    const copiedItems = [...mycurrStation.songs]
+    const [removed] = copiedItems.splice(source.index, 1)
+    copiedItems.splice(destination.index, 0, removed)
+    const updatedStation = { ...mycurrStation, songs: copiedItems }
+    setCurrStation(updatedStation)
+    setMyCurrStation(updatedStation)
+    try {
+      await updateStation(updatedStation)
+    } catch (err) {
+      console.error(err)
+    }
+    if (currSong) {
+      setNextSong(currSong, updatedStation)
+      setPrevSong(currSong, updatedStation)
+    }
+  }
+
+  if (!mycurrStation) return <div>loading...</div>
+  const { name, tags, songs, imgUrl } = mycurrStation
   return (
     <div className="station-details" style={{
       background: `linear-gradient(
@@ -126,7 +150,7 @@ export function StationDetails() {
       <div className="main-station-details-container">
         <div className="main-station-details-black">
           <div className="station-details-button-container">
-            <button className="primary-play-button" onClick={() => onPlaySongFromStation(currStation)}>
+            <button className="primary-play-button" onClick={() => onPlaySongFromStation(mycurrStation)}>
               {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
                 <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
             </button>
@@ -135,7 +159,9 @@ export function StationDetails() {
             </button>
           </div>
           {isOption && <StationDetailsOptionMenu onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} onUpdateStationDetails={onUpdateStationDetails} ></StationDetailsOptionMenu>}
-          <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} onLikedClicked={onLikedClicked} currStation={currStation}></SongList>
+          <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
+            <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} onLikedClicked={onLikedClicked} currStation={mycurrStation}></SongList>
+          </DragDropContext>
         </div>
       </div>
     </div>
