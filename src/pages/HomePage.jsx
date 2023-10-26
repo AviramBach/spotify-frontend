@@ -17,7 +17,7 @@ export function HomePage() {
             </div>
             <h2>Your Top Mixes</h2>
             <div className='bottom-station-list'>
-                <StationList stations={stations.slice(6, 11)} isHome={true} isHideBodyContainer={false} />
+                <StationList stations={stations.slice(7, 12)} isHome={true} isHideBodyContainer={false} />
             </div>
         </section >
     )

@@ -20,7 +20,11 @@ export function Library() {
 
     stations.sort((station1, station2) => {
         if (sortBy === 'createdAt') return station2[sortBy] - station1[sortBy]
-        if (station2[sortBy] < station1[sortBy]) return 1
+        if (sortBy === 'name') {
+            if (station2[sortBy] < station1[sortBy]) return 1
+            return -1
+        }
+        if (station2.createdBy < station1.createdBy) return 1
         return -1
     })
 
