@@ -25,10 +25,10 @@
       gap: 0.5rem;
     }
 
-
     img {
       width: 24px;
-      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg) brightness(108%) contrast(102%);
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg)
+        brightness(108%) contrast(102%);
     }
 
     h1 {
@@ -41,7 +41,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: .5rem;
+      padding: 0.5rem;
       margin: 0;
       border: none;
       border-radius: 50%;
@@ -73,7 +73,7 @@
     .icon-container {
       display: flex;
       border-radius: 50%;
-      padding: .25rem;
+      padding: 0.25rem;
 
       &:hover {
         cursor: pointer;
@@ -95,7 +95,7 @@
 
     input:focus-visible {
       outline: none;
-      border-radius: .25rem;
+      border-radius: 0.25rem;
       background-color: lighten($color: $light-spotify-black, $amount: 10%);
 
       &::placeholder {
@@ -118,13 +118,12 @@
     img {
       height: 16px;
       width: 16px;
-      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg) brightness(108%) contrast(102%);
     }
 
     .sort {
       display: flex;
       align-items: center;
-      gap: .5rem;
+      gap: 0.5rem;
       width: 100px;
       justify-content: end;
       color: $spotify-grey;
@@ -143,8 +142,8 @@
       position: absolute;
       top: 100%;
       right: 1rem;
-      padding: .25rem;
-      border-radius: .25rem;
+      padding: 0.25rem;
+      border-radius: 0.25rem;
       background-color: $light-spotify-black;
       width: 127px;
 
@@ -155,9 +154,9 @@
         text-align: start;
         color: $spotify-grey;
         border: none;
-        border-radius: .125rem;
+        border-radius: 0.125rem;
         background-color: $light-spotify-black;
-        padding: .5rem .75rem;
+        padding: 0.5rem 0.75rem;
 
         &.active {
           color: $spotify-green;
@@ -232,7 +231,7 @@
       }
 
       .station-preview-created-by {
-        margin-inline-end: .25rem;
+        margin-inline-end: 0.25rem;
       }
 
       .station-preview-songs-titles {
@@ -262,6 +261,11 @@
   li:hover {
     background-color: $light-spotify-black;
   }
+}
+.station-details-svg-img {
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
+    brightness(91%) contrast(79%);
+  margin-inline-start: 16px;
 }
 
 // .homepage {

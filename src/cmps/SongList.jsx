@@ -4,9 +4,26 @@ import { utilService } from "../services/util.service.js";
 import moment from "moment";
 import { StationDetailsOptionMenu } from "./StationDetailsOptionMenu.jsx";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Popover } from "@mui/material";
+
+
 export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation, onLikedClicked, currStation }) {
+    const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
+    const currSong = useSelector(storeState => storeState.playerModule.currSong)
     const [isSongOption, setIsSongOption] = useState(false)
     const [songOptionId, setSongOptionId] = useState(null)
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    const open = Boolean(anchorEl);
+
     return <div className="song-list-container">
         <div className="info-line">
             <span className="info-line-index">#</span>
@@ -36,7 +53,7 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                     >
                                         <p className="song-list-item-index">{idx + 1}</p>
                                         <div className="song-list-item-preview">
-                                            <SongPreview song={song} />
+                                            <SongPreview song={song} isCurrSongPlaying={isPlaying && song.id === currSong} />
                                         </div>
                                         <p className="song-list-item-album"> {utilService.getTxtToShow(song.album, 15)}</p>
                                         <p className="song-list-item-added-at" >{moment(song.addedAt).fromNow()}</p>
@@ -52,10 +69,28 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                                 ev.stopPropagation()
                                                 setIsSongOption(!isSongOption)
                                                 setSongOptionId(song.id)
+                                                handleClick(ev);
                                             }}>
                                                 <img className="song-list-item-btn-img" src="./../../public/img/options.svg" alt="" />
                                             </button>
-                                            {isSongOption && <StationDetailsOptionMenu onRemoveSongFromStation={onRemoveSongFromStation} songId={songOptionId} content={'song-option-menu'} setIsSongOption={setIsSongOption} isSongOption={isSongOption} ></StationDetailsOptionMenu>}
+                                            <Popover
+                                                sx={{
+                                                    "& .MuiPopover-paper": {
+                                                        backgroundColor: "transparent"
+                                                    }
+                                                }}
+                                                onClick={ev => ev.stopPropagation()}
+                                                className={"song-list-popover"}
+                                                open={open}
+                                                anchorEl={anchorEl}
+                                                onClose={handleClose}
+                                                anchorOrigin={{
+                                                    vertical: 'bottom',
+                                                    horizontal: 'left',
+                                                }}
+                                            >
+                                                <StationDetailsOptionMenu onRemoveSongFromStation={onRemoveSongFromStation} songId={songOptionId} content={'song-option-menu'} setIsSongOption={setIsSongOption} isSongOption={isSongOption} ></StationDetailsOptionMenu>
+                                            </Popover>
                                         </div>
                                     </li>
                                 )}

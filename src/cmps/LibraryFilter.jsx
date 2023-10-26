@@ -26,12 +26,15 @@ export function LibraryFilter({ filterBy, onSetFilter }) {
             </label>
             <button className="sort" onClick={() => setIsSelect(!isSelect)}>
                 <span>{(filterBy.sortBy === 'createdAt') ? 'Recents' : (filterBy.sortBy === 'name') ? 'Alphabetical' : 'Creator'}</span>
-                <img className="station-details-svg-btn-img" src="./../../public/img/options.svg" alt="" />
+                <img className="station-details-svg-btn-img" src="./../../public/img/sort.svg" alt="" />
             </button>
             {isSelect && <section className="select-modal">
-                <button className={`select-option ${(filterBy.sortBy === 'createdAt') ? 'active' : ''}`} onClick={() => setNewFilter({ target: { name: 'sortBy', value: 'createdAt' } })}><span>Recents</span>{(filterBy.sortBy === 'createdAt') && <span>✓</span>}</button>
-                <button className={`select-option ${(filterBy.sortBy === 'name') ? 'active' : ''}`} onClick={() => setNewFilter({ target: { name: 'sortBy', value: 'name' } })}><span>Alphabetical</span>{(filterBy.sortBy === 'name') && <span>✓</span>}</button>
-                <button className={`select-option ${(filterBy.sortBy === 'creator') ? 'active' : ''}`} onClick={() => setNewFilter({ target: { name: 'sortBy', value: 'creator' } })}><span>Creator</span>{(filterBy.sortBy === 'creator') && <span>✓</span>}</button>
+                <button className={`select-option ${(filterBy.sortBy === 'createdAt') ? 'active' : ''}`}
+                    onClick={() => setNewFilter({ target: { name: 'sortBy', value: 'createdAt' } })}>
+                    <span>Recents</span>{(filterBy.sortBy === 'createdAt') && <img className={"station-details-svg-img"} src="./../../public/img/checked.svg" alt="" />
+                    }</button>
+                <button className={`select-option ${(filterBy.sortBy === 'name') ? 'active' : ''}`} onClick={() => setNewFilter({ target: { name: 'sortBy', value: 'name' } })}><span>Alphabetical</span>{(filterBy.sortBy === 'name') && <img className={"station-details-svg-img"} src="./../../public/img/checked.svg" alt="" />}</button>
+                <button className={`select-option ${(filterBy.sortBy === 'creator') ? 'active' : ''}`} onClick={() => setNewFilter({ target: { name: 'sortBy', value: 'creator' } })}><span>Creator</span>{(filterBy.sortBy === 'creator') && <img className={"station-details-svg-img"} src="./../../public/img/checked.svg" alt="" />}</button>
             </section>}
         </section>
     )

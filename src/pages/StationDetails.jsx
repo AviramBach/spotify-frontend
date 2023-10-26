@@ -10,16 +10,28 @@ import { imageService } from "../services/image.service.js"
 import { StationDetailsOptionMenu } from "../cmps/StationDetailsOptionMenu.jsx"
 import moment from "moment";
 import { DragDropContext } from "react-beautiful-dnd"
+import { Popover } from "@mui/material";
+
 
 
 export function StationDetails() {
+  const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
+  const currSong = useSelector(storeState => storeState.playerModule.currSong)
   const params = useParams()
   const navigate = useNavigate()
   const [mycurrStation, setMyCurrStation] = useState(null)
   const [isOption, setIsOption] = useState(false)
   const [gradientColor, setGradientColor] = useState('35, 35, 35')
-  const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
-  const currSong = useSelector(storeState => storeState.playerModule.currSong)
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
 
 
   useEffect(() => {
@@ -161,11 +173,31 @@ export function StationDetails() {
               {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
                 <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
             </button>
-            <button className="station-details-svg-btn station-details-options-btn" onClick={() => setIsOption(!isOption)}>
+            <button className="station-details-svg-btn station-details-options-btn" onClick={(ev) => {
+              setIsOption(!isOption)
+              handleClick(ev);
+            }}>
               <img className="station-details-svg-btn-img" src="./../../public/img/options.svg" alt="" />
             </button>
           </div>
-          {isOption && <StationDetailsOptionMenu onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} onUpdateStationDetails={onUpdateStationDetails} content={'option-menu'}></StationDetailsOptionMenu>}
+          <Popover
+            sx={{
+              "& .MuiPopover-paper": {
+                backgroundColor: "transparent"
+              }
+            }}
+            onClick={ev => ev.stopPropagation()}
+            className={"song-list-popover"}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+          >
+            <StationDetailsOptionMenu onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} onUpdateStationDetails={onUpdateStationDetails} content={'option-menu'}></StationDetailsOptionMenu>
+          </Popover>
           <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
             <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} onLikedClicked={onLikedClicked} currStation={mycurrStation}></SongList>
           </DragDropContext>

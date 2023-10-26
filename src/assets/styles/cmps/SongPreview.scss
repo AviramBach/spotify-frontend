@@ -24,3 +24,6 @@
   grid-row: 2/3;
   @include body-link("secondary");
 }
+.playing-song {
+  color: $spotify-green;
+}
