@@ -21,6 +21,7 @@
       gap: 0.75rem;
 
       .station-preview {
+        position: relative;
         height: 48px;
         margin-top: 0;
         color: $white;
@@ -51,32 +52,55 @@
           cursor: pointer;
         }
 
-        button {
-          display: none;
-          height: 32px;
-          width: 32px;
-
-          img {
-            width: 16px;
-            height: 16px;
-          }
-        }
-
-        button:hover {
-          cursor: pointer;
+        .img-container {
+          display: flex;
         }
 
         img {
           width: 48px;
           height: 48px;
-          border-radius: 0.25rem;
+          border-top-left-radius: 0.25rem;
+          border-bottom-left-radius: 0.25rem;
+          box-shadow: 3px 0 15px $spotify-black ;
         }
 
+        button {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translate(0, -50%);
+          display: none;
+          height: 32px;
+          width: 32px;
+
+          animation: 1s;
+
+          img {
+            width: 20px;
+            height: 20px;
+            box-shadow: none;
+          }
+
+          &.playing {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        button:hover {
+          cursor: pointer;
+          scale: 1.05;
+          background-color: lighten($color: $spotify-green, $amount: 5%);
+        }
+
+
         // .play-button-icon {
-        //     height: 48px;
-        //     width: 48px;
-        //     border-radius: .25rem;
-        //     filter: invert(63%) sepia(62%) saturate(4488%) hue-rotate(104deg) brightness(99%) contrast(79%);
+        //   box-shadow: none;
+        //   // height: 48px;
+        //   // width: 48px;
+        //   // border-radius: .25rem;
+        //   // filter: invert(63%) sepia(62%) saturate(4488%) hue-rotate(104deg) brightness(99%) contrast(79%);
         // }
       }
 
@@ -127,47 +151,93 @@
     .station-list {
       margin: 0 1rem;
       display: grid;
-      // height: 285px;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: 1fr;
       justify-content: center;
       gap: 1rem;
       overflow: hidden;
 
-      li:nth-child(2) ~ * {
+      li:nth-child(2)~* {
         display: none;
       }
 
       .station-preview {
-        position: relative;
+        // position: relative;
         display: flex;
-        // height: 200px;
         flex-direction: column;
+        height: 274px;
         // height: max-content;
+        // max-width: 220px;
+        // padding-bottom: .5rem;
         align-items: center;
-        justify-content: center;
+        // justify-content: center;
         border-radius: 0.25rem;
         background-color: rgba(255, 255, 255, 6%);
         transition: background-color 0.3s;
 
         article {
           margin: 1rem;
+          display: flex;
           flex-direction: column;
 
           h1 {
             font-size: smaller;
-            margin: 0;
+            margin: 1rem 0rem 0;
           }
 
           p {
             font-size: smaller;
             color: $spotify-grey;
-            min-width: max-content;
+            width: 100%;
+            max-height: 3rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0;
+          }
+
+          .station-preview-created-by {
+            display: none;
+          }
+
+          .station-preview-songs {
+            display: none;
+          }
+
+
+          .img-container {
+            display: flex;
+            position: relative;
           }
 
           img {
             width: 100%;
             border-radius: 0.25rem;
+          }
+
+          button {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: none;
+            height: 48px;
+            width: 48px;
+            margin: 0;
+            animation-duration: 2s;
+
+            &:hover {
+              cursor: pointer;
+              scale: 1.05;
+              background-color: lighten($color: $spotify-green, $amount: 5%);
+            }
+
+            &.playing {
+              position: absolute;
+              bottom: 5%;
+              right: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
           }
         }
 
@@ -175,11 +245,7 @@
           cursor: pointer;
         }
 
-        button {
-          display: none;
-          height: 48px;
-          width: 48px;
-        }
+
       }
 
       .station-preview:hover {
@@ -187,8 +253,8 @@
 
         button {
           position: absolute;
-          bottom: 31%;
-          right: 0;
+          bottom: 5%;
+          right: 5%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -211,7 +277,7 @@
         }
       }
 
-      @media (min-width: 1400px) {
+      @media (min-width: 1260px) {
         grid-template-columns: repeat(5, 1fr);
 
         li:nth-child(5) {
