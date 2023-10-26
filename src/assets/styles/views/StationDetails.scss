@@ -31,6 +31,7 @@
   margin-block-end: 20px;
   padding-inline: 1em;
   display: flex;
+  align-items: end;
 }
 
 .main-station-details-container {
@@ -52,13 +53,20 @@
 }
 
 .station-details-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: start;
+
   h1 {
+    margin: 0;
     @include headline;
   }
   p {
     @include body-text("secondary");
   }
 }
+
 .dot {
   margin-inline: 4px;
 }

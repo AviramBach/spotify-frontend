@@ -143,12 +143,15 @@ export function StationDetails() {
       <div className="station-details-header-container">
         <img className="station-details-img" src={imgUrl} alt={name} />
         <div className="station-details-header">
+          <span className="station-details-tags">playlist</span>
           <h1 className="station-details-headline">{name}</h1>
-          <a className="station-details-created-by" href="#">{createdBy}</a>
-          <span className="dot">•</span>
-          <span className="station-details-tags">{tags.join()}</span>
-          <span className="dot">•</span>
-          <span className="station-details-count">{songs.length} songs,  <span className="station-details-created-at">{moment(createdAt).fromNow()}</span></span>
+          <div className="station-details-header-info-container">
+            <a className="station-details-created-by" href="#">{createdBy}</a>
+            <span className="dot">•</span>
+            <span className="station-details-tags">{tags.join()}</span>
+            <span className="dot">•</span>
+            <span className="station-details-count">{songs.length} songs,  <span className="station-details-created-at">{moment(createdAt).fromNow()}</span></span>
+          </div>
         </div>
       </div>
       <div className="main-station-details-container">
@@ -162,7 +165,7 @@ export function StationDetails() {
               <img className="station-details-svg-btn-img" src="./../../public/img/options.svg" alt="" />
             </button>
           </div>
-          {isOption && <StationDetailsOptionMenu onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} onUpdateStationDetails={onUpdateStationDetails} ></StationDetailsOptionMenu>}
+          {isOption && <StationDetailsOptionMenu onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} onUpdateStationDetails={onUpdateStationDetails} content={'option-menu'}></StationDetailsOptionMenu>}
           <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
             <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} onLikedClicked={onLikedClicked} currStation={mycurrStation}></SongList>
           </DragDropContext>

@@ -1,19 +1,29 @@
-export function StationDetailsOptionMenu({ onRemoveStation, onUpdateStation, onUpdateStationDetails }) {
-    return <div className="station-details-option-menu-container">
-        <ul className="clean-list station-details-option-menu">
+import { useEffect, useState } from "react";
+import { SongListOptionMenuContent } from "./SongListOptionMenuContent";
+import { StationDetailsOptionMenuContent } from "./StationDetailsOptionMenuContent";
+export function StationDetailsOptionMenu({ onRemoveStation, onUpdateStation, onUpdateStationDetails, onRemoveSongFromStation, songId, setIsSongOption, isSongOption, content }) {
+    const [menuLocation, setMenuLocation] = useState('translate3d(248 %, 182 %, 0px)')
+    useEffect(() => {
+        setMenuLocation(getMenuLocation())
+    }, [])
+    function getMenuLocation() {
+        if (content === 'song-option-menu') 'translate3d(421 %, 378 %, 0px)'
+        else { 'translate3d(248 %, 182 %, 0px)' }
+    }
+    return <div className="station-details-option-menu-container"
+        style={{
+            transform: `${menuLocation}`
+        }}
+    >
+        {content === 'option-menu' && <StationDetailsOptionMenuContent onRemoveStation={onRemoveStation}
+            onUpdateStation={onUpdateStation} onUpdateStationDetails={onUpdateStationDetails}>
+        </StationDetailsOptionMenuContent>
+        }
 
-            <li className="station-details-option-menu-li" onClick={() => onUpdateStation()}>
-                <img src="./../../public/img/add.svg" alt="" />
-                <p>Add song</p>
-            </li>
-            <li className="station-details-option-menu-li" onClick={() => onUpdateStationDetails()}>
-                <img src="./../../public/img/edit.svg" alt="" />
-                <p>Edit station</p>
-            </li>
-            <li className="station-details-option-menu-li" onClick={() => onRemoveStation()}>
-                <img src="./../../public/img/delete.svg" alt="" />
-                <p>Remove station</p>
-            </li>
-        </ul>
+        {
+            content === 'song-option-menu' &&
+            <SongListOptionMenuContent onRemoveSongFromStation={onRemoveSongFromStation} songId={songId} setIsSongOption={setIsSongOption} isSongOption={isSongOption}>
+            </SongListOptionMenuContent>
+        }
     </div >
 }

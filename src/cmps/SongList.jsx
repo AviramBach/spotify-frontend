@@ -2,8 +2,12 @@ import { Draggable, Droppable } from "react-beautiful-dnd";
 import { SongPreview } from "./SongPreview.jsx"
 import { utilService } from "../services/util.service.js";
 import moment from "moment";
+import { StationDetailsOptionMenu } from "./StationDetailsOptionMenu.jsx";
+import { useState } from "react";
 export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation, onLikedClicked, currStation }) {
-    return <div>
+    const [isSongOption, setIsSongOption] = useState(false)
+    const [songOptionId, setSongOptionId] = useState(null)
+    return <div className="song-list-container">
         <div className="info-line">
             <span className="info-line-index">#</span>
             <span className="info-line-title">Title</span>
@@ -46,10 +50,12 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                             <p className="song-list-item-duration">{song.duration}</p>
                                             <button className="song-list-item-btn" onClick={(ev) => {
                                                 ev.stopPropagation()
-                                                onRemoveSongFromStation(song.id)
+                                                setIsSongOption(!isSongOption)
+                                                setSongOptionId(song.id)
                                             }}>
                                                 <img className="song-list-item-btn-img" src="./../../public/img/options.svg" alt="" />
                                             </button>
+                                            {isSongOption && <StationDetailsOptionMenu onRemoveSongFromStation={onRemoveSongFromStation} songId={songOptionId} content={'song-option-menu'} setIsSongOption={setIsSongOption} isSongOption={isSongOption} ></StationDetailsOptionMenu>}
                                         </div>
                                     </li>
                                 )}
