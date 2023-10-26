@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { utilService } from "../services/util.service";
+import { useSelector } from "react-redux";
 
 export function StationPreview({ station, isHideBodyContainer, onPlaySongFromStation }) {
+    const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
+    const currStation = useSelector(storeState => storeState.playerModule.currStation)
 
     const navigate = useNavigate()
     return (
@@ -9,9 +12,9 @@ export function StationPreview({ station, isHideBodyContainer, onPlaySongFromSta
             <div className="img-container">
                 {station.imgUrl && <img src={station.imgUrl} alt="" />}
                 {!station.imgUrl && <img src="public/img/spotify.png" alt="" />}
-                <button className="primary-play-button" onClick={(ev) => onPlaySongFromStation(station, null, ev)}>
-                    <img className="primary-play-button-img" src="./../../public/img/play.svg" alt="" />
-                </button>
+                <button className={`primary-play-button ${(currStation._id === station._id) ? 'playing' : ''}`} onClick={(ev) => onPlaySongFromStation(station, null, ev)}>
+                    {(isPlaying && currStation._id === station._id) ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
+                        <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}                </button>
             </div>
             <div className="station-preview-container">
                 <h1 className="station-preview-title">{utilService.getTxtToShow(station.name, 12)}</h1>

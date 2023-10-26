@@ -1,12 +1,19 @@
 import { useNavigate } from "react-router"
 import { setCurrSong, setCurrStation, setNextSong, setPrevSong, toggelIsPlaying } from "../store/player.actions"
 import { StationPreview } from "./StationPreview.jsx"
+import { useSelector } from "react-redux"
 
 export function StationList({ stations, isHideBodyContainer }) {
     const navigate = useNavigate()
+    const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
+    const currStation = useSelector(storeState => storeState.playerModule.currStation)
 
     function onPlaySongFromStation(station, song, ev) {
         ev.stopPropagation()
+        if (isPlaying && currStation._id === station._id) {
+            toggelIsPlaying(true)
+            return
+        }
 
         if (!song) song = station.songs[0]
         setCurrStation(station)

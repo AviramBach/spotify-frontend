@@ -80,6 +80,12 @@
             height: 20px;
             box-shadow: none;
           }
+
+          &.playing {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
         }
 
         button:hover {
@@ -222,6 +228,15 @@
               cursor: pointer;
               scale: 1.05;
               background-color: lighten($color: $spotify-green, $amount: 5%);
+            }
+
+            &.playing {
+              position: absolute;
+              bottom: 5%;
+              right: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
             }
           }
         }
