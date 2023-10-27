@@ -51,9 +51,9 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                         {...provided.dragHandleProps}
                                         ref={provided.innerRef}
                                     >
-                                        <p className="song-list-item-index">{idx + 1}</p>
+                                        <p className={`song-list-item-index ${isPlaying && song === currSong ? 'playing-song' : ''} `}>{idx + 1}</p>
                                         <div className="song-list-item-preview">
-                                            <SongPreview song={song} isCurrSongPlaying={isPlaying && song.id === currSong} />
+                                            <SongPreview song={song} isPlaying={isPlaying} currSong={currSong} />
                                         </div>
                                         <p className="song-list-item-album"> {utilService.getTxtToShow(song.album, 15)}</p>
                                         <p className="song-list-item-added-at" >{moment(song.addedAt).fromNow()}</p>

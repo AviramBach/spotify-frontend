@@ -68,7 +68,8 @@
   margin: 0;
   grid-area: song-index;
   text-align: center;
-  @include body-text("body");
+  color: $spotify-grey;
+  @include body-text("secondary");
 }
 .song-list-item-preview {
   grid-area: song-preview;
