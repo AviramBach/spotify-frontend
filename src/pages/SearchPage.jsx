@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux"
 
 export function SearchPage() {
     return (

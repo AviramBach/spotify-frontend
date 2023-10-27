@@ -6,11 +6,17 @@ import { useDispatch, useSelector } from 'react-redux'
 export function HomePage() {
     // const dispatch = useDispatch()
     const stations = useSelector(storeState => storeState.stationModule.stations)
+    const currColor = useSelector(storeState => storeState.colorModule.currColor)
     let time = new Date().getHours()
     const greeting = (time > 18) ? 'Good Evening' : (time > 12) ? 'Good Afternoon' : 'Good Morning'
 
     return (
-        <section className='homepage'>
+        <section className='homepage' style={{
+            background: `linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 1) 40%,
+            rgba(${currColor}, 1) 100%
+          )` }}>
             <h1>{greeting}</h1>
             <div className='top-station-list'>
                 <StationList stations={stations.slice(0, 6)} isHome={true} isHideBodyContainer={true} />
