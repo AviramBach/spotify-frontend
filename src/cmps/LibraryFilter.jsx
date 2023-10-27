@@ -1,21 +1,24 @@
 import { useEffect, useRef, useState } from "react"
+import { utilService } from "../services/util.service"
 
 export function LibraryFilter({ filterBy, onSetFilter }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     const [isSelect, setIsSelect] = useState(false)
-    // onSetFilter = useRef(utilService.debounce(onSetFilter))
+    onSetFilter = useRef(utilService.debounce(onSetFilter))
 
     useEffect(() => {
-        // onSetFilter.current(filterByToEdit)
-        onSetFilter(filterByToEdit)
+        onSetFilter.current(filterByToEdit)
+
     }, [filterByToEdit])
 
     function setNewFilter({ target }) {
+        setIsSelect(false)
         const field = target.name
         const value = target.value
         const newFilter = { ...filterBy, [field]: value }
         setFilterByToEdit(newFilter)
     }
+
     return (
         <section className="library-filter">
             <label htmlFor="txt">

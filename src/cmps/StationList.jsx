@@ -30,9 +30,6 @@ export function StationList({ stations, isHideBodyContainer }) {
             {stations.map(station =>
                 <li className="station-preview" key={station._id} onClick={() => navigate(`/station/${station._id}`)}>
                     <StationPreview station={station} isHideBodyContainer={isHideBodyContainer} onPlaySongFromStation={onPlaySongFromStation} />
-                    {/* <button className="primary-play-button" onClick={(ev) => onPlaySongFromStation(station, null, ev)}>
-                        <img className="primary-play-button-img" src="./../../public/img/play.svg" alt="" />
-                    </button> */}
                 </li>
             )}
         </ul>

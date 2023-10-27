@@ -10,17 +10,18 @@ import { setSongProgress, toggelIsPlaying, setCurrSong, setNextSong, setPrevSong
 
 
 export function Player() {
-
     // const songProgress = useSelector(storeState => storeState.playerModule.songProgress)
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
     const currSong = useSelector(storeState => storeState.playerModule.currSong)
     const currStation = useSelector(storeState => storeState.playerModule.currStation)
     const nextSong = useSelector(storeState => storeState.playerModule.nextSong)
     const prevSong = useSelector(storeState => storeState.playerModule.prevSong)
+
     const [volume, setVolume] = useState(0.5)
     const [prevVolume, setPrevVolume] = useState(volume)
     const [isMuted, setIsMuted] = useState(false)
     const [isLooped, setIsLooped] = useState(false)
+    const [isShuffle, setIsShuffle] = useState(false)
     const [isLiked, setIsLiked] = useState(false) // this is cmp state that will be getting the global state of the current song:  const [isLiked, setIsLiked] = useState(currSong.isliked)
     const playerRef = useRef(null)
     const [currentTime, setCurrentTime] = useState(0)
@@ -44,14 +45,12 @@ export function Player() {
     }
 
     function goToNextSong() {
-        // Implement logic to switch to the next song
         setCurrSong(nextSong)
         setNextSong(nextSong, currStation)
         setPrevSong(nextSong, currStation)
     }
 
     function goToPrevSong() {
-        // Implement logic to switch to the prev song
         setCurrSong(prevSong)
         setNextSong(prevSong, currStation)
         setPrevSong(prevSong, currStation)
@@ -62,6 +61,7 @@ export function Player() {
     }
 
     function shuffelSong() {
+        setIsShuffle(!isShuffle)
         // Implement logic to shuffel a song
     }
 
@@ -119,7 +119,7 @@ export function Player() {
                 <div className='main-controls'>
                     <div className='player-controls-left'>
                         <button className='player-btn' onClick={shuffelSong}>
-                            <img className=' player-btn-img' src="./../../public/img/shuffle.svg" alt="" />
+                            <img className={`shuffle-icon player-btn-img ${isShuffle ? 'active-shuffle-btn' : ''}`} src="./../../public/img/shuffle.svg" alt="" />
                             {/* {isShuffle ? <img className='shuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon A.png" alt="" /> :
                             <img className='unshuffeld-icon' src="public\img\spotify android icons 24px (Community)\Shuffle Icon.png" alt="" />} */}
                         </button>
