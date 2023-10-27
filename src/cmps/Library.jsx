@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addStation, loadStations, removeStation, updateStation } from '../store/station.actions.js'
+import { addStation, loadStations } from '../store/station.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { StationList } from "./StationList.jsx"
@@ -34,7 +34,6 @@ export function Library() {
 
     async function onAddStation() {
         const station = stationService.getEmptyStation()
-        // station.name = prompt('Playlist name?')
         station.createdAt = Date.now()
         station.createdBy = 'Me'
         try {

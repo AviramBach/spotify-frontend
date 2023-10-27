@@ -12,7 +12,7 @@ export function StationPreview({ station, isHideBodyContainer, onPlaySongFromSta
             <div className="img-container">
                 {station.imgUrl && <img src={station.imgUrl} alt="" />}
                 {!station.imgUrl && <img src="public/img/spotify.png" alt="" />}
-                <button className={`primary-play-button ${(currStation._id === station._id) ? 'playing' : ''}`} onClick={(ev) => onPlaySongFromStation(station, null, ev)}>
+                <button className={`primary-play-button ${(isPlaying && currStation._id === station._id) ? 'playing' : ''}`} onClick={(ev) => onPlaySongFromStation(station, null, ev)}>
                     {(isPlaying && currStation._id === station._id) ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
                         <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}                </button>
             </div>
