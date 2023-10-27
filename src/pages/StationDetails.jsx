@@ -11,6 +11,7 @@ import { StationDetailsOptionMenu } from "../cmps/StationDetailsOptionMenu.jsx"
 import moment from "moment";
 import { DragDropContext } from "react-beautiful-dnd"
 import { Popover } from "@mui/material";
+import { setCurrColor } from "../store/color.actions.js"
 
 
 
@@ -43,6 +44,7 @@ export function StationDetails() {
       const color = await imageService.getColorFromImage(mycurrStation.imgUrl)
       const formattedColor = color.join(',')
       setGradientColor(formattedColor);
+      setCurrColor(formattedColor)
       return color
     } catch (ex) {
       console.log('error', ex)

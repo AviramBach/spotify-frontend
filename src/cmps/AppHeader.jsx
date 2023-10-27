@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
+
 export function AppHeader() {
+    const currColor = useSelector(storeState => storeState.colorModule.currColor)
     const navigate = useNavigate();
     const goBack = () => {
         navigate(-1);
@@ -11,7 +14,7 @@ export function AppHeader() {
         console.log('forward');
     };
     return (
-        <header className="app-header flex">
+        <header className="app-header flex" style={{ backgroundColor: `rgb(${currColor ?? "0,0,0"})` }}>
             <div className='arrow-button-container flex'>
                 <button onClick={goBack} className='arrow-button'>
                     <img className='arrow-button-icon' src="./../../public/img/back.svg" alt="" />

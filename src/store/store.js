@@ -5,6 +5,7 @@ import { reviewReducer } from './review.reducer'
 import { systemReducer } from './system.reducer'
 import { stationReducer } from './station.reducer.js'
 import { playerReducer } from './player.reducer.js'
+import { colorReducer } from './color.reducer.js'
 
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     userModule: userReducer,
     systemModule: systemReducer,
     reviewModule: reviewReducer,
-    playerModule: playerReducer
+    playerModule: playerReducer,
+    colorModule: colorReducer
 })
 
 
