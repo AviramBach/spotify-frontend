@@ -8,7 +8,8 @@ export function NavbarLink({ route, onSelected, isSelected, source, selectedSour
             setCurrColor('18, 18, 18')
         }
         }>
-            <img className={`navbar-li-img ${isSelected ? 'active-img' : ''}`} src={isSelected ? selectedSource : source} alt="" />
+            <img className={`navbar-li-img ${isSelected ? 'active-img' : ''}`}
+                src={isSelected ? selectedSource : source} alt="" />
             <span className={`nav-link ${isSelected ? 'active' : ''}`}>{text}</span>
         </NavLink>
     </li >

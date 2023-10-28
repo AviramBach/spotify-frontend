@@ -1,44 +1,37 @@
 * {
-    box-sizing: border-box;
-    font-family:circular,sans-serif;
-    
-
+  box-sizing: border-box;
+  font-family: circular, sans-serif;
 }
 
 ::selection {
-    background-color: $white;
-    opacity: 10%;
-    color: inherit;
+  background-color: $white;
+  opacity: 10%;
+  color: inherit;
 }
 
 html {
-    font-family:circular,sans-serif;
-    line-height: 1.6;
-    color: $white;
+  font-family: circular, sans-serif;
+  line-height: 1.6;
+  color: $white;
 }
 
 body {
-    font-size: rem(18px);
-    margin: 0;
-    // max-width: 1024px;
-    margin: auto;
-    background-color: $black;
-    
+  font-size: rem(18px);
+  margin: 0;
+  margin: auto;
+  background-color: $black;
 }
 
-.root-main{
-    // padding: 12px;
-    background-color: $spotify-black;
-    border-radius: 8px;
-
+.root-main {
+  // padding: 12px;
+  background-color: $spotify-background-black;
+  border-radius: 8px;
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }
 
 p {
-    margin: 0 0 1em;
+  margin: 0 0 1em;
 }
-
-

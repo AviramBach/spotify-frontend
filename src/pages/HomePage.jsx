@@ -9,7 +9,6 @@ export function HomePage() {
     const currColor = useSelector(storeState => storeState.colorModule.currColor)
     let time = new Date().getHours()
     const greeting = (time > 18) ? 'Good Evening' : (time > 12) ? 'Good Afternoon' : 'Good Morning'
-
     return (
         <section className='homepage' style={{
             background: `linear-gradient(

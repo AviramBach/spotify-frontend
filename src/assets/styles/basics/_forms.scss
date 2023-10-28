@@ -1,18 +1,16 @@
-
-
 form > * {
-    display: block;
-    width: 200px;
-    margin: 10px 0px;
+  display: block;
+  width: 200px;
+  margin: 10px 0px;
 }
 
 .btn-link {
-    border:0;
-    background-color: transparent;
-    text-decoration: underline;
-    transition: .5s;
+  border: 0;
+  background-color: transparent;
+  text-decoration: underline;
+  transition: 0.5s;
 }
 .btn-link:hover {
-    background-color: $spotify-green;
-    transform: scale(1.1);
+  background-color: $spotify-active-green;
+  transform: scale(1.1);
 }

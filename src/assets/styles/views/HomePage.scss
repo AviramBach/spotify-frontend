@@ -61,7 +61,7 @@
           height: 48px;
           border-top-left-radius: 0.25rem;
           border-bottom-left-radius: 0.25rem;
-          box-shadow: 3px 0 15px $spotify-black ;
+          box-shadow: 3px 0 15px $spotify-background-black;
         }
 
         button {
@@ -91,17 +91,8 @@
         button:hover {
           cursor: pointer;
           scale: 1.05;
-          background-color: lighten($color: $spotify-green, $amount: 5%);
+          background-color: lighten($color: $spotify-active-green, $amount: 5%);
         }
-
-
-        // .play-button-icon {
-        //   box-shadow: none;
-        //   // height: 48px;
-        //   // width: 48px;
-        //   // border-radius: .25rem;
-        //   // filter: invert(63%) sepia(62%) saturate(4488%) hue-rotate(104deg) brightness(99%) contrast(79%);
-        // }
       }
 
       .station-preview:hover {
@@ -157,7 +148,7 @@
       gap: 1rem;
       overflow: hidden;
 
-      li:nth-child(2)~* {
+      li:nth-child(2) ~ * {
         display: none;
       }
 
@@ -187,7 +178,7 @@
 
           p {
             font-size: smaller;
-            color: $spotify-grey;
+            color: $spotify-body-text-grey;
             width: 100%;
             max-height: 3rem;
             overflow: hidden;
@@ -202,7 +193,6 @@
           .station-preview-songs {
             display: none;
           }
-
 
           .img-container {
             display: flex;
@@ -223,12 +213,15 @@
             height: 48px;
             width: 48px;
             margin: 0;
-            transition: all .2s;
+            transition: all 0.2s;
 
             &:hover {
               cursor: pointer;
               scale: 1.05;
-              background-color: lighten($color: $spotify-green, $amount: 5%);
+              background-color: lighten(
+                $color: $spotify-active-green,
+                $amount: 5%
+              );
             }
 
             &.playing {
@@ -246,12 +239,10 @@
         article:hover {
           cursor: pointer;
         }
-
-
       }
 
       .station-preview:hover {
-        transition: background-color .3s ease-in;
+        transition: background-color 0.3s ease-in;
         background-color: rgba(255, 255, 255, 0.232);
 
         button {
@@ -276,8 +267,6 @@
       @media (min-width: 1050px) {
         grid-template-columns: repeat(4, 1fr);
 
-
-
         li:nth-child(4) {
           display: flex;
         }
@@ -285,8 +274,6 @@
 
       @media (min-width: 1260px) {
         grid-template-columns: repeat(5, 1fr);
-
-
 
         li:nth-child(5) {
           display: flex;
@@ -321,7 +308,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: $spotify-black;
+  background: $spotify-background-black;
   border-radius: 0.5rem;
 }
 
