@@ -24,6 +24,10 @@ export function HomePage() {
             <div className='bottom-station-list'>
                 <StationList stations={stations.slice(7, 12)} isHome={true} isHideBodyContainer={false} />
             </div>
+            <h2>Songify Playlists</h2>
+            <div className='bottom-station-list'>
+                <StationList stations={stations.slice(12, 17)} isHome={true} isHideBodyContainer={false} />
+            </div>
         </section >
     )
 }

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { SongPreview } from './SongPreview.jsx'
 import { toggelIsPlaying, setCurrSong, setNextSong, setPrevSong } from '../store/player.actions'
+import { utilService } from '../services/util.service.js'
 
 
 export function Player() {
@@ -12,6 +13,7 @@ export function Player() {
     const currStation = useSelector(storeState => storeState.playerModule.currStation)
     const nextSong = useSelector(storeState => storeState.playerModule.nextSong)
     const prevSong = useSelector(storeState => storeState.playerModule.prevSong)
+
 
     const [volume, setVolume] = useState(0.5)
     const [prevVolume, setPrevVolume] = useState(volume)
@@ -24,6 +26,7 @@ export function Player() {
 
     const [timeElapsed, setTimeElapsed] = useState(0);
     const [timeRemaining, setTimeRemaining] = useState(0);
+
 
     const handleProgress = (state) => {
         if (!state.loaded) return
@@ -40,25 +43,48 @@ export function Player() {
         playerRef.current.seekTo(seekTime)
     }
 
+    function getRandSong(song) {
+        const mySongs = currStation.songs.filter(s => s.id !== song.id)
+        const randIdx = utilService.getRandomIntInclusive(0, mySongs.length - 1)
+        const randSong = mySongs[randIdx]
+        return randSong
+    }
+
     function goToNextSong() {
+        if (!currSong.title) return
+        if (isShuffle) {
+            const randSong = getRandSong(currSong)
+            setCurrSong(randSong)
+            setNextSong(randSong, currStation)
+            setPrevSong(randSong, currStation)
+            return
+        }
         setCurrSong(nextSong)
         setNextSong(nextSong, currStation)
         setPrevSong(nextSong, currStation)
     }
 
     function goToPrevSong() {
+        if (!currSong.title) return
+        if (isShuffle) {
+            const randSong = getRandSong(currSong)
+            setCurrSong(randSong)
+            setNextSong(randSong, currStation)
+            setPrevSong(randSong, currStation)
+            return
+        }
         setCurrSong(prevSong)
         setNextSong(prevSong, currStation)
         setPrevSong(prevSong, currStation)
     }
 
     function playSong() {
+        if (!currSong.title) return
         toggelIsPlaying(isPlaying)
     }
 
     function shuffelSong() {
         setIsShuffle(!isShuffle)
-        // Implement logic to shuffel a song
     }
 
     function muteSong() {
