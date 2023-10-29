@@ -16,7 +16,7 @@ export function EditStationDetailsForm({ station, onUpdateStationDetails }) {
         <input className="modal-station-title" type="text" name="" id="" value={station.name} onChange={() => onUpdateStationDetails} />
         <textarea className="modal-station-description" name="" id="" cols="50" rows="20" placeholder="Add an optional description" onChange={() => onUpdateStationdesc} ></textarea>
         <button className="modal-save-button">
-            save
+            Save
         </button>
         <p className="modal-station-disclaimer">
             By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.

@@ -82,14 +82,14 @@ export function StationDetails() {
       showErrorMsg('Cannot remove station')
     }
   }
-  async function onUpdateStation({ target }) {
-    const title = target.value
+  async function onUpdateStation(stationTitle) {
+    const title = stationTitle
     const songToAdd = songService.getRandomSong(title)
     const updatdStation = { ...mycurrStation, songs: [songToAdd, ...mycurrStation.songs] }
     setMyCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
-
+      console.log(songToAdd);
     } catch (err) {
       console.error(err)
     }
