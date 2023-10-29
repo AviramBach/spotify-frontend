@@ -1,0 +1,15 @@
+.modal-body {
+  grid-gap: 16px;
+  display: grid;
+  grid-template: 32px 132px 32px auto/180px 1fr;
+  grid-template-areas:
+    "modal-station-img modal-station-title"
+    "modal-station-img modal-station-description"
+    ". modal-save-button"
+    "disclaimer disclaimer";
+  padding: 0 24px 24px;
+}
+
+.modal-save-button {
+  @include round-button("login");
+}

@@ -105,7 +105,7 @@ export function StationDetails() {
       console.error(err)
     }
   }
-  async function onUpdateStationDetails() {
+  async function onUpdateStationName() {
     setIsOption(false)
     const name = prompt('new name')
     const updatdStation = { ...mycurrStation, name: name }
@@ -194,7 +194,7 @@ export function StationDetails() {
             <StationDetailsOptionMenu
               onRemoveStation={onRemoveStation}
               onUpdateStation={onUpdateStation}
-              onUpdateStationDetails={onUpdateStationDetails}
+              onUpdateStationName={onUpdateStationName}
               content={'option-menu'}>
             </StationDetailsOptionMenu>
           </Popover>

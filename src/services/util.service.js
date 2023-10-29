@@ -7,7 +7,8 @@ export const utilService = {
     saveToStorage,
     loadFromStorage,
     getAssetSrc,
-    getTxtToShow
+    getTxtToShow,
+    handleChange
 }
 
 function makeId(length = 6) {
@@ -76,5 +77,24 @@ function getTxtToShow(txt, length) {
     if (txt && txt.length <= length) return txt;
     else {
         return txt?.substring(0, length) + "...";
+    }
+}
+
+function handleChange({ target }) {
+    const field = target.name;
+    let value = target.value;
+
+    switch (target.type) {
+        case "number":
+        case "range":
+            value = +value || "";
+            break;
+
+        case "checkbox":
+            value = target.checked;
+            break;
+
+        default:
+            break;
     }
 }
