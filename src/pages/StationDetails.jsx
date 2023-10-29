@@ -12,6 +12,7 @@ import moment from "moment";
 import { DragDropContext } from "react-beautiful-dnd"
 import { Popover } from "@mui/material";
 import { setCurrColor } from "../store/color.actions.js"
+import { AddSongInput } from "../cmps/AddSongInput.jsx"
 
 
 
@@ -80,14 +81,14 @@ export function StationDetails() {
       showErrorMsg('Cannot remove station')
     }
   }
-  async function onUpdateStation() {
-    setIsOption(false)
-    const title = prompt('Song name?')
+  async function onUpdateStation({ target }) {
+    const title = target.value
     const songToAdd = songService.getRandomSong(title)
     const updatdStation = { ...mycurrStation, songs: [songToAdd, ...mycurrStation.songs] }
     setMyCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
+
     } catch (err) {
       console.error(err)
     }
@@ -193,13 +194,13 @@ export function StationDetails() {
           >
             <StationDetailsOptionMenu
               onRemoveStation={onRemoveStation}
-              onUpdateStation={onUpdateStation}
               onUpdateStationName={onUpdateStationName}
               content={'option-menu'}>
             </StationDetailsOptionMenu>
           </Popover>
           <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
             <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} onLikedClicked={onLikedClicked} currStation={mycurrStation}></SongList>
+            <AddSongInput onUpdateStation={onUpdateStation} />
           </DragDropContext>
         </div>
       </div>

@@ -1,0 +1,35 @@
+.song-search-input-container {
+  margin-block-start: 24px;
+  border-block-start: 1px solid $hover-light-spotify-black;
+  padding-block: 24px;
+  padding-inline: 18px;
+}
+.song-search-input-headline {
+  margin-block-end: 16px;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.song-search-input {
+  display: flex;
+  align-items: center;
+  border: 0;
+  border-radius: 4px;
+  background-color: $hover-light-spotify-black;
+  height: 40px;
+  width: 365.5px;
+}
+.song-search-input-img {
+  margin-inline: 6px;
+  height: 16px;
+  width: 16px;
+  filter: invert(70%) sepia(25%) saturate(0%) hue-rotate(144deg) brightness(91%)
+    contrast(90%);
+}
+.song-search-input-search-box {
+  border: 0;
+  background-color: $hover-light-spotify-black;
+  color: $spotify-body-text-grey;
+  &:focus {
+    outline: none;
+  }
+}
