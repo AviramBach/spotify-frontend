@@ -22,7 +22,7 @@ export function StationPreview({ station, isHideBodyContainer, onPlaySongFromSta
                     <span className="station-preview-created-by">{station.createdBy} • </span>
                     <span className="station-preview-songs">{station.songs.length} {(station.songs.length === 1) ? ' song' : ' songs'} </span>
                     <p className="station-preview-songs-titles">
-                        <span>{station.songs[0].artist}</span>, <span>{station.songs[1].artist}</span>
+                        <span>{station.songs[0] && station.songs[0].artist}</span>, <span>{station.songs[1] && station.songs[1].artist}</span>
                     </p>
                 </div>
 

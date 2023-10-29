@@ -61,7 +61,7 @@
           height: 48px;
           border-top-left-radius: 0.25rem;
           border-bottom-left-radius: 0.25rem;
-          box-shadow: 3px 0 15px $spotify-black ;
+          box-shadow: 1px 0 10px $spotify-black ;
         }
 
         button {
@@ -162,15 +162,10 @@
       }
 
       .station-preview {
-        // position: relative;
         display: flex;
         flex-direction: column;
         height: 274px;
-        // height: max-content;
-        // max-width: 220px;
-        // padding-bottom: .5rem;
         align-items: center;
-        // justify-content: center;
         border-radius: 0.25rem;
         background-color: rgba(255, 255, 255, 6%);
         transition: background-color 0.3s;
@@ -218,7 +213,6 @@
             position: absolute;
             bottom: 0;
             right: 5%;
-            // display: none;
             opacity: 0;
             height: 48px;
             width: 48px;
@@ -292,7 +286,6 @@
           display: flex;
         }
 
-        // height: 335px;
       }
 
       @media screen and (min-width: 1400px) {
@@ -301,9 +294,6 @@
         }
       }
 
-      // @include for-wide-layout {
-      //     grid-template-columns: repeat(5, 1fr);
-      // }
     }
   }
 }
@@ -321,7 +311,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: $spotify-black;
+  // background: $spotify-black;
   border-radius: 0.5rem;
 }
 
