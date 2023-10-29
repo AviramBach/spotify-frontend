@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { SongPreview } from './SongPreview.jsx'
 import { toggelIsPlaying, setCurrSong, setNextSong, setPrevSong } from '../store/player.actions'
+import { utilService } from '../services/util.service.js'
 
 
 export function Player() {
