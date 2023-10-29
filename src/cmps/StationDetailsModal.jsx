@@ -1,17 +1,17 @@
 import { EditStationDetailsForm } from "./EditStationDetailsForm";
 
-export function StationDetailsModal({ station, handleClose, onUpdateStationImg, onUpdateStationName, onUpdateStationdesc }) {
+export function StationDetailsModal({ station, handleClose, onUpdateStationDetails }) {
 
     return <div className="modal-container" >
         <div className="modal">
             <div className="modal-header">
-                <h1>Edit details</h1>
+                <h1 className="modal-headline">Edit details</h1>
                 <button className="modal-close-button">
                     <img className="modal-close-button-img" src="./../../public/img/x.svg" alt="" onClick={() => handleClose} />
                 </button>
             </div>
             <div className="modal-body">
-                <EditStationDetailsForm />
+                <EditStationDetailsForm station={station} onUpdateStationDetails={onUpdateStationDetails} />
             </div>
         </div>
     </div>

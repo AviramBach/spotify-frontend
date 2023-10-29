@@ -78,10 +78,6 @@
         $amount: 10%
       );
     }
-    &:active {
-      color: $black;
-      background-color: $white;
-    }
   } @else if($type== "login") {
     color: $black;
     background-color: $white;

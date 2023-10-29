@@ -75,6 +75,7 @@ export function StationDetails() {
     setIsOption(false)
     try {
       await removeStation(mycurrStation._id)
+      setCurrColor('18, 18, 18')
       navigate("/")
       showSuccessMsg('Station removed')
     } catch (err) {
@@ -106,7 +107,7 @@ export function StationDetails() {
       console.error(err)
     }
   }
-  async function onUpdateStationName() {
+  async function onUpdateStationDetails() {
     setIsOption(false)
     const name = prompt('new name')
     const updatdStation = { ...mycurrStation, name: name }
@@ -193,8 +194,9 @@ export function StationDetails() {
             }}
           >
             <StationDetailsOptionMenu
+              station={mycurrStation}
               onRemoveStation={onRemoveStation}
-              onUpdateStationName={onUpdateStationName}
+              onUpdateStationDetails={onUpdateStationDetails}
               content={'option-menu'}>
             </StationDetailsOptionMenu>
           </Popover>
