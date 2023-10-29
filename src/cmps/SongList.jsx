@@ -68,6 +68,7 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                             <p className="song-list-item-duration">{song.duration}</p>
                                             <button className="song-list-item-btn" onClick={(ev) => {
                                                 ev.stopPropagation()
+                                                console.log(ev);
                                                 setIsSongOption(!isSongOption)
                                                 setSongOptionId(song.id)
                                                 handleClick(ev);

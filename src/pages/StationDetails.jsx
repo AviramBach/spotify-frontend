@@ -82,14 +82,13 @@ export function StationDetails() {
       showErrorMsg('Cannot remove station')
     }
   }
-  async function onUpdateStation(stationTitle) {
-    const title = stationTitle
+  async function onUpdateStation(songTitle) {
+    const title = songTitle
     const songToAdd = songService.getRandomSong(title)
     const updatdStation = { ...mycurrStation, songs: [songToAdd, ...mycurrStation.songs] }
     setMyCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
-      console.log(songToAdd);
     } catch (err) {
       console.error(err)
     }
@@ -107,9 +106,8 @@ export function StationDetails() {
       console.error(err)
     }
   }
-  async function onUpdateStationDetails() {
-    setIsOption(false)
-    const name = prompt('new name')
+  async function onUpdateStationDetails(stationNewName) {
+    const name = stationNewName
     const updatdStation = { ...mycurrStation, name: name }
     setMyCurrStation(updatdStation)
     try {
