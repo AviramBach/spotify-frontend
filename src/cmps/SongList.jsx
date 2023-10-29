@@ -62,7 +62,8 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                                 ev.stopPropagation()
                                                 onLikedClicked(song)
                                             }}>
-                                                <img className={`song-list-item-btn-img ${song.isLiked ? 'liked' : ''}`} src={song.isLiked ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />
+                                                <img className={`song-list-item-btn-img ${song.isLiked ? 'liked' : ''}`}
+                                                    src={song.isLiked ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />
                                             </button>
                                             <p className="song-list-item-duration">{song.duration}</p>
                                             <button className="song-list-item-btn" onClick={(ev) => {
@@ -89,7 +90,11 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                                     horizontal: 'left',
                                                 }}
                                             >
-                                                <StationDetailsOptionMenu onRemoveSongFromStation={onRemoveSongFromStation} songId={songOptionId} content={'song-option-menu'} setIsSongOption={setIsSongOption} isSongOption={isSongOption} ></StationDetailsOptionMenu>
+                                                <StationDetailsOptionMenu
+                                                    onRemoveSongFromStation={onRemoveSongFromStation}
+                                                    songId={songOptionId} content={'song-option-menu'}
+                                                    setIsSongOption={setIsSongOption} isSongOption={isSongOption}>
+                                                </StationDetailsOptionMenu>
                                             </Popover>
                                         </div>
                                     </li>

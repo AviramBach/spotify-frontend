@@ -2,16 +2,11 @@ import React from 'react'
 import ReactPlayer from 'react-player'
 import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
-// import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-// import { UserMsg } from './UserMsg.jsx'
-
 import { SongPreview } from './SongPreview.jsx'
-import { setSongProgress, toggelIsPlaying, setCurrSong, setNextSong, setPrevSong } from '../store/player.actions'
-import { utilService } from '../services/util.service.js'
+import { toggelIsPlaying, setCurrSong, setNextSong, setPrevSong } from '../store/player.actions'
 
 
 export function Player() {
-    // const songProgress = useSelector(storeState => storeState.playerModule.songProgress)
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
     const currSong = useSelector(storeState => storeState.playerModule.currSong)
     const currStation = useSelector(storeState => storeState.playerModule.currStation)
@@ -147,7 +142,9 @@ export function Player() {
                         <button className='player-btn' onClick={shuffelSong}>
                             <img className={`shuffle-icon player-btn-img ${isShuffle ? 'active-shuffle-btn' : ''}`} src="./../../public/img/shuffle.svg" alt="" />
                         </button>
-                        <button className='player-btn player-btn-img' onClick={goToPrevSong}><img className='prev-song-icon' src="./../../public/img/prev-song.svg" alt="" /></button>
+                        <button className='player-btn player-btn-img' onClick={goToPrevSong}>
+                            <img className='prev-song-icon' src="./../../public/img/prev-song.svg" alt="" />
+                        </button>
                     </div>
 
                     <button className='secondary-play-button' onClick={playSong}>
@@ -156,13 +153,12 @@ export function Player() {
                     </button>
 
                     <div className='player-controls-right'>
-                        <button className='player-btn player-btn-img' onClick={goToNextSong}>  <img className='next-song-icon' src="./../../public/img/next-song.svg" alt="" /></button>
+                        <button className='player-btn player-btn-img' onClick={goToNextSong}>
+                            <img className='next-song-icon' src="./../../public/img/next-song.svg" alt="" /></button>
                         <button className='player-btn ' onClick={loopSong}>
                             <img className={`looped-icon player-btn-img ${isLooped ? 'active-loop-btn' : ''}`} src="./../../public/img/repeat.svg" alt="" /> :
-
                         </button>
                     </div>
-
                 </div>
 
                 <ReactPlayer
@@ -188,7 +184,6 @@ export function Player() {
 
                 <div className="progress-bar">
                     <span className="elapsed-time">{formatTime(timeElapsed)}</span>
-
                     <label htmlFor="progressBar"></label>
                     <input
                         className="bar"
@@ -201,21 +196,16 @@ export function Player() {
                         step={0.1}
                         onChange={handleSeek}
                     />
-
                     <div className="progress-elapsed" style={{ width: `${0.84 * (timeElapsed / timeRemaining) * 100}%` }}>
                     </div>
                     <span className="remaining-time">{formatTime(timeRemaining)}</span>
                 </div>
-
             </div>
-
             <div className='player-side-controls'>
-
                 <button className='player-btn player-btn-img' onClick={muteSong}>
                     {isMuted ? <img className='mute-icon' src="./../../public/img/mute.svg" alt="" /> :
                         <img className='unmute-icon' src="./../../public/img/unmute.svg" alt="" />}
                 </button>
-
                 <div className="volume-bar">
                     <label htmlFor="volumeRange"></label>
                     <input
@@ -232,9 +222,7 @@ export function Player() {
                 </div>
                 <div className="volume-level" style={{ width: `${0.78 * volume * 100}%` }}>
                 </div>
-
             </div>
-
         </footer>
     )
 }

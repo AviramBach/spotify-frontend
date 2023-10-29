@@ -3,11 +3,10 @@
   // height: 100%;
   color: darken($color: $white, $amount: 20%);
   border-radius: 0.5rem;
-  background-color: $spotify-black;
+  background-color: $spotify-background-black;
   width: 278px;
   display: flex;
   flex-direction: column;
-  // flex-grow: 1;
 
   h1 {
     margin: 1rem;
@@ -32,7 +31,7 @@
     }
 
     h1 {
-      color: $spotify-grey;
+      color: $spotify-body-text-grey;
       margin: 0.25rem 0 0 0.25rem;
       font-size: smaller;
     }
@@ -45,8 +44,7 @@
       margin: 0;
       border: none;
       border-radius: 50%;
-      background-color: $spotify-black;
-      // height: 24px;
+      background-color: $spotify-background-black;
 
       img {
         width: 16px;
@@ -57,7 +55,7 @@
 
     button:hover {
       cursor: pointer;
-      background-color: $light-spotify-black;
+      background-color: $hover-light-spotify-black;
 
       img {
         transition: filter 200ms ease;
@@ -85,7 +83,7 @@
 
         &:hover {
           cursor: pointer;
-          background-color: $light-spotify-black;
+          background-color: $hover-light-spotify-black;
 
           img {
             filter: invert(100%) sepia(1%) saturate(379%) hue-rotate(279deg)
@@ -95,23 +93,28 @@
       }
 
       &:focus-within {
-        // transition: background-color .5s;
-        background-color: lighten($color: $light-spotify-black, $amount: 10%);
+        background-color: lighten(
+          $color: $hover-light-spotify-black,
+          $amount: 10%
+        );
 
         .icon-container {
-          background-color: lighten($color: $light-spotify-black, $amount: 10%);
+          background-color: lighten(
+            $color: $hover-light-spotify-black,
+            $amount: 10%
+          );
         }
       }
     }
 
     input {
       color: darken($color: $white, $amount: 20%);
-      background-color: $spotify-black;
+      background-color: $spotify-background-black;
       border: none;
       width: 7rem;
 
       &::placeholder {
-        color: $spotify-black;
+        color: $spotify-background-black;
         opacity: 1;
       }
     }
@@ -120,24 +123,16 @@
       outline: none;
       border-radius: 0.25rem;
       transition: background-color 0.3s ease-in;
-      background-color: lighten($color: $light-spotify-black, $amount: 10%);
+      background-color: lighten(
+        $color: $hover-light-spotify-black,
+        $amount: 10%
+      );
 
       &::placeholder {
-        color: $spotify-grey;
+        color: $spotify-body-text-grey;
         opacity: 1;
       }
     }
-
-    // select {
-    //   border: none;
-    //   width: 6rem;
-    //   color: $spotify-grey;
-    //   background-color: $spotify-black;
-    // }
-
-    // select:focus-visible {
-    //   outline: none;
-    // }
 
     img {
       height: 16px;
@@ -152,8 +147,8 @@
       gap: 0.5rem;
       width: 100px;
       justify-content: end;
-      color: $spotify-grey;
-      background-color: $spotify-black;
+      color: $spotify-body-text-grey;
+      background-color: $spotify-background-black;
       border: none;
       padding: 0;
 
@@ -170,7 +165,7 @@
       right: 1rem;
       padding: 0.25rem;
       border-radius: 0.25rem;
-      background-color: $light-spotify-black;
+      background-color: $hover-light-spotify-black;
       width: 127px;
 
       .select-option {
@@ -178,18 +173,21 @@
         justify-content: space-between;
         align-items: center;
         text-align: start;
-        color: $spotify-grey;
+        color: $spotify-body-text-grey;
         border: none;
         border-radius: 0.125rem;
-        background-color: $light-spotify-black;
+        background-color: $hover-light-spotify-black;
         padding: 0.5rem 0.75rem;
 
         &.active {
-          color: $spotify-green;
+          color: $spotify-active-green;
         }
 
         &:hover {
-          background-color: lighten($color: $light-spotify-black, $amount: 10%);
+          background-color: lighten(
+            $color: $hover-light-spotify-black,
+            $amount: 10%
+          );
         }
       }
     }
@@ -214,7 +212,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: $spotify-black;
+    background: $spotify-background-black;
     border-radius: 0.5rem;
   }
 
@@ -233,7 +231,7 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 0.5rem;
-    background-color: $spotify-black;
+    background-color: $spotify-background-black;
     margin-top: 0;
     margin: 0 0 0 0.5rem;
 
@@ -285,7 +283,7 @@
   }
 
   li:hover {
-    background-color: $light-spotify-black;
+    background-color: $hover-light-spotify-black;
   }
 }
 .station-details-svg-img {
@@ -293,10 +291,3 @@
     brightness(91%) contrast(79%);
   margin-inline-start: 16px;
 }
-
-// .homepage {
-//     li {
-//         background-color: lighten($color: $light-spotify-black, $amount: 10%);
-//         padding: 1rem;
-//     }
-// }

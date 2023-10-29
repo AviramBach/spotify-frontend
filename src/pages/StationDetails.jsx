@@ -24,20 +24,22 @@ export function StationDetails() {
   const [isOption, setIsOption] = useState(false)
   const [gradientColor, setGradientColor] = useState('35, 35, 35')
   const [anchorEl, setAnchorEl] = useState(null);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
   const open = Boolean(anchorEl);
 
-
   useEffect(() => {
     getColor()
   }, [mycurrStation])
+
+  useEffect(() => {
+    getStation()
+  }, [params])
+
 
   async function getColor() {
     try {
@@ -50,10 +52,6 @@ export function StationDetails() {
       console.log('error', ex)
     }
   }
-  useEffect(() => {
-    getStation()
-  }, [params])
-
   async function getStation() {
     try {
       const { id } = params
@@ -64,7 +62,6 @@ export function StationDetails() {
       console.log(err);
     }
   }
-
   function onPlaySongFromStation(station, song) {
     if (!song) song = station.songs[0]
     setCurrStation(station)
@@ -73,7 +70,6 @@ export function StationDetails() {
     setPrevSong(song, station)
     toggelIsPlaying(false)
   }
-
   async function onRemoveStation() {
     setIsOption(false)
     try {
@@ -93,15 +89,12 @@ export function StationDetails() {
     try {
       await updateStation(updatdStation)
     } catch (err) {
-      // showErrorMsg('Cannot update station')
       console.error(err)
     }
   }
-
   async function onLikedClicked(song) {
     !song.isLiked ? await songService.saveToLikedSongs(song) : await songService.removeFromLikedSongs(song);
   }
-
   async function onRemoveSongFromStation(songId) {
     const updatedSongs = mycurrStation.songs.filter(song => songId !== song.id)
     const updatdStation = { ...mycurrStation, songs: updatedSongs }
@@ -112,7 +105,6 @@ export function StationDetails() {
       console.error(err)
     }
   }
-
   async function onUpdateStationDetails() {
     setIsOption(false)
     const name = prompt('new name')
@@ -124,7 +116,6 @@ export function StationDetails() {
       console.error(err)
     }
   }
-
   async function onDragEnd(result) {
     if (!result.destination) return
     const { source, destination } = result
@@ -164,7 +155,9 @@ export function StationDetails() {
             <span className="dot">•</span>
             <span className="station-details-tags">{tags.join()}</span>
             <span className="dot">•</span>
-            <span className="station-details-count">{songs.length} songs,  <span className="station-details-created-at">{moment(createdAt).fromNow()}</span></span>
+            <span className="station-details-count">{songs.length} songs,
+              <span className="station-details-created-at">{moment(createdAt).fromNow()}</span>
+            </span>
           </div>
         </div>
       </div>
@@ -198,7 +191,12 @@ export function StationDetails() {
               horizontal: 'left',
             }}
           >
-            <StationDetailsOptionMenu onRemoveStation={onRemoveStation} onUpdateStation={onUpdateStation} onUpdateStationDetails={onUpdateStationDetails} content={'option-menu'}></StationDetailsOptionMenu>
+            <StationDetailsOptionMenu
+              onRemoveStation={onRemoveStation}
+              onUpdateStation={onUpdateStation}
+              onUpdateStationDetails={onUpdateStationDetails}
+              content={'option-menu'}>
+            </StationDetailsOptionMenu>
           </Popover>
           <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
             <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} onLikedClicked={onLikedClicked} currStation={mycurrStation}></SongList>

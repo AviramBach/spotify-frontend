@@ -74,12 +74,12 @@
     height: 3px;
     transform: translate(0, -40%);
     border-radius: 2px;
-    background-color: white;
+    background-color: $white;
   }
 
   &:hover {
     .volume-level {
-      background-color: $spotify-green;
+      background-color: $spotify-active-green;
     }
 
     ::-webkit-slider-thumb {
@@ -146,7 +146,7 @@
   .elapsed-time {
     width: 2.5rem;
     font-size: 11px;
-    color: $spotify-grey;
+    color: $spotify-body-text-grey;
   }
 
   .progress-elapsed {
@@ -156,12 +156,12 @@
     height: 3px;
     transform: translate(0, -40%);
     border-radius: 2px;
-    background-color: white;
+    background-color: $white;
   }
 
   &:hover {
     .progress-elapsed {
-      background-color: $spotify-green;
+      background-color: $spotify-active-green;
     }
 
     ::-webkit-slider-thumb {
@@ -172,7 +172,7 @@
   .remaining-time {
     width: 2.5rem;
     font-size: 11px;
-    color: $spotify-grey;
+    color: $spotify-body-text-grey;
   }
 }
 
@@ -181,13 +181,12 @@ input[type="range"] {
   width: 100%;
   background: transparent;
 
-
   &::-webkit-slider-thumb {
     position: relative;
     height: 12px;
     width: 12px;
     border-radius: 8px;
-    background: white;
+    background: $white;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -5px;
@@ -198,7 +197,7 @@ input[type="range"] {
   &::-webkit-slider-runnable-track {
     width: 100%;
     height: 3px;
-    background: $spotify-grey;
+    background: $spotify-body-text-grey;
     border-radius: 5px;
   }
 
@@ -206,41 +205,41 @@ input[type="range"] {
     &::-webkit-slider-thumb {
       display: block;
     }
-
   }
 }
 
-// input[type=range]:focus {
-//   outline: none;
-// }
-
 .bar {
   width: 100%;
-  accent-color: white;
+  accent-color: $white;
 }
 
 .player-btn-img {
-  filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%) contrast(87%);
+  filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%)
+    contrast(87%);
 
   &:hover {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg) brightness(108%) contrast(102%);
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg)
+      brightness(108%) contrast(102%);
     transition: filter 0.1s ease;
-    /* Add a smooth transition for a nice effect */
   }
 }
 
 .active-player-btn-img {
-  filter: invert(100%) sepia(1%) saturate(379%) hue-rotate(279deg) brightness(108%) contrast(100%);
+  filter: invert(100%) sepia(1%) saturate(379%) hue-rotate(279deg)
+    brightness(108%) contrast(100%);
 }
 
 .full-heart-icon {
-  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg) brightness(91%) contrast(79%);
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
+    brightness(91%) contrast(79%);
 }
 
 .active-loop-btn {
-  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg) brightness(91%) contrast(79%);
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
+    brightness(91%) contrast(79%);
 }
 
 .active-shuffle-btn {
-  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg) brightness(91%) contrast(79%);
+  filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
+    brightness(91%) contrast(79%);
 }

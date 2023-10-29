@@ -69,11 +69,14 @@
   margin-inline-end: 0.5em;
   @if ($type== "filter") {
     color: $white;
-    background-color: $light-spotify-black;
+    background-color: $hover-light-spotify-black;
     font-size: 14px;
     &:hover {
       cursor: pointer;
-      background-color: lighten($color: $light-spotify-black, $amount: 10%);
+      background-color: lighten(
+        $color: $hover-light-spotify-black,
+        $amount: 10%
+      );
     }
     &:active {
       color: $black;
@@ -95,7 +98,7 @@
 
 @mixin link() {
   text-decoration: none;
-  color: $spotify-grey;
+  color: $spotify-body-text-grey;
   line-height: 25px;
   font-weight: 700;
   font-size: 1em;
@@ -118,7 +121,7 @@
   } @else if ($type== "secondary") {
     font-weight: 400;
     font-size: 14px;
-    color: $spotify-grey;
+    color: $spotify-body-text-grey;
   }
   &:hover {
     text-decoration: underline;
@@ -135,7 +138,7 @@
   font-size: 0.875rem;
   font-weight: 400;
   @if ($type== "body") {
-    color: $spotify-grey;
+    color: $spotify-body-text-grey;
   } @else if($type== "secondary-small") {
     color: $white;
   } @else if($type== "secondary") {
@@ -156,7 +159,7 @@
     margin-inline-end: 24px;
     height: 55px;
     width: 55px;
-    background-color: $spotify-green;
+    background-color: $spotify-active-green;
   } @else if ($type== "secondary") {
     height: 31px;
     width: 31px;

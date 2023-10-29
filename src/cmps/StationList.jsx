@@ -28,8 +28,12 @@ export function StationList({ stations, isHideBodyContainer }) {
         <ul className="station-list">
             {!stations.length && <h1>No Stations Found</h1>}
             {stations.map(station =>
-                <li className="station-preview" key={station._id} onClick={() => navigate(`/station/${station._id}`)}>
-                    <StationPreview station={station} isHideBodyContainer={isHideBodyContainer} onPlaySongFromStation={onPlaySongFromStation} />
+                <li className="station-preview" key={station._id}
+                    onClick={() => navigate(`/station/${station._id}`)}>
+                    <StationPreview
+                        station={station}
+                        isHideBodyContainer={isHideBodyContainer}
+                        onPlaySongFromStation={onPlaySongFromStation} />
                 </li>
             )}
         </ul>

@@ -1,7 +1,7 @@
 .navbar-container {
   border: none;
   border-radius: 0.5em;
-  background-color: $spotify-black;
+  background-color: $spotify-background-black;
   width: 278px;
   height: 112px;
 }
@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: start;
   text-decoration: none;
-  color: $spotify-grey;
+  color: $spotify-body-text-grey;
   &:hover {
     transition: color 500ms ease;
     color: $white;
