@@ -51,7 +51,7 @@ export function Player() {
     }
 
     function goToNextSong() {
-        if (!currSong.title) return
+        if (!currSong.title || !currStation._id) return
         if (isShuffle) {
             const randSong = getRandSong(currSong)
             setCurrSong(randSong)
@@ -65,7 +65,7 @@ export function Player() {
     }
 
     function goToPrevSong() {
-        if (!currSong.title) return
+        if (!currSong.title || !currStation._id) return
         if (isShuffle) {
             const randSong = getRandSong(currSong)
             setCurrSong(randSong)
@@ -107,7 +107,7 @@ export function Player() {
     }
 
     const handleEnded = () => {
-        if (isLooped) {
+        if (isLooped || !currStation._id) {
             setCurrentTime(0)
             playerRef.current.seekTo(0)
             if (isPlaying) {
@@ -128,9 +128,9 @@ export function Player() {
         <footer className='app-player'>
 
             <div className='player-song-preview'>
-                <div className='player-song-preview-comp'>
+                {currSong.id && <div className='player-song-preview-comp'>
                     <SongPreview song={currSong} isCurrSongPlaying={false} />
-                </div>
+                </div>}
                 <button className='player-btn' onClick={heartSong}>
                     {isLiked ? <img className='full-heart-icon' src="./../../public/img/selected-heart.svg" alt="" /> :
                         <img className='empty-heart-icon player-btn-img' src="./../../public/img/heart.svg" alt="" />}

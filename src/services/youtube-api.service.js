@@ -19,8 +19,8 @@ export async function getSongs(term) {
         const newRes = await Axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${idsStr}&part=contentDetails&key=${API_KEY}`)
         const myRes = newRes.data.items
         const durs = myRes.map(res => res.contentDetails.duration.split('PT')[1].split('M'))
-        const myDurs = durs.map(dur => `${(dur[0].length < 2) ? `0${dur[0]}` : dur[0]}:${(dur[1].length < 3)? `0${dur[1][0]}` : dur[1][0] + dur[1][1]}`)
-        
+        const myDurs = durs.map(dur => `${dur[0]}:${(dur[1].length < 3) ? `0${dur[1][0]}` : dur[1][0] + dur[1][1]}`)
+
         const mySongs = videos.map((video, index) => ({
             id: video.id.videoId,
             title: video.snippet.title.split('- ')[1] || video.snippet.title,
@@ -30,7 +30,7 @@ export async function getSongs(term) {
             isLiked: false,
             duration: myDurs[index]
         }))
-        
+
         termSongssMap[term] = mySongs
         utilService.saveToStorage(KEY, termSongssMap)
         return mySongs
