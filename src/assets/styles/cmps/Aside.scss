@@ -8,4 +8,7 @@
   margin-inline-end: 8px;
   grid-column: 1/2;
   grid-row: 1/2;
+  @include for-mobile-layout {
+    display: none;
+  }
 }

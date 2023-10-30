@@ -7,7 +7,7 @@ export function SongPreview({ song, isPlaying, currSong }) {
                 className={`song-preview-title ${isPlaying && song === currSong ? 'playing-song' : ''}`}>
                 {utilService.getTxtToShow(song.title, 18)}
             </a>
-            <a href="#" className="song-preview-artist">{utilService.getTxtToShow(song.artist, 25)}</a>
+            <a href="#" className="song-preview-artist">{utilService.getTxtToShow(song.artist, 15)}</a>
         </div>
     </div>
 }

@@ -23,9 +23,12 @@ body {
 }
 
 .root-main {
-  // padding: 12px;
   background-color: $spotify-background-black;
   border-radius: 8px;
+  @include for-mobile-layout {
+    grid-column: 1;
+    grid-row: 1/2;
+  }
 }
 
 img {

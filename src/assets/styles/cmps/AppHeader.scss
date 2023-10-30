@@ -6,6 +6,9 @@
   padding-block: 15px;
   padding-inline: 12px;
   border-radius: 16px 16px 0px 0px;
+  @include for-mobile-layout {
+    border-radius: 0px;
+  }
 }
 .arrow-button {
   border: none;

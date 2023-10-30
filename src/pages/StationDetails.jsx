@@ -155,9 +155,8 @@ export function StationDetails() {
             <span className="dot">•</span>
             <span className="station-details-tags">{tags.join()}</span>
             <span className="dot">•</span>
-            <span className="station-details-count">{songs.length} songs,
-              <span className="station-details-created-at">{moment(createdAt).fromNow()}</span>
-            </span>
+            <span className="station-details-count">{songs.length} songs,</span>
+            <span className="station-details-created-at">{moment(createdAt).fromNow()}</span>
           </div>
         </div>
       </div>

@@ -272,7 +272,6 @@
         li:nth-child(5) {
           display: flex;
         }
-
       }
 
       @media screen and (min-width: 1400px) {
@@ -280,7 +279,6 @@
           height: 300px;
         }
       }
-
     }
   }
 }
@@ -298,7 +296,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: $spotify-background-black;
+  background-color: transparent;
   border-radius: 0.5rem;
 }
 
