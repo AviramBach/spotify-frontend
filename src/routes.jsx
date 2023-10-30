@@ -1,3 +1,4 @@
+import { Library } from './cmps/Library.jsx'
 import { HomePage } from './pages/HomePage.jsx'
 import { SearchPage } from './pages/SearchPage.jsx'
 import { SongDetails } from './pages/SongDetails.jsx'
@@ -18,6 +19,11 @@ const routes = [
         label: 'search'
     },
     {
+        path: '/library',
+        component: <Library />,
+        label: 'library'
+    },
+    {
         path: 'station/:id',
         component: <StationDetails />,
         label: 'station details'
@@ -30,3 +36,4 @@ const routes = [
 ]
 
 export default routes
+
