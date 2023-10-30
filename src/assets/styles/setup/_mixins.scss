@@ -118,6 +118,9 @@
     font-weight: 400;
     font-size: 14px;
     color: $spotify-body-text-grey;
+    &:hover {
+      color: $white;
+    }
   }
   &:hover {
     text-decoration: underline;
