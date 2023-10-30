@@ -12,6 +12,10 @@
   padding-block: 8px;
   width: 274px;
   height: 96px;
+  @include for-mobile-layout {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .nav-link-container {
@@ -20,6 +24,10 @@
   justify-content: start;
   text-decoration: none;
   color: $spotify-body-text-grey;
+  @include for-mobile-layout {
+    flex-direction: column;
+    justify-content: center;
+  }
   &:hover {
     transition: color 500ms ease;
     color: $white;

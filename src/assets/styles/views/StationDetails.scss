@@ -32,6 +32,9 @@
   padding-inline: 1em;
   display: flex;
   align-items: end;
+  @include for-mobile-layout {
+    flex-direction: column;
+  }
 }
 
 .main-station-details-container {
@@ -46,6 +49,12 @@
   height: 192px;
   width: 192px;
   margin-inline-end: 18.623px;
+  @include for-mobile-layout {
+    align-self: center;
+    height: 350px;
+    width: 350px;
+    margin-block-end: 12px;
+  }
 }
 .station-details-button-container {
   padding: 1em;
@@ -57,18 +66,32 @@
   flex-direction: column;
   justify-content: start;
   text-align: start;
+  @include for-mobile-layout {
+    align-self: start;
+  }
 
   h1 {
     margin: 0;
     @include headline;
+    @include for-mobile-layout {
+      font-size: 1.5rem;
+    }
   }
   p {
     @include body-text("secondary");
   }
 }
-
+.station-details-header-info-container {
+  @include for-mobile-layout {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .dot {
   margin-inline: 4px;
+  @include for-mobile-layout {
+    display: none;
+  }
 }
 .station-details-created-by {
   @include body-link("primary-small");
@@ -76,6 +99,9 @@
 .station-details-tags,
 .station-details-count {
   @include body-text("secondary-small");
+  @include for-mobile-layout {
+    display: none;
+  }
 }
 .station-details-created-at {
   @include body-text("body");
