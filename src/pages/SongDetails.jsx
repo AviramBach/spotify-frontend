@@ -1,5 +1,7 @@
+import { SongPreview } from "../cmps/SongPreview";
+
 export function SongDetails() {
     return <div>
-        hi
+        <SongPreview></SongPreview>
     </div>
 }

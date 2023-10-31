@@ -1,202 +1,208 @@
 .search-page {
+  .results-container {
+    display: flex;
+    gap: 1rem;
+    margin: 0 1rem 0;
 
-    .results-container {
-        display: flex;
-        gap: 1rem;
-        margin: 0 1rem 0;
-
-        h2 {
-            margin: 0;
-        }
-
-        .top-result-container {
-
-            width: 30vw;
-
-            .song-preview-container {
-                position: relative;
-                border-radius: .25rem;
-                background-color: lighten($color: $spotify-background-black, $amount: 2%);
-
-                .primary-play-button {
-                    position: absolute;
-                    opacity: 0;
-                    bottom: 0;
-                    right: 0;
-                    transition: .6s;
-
-                    &:hover {
-                        cursor: pointer;
-                    }
-
-                    &.playing {
-                        opacity: 1;
-                        bottom: 1rem;
-                    }
-                }
-
-                &:hover {
-                    background-color: lighten($color: $spotify-background-black, $amount: 10%);
-
-                    .primary-play-button {
-                        opacity: 1;
-                        bottom: 1rem;
-                    }
-                }
-            }
-
-            .song-preview {
-                flex-direction: column;
-                align-items: start;
-                padding: 1rem;
-
-
-
-
-                .song-preview-title {
-                    font-size: 2rem;
-                    font-weight: bold;
-
-                    &:hover {
-                        text-decoration: none;
-                    }
-                }
-
-                .song-preview-artist {
-                    color: $white;
-
-                    &:hover {
-                        text-decoration: none;
-                    }
-                }
-
-                img {
-                    width: 92px;
-                    height: 92px;
-                    border-radius: .25rem;
-                }
-            }
-        }
-
-        .songs-container {
-            flex-grow: 1;
-        }
-
-        .search-song-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-
-            li {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-radius: .25rem;
-                padding: 0;
-
-                .side-container {
-                    position: relative;
-                }
-
-                .right-container {
-                    margin-inline-end: 1rem;
-                    display: flex;
-                    align-items: center;
-
-                    button {
-                        background-color: transparent;
-                        border: none;
-                    }
-
-                    .options-btn {
-                        width: 30px;
-                        background-color: transparent;
-                        border: none;
-
-                        img {
-                            width: 1.5rem;
-                            height: 1.5rem;
-                            filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg) brightness(99%) contrast(105%);
-                            display: none;
-
-                            &:hover {
-                                cursor: pointer;
-                            }
-                        }
-
-                    }
-                }
-
-                .secondary-play-button {
-                    position: absolute;
-                    top: 50%;
-                    left: 1.75rem;
-                    transform: translate(-50%, -50%);
-                    opacity: 0;
-                    background-color: rgba(255, 255, 255, 0);
-                    box-shadow: none;
-                    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg) brightness(99%) contrast(105%);
-
-                    &:hover {
-                        cursor: pointer;
-                    }
-
-                    &.playing {
-                        opacity: 1;
-                    }
-                }
-
-                &:hover {
-                    cursor: pointer;
-                    background-color: lighten($color: $spotify-background-black, $amount: 10%);
-
-                    .secondary-play-button {
-                        opacity: 1;
-                    }
-
-                    .song-preview-img {
-                        filter: brightness(0.5);
-                    }
-
-                    .options-btn {
-                        .options-btn-img {
-                            display: block;
-                        }
-                    }
-                }
-
-                .song-preview {
-                    margin-inline-start: .25rem;
-                    padding: .25rem;
-                }
-
-
-            }
-        }
+    h2 {
+      margin: 0;
     }
+
+    .top-result-container {
+      width: 30vw;
+
+      .song-preview-container {
+        position: relative;
+        border-radius: 0.25rem;
+        background-color: lighten(
+          $color: $spotify-background-black,
+          $amount: 2%
+        );
+
+        .primary-play-button {
+          position: absolute;
+          opacity: 0;
+          bottom: 0;
+          right: 0;
+          transition: 0.6s;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          &.playing {
+            opacity: 1;
+            bottom: 1rem;
+          }
+        }
+
+        &:hover {
+          background-color: lighten(
+            $color: $spotify-background-black,
+            $amount: 10%
+          );
+
+          .primary-play-button {
+            opacity: 1;
+            bottom: 1rem;
+          }
+        }
+      }
+
+      .song-preview {
+        flex-direction: column;
+        align-items: start;
+        padding: 1rem;
+
+        .song-preview-title {
+          font-size: 2rem;
+          font-weight: bold;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+
+        .song-preview-artist {
+          color: $white;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+
+        img {
+          width: 92px;
+          height: 92px;
+          border-radius: 0.25rem;
+        }
+      }
+      for-mobile-layout {
+        flex-direction: column;
+      }
+    }
+
+    .songs-container {
+      flex-grow: 1;
+    }
+
+    .search-song-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 0.25rem;
+        padding: 0;
+
+        .side-container {
+          position: relative;
+        }
+
+        .right-container {
+          margin-inline-end: 1rem;
+          display: flex;
+          align-items: center;
+
+          button {
+            background-color: transparent;
+            border: none;
+          }
+
+          .options-btn {
+            width: 30px;
+            background-color: transparent;
+            border: none;
+
+            img {
+              width: 1.5rem;
+              height: 1.5rem;
+              filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg)
+                brightness(99%) contrast(105%);
+              display: none;
+
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+
+        .secondary-play-button {
+          position: absolute;
+          top: 50%;
+          left: 1.75rem;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          background-color: rgba(255, 255, 255, 0);
+          box-shadow: none;
+          filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg)
+            brightness(99%) contrast(105%);
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          &.playing {
+            opacity: 1;
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: lighten(
+            $color: $spotify-background-black,
+            $amount: 10%
+          );
+
+          .secondary-play-button {
+            opacity: 1;
+          }
+
+          .song-preview-img {
+            filter: brightness(0.5);
+          }
+
+          .options-btn {
+            .options-btn-img {
+              display: block;
+            }
+          }
+        }
+
+        .song-preview {
+          margin-inline-start: 0.25rem;
+          padding: 0.25rem;
+        }
+      }
+    }
+  }
 }
 
 .add-to-station-btn,
 .add-to-liked-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $white;
-    background-color: transparent;
-    border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  background-color: transparent;
+  border: none;
 
-    img {
-        width: 1rem;
-        height: 1rem;
-        filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg)brightness(88%) contrast(87%);
-    }
+  img {
+    width: 1rem;
+    height: 1rem;
+    filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg)
+      brightness(88%) contrast(87%);
+  }
 
-    p {
-        margin: .5rem;
-    }
+  p {
+    margin: 0.5rem;
+  }
 
-    &:hover {
-        cursor: pointer;
-    }
-
+  &:hover {
+    cursor: pointer;
+  }
 }

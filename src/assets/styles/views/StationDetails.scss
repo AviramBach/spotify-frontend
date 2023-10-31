@@ -1,6 +1,7 @@
 .station-details {
   overflow-y: auto;
   height: calc(100vh - 72px - 65px - 16px);
+  padding: 0;
   &:hover {
     ::-webkit-scrollbar-thumb {
       background: #555;
