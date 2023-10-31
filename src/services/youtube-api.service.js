@@ -14,6 +14,16 @@ export async function getSongs(term) {
     try {
         const res = await Axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&videoCategoryId=10&videoDuration=medium&type=video&key=${API_KEY}&q=${term}`)
         const videos = res.data.items
+        const myVideos = videos.map(video => {
+            video.snippet.title = video.snippet.title.replaceAll('&#39;', `'`)
+            video.snippet.title = video.snippet.title.replaceAll('&quot;', `"`)
+            video.snippet.title = video.snippet.title.split('- ')[1] || video.snippet.title
+            video.snippet.title = video.snippet.title.split('(Official')[0]
+            video.snippet.title = video.snippet.title.split('[Official')[0]
+            video.snippet.channelTitle = video.snippet.channelTitle.split('VEVO')[0]
+            video.snippet.channelTitle = video.snippet.channelTitle.split('vevo')[0]
+            return video
+        })
         const videoIds = videos.map(video => video.id.videoId)
         const idsStr = videoIds.join(',')
         const newRes = await Axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${idsStr}&part=contentDetails&key=${API_KEY}`)
@@ -21,10 +31,11 @@ export async function getSongs(term) {
         const durs = myRes.map(res => res.contentDetails.duration.split('PT')[1].split('M'))
         const myDurs = durs.map(dur => `${dur[0]}:${(dur[1].length < 3) ? `0${dur[1][0]}` : dur[1][0] + dur[1][1]}`)
 
-        const mySongs = videos.map((video, index) => ({
+        const mySongs = myVideos.map((video, index) => ({
             id: video.id.videoId,
-            title: video.snippet.title.split('- ')[1] || video.snippet.title,
-            artist: video.snippet.channelTitle.split('VEVO')[0],
+            title: video.snippet.title,
+            artist: video.snippet.channelTitle,
+            album: 'Greatest Hits',
             url: `https://www.youtube.com/watch?v=${video.id.videoId}`,
             imgUrl: video.snippet.thumbnails.default.url,
             isLiked: false,

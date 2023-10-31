@@ -5,31 +5,37 @@ import { getSongs } from "../services/youtube-api.service"
 import { SongPreview } from "../cmps/SongPreview"
 import { setCurrSong, toggelIsPlaying } from "../store/player.actions"
 import { Popover } from "@mui/material";
+import { StationsModal } from "../cmps/StationsModal"
+import { updateStation } from "../store/station.actions"
+
 
 export function SearchPage() {
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
     const currSong = useSelector(storeState => storeState.playerModule.currSong)
+    const stations = useSelector(storeState => storeState.stationModule.stations)
+
     const [songs, setSongs] = useState(null)
     const [anchorEl, setAnchorEl] = useState(null)
     const [isOpen, setIsOpen] = useState(false)
+    const [songToAdd, setSongToAdd] = useState(null)
 
-    const handleClick = (event) => {
+    function handleClick(event, song) {
         setAnchorEl(event.currentTarget)
+        setSongToAdd(song)
     }
 
     const handleClose = () => {
         setAnchorEl(null)
     }
 
-    const openStations = () => {
-        setIsOpen(!isOpen)
-    }
+    // const openStations = () => {
+    //     setIsOpen(!isOpen)
+    // }
 
     const open = Boolean(anchorEl)
     const id = open ? 'simple-popover' : undefined
 
     async function searchSongs(searchKey) {
-        console.log(searchKey)
         try {
             const searchSongs = await getSongs(searchKey)
             setSongs(searchSongs)
@@ -48,6 +54,17 @@ export function SearchPage() {
 
         setCurrSong(song)
         toggelIsPlaying(false)
+    }
+
+    async function onAddSongToStation(station) {
+        setAnchorEl(null)
+        station.songs.push(songToAdd)
+        try {
+            await updateStation(station)
+        } catch (error) {
+            console.log(error)
+            throw error
+        }
     }
 
     return (
@@ -78,7 +95,7 @@ export function SearchPage() {
                                 </div>
                                 <div className="right-container">
                                     <p className="song-list-item-duration">{song.duration}</p>
-                                    <button className="options-btn" onClick={handleClick}>
+                                    <button className="options-btn" onClick={(ev) => handleClick(ev, song)}>
                                         <img className="options-btn-img" src="./../../public/img/options.svg" alt="" />
                                     </button>
                                     <Popover
@@ -100,14 +117,7 @@ export function SearchPage() {
                                             horizontal: 'right',
                                         }}
                                     >
-                                        <button className="add-to-station-btn" onClick={openStations}>
-                                            <img className='add-icon' src="./../../public/img/plus.svg" alt="" />
-                                            <p>Add to playlist</p>
-                                        </button>
-                                        <button className="add-to-liked-btn">
-                                            <img className='add-icon' src="./../../public/img/plus.svg" alt="" />
-                                            <p>Save to your liked songs</p>
-                                        </button>
+                                        <StationsModal onAddSongToStation={onAddSongToStation} song={song} />
                                     </Popover>
                                 </div>
                             </li>)}
