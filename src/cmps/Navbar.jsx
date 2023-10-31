@@ -10,6 +10,11 @@ export function Navbar() {
             <NavbarLink route='/search'
                 onSelected={() => setSelected('search')}
                 isSelected={selected === 'search'} selectedSource="./../../public/img/selected-search.svg" source="./../../public/img/search.svg" text="Search" />
+            <div className="library-nav-link">
+                <NavbarLink route='/library'
+                    onSelected={() => setSelected('library')}
+                    isSelected={selected === 'library'} selectedSource="./../../public/img/library.svg" source="./../../public/img/empty-library.svg" text="Library" />
+            </div>
         </ul>
     </div >
 }

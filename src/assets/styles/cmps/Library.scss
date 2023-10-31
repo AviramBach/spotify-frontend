@@ -7,6 +7,9 @@
   width: 278px;
   display: flex;
   flex-direction: column;
+  @include for-mobile-layout {
+    width: 100%;
+  }
 
   h1 {
     margin: 1rem;

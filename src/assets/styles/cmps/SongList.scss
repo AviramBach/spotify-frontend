@@ -23,6 +23,9 @@
   grid-template-rows: 36px;
   gap: 0 16px;
   grid-template-areas: "index title album added duration";
+  @include for-mobile-layout {
+    display: none;
+  }
 }
 .info-line-index {
   grid-area: index;
@@ -62,6 +65,12 @@
       visibility: visible;
     }
   }
+  @include for-mobile-layout {
+    width: 100%;
+    grid-template-columns: 1fr 100px;
+    grid-template-areas: "song-preview song-duration";
+    padding-inline: 0;
+  }
 }
 
 .song-list-item-index {
@@ -70,25 +79,40 @@
   text-align: center;
   color: $spotify-body-text-grey;
   @include body-text("secondary");
+  @include for-mobile-layout {
+    display: none;
+  }
 }
 .song-list-item-preview {
   grid-area: song-preview;
+  @include for-mobile-layout {
+    grid-area: song-preview;
+  }
 }
 .song-list-item-album {
   grid-area: song-album;
   @include body-text("body");
   margin: 0;
+  @include for-mobile-layout {
+    display: none;
+  }
 }
 .song-list-item-added-at {
   grid-area: song-added;
   @include body-text("body");
   margin: 0;
+  @include for-mobile-layout {
+    display: none;
+  }
 }
 .song-list-item-duration-container {
   display: flex;
   justify-self: end;
   align-items: center;
   grid-area: song-duration;
+  @include for-mobile-layout {
+    grid-area: song-duration;
+  }
 }
 .song-list-item-btn {
   visibility: hidden;
@@ -98,6 +122,9 @@
   width: 32px;
   padding-block: 8px;
   margin-inline-end: 16px;
+  @include for-mobile-layout {
+    visibility: visible;
+  }
 }
 .song-list-item-btn-img {
   height: 16px;
@@ -114,6 +141,9 @@
   margin-inline-end: 16px;
   margin-block-end: 0;
   @include body-text("body");
+  @include for-mobile-layout {
+    display: none;
+  }
 }
 .liked {
   filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)

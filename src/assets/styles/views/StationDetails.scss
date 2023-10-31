@@ -51,14 +51,19 @@
   margin-inline-end: 18.623px;
   @include for-mobile-layout {
     align-self: center;
-    height: 350px;
-    width: 350px;
+    height: 156px;
+    width: 156px;
     margin-block-end: 12px;
+    margin-block-start: 52px;
   }
 }
 .station-details-button-container {
   padding: 1em;
   display: flex;
+  @include for-mobile-layout {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
 }
 
 .station-details-header {
@@ -74,7 +79,7 @@
     margin: 0;
     @include headline;
     @include for-mobile-layout {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
   p {
@@ -95,6 +100,9 @@
 }
 .station-details-created-by {
   @include body-link("primary-small");
+  @include for-mobile-layout {
+    margin-block-end: 12px;
+  }
 }
 .station-details-tags,
 .station-details-count {

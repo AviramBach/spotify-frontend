@@ -5,6 +5,7 @@ import { AppHeader } from './cmps/AppHeader'
 import { Player } from './cmps/Player'
 import { Aside } from './cmps/Aside'
 import { StationDetails } from './pages/StationDetails'
+import { Navbar } from './cmps/Navbar'
 
 export function RootCmp() {
 
@@ -26,7 +27,13 @@ export function RootCmp() {
                     </Routes>
                 </main>
             </div>
-            <Player />
+            <footer>
+                <Player />
+                <div className={"root-comp-navbar"}>
+                    <Navbar />
+                </div>
+            </footer>
+
         </div>
     )
 }

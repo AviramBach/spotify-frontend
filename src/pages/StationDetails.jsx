@@ -13,6 +13,7 @@ import { DragDropContext } from "react-beautiful-dnd"
 import { Popover } from "@mui/material";
 import { setCurrColor } from "../store/color.actions.js"
 import { AddSongInput } from "../cmps/AddSongInput.jsx"
+import { useColorFromImage } from "../customHooks/useColorFromImage.js"
 
 
 
@@ -23,7 +24,7 @@ export function StationDetails() {
   const navigate = useNavigate()
   const [mycurrStation, setMyCurrStation] = useState(null)
   const [isOption, setIsOption] = useState(false)
-  const [gradientColor, setGradientColor] = useState('35, 35, 35')
+  const { color, setImageUrl } = useColorFromImage()
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -34,25 +35,32 @@ export function StationDetails() {
   const open = Boolean(anchorEl);
 
   useEffect(() => {
-    getColor()
+    if (mycurrStation) {
+      setImageUrl(mycurrStation.imgUrl)
+    }
   }, [mycurrStation])
+
+  useEffect(() => {
+    console.log(color)
+    setCurrColor(color)
+  }, [color])
 
   useEffect(() => {
     getStation()
   }, [params])
 
 
-  async function getColor() {
-    try {
-      const color = await imageService.getColorFromImage(mycurrStation.imgUrl)
-      const formattedColor = color.join(',')
-      setGradientColor(formattedColor);
-      setCurrColor(formattedColor)
-      return color
-    } catch (ex) {
-      console.log('error', ex)
-    }
-  }
+  // async function getColor() {
+  //   try {
+  //     const color = await imageService.getColorFromImage(mycurrStation.imgUrl)
+  //     const formattedColor = color.join(',')
+  //     setGradientColor(formattedColor);
+  //     setCurrColor(formattedColor)
+  //     return color
+  //   } catch (ex) {
+  //     console.log('error', ex)
+  //   }
+  // }
   async function getStation() {
     try {
       const { id } = params
@@ -143,7 +151,7 @@ export function StationDetails() {
       background: `linear-gradient(
       0deg,
       rgba(0, 0, 0, 1) 40%,
-      rgba(${gradientColor}, 1) 100%
+      rgba(${color}, 1) 100%
     )` }}>
       <div className="station-details-header-container">
         <img className="station-details-img" src={imgUrl} alt={name} />

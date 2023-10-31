@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux'
 import { SongPreview } from './SongPreview.jsx'
 import { toggelIsPlaying, setCurrSong, setNextSong, setPrevSong } from '../store/player.actions'
 import { utilService } from '../services/util.service.js'
+import { useColorFromImage } from "./../customHooks/useColorFromImage.js"
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 export function Player() {
@@ -23,10 +25,18 @@ export function Player() {
     const [isLiked, setIsLiked] = useState(false) // this is cmp state that will be getting the global state of the current song:  const [isLiked, setIsLiked] = useState(currSong.isliked)
     const playerRef = useRef(null)
     const [currentTime, setCurrentTime] = useState(0)
-
     const [timeElapsed, setTimeElapsed] = useState(0);
     const [timeRemaining, setTimeRemaining] = useState(0);
 
+    const { color, setImageUrl } = useColorFromImage()
+    const isMobile = useMediaQuery('(max-width:476px)');
+
+    useEffect(() => {
+        if (currSong) {
+            setImageUrl(currSong.imgUrl)
+            console.log("hhhhhhh");
+        }
+    }, [currSong])
 
     const handleProgress = (state) => {
         if (!state.loaded) return
@@ -125,7 +135,9 @@ export function Player() {
     }
 
     return (
-        <footer className='app-player'>
+        <div className='app-player' style={{
+            backgroundColor: isMobile ? `rgb(${color})` : 'black'
+        }}>
 
             <div className='player-song-preview'>
                 {currSong.id && <div className='player-song-preview-comp'>
@@ -148,7 +160,7 @@ export function Player() {
                         </button>
                     </div>
 
-                    <button className='secondary-play-button' onClick={playSong}>
+                    <button className='player-play-btn secondary-play-button' onClick={playSong}>
                         {isPlaying ? <img className='pause-icon secondary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
                             <img className='play-icon secondary-play-button-img' src="./../../public/img/play.svg" alt="" />}
                     </button>
@@ -224,6 +236,6 @@ export function Player() {
                 <div className="volume-level" style={{ width: `${0.78 * volume * 100}%` }}>
                 </div>
             </div>
-        </footer>
+        </div>
     )
 }

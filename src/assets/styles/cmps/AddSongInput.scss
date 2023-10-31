@@ -9,7 +9,9 @@
   font-weight: 700;
   font-size: 1.3rem;
   display: inline-block;
-  width: 365px;
+  @include for-mobile-layout {
+    font-size: 1rem;
+  }
 }
 .song-search-input {
   display: flex;
@@ -18,7 +20,9 @@
   border-radius: 4px;
   background-color: $hover-light-spotify-black;
   height: 40px;
-  width: 365.5px;
+  @include for-normal-layout {
+    width: 365.5px;
+  }
 }
 .song-search-input-img {
   margin-inline: 6px;

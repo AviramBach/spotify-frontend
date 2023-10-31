@@ -8,12 +8,7 @@
   position: relative;
   width: 100%;
   @include for-mobile-layout {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: calc(100vh - 72px - 72px) 72px 72px;
-    gap: 16px 16px;
-    grid-template-areas:
-      "main"
-      "player"
-      "navbar";
+    grid-template-columns: none;
+    grid-template-rows: 1fr 72px 112px;
   }
 }

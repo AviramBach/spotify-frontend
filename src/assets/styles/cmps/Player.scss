@@ -3,16 +3,12 @@
   flex-direction: row;
   justify-content: space-between;
   height: 72px;
-  // position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: black;
   color: #fff;
   text-align: center;
-  grid-column: 1/3;
-  grid-row: 2/3;
-
   @include for-mobile-layout {
     grid-column: 1;
   }
@@ -23,6 +19,11 @@
   align-items: center;
   min-width: 200px;
   padding: 16px;
+  @include for-mobile-layout {
+    // min-width: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
 
   img {
     width: 56px;
@@ -44,6 +45,9 @@
   @media screen and (min-width: 1000px) {
     min-width: 500px;
   }
+  @include for-mobile-layout {
+    min-width: 0px;
+  }
 }
 
 .main-controls {
@@ -55,6 +59,9 @@
   flex-flow: row nowrap;
   gap: 8px;
   width: 100%;
+  @include for-mobile-layout {
+    gap: 0;
+  }
 }
 
 .player-side-controls {
@@ -64,6 +71,9 @@
   align-self: center;
   align-items: center;
   margin-inline-end: 1rem;
+  @include for-mobile-layout {
+    display: none;
+  }
 
   .volume-bar {
     display: flex;
@@ -96,6 +106,9 @@
   justify-content: space-between;
   // flex: 1;
   gap: 12px;
+  @include for-mobile-layout {
+    display: none;
+  }
 }
 
 .player-controls-right {
@@ -103,6 +116,24 @@
   justify-content: space-between;
   // flex: 1;
   gap: 12px;
+  @include for-mobile-layout {
+    display: none;
+  }
+}
+
+.player-play-btn {
+  @include for-mobile-layout {
+    @include round-button("filter");
+    background-color: transparent;
+  }
+  img {
+    @include for-mobile-layout {
+      height: 24px;
+      width: 24px;
+      filter: invert(100%) sepia(0%) saturate(4327%) hue-rotate(334deg)
+        brightness(116%) contrast(100%);
+    }
+  }
 }
 
 .player-btn {
@@ -145,6 +176,9 @@
   display: flex;
   flex-direction: row;
   gap: 2px;
+  @include for-mobile-layout {
+    display: none;
+  }
 
   .elapsed-time {
     width: 2.5rem;
@@ -219,7 +253,6 @@ input[type="range"] {
 .player-btn-img {
   filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%)
     contrast(87%);
-
   &:hover {
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg)
       brightness(108%) contrast(102%);

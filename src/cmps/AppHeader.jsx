@@ -1,17 +1,18 @@
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import { useEffect } from "react";
 
 export function AppHeader() {
     const currColor = useSelector(storeState => storeState.colorModule.currColor)
     const navigate = useNavigate();
+    useEffect(() => {
+        console.log('currColor', currColor)
+    }, [currColor])
     const goBack = () => {
         navigate(-1);
-        console.log('back');
-
     };
     const goForward = () => {
         navigate(1);
-        console.log('forward');
     };
     return (
         <header className="app-header flex" style={{ backgroundColor: `rgb(${currColor ?? "0,0,0"})` }}>

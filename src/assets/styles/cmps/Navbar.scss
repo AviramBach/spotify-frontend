@@ -4,6 +4,10 @@
   background-color: $spotify-background-black;
   width: 278px;
   height: 112px;
+  @include for-mobile-layout {
+    width: 100%;
+    background-color: $black;
+  }
 }
 
 .navbar {
@@ -15,6 +19,7 @@
   @include for-mobile-layout {
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
 }
 
@@ -53,7 +58,6 @@
 .navbar-li {
   padding-inline: 12px;
   padding-block: 4px;
-  width: 265px;
   height: 40px;
 }
 
@@ -63,9 +67,18 @@
   margin-inline-end: 20px;
   filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%)
     contrast(87%);
+  @include for-mobile-layout {
+    margin-inline-start: 20px;
+  }
 }
 .nav-link-container {
   margin-block-start: 4px;
+}
+.library-nav-link {
+  display: none;
+  @include for-mobile-layout {
+    display: inline-block;
+  }
 }
 .nav-link {
   font-size: 1rem;
