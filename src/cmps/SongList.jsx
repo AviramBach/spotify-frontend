@@ -51,7 +51,7 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                         {...provided.dragHandleProps}
                                         ref={provided.innerRef}
                                     >
-                                        <p className={`song-list-item-index ${isPlaying && song === currSong ? 'playing-song' : ''} `}>{idx + 1}</p>
+                                        <p className={`song-list-item-index`}>{isPlaying && song === currSong ? <img src="./../../public/img/download.gif" alt="" /> : idx + 1} </p>
                                         <div className="song-list-item-preview">
                                             <SongPreview song={song} isPlaying={isPlaying} currSong={currSong} />
                                         </div>
@@ -73,7 +73,7 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                                 setSongOptionId(song.id)
                                                 handleClick(ev);
                                             }}>
-                                                <img className="song-list-item-btn-img" src="./../../public/img/options.svg" alt="" />
+                                                <img className="song-list-item-btn-img song-option-menu-btn-img" src="./../../public/img/options.svg" alt="" />
                                             </button>
                                             <Popover
                                                 sx={{

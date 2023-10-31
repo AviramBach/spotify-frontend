@@ -60,12 +60,21 @@
 .station-details-button-container {
   padding: 1em;
   display: flex;
+  align-items: center;
   @include for-mobile-layout {
     flex-direction: row-reverse;
     justify-content: space-between;
   }
 }
-
+.station-details-options-btn {
+  height: 55px;
+  width: 55px;
+}
+.station-details-play-button {
+  @include for-mobile-layout {
+    margin: 0;
+  }
+}
 .station-details-header {
   display: flex;
   flex-direction: column;
@@ -115,10 +124,13 @@
   @include body-text("body");
 }
 .station-details-svg-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   border: none;
-  height: 32px;
-  width: 32px;
+  height: 55px;
+  width: 55px;
   padding-block: 8px;
   margin-inline-end: 16px;
 }
@@ -127,6 +139,9 @@
   width: 31px;
   filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%)
     contrast(87%);
+  @include for-mobile-layout {
+    transform: rotate(90deg);
+  }
   &:hover {
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(244deg)
       brightness(108%) contrast(102%);

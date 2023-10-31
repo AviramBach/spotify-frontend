@@ -23,7 +23,15 @@
   margin: 0;
   grid-row: 2/3;
   @include body-link("secondary");
+  @include for-mobile-layout {
+    color: $white;
+  }
 }
 .playing-song {
   color: $spotify-active-green;
+}
+.mobile-playing-gif {
+  height: 16px;
+  width: 16px;
+  margin-inline-end: 4px;
 }

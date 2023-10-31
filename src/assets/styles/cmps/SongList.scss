@@ -112,6 +112,9 @@
   grid-area: song-duration;
   @include for-mobile-layout {
     grid-area: song-duration;
+    button {
+      margin: 0;
+    }
   }
 }
 .song-list-item-btn {
@@ -143,6 +146,11 @@
   @include body-text("body");
   @include for-mobile-layout {
     display: none;
+  }
+}
+.song-option-menu-btn-img {
+  @include for-mobile-layout {
+    transform: rotate(90deg);
   }
 }
 .liked {

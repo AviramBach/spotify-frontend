@@ -171,7 +171,7 @@ export function StationDetails() {
       <div className="main-station-details-container">
         <div className="main-station-details-black">
           <div className="station-details-button-container">
-            <button className="primary-play-button" onClick={() => onPlaySongFromStation(mycurrStation)}>
+            <button className="primary-play-button station-details-play-button" onClick={() => onPlaySongFromStation(mycurrStation)}>
               {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
                 <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
             </button>
