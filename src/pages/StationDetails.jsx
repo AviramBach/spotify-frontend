@@ -14,6 +14,8 @@ import { Popover } from "@mui/material";
 import { setCurrColor } from "../store/color.actions.js"
 import { AddSongInput } from "../cmps/AddSongInput.jsx"
 import { useColorFromImage } from "../customHooks/useColorFromImage.js"
+import { getSongs } from "../services/youtube-api.service.js"
+import { SongPreview } from "../cmps/SongPreview.jsx"
 
 
 
@@ -25,6 +27,8 @@ export function StationDetails() {
   const [mycurrStation, setMyCurrStation] = useState(null)
   const [isOption, setIsOption] = useState(false)
   const { color, setImageUrl } = useColorFromImage()
+  const [searchSongs, setSearchSongs] = useState([])
+
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -144,6 +148,39 @@ export function StationDetails() {
     }
   }
 
+  async function onSearchSongs(searchKey) {
+    try {
+      const songsFromSearch = await getSongs(searchKey)
+      setSearchSongs(songsFromSearch)
+    } catch (error) {
+      console.dir(error)
+      throw error
+    }
+  }
+
+  function onPlaySongFromSearch(song, ev) {
+    ev.stopPropagation()
+    if (isPlaying && currSong.id === song.id) {
+      toggelIsPlaying(true)
+      return
+    }
+
+    setCurrSong(song)
+    toggelIsPlaying(false)
+  }
+
+  async function addSongToStation(song) {
+    const songsCopy = mycurrStation.songs.filter(s => s.id !== song.id)
+    songsCopy.push(song)
+    const updatedStation = { ...mycurrStation, songs: songsCopy }
+    setMyCurrStation(updatedStation)
+    try {
+      await updateStation(updatedStation)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   if (!mycurrStation) return <div>loading...</div>
   const { name, tags, songs, imgUrl, createdBy, createdAt } = mycurrStation
   return (
@@ -207,9 +244,26 @@ export function StationDetails() {
           </Popover>
           <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
             <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} onLikedClicked={onLikedClicked} currStation={mycurrStation}></SongList>
-            <AddSongInput onUpdateStation={onUpdateStation} />
+            <AddSongInput onUpdateStation={onSearchSongs} />
           </DragDropContext>
         </div>
+        <ul className="station-details-search-song-list">
+          {searchSongs.map(song =>
+            <li key={song.id}>
+              <div className="side-container">
+                <SongPreview song={song} />
+                <button className={`secondary-play-button ${(isPlaying && song.id === currSong.id) ? 'playing' : ''}`} onClick={(ev) => onPlaySongFromSearch(song, ev)}>
+                  {(isPlaying && song.id === currSong.id) ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
+                    <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
+                </button>
+              </div>
+              <div className="right-container">
+                <button className="add-to-station-btn" onClick={() => addSongToStation(song)}>
+                  <p>Add</p>
+                </button>
+              </div>
+            </li>)}
+        </ul>
       </div>
     </div>
   )

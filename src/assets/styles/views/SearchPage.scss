@@ -1,4 +1,6 @@
 .search-page {
+  height: calc(100vh - 72px - 65px - 16px);
+  overflow-y: auto;
   .results-container {
     display: flex;
     gap: 1rem;
@@ -406,5 +408,28 @@
 
   &:hover {
     cursor: pointer;
+  }
+}
+
+.search-page {
+  .search-stations-container {
+    margin: 18px;
+    ul {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: repeat(5, 1fr);
+
+      li {
+        padding: 1rem;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      button {
+        display: none;
+      }
+    }
   }
 }

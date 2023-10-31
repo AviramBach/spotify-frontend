@@ -148,3 +148,50 @@
       brightness(108%) contrast(102%);
   }
 }
+.station-details-search-song-list {
+  margin: 0;
+  list-style: none;
+  padding: 18px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: .25rem;
+    padding: .25rem;
+
+    .side-container {
+      position: relative;
+    }
+
+    .secondary-play-button {
+      position: absolute;
+      top: 50%;
+      left: 1.25rem;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      background-color: rgba(255, 255, 255, 0);
+      box-shadow: none;
+      filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg)
+        brightness(99%) contrast(105%);
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.playing {
+        opacity: 1;
+      }
+    }
+
+    &:hover{
+      .secondary-play-button {
+        opacity: 1;
+      }
+
+      .song-preview-img {
+        filter: brightness(0.5);
+      }
+    }
+  }
+}

@@ -7,6 +7,8 @@ import { setCurrSong, toggelIsPlaying } from "../store/player.actions"
 import { Popover } from "@mui/material";
 import { StationsModal } from "../cmps/StationsModal"
 import { updateStation } from "../store/station.actions"
+import { StationPreview } from "../cmps/StationPreview"
+import { StationList } from "../cmps/StationList"
 
 
 export function SearchPage() {
@@ -18,6 +20,10 @@ export function SearchPage() {
     const [anchorEl, setAnchorEl] = useState(null)
     const [isOpen, setIsOpen] = useState(false)
     const [songToAdd, setSongToAdd] = useState(null)
+    const [filterBy, setFilterBy] = useState('')
+    const regex = new RegExp(filterBy, 'i')
+
+    const myStations = stations.filter(station => station.songs.some(song => regex.test(song.title) || regex.test(song.artist)))
 
     function handleClick(event, song) {
         setAnchorEl(event.currentTarget)
@@ -36,9 +42,10 @@ export function SearchPage() {
     const id = open ? 'simple-popover' : undefined
 
     async function searchSongs(searchKey) {
+        setFilterBy(searchKey)
         try {
             const searchSongs = await getSongs(searchKey)
-            setSongs(searchSongs)
+            setSongs(searchSongs.slice(0, 4))
         } catch (error) {
             console.dir(error)
             throw error
@@ -125,6 +132,10 @@ export function SearchPage() {
                 </div>
             </div>}
             {!songs && <h2>Browse all</h2>}
+            {songs && <div className="search-stations-container">
+                <h2>Featuring</h2>
+                <StationList stations={myStations.slice(0, 5)} isHome={false} isHideBodyContainer={true} />
+            </div>}
         </section>
     )
 }
