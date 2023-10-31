@@ -34,7 +34,6 @@ export function Player() {
     useEffect(() => {
         if (currSong) {
             setImageUrl(currSong.imgUrl)
-            console.log("hhhhhhh");
         }
     }, [currSong])
 
@@ -133,7 +132,6 @@ export function Player() {
         const remainingSeconds = Math.floor(seconds % 60);
         return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
     }
-
     return (
         <div className='app-player' style={{
             backgroundColor: isMobile ? `rgb(${color})` : 'black'

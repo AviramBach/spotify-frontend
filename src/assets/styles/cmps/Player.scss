@@ -11,18 +11,22 @@
   text-align: center;
   @include for-mobile-layout {
     grid-column: 1;
+    padding: 8px;
+    margin-inline: 8px;
+    border-radius: 6px;
+    color: $white;
   }
 }
 
 .player-song-preview {
   display: flex;
   align-items: center;
-  min-width: 200px;
   padding: 16px;
   @include for-mobile-layout {
-    // min-width: 0;
     width: 100%;
     justify-content: space-between;
+    gap: 65px;
+    padding-inline: 0;
   }
 
   img {
@@ -125,6 +129,10 @@
   @include for-mobile-layout {
     @include round-button("filter");
     background-color: transparent;
+    box-shadow: none;
+    &:hover {
+      background-color: transparent;
+    }
   }
   img {
     @include for-mobile-layout {
@@ -132,6 +140,7 @@
       width: 24px;
       filter: invert(100%) sepia(0%) saturate(4327%) hue-rotate(334deg)
         brightness(116%) contrast(100%);
+      background-color: transparent;
     }
   }
 }
