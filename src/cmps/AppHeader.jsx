@@ -27,7 +27,7 @@ export function AppHeader() {
 
             <div>
                 <a className='signup-a' href="#">sign up</a>
-                <button className='login-button'>
+                <button className='login-button' onClick={() => navigate('/login-signup')}>
                     <span>login</span>
                 </button>
             </div>

@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage.jsx'
 import { SearchPage } from './pages/SearchPage.jsx'
 import { SongDetails } from './pages/SongDetails.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
+import { LoginSignup } from './cmps/LoginSignup.jsx'
 
 
 
@@ -11,7 +12,7 @@ const routes = [
     {
         path: '/',
         component: <HomePage />,
-        label: 'Home 🏠',
+        label: 'Home',
     },
     {
         path: '/search',
@@ -33,6 +34,12 @@ const routes = [
         component: <SongDetails />,
         label: 'song details'
     },
+    {
+        path: 'login-signup',
+        component: <LoginSignup />,
+        label: 'login sign up'
+    },
+
 ]
 
 export default routes

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { userService } from '../services/user.service'
-import { ImgUploader } from './ImgUploader'
+import { userService } from '../services/user.service.js'
+import { ImgUploader } from './ImgUploader.jsx'
 
-export function LoginSignup(props) {
+export function LoginSignup() {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
@@ -30,14 +30,14 @@ export function LoginSignup(props) {
     function onLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
-        props.onLogin(credentials)
+        userService.login(credentials)
         clearState()
     }
 
     function onSignup(ev = null) {
         if (ev) ev.preventDefault()
-        if (!credentials.username || !credentials.password || !credentials.fullname) return
-        props.onSignup(credentials)
+        if (!credentials.username || !credentials.password || !credentials.fullname)
+            return userService.signup(credentials)
         clearState()
     }
 
@@ -64,22 +64,22 @@ export function LoginSignup(props) {
                     {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
                 </select>
                 {/* <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                        autoFocus
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    /> */}
+                    type="text"
+                    name="username"
+                    value={username}
+                    placeholder="Username"
+                    onChange={handleChange}
+                    required
+                    autoFocus
+                />
+                <input
+                    type="password"
+                    name="password"
+                    value={password}
+                    placeholder="Password"
+                    onChange={handleChange}
+                    required
+                /> */}
                 <button>Login!</button>
             </form>}
             <div className="signup-section">

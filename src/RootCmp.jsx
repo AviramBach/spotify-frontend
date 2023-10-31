@@ -4,7 +4,7 @@ import routes from './routes'
 import { AppHeader } from './cmps/AppHeader'
 import { Player } from './cmps/Player'
 import { Aside } from './cmps/Aside'
-import { StationDetails } from './pages/StationDetails'
+import { StationDetails } from './pages/StationDetails.jsx'
 import { Navbar } from './cmps/Navbar'
 
 export function RootCmp() {
