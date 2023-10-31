@@ -1,9 +1,10 @@
 import { Library } from './cmps/Library.jsx'
+import { LoginForm } from './cmps/LoginForm.jsx'
+import { SignupForm } from './cmps/SignupForm.jsx'
 import { HomePage } from './pages/HomePage.jsx'
 import { SearchPage } from './pages/SearchPage.jsx'
 import { SongDetails } from './pages/SongDetails.jsx'
 import { StationDetails } from './pages/StationDetails.jsx'
-import { LoginSignup } from './cmps/LoginSignup.jsx'
 
 
 
@@ -35,10 +36,16 @@ const routes = [
         label: 'song details'
     },
     {
-        path: 'login-signup',
-        component: <LoginSignup />,
-        label: 'login sign up'
+        path: "/login",
+        component: <LoginForm />,
+        label: 'login'
     },
+    {
+        path: "/signup",
+        component: <SignupForm />,
+        label: 'sign up'
+    },
+
 
 ]
 

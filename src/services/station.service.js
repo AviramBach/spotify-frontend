@@ -86,7 +86,7 @@ const sTime = {
     addedBy: 'Gilad',
     duration: '3:33',
     addedAt: utilService.randomPastTime(),
-    isLiked: false
+
 }
 const sConsideration = {
     id: utilService.makeId(),
@@ -98,7 +98,7 @@ const sConsideration = {
     addedBy: 'Guest',
     duration: '2:41',
     addedAt: utilService.randomPastTime(),
-    isLiked: false
+
 }
 const sDang = {
     id: utilService.makeId(),
@@ -110,7 +110,7 @@ const sDang = {
     addedBy: 'Guest',
     duration: '4:39',
     addedAt: utilService.randomPastTime(),
-    isLiked: false
+
 }
 const sJuicy = {
     id: utilService.makeId(),
@@ -122,7 +122,7 @@ const sJuicy = {
     addedBy: 'Gilad',
     duration: '4:13',
     addedAt: utilService.randomPastTime(),
-    isLiked: false
+
 }
 const sZion = {
     id: utilService.makeId(),
@@ -134,7 +134,7 @@ const sZion = {
     addedBy: 'Guest',
     duration: '6:09',
     addedAt: utilService.randomPastTime(),
-    isLiked: true
+
 }
 const sDooWop = {
     id: utilService.makeId(),
@@ -146,7 +146,7 @@ const sDooWop = {
     addedBy: 'Guest',
     duration: '3:56',
     addedAt: utilService.randomPastTime(),
-    isLiked: true
+
 }
 const sWork = {
     id: utilService.makeId(),
@@ -158,7 +158,7 @@ const sWork = {
     addedBy: 'Gilad',
     duration: '3:39',
     addedAt: utilService.randomPastTime(),
-    isLiked: false
+
 }
 const sWash = {
     id: utilService.makeId(),
@@ -170,7 +170,7 @@ const sWash = {
     addedBy: 'Spotify',
     duration: '4:54',
     addedAt: utilService.randomPastTime(),
-    isLiked: false
+
 }
 const sHeyYa = {
     id: utilService.makeId(),
@@ -182,7 +182,7 @@ const sHeyYa = {
     addedBy: 'Gilad',
     duration: '3:52',
     addedAt: utilService.randomPastTime(),
-    isLiked: true
+
 }
 const sRoses = {
     id: utilService.makeId(),
@@ -194,7 +194,7 @@ const sRoses = {
     addedBy: 'Guest',
     duration: '6:10',
     addedAt: utilService.randomPastTime(),
-    isLiked: false
+
 }
 const sAdorn = {
     id: utilService.makeId(),
@@ -206,7 +206,7 @@ const sAdorn = {
     addedBy: 'Guest',
     duration: '3:15',
     addedAt: utilService.randomPastTime(),
-    isLiked: true
+
 }
 const sJump = {
     id: utilService.makeId(),
@@ -218,7 +218,7 @@ const sJump = {
     addedBy: 'Gilad',
     duration: '3:59',
     addedAt: utilService.randomPastTime(),
-    isLiked: false
+
 }
 
 

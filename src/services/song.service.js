@@ -82,7 +82,7 @@ const songsList =
             addedBy: 'Gilad',
             duration: '3:33',
             addedAt: utilService.randomPastTime(),
-            isLiked: false
+
         },
         {
             id: utilService.makeId(),
@@ -94,7 +94,7 @@ const songsList =
             addedBy: 'Guest',
             duration: '2:41',
             addedAt: utilService.randomPastTime(),
-            isLiked: false
+
         },
         {
             id: utilService.makeId(),
@@ -106,7 +106,7 @@ const songsList =
             addedBy: 'Guest',
             duration: '4:39',
             addedAt: utilService.randomPastTime(),
-            isLiked: false
+
         },
         {
             id: utilService.makeId(),
@@ -118,7 +118,7 @@ const songsList =
             addedBy: 'Gilad',
             duration: '4:13',
             addedAt: utilService.randomPastTime(),
-            isLiked: false
+
         },
         {
             id: utilService.makeId(),
@@ -154,7 +154,7 @@ const songsList =
             addedBy: 'Gilad',
             duration: '3:39',
             addedAt: utilService.randomPastTime(),
-            isLiked: false
+
         },
         {
             id: utilService.makeId(),
@@ -166,7 +166,7 @@ const songsList =
             addedBy: 'Spotify',
             duration: '4:54',
             addedAt: utilService.randomPastTime(),
-            isLiked: false
+
         },
         {
             id: utilService.makeId(),
@@ -190,7 +190,7 @@ const songsList =
             addedBy: 'Guest',
             duration: '6:10',
             addedAt: utilService.randomPastTime(),
-            isLiked: false
+
         },
         {
             id: utilService.makeId(),
@@ -214,7 +214,7 @@ const songsList =
             addedBy: 'Gilad',
             duration: '3:59',
             addedAt: utilService.randomPastTime(),
-            isLiked: false
+
         }
     ]
 // async function addSongMsg(songId, txt) {
@@ -234,7 +234,6 @@ function getRandomSong(title) {
         addedBy: 'guest',
         duration: '6:10',
         addedAt: utilService.randomPastTime(),
-        isLiked: false
     }
 }
 
