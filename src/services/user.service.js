@@ -34,7 +34,6 @@ async function login(email, password) {
     const user = users.find(user => user.email === email && user.password === password)
     // const user = await httpService.post('auth/login', userCred)
     if (user) {
-        console.log(user);
         return saveLocalUser(user)
     }
 }
@@ -46,25 +45,19 @@ async function logout() {
 async function signup(email, fullName, password) {
     const user = await storageService.post(STORAGE_KEY_USERS, _createUser(email, fullName, password, "./../../public/img/user.png"))
     // const user = await httpService.post('auth/signup', userCred)
-    console.log(user);
     return saveLocalUser(user)
 }
 
 async function addToLikedSongs(clickedSong) {
     const user = getLoggedinUser()
     if (!user) throw new Error('Not loggedin')
-    console.log(user);
-    console.log(clickedSong);
-    console.log(user.likedSongs.find((song) => song.id != clickedSong.id));
     if (!user.likedSongs.find((song) => song.id === clickedSong.id)) {
         user.likedSongs = [...user.likedSongs, clickedSong]
-        console.log("if");
     } else {
         const songIdx = user.likedSongs.findIndex((song) => song.id === clickedSong.id)
         user.likedSongs.splice(songIdx, 1)
     }
     if (getLoggedinUser()._id === user._id) saveLocalUser(user)
-    console.log(user.likedSongs)
     return user.likedSongs
 }
 
@@ -72,7 +65,6 @@ async function save(user) {
     let saveduser
     if (user._id) {
         saveduser = await storageService.put(STORAGE_KEY_USERS, user)
-        console.log(user);
         // saveduser = await httpService.put(`user/${user._id}`, user)
     } else {
         saveduser = await storageService.post(STORAGE_KEY_USERS, user)

@@ -49,7 +49,6 @@ export function StationDetails() {
   }, [mycurrStation])
 
   useEffect(() => {
-    console.log(color)
     setCurrColor(color)
   }, [color])
 
@@ -114,7 +113,6 @@ export function StationDetails() {
   async function onLikedClicked(song) {
     try {
       const updatedLikedSongs = await userService.addToLikedSongs(song)
-      console.log(updatedLikedSongs);
       await updateUser({ ...currUser, likedSongs: updatedLikedSongs })
     }
     catch (err) {
