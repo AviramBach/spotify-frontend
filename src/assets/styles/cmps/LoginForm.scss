@@ -1,0 +1,58 @@
+.login-page {
+  padding: 32px;
+  background-color: $spotify-background-black;
+  display: flex;
+  justify-content: center;
+}
+.login-form-container {
+  background-color: $black;
+  padding-block: 32px;
+  padding-inline: 32px;
+}
+.login-headline {
+  margin-block: 48px;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    @include body-text("secondary-small");
+    font-weight: 700;
+  }
+  input {
+    font-size: 1rem;
+    font-weight: 400;
+    color: $white;
+    background-color: $spotify-background-black;
+    padding-inline: 14px;
+    padding-block: 8px;
+    border: 1px solid $spotify-body-text-grey;
+    border-radius: 4px;
+    margin-block-end: 16px;
+    &:hover {
+      border-color: $white;
+    }
+    &:focus {
+      border: 2px solid $white;
+    }
+  }
+}
+.login-signup-link {
+  @include body-link("secondary");
+  color: $white;
+}
+.login-signup-btn {
+  margin-block: 32px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $black;
+  background-color: $spotify-active-green;
+  border-radius: 500px;
+  padding-block: 8px;
+  padding-inline: 32px;
+  span {
+    height: 32px;
+    width: 260px;
+  }
+}

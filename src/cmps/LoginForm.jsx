@@ -18,32 +18,40 @@ export function LoginForm() {
         navigate("/")
     }
 
-    return <div>
-        <h1>login</h1>
-        <form className="login-form" onSubmit={(ev) => {
-            ev.preventDefault()
-            setLoginEmail("")
-            setLoginPassword("")
-            onLogin(loginEmail, loginPassword)
-        }} >
-            <input className="login-email" type="text"
-                placeholder="Email"
-                value={loginEmail}
-                onInput={(ev) => setLoginEmail(ev.target.value)}
-            />
-            <input
-                className="login-password"
-                type="password"
-                placeholder="password"
-                value={loginPassword}
-                onInput={(ev) => setLoginPassword(ev.target.value)}
-            />
+    return <div className="login-page">
+        <div className="login-form-container">
+            <h1 className="login-headline">Login to Songify</h1>
+            <form className="login-form" onSubmit={(ev) => {
+                ev.preventDefault()
+                setLoginEmail("")
+                setLoginPassword("")
+                onLogin(loginEmail, loginPassword)
+            }} >
+                <label htmlFor="email">Email</label>
+                <input className="login-email"
+                    stype="text"
+                    name="email"
+                    placeholder="Email"
+                    value={loginEmail}
+                    onInput={(ev) => setLoginEmail(ev.target.value)}
+                />
+                <label htmlFor="password">Password</label>
+                <input
+                    className="login-password"
+                    type="password"
+                    name="password"
+                    placeholder="password"
+                    value={loginPassword}
+                    onInput={(ev) => setLoginPassword(ev.target.value)}
+                />
 
-            <button>
-                login
-            </button>
+                <button className="login-signup-btn">
+                    login
+                </button>
 
-        </form>
+            </form>
+            <a className="login-signup-link" href="/signup">Don't have an account? join songify</a>
+        </div>
     </div>
 }
 

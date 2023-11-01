@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { StationList } from '../cmps/StationList.jsx'
 import { useDispatch, useSelector } from 'react-redux'
+import { loadUsers } from "./../store/user.actions.js"
 
 
 export function HomePage() {
@@ -9,6 +10,9 @@ export function HomePage() {
     const currColor = useSelector(storeState => storeState.colorModule.currColor)
     let time = new Date().getHours()
     const greeting = (time > 18) ? 'Good Evening' : (time > 12) ? 'Good Afternoon' : 'Good Morning'
+    useEffect(() => {
+        loadUsers()
+    }, [])
     return (
         <section className='homepage' style={{
             background: `linear-gradient(

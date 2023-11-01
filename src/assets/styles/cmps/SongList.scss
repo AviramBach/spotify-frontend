@@ -153,6 +153,10 @@
     transform: rotate(90deg);
   }
 }
+
+.liked-btn {
+  visibility: visible;
+}
 .liked {
   filter: invert(61%) sepia(59%) saturate(2082%) hue-rotate(94deg)
     brightness(91%) contrast(79%);

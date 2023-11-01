@@ -17,37 +17,48 @@ export function SignupForm() {
         navigate("/")
     }
 
-    return <div>
-        <h1>sign up</h1>
-        <form className="signup-form" onSubmit={(ev) => {
-            ev.preventDefault()
-            setSignupEmail("")
-            setSignupFullName("")
-            setSignupPassword("")
-            onSignup(signupEmail, signupFullName, signupPassword)
-        }} >
-            <input className="signup-email" type="text"
-                placeholder="Email"
-                value={signupEmail}
-                onInput={(ev) => setSignupEmail(ev.target.value)}
-            />
-            <input className="signup-fullname" type="text"
-                placeholder="Full name"
-                value={signupFullName}
-                onInput={(ev) => setSignupFullName(ev.target.value)}
-            />
-            <input
-                className="signup-password"
-                type="password"
-                placeholder="password"
-                value={signupPassword}
-                onInput={(ev) => setSignupPassword(ev.target.value)}
-            />
+    return <div className="signup-page" >
+        <div className="signup-form-container">
+            <h1>Sign up and start exploring</h1>
+            <form className="signup-form" onSubmit={(ev) => {
+                ev.preventDefault()
+                setSignupEmail("")
+                setSignupFullName("")
+                setSignupPassword("")
+                onSignup(signupEmail, signupFullName, signupPassword)
+            }} >
+                <label htmlFor="email">Email</label>
+                <input className="signup-email"
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    value={signupEmail}
+                    onInput={(ev) => setSignupEmail(ev.target.value)}
+                />
 
-            <button>
-                Sign up
-            </button>
+                <label htmlFor="fullname">Full name</label>
+                <input className="signup-fullname"
+                    type="text"
+                    name="fullname"
+                    placeholder="Full name"
+                    value={signupFullName}
+                    onInput={(ev) => setSignupFullName(ev.target.value)}
+                />
+                <label htmlFor="passwoed">Password</label>
+                <input
+                    className="signup-password"
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    value={signupPassword}
+                    onInput={(ev) => setSignupPassword(ev.target.value)}
+                />
 
-        </form>
+                <button className="login-signup-btn">
+                    Sign up
+                </button>
+            </form>
+            <a className="login-signup-link" href="/login">Already have an account? login to songify</a>
+        </div>
     </div>
 }

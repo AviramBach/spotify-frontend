@@ -49,15 +49,15 @@ async function signup(email, fullName, password) {
     return saveLocalUser(user)
 }
 
-async function addToLikedSongs() {
+async function addToLikedSongs(clickedSong) {
     const user = getLoggedinUser()
     if (!user) throw new Error('Not loggedin')
-    user.likedSongs = user.likedSongs
-    await update(user)
+    user.likedSongs.find((song) => song === clickedSong) ?
+        user.likedSongs = user.likedSongs.splice(clickedSong.idx, 1) : user.likedSongs = [...user.likedSongs, clickedSong]
+    // await storageService.put(STORAGE_KEY_USERS, user)
     if (getLoggedinUser()._id === user._id) saveLocalUser(user)
-
+    console.log(user.likedSongs)
     return user.likedSongs
-
 }
 
 function saveLocalUser(user) {
