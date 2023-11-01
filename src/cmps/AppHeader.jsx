@@ -8,7 +8,6 @@ export function AppHeader() {
     const currColor = useSelector(storeState => storeState.colorModule.currColor)
     const navigate = useNavigate();
     useEffect(() => {
-        console.log('currColor', currColor)
     }, [currColor])
     const goBack = () => {
         navigate(-1);

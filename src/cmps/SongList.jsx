@@ -61,10 +61,9 @@ export function SongList({ songs, currUser, onRemoveSongFromStation, onPlaySongF
                                         <p className="song-list-item-album"> {utilService.getTxtToShow(song.album, 15)}</p>
                                         <p className="song-list-item-added-at" >{moment(song.addedAt).fromNow()}</p>
                                         <div className="song-list-item-duration-container">
-                                            <button className={`song-list-item-btn ${currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? '.liked-btn' : ''}`} onClick={(ev) => {
+                                            <button className={`song-list-item-btn ${currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? 'liked-btn' : ''}`} onClick={(ev) => {
                                                 ev.stopPropagation()
                                                 onLikedClicked(song)
-                                                console.log(currUser);
                                                 setIsLiked(currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id))
                                             }}>
                                                 <img className={`song-list-item-btn-img ${currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? 'liked' : ''}`}
@@ -73,7 +72,6 @@ export function SongList({ songs, currUser, onRemoveSongFromStation, onPlaySongF
                                             <p className="song-list-item-duration">{song.duration}</p>
                                             <button className="song-list-item-btn" onClick={(ev) => {
                                                 ev.stopPropagation()
-                                                console.log(ev);
                                                 setIsSongOption(!isSongOption)
                                                 setSongOptionId(song.id)
                                                 handleClick(ev);
