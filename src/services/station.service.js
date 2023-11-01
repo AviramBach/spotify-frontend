@@ -226,23 +226,23 @@ const sJump = {
 
 function _createStations() {
     return [
-        _createStation('My Favs', './../../public/img/Album_cover4.jpg', [sTime, sConsideration, sDang, sJuicy, sWash, sRoses, sDooWop, sAdorn, sHeyYa, sJump], 'Me', ['Yours', 'Playlist']),
-        _createStation('ANTI', './../../public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'Album']),
-        _createStation('R&B', './../../public/img/Album_cover3.jpg', [sZion, sWork, sDooWop, sConsideration], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
+        _createStation('ANTI', './../../public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'R&B', 'Album']),
+        _createStation('R&B', './../../public/img/Channel_ORANGE.jpg', [sZion, sWork, sDooWop, sConsideration], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
         _createStation('Daily Mix 1', './../../public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify',),
-        _createStation('Hip hop', './../../public/img/Album-cover2.jpg', [sJuicy, sDang, sRoses, sWork], 'Gilad', ['Hip hop', 'Rap', 'Playlist']),
+        _createStation('Hip hop', './../../public/img/Album-cover2.jpg', [sJuicy, sDang, sRoses, sWork], 'Gilad', ['Hip-hop', 'Rap', 'Playlist']),
         _createStation('Daily Mix 3', './../../public/img/daily_mix_3.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify', ['daily mix', 'Vibe', 'Playlist']),
-        _createStation('Soul Mix', './../../public/img/Album_cover3.jpg', [sDooWop, sConsideration, sWash], 'Songify', ['Mix']),
+        _createStation('Soul Mix', './../../public/img/Album_cover3.jpg', [sDooWop, sConsideration, sWash], 'Songify', ['R&B', 'Mix']),
         _createStation('Rock', './../../public/img/Album_cover4.jpg', [sJump, sTime, sWash], 'Gilad', ['Rock', 'Playlist']),
-        _createStation('On Repeat', './../../public/img/Outkast.jpg', [sRoses, sWork, sDooWop], 'Gilad', ['Playlist']),
-        _createStation('2010s Mix', './../../public/img/Album_cover1.png', [sWork, sWash, sConsideration, sDang,], 'Songify', ['daily mix', 'Vibe', 'Playlist']),
-        _createStation('Chill Mix', './../../public/img/Album-cover2.jpg', [sJuicy, sAdorn, sDang, sRoses, sWork], 'Gilad', ['Hip hop', 'Rap', 'Playlist']),
-        _createStation('Outkast Mix', './../../public/img/Outkast.jpg', [sHeyYa, sJuicy, sRoses, sDang], 'Songify', ['chill', 'Vibe', 'Playlist']),
-        _createStation('Todays Top Hits', './../../public/img/Album_cover1.png', [sWork, sDang, sHeyYa, sConsideration,], 'Songify', ['pop', 'hits', 'Playlist']),
-        _createStation('Rock Classics', './../../public/img/Album_cover4.jpg', [sTime, sJump, sDang,], 'Songify', ['rock', 'Vibe', 'Playlist']),
-        _createStation('Chill Hits', './../../public/img/Outkast.jpg', [sRoses, sJump, sTime, sDang,], 'Songify', ['chill', 'Vibe', 'Playlist']),
-        _createStation('All Out 2010s', './../../public/img/Album_cover1.png', [sWork, sDang, sConsideration,], 'Songify', ['2010', 'hits', 'Playlist']),
-        _createStation('Rap Caviar', './../../public/img/Album-cover2.jpg', [sAdorn, sDang, sJuicy, sRoses, sHeyYa], 'Songify', ['Hip hop', 'Rap', 'Playlist'])
+        _createStation('2010s Mix', './../../public/img/Rihanna_Loud.png', [sWork, sWash, sConsideration, sDang,], 'Songify', ['Mix', 'Vibe', 'Playlist']),
+        _createStation('Chill Mix', './../../public/img/Album_Chill.jpg', [sJuicy, sAdorn, sDang, sRoses, sWork], 'Gilad', ['Hip-hop', 'Rap', 'Playlist']),
+        _createStation('Outkast Mix', './../../public/img/Outkast.jpg', [sHeyYa, sJuicy, sRoses, sDang], 'Songify', ['Chill', 'Hip-hop', 'Vibe', 'Playlist']),
+        _createStation('Todays Top Hits', './../../public/img/Album_Pop.png', [sWork, sDang, sHeyYa, sConsideration,], 'Songify', ['Pop', 'hits', 'Playlist']),
+        _createStation('Rock Classics', './../../public/img/Queen_Album.png', [sTime, sJump, sDang,], 'Songify', ['Rock', 'Vibe', 'Playlist']),
+        _createStation('My Favs', './../../public/img/liked-songs-300.png', [sTime, sConsideration, sDang, sJuicy, sWash, sRoses, sDooWop, sAdorn, sHeyYa, sJump], 'Me', ['Yours', 'Playlist']),
+        _createStation('On Repeat', './../../public/img/On_Repeat.jpg', [sRoses, sWork, sDooWop], 'Gilad', ['Playlist']),
+        _createStation('Chill Hits', './../../public/img/Outkast.jpg', [sRoses, sJump, sTime, sDang,], 'Songify', ['Chill', 'Vibe', 'Playlist']),
+        _createStation('All Out 2010s', './../../public/img/Album_Starboy.png', [sWork, sDang, sConsideration,], 'Songify', ['2010', 'Pop', 'Playlist']),
+        _createStation('Rap Caviar', './../../public/img/RapCaviar.jpg', [sAdorn, sDang, sJuicy, sRoses, sHeyYa], 'Songify', ['Hip-hop', 'Rap', 'Playlist'])
     ]
 }
 

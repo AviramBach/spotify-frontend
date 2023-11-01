@@ -400,23 +400,58 @@
     margin: 18px;
   }
 
-  .ganre-container{
-    // text-align: center;
+  form {
+    line-height: 1;
+  }
+
+  .ganre-container {
     margin: 18px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
   }
 
-  .ganre-card{
-    height: 200px;
-    padding: 1rem;
-    border-radius: .25rem;
+  .station-list {
+    margin: 18px;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(5, 1fr);
 
-    &:hover{
+    li {
+      padding: 1rem;
+      border-radius: .5rem;
+      background-color: $hover-light-spotify-black;
+    }
+
+    button {
+      display: none;
+    }
+
+  }
+
+  .ganre-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: .5rem;
+    aspect-ratio: 1;
+    overflow: hidden;
+    // max-height: 210px;
+
+    &:hover {
       cursor: pointer;
     }
-    // filter: brightness(0.75);
+
+    h3 {
+      margin: 0;
+    }
+
+    img {
+      transform: rotate(25deg) translate(30%, -2%);
+      width: 80%;
+      place-self: end;
+    }
   }
 
   .song-search-input-container {
@@ -454,6 +489,7 @@
       grid-auto-flow: column;
       gap: .5rem;
       grid-template-columns: repeat(5, 1fr);
+      margin: 0;
 
       li {
         padding: 1rem;
