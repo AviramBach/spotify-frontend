@@ -9,6 +9,7 @@ export const userService = {
     login,
     logout,
     signup,
+    save,
     addToLikedSongs,
     getLoggedinUser,
 }
@@ -52,12 +53,32 @@ async function signup(email, fullName, password) {
 async function addToLikedSongs(clickedSong) {
     const user = getLoggedinUser()
     if (!user) throw new Error('Not loggedin')
-    user.likedSongs.find((song) => song === clickedSong) ?
-        user.likedSongs = user.likedSongs.splice(clickedSong.idx, 1) : user.likedSongs = [...user.likedSongs, clickedSong]
-    // await storageService.put(STORAGE_KEY_USERS, user)
+    console.log(user);
+    console.log(clickedSong);
+    console.log(user.likedSongs.find((song) => song.id != clickedSong.id));
+    if (!user.likedSongs.find((song) => song.id === clickedSong.id)) {
+        user.likedSongs = [...user.likedSongs, clickedSong]
+        console.log("if");
+    } else {
+        const songIdx = user.likedSongs.findIndex((song) => song.id === clickedSong.id)
+        user.likedSongs.splice(songIdx, 1)
+    }
     if (getLoggedinUser()._id === user._id) saveLocalUser(user)
     console.log(user.likedSongs)
     return user.likedSongs
+}
+
+async function save(user) {
+    let saveduser
+    if (user._id) {
+        saveduser = await storageService.put(STORAGE_KEY_USERS, user)
+        console.log(user);
+        // saveduser = await httpService.put(`user/${user._id}`, user)
+    } else {
+        saveduser = await storageService.post(STORAGE_KEY_USERS, user)
+        // saveduser = await httpService.post('user', user)
+    }
+    return saveduser
 }
 
 function saveLocalUser(user) {
@@ -74,10 +95,10 @@ function getLoggedinUser() {
 
 function _createUsers() {
     return [
-        _createUser("almogj1998@gmail.com", "Almog Jan", "123456", "./../../public/img/user.png", true),
-        _createUser("almogj1998@gmail.col", "Puki", "./../../public/img/user.png", "123456"),
-        _createUser("almogj1998@gmail.cov", "Moki", "./../../public/img/user.png", "123456"),
-        _createUser("almogj1998@gmail.coz", "Pitzy", "./../../public/img/user.png", "123456")
+        _createUser("almogj1998@gmail.com", "Almog Jan", "123456", "./../../public/img/user.svg", true),
+        _createUser("almogj1998@gmail.col", "Puki", "./../../public/img/user.svg", "123456"),
+        _createUser("almogj1998@gmail.cov", "Moki", "./../../public/img/user.svg", "123456"),
+        _createUser("almogj1998@gmail.coz", "Pitzy", "./../../public/img/user.svg", "123456")
     ]
 }
 
