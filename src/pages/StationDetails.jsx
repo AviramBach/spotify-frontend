@@ -17,6 +17,7 @@ import { useColorFromImage } from "../customHooks/useColorFromImage.js"
 import { getSongs } from "../services/youtube-api.service.js"
 import { SongPreview } from "../cmps/SongPreview.jsx"
 import { userService } from "../services/user.service.js"
+import { updateUser } from "./../store/user.actions.js"
 
 
 
@@ -30,6 +31,7 @@ export function StationDetails() {
   const [isOption, setIsOption] = useState(false)
   const { color, setImageUrl } = useColorFromImage()
   const [searchSongs, setSearchSongs] = useState([])
+  const [loggedInUser, setLoggedInUser] = useState(currUser)
 
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
@@ -55,7 +57,9 @@ export function StationDetails() {
     getStation()
   }, [params])
 
-
+  useEffect(() => {
+    setLoggedInUser(currUser)
+  }, [currUser])
   // async function getColor() {
   //   try {
   //     const color = await imageService.getColorFromImage(mycurrStation.imgUrl)
@@ -108,7 +112,14 @@ export function StationDetails() {
     }
   }
   async function onLikedClicked(song) {
-    await userService.addToLikedSongs(song)
+    try {
+      const updatedLikedSongs = await userService.addToLikedSongs(song)
+      console.log(updatedLikedSongs);
+      await updateUser({ ...currUser, likedSongs: updatedLikedSongs })
+    }
+    catch (err) {
+      console.error(err)
+    }
   }
   async function onRemoveSongFromStation(songId) {
     const updatedSongs = mycurrStation.songs.filter(song => songId !== song.id)

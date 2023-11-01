@@ -2,7 +2,7 @@ import { userService } from '../services/user.service.js'
 export const SET_USER = 'SET_USER'
 export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const SET_USERS = 'SET_USERS'
-export const SET_LIKED_SONG = 'SET_LIKED_SONG'
+export const UPDATE_USER = 'UPDATE_USER'
 
 const initialState = {
     count: 10,
@@ -23,8 +23,8 @@ export function userReducer(state = initialState, action) {
         case SET_USERS:
             newState = { ...state, users: action.users }
             break
-        case SET_LIKED_SONG:
-            newState = { ...state, user: { ...state.user, likedSongs: action.song } }
+        case UPDATE_USER:
+            newState = { ...state, user: { ...state.user, likedSongs: action.likedSongs } }
             break
         default:
     }

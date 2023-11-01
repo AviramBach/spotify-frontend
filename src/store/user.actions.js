@@ -3,7 +3,14 @@ import { socketService } from "../services/socket.service.js";
 import { store } from '../store/store.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
-import { SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js";
+import { SET_USER, SET_USERS, SET_WATCHED_USER, UPDATE_USER } from "./user.reducer.js";
+
+export function getActionUpdateuser(likedSongs) {
+    return {
+        type: UPDATE_USER,
+        likedSongs
+    }
+}
 
 export async function loadUsers() {
     try {
@@ -67,5 +74,17 @@ export async function loadUser(userId) {
     } catch (err) {
         showErrorMsg('Cannot load user')
         console.log('Cannot load user', err)
+    }
+}
+
+export async function updateUser(user) {
+    try {
+        const savedUser = await userService.save(user)
+        store.dispatch(getActionUpdateuser(savedUser.likedSongs))
+        return savedUser
+    }
+    catch (err) {
+        console.log('Cannot save user', err)
+        throw err
     }
 }

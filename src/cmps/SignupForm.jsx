@@ -19,7 +19,7 @@ export function SignupForm() {
 
     return <div className="signup-page" >
         <div className="signup-form-container">
-            <h1>Sign up and start exploring</h1>
+            <h1>Sign up to Songify</h1>
             <form className="signup-form" onSubmit={(ev) => {
                 ev.preventDefault()
                 setSignupEmail("")
@@ -29,6 +29,7 @@ export function SignupForm() {
             }} >
                 <label htmlFor="email">Email</label>
                 <input className="signup-email"
+                    required
                     type="text"
                     name="email"
                     placeholder="Email"
@@ -38,6 +39,7 @@ export function SignupForm() {
 
                 <label htmlFor="fullname">Full name</label>
                 <input className="signup-fullname"
+                    required
                     type="text"
                     name="fullname"
                     placeholder="Full name"
@@ -47,6 +49,7 @@ export function SignupForm() {
                 <label htmlFor="passwoed">Password</label>
                 <input
                     className="signup-password"
+                    required
                     name="password"
                     type="password"
                     placeholder="Password"

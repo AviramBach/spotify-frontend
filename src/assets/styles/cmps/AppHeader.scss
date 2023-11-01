@@ -48,5 +48,7 @@
     width: 24px;
     border-radius: 50%;
     border: 0;
+    filter: invert(83%) sepia(8%) saturate(4%) hue-rotate(327deg)
+      brightness(82%) contrast(80%);
   }
 }
