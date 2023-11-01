@@ -6,6 +6,7 @@ import { StationDetailsOptionMenu } from "./StationDetailsOptionMenu.jsx";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Popover } from "@mui/material";
+import { useEffect } from "react";
 
 
 
@@ -15,7 +16,7 @@ export function SongList({ songs, currUser, onRemoveSongFromStation, onPlaySongF
     const [isSongOption, setIsSongOption] = useState(false)
     const [songOptionId, setSongOptionId] = useState(null)
     const [anchorEl, setAnchorEl] = useState(null);
-    const [isLiked, setIsLiked] = useState(false)
+    const [isLiked, setIsLiked] = useState(null)
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -60,13 +61,14 @@ export function SongList({ songs, currUser, onRemoveSongFromStation, onPlaySongF
                                         <p className="song-list-item-album"> {utilService.getTxtToShow(song.album, 15)}</p>
                                         <p className="song-list-item-added-at" >{moment(song.addedAt).fromNow()}</p>
                                         <div className="song-list-item-duration-container">
-                                            <button className={`song-list-item-btn ${isLiked ? '.liked-btn' : ''}`} onClick={(ev) => {
+                                            <button className={`song-list-item-btn ${currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? '.liked-btn' : ''}`} onClick={(ev) => {
                                                 ev.stopPropagation()
-                                                setIsLiked(!isLiked)
                                                 onLikedClicked(song)
+                                                console.log(currUser);
+                                                setIsLiked(currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id))
                                             }}>
-                                                <img className={`song-list-item-btn-img ${isLiked ? 'liked' : ''}`}
-                                                    src={isLiked ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />
+                                                <img className={`song-list-item-btn-img ${currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? 'liked' : ''}`}
+                                                    src={currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />
                                             </button>
                                             <p className="song-list-item-duration">{song.duration}</p>
                                             <button className="song-list-item-btn" onClick={(ev) => {
@@ -110,5 +112,5 @@ export function SongList({ songs, currUser, onRemoveSongFromStation, onPlaySongF
                 )}
             </Droppable>
         }
-    </div>
+    </div >
 }

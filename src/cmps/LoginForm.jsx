@@ -29,6 +29,7 @@ export function LoginForm() {
             }} >
                 <label htmlFor="email">Email</label>
                 <input className="login-email"
+                    required
                     stype="text"
                     name="email"
                     placeholder="Email"
@@ -38,6 +39,7 @@ export function LoginForm() {
                 <label htmlFor="password">Password</label>
                 <input
                     className="login-password"
+                    required
                     type="password"
                     name="password"
                     placeholder="password"
