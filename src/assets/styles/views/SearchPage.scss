@@ -1,13 +1,14 @@
 .search-page {
   height: calc(100vh - 72px - 65px - 16px);
   overflow-y: auto;
+
   .results-container {
     display: flex;
     gap: 1rem;
     margin: 0 1rem 0;
 
     h2 {
-      margin: 1rem;
+      margin: 0;
     }
 
     .results-container {
@@ -15,9 +16,9 @@
       gap: 1rem;
       margin: 0 1rem 0;
 
-      h2 {
-        margin: 0;
-      }
+      // h2 {
+      //   margin: 0;
+      // }
 
       .top-result-container {
         width: 30vw;
@@ -25,10 +26,8 @@
         .song-preview-container {
           position: relative;
           border-radius: 0.25rem;
-          background-color: lighten(
-            $color: $spotify-background-black,
-            $amount: 2%
-          );
+          background-color: lighten($color: $spotify-background-black,
+              $amount: 2%);
 
           .primary-play-button {
             position: absolute;
@@ -48,10 +47,8 @@
           }
 
           &:hover {
-            background-color: lighten(
-              $color: $spotify-background-black,
-              $amount: 10%
-            );
+            background-color: lighten($color: $spotify-background-black,
+                $amount: 10%);
 
             .primary-play-button {
               opacity: 1;
@@ -128,8 +125,7 @@
               img {
                 width: 1.5rem;
                 height: 1.5rem;
-                filter: invert(100%) sepia(0%) saturate(7500%)
-                  hue-rotate(359deg) brightness(99%) contrast(105%);
+                filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg) brightness(99%) contrast(105%);
                 display: none;
 
                 &:hover {
@@ -147,8 +143,7 @@
             opacity: 0;
             background-color: rgba(255, 255, 255, 0);
             box-shadow: none;
-            filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg)
-              brightness(99%) contrast(105%);
+            filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg) brightness(99%) contrast(105%);
 
             &:hover {
               cursor: pointer;
@@ -161,10 +156,8 @@
 
           &:hover {
             cursor: pointer;
-            background-color: lighten(
-              $color: $spotify-background-black,
-              $amount: 10%
-            );
+            background-color: lighten($color: $spotify-background-black,
+                $amount: 10%);
 
             .secondary-play-button {
               opacity: 1;
@@ -195,10 +188,8 @@
       .song-preview-container {
         position: relative;
         border-radius: 0.25rem;
-        background-color: lighten(
-          $color: $spotify-background-black,
-          $amount: 2%
-        );
+        background-color: lighten($color: $spotify-background-black,
+            $amount: 2%);
 
         .primary-play-button {
           position: absolute;
@@ -218,10 +209,8 @@
         }
 
         &:hover {
-          background-color: lighten(
-            $color: $spotify-background-black,
-            $amount: 10%
-          );
+          background-color: lighten($color: $spotify-background-black,
+              $amount: 10%);
 
           .primary-play-button {
             opacity: 1;
@@ -258,6 +247,7 @@
           border-radius: 0.25rem;
         }
       }
+
       for-mobile-layout {
         flex-direction: column;
       }
@@ -301,8 +291,7 @@
             img {
               width: 1.5rem;
               height: 1.5rem;
-              filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg)
-                brightness(99%) contrast(105%);
+              filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg) brightness(99%) contrast(105%);
               display: none;
 
               &:hover {
@@ -320,8 +309,7 @@
           opacity: 0;
           background-color: rgba(255, 255, 255, 0);
           box-shadow: none;
-          filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg)
-            brightness(99%) contrast(105%);
+          filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(359deg) brightness(99%) contrast(105%);
 
           &:hover {
             cursor: pointer;
@@ -334,10 +322,8 @@
 
         &:hover {
           cursor: pointer;
-          background-color: lighten(
-            $color: $spotify-background-black,
-            $amount: 10%
-          );
+          background-color: lighten($color: $spotify-background-black,
+              $amount: 10%);
 
           .secondary-play-button {
             opacity: 1;
@@ -372,10 +358,8 @@
     border-radius: 0.25rem;
 
     &:hover {
-      background-color: lighten(
-        $color: $spotify-background-black,
-        $amount: 20%
-      );
+      background-color: lighten($color: $spotify-background-black,
+          $amount: 20%);
     }
 
     button {
@@ -398,8 +382,7 @@
   img {
     width: 1rem;
     height: 1rem;
-    filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg)
-      brightness(88%) contrast(87%);
+    filter: invert(82%) sepia(14%) saturate(0%) hue-rotate(137deg) brightness(88%) contrast(87%);
   }
 
   p {
@@ -412,18 +395,74 @@
 }
 
 .search-page {
+
+  h2 {
+    margin: 18px;
+  }
+
+  .ganre-container{
+    // text-align: center;
+    margin: 18px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 1rem;
+  }
+
+  .ganre-card{
+    height: 200px;
+    padding: 1rem;
+    border-radius: .25rem;
+
+    &:hover{
+      cursor: pointer;
+    }
+    // filter: brightness(0.75);
+  }
+
+  .song-search-input-container {
+    margin: 0;
+    border-block-start: none;
+    padding: 0;
+  }
+
+  .song-search-input {
+    position: fixed;
+    top: 1rem;
+    left: 40%;
+    height: 3rem;
+    border-radius: 4rem;
+
+    img {
+      margin-inline-start: 1rem;
+    }
+
+    &:focus-within {
+      border: 2px solid white;
+    }
+
+  }
+
   .search-stations-container {
     margin: 18px;
+
+    h2 {
+      margin: 0;
+    }
+
     ul {
       display: grid;
       grid-auto-flow: column;
+      gap: .5rem;
       grid-template-columns: repeat(5, 1fr);
 
       li {
         padding: 1rem;
+        border-radius: .25rem;
+        background-color: lighten($color: $spotify-background-black, $amount: 5%);
 
         &:hover {
           cursor: pointer;
+          background-color: $hover-light-spotify-black;
         }
       }
 

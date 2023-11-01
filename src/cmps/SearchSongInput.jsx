@@ -1,0 +1,17 @@
+import { useState } from "react"
+
+export function SearchSongInput({ onUpdateStation }) {
+    const [input, setInput] = useState("")
+    return <div className="song-search-input-container">
+        <div className="song-search-input" >
+            <img className="song-search-input-img" src="./../../public/img/search.svg" alt="" />
+            <form onSubmit={(ev) => {
+                ev.preventDefault()
+                setInput("")
+                onUpdateStation(input)
+            }}>
+                <input className="song-search-input-search-box" type="text" placeholder="Search for songs" value={input} onInput={(ev) => setInput(ev.target.value)} />
+            </form>
+        </div>
+    </div>
+}

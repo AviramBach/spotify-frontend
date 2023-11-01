@@ -9,6 +9,7 @@ import { StationsModal } from "../cmps/StationsModal"
 import { updateStation } from "../store/station.actions"
 import { StationPreview } from "../cmps/StationPreview"
 import { StationList } from "../cmps/StationList"
+import { SearchSongInput } from "../cmps/SearchSongInput"
 
 
 export function SearchPage() {
@@ -40,6 +41,13 @@ export function SearchPage() {
 
     const open = Boolean(anchorEl)
     const id = open ? 'simple-popover' : undefined
+    const ganres = ['Pop', 'Rock', 'Hip-hop', 'Chill', 'R&B']
+    const colors = ['red', 'blue', 'yellow', 'green', 'purple']
+
+    function onSearchGanre(ganre) {
+        const stationsByGanre = stations.filter(station => station.tags.includes(ganre))
+        console.log(ganre, stationsByGanre)
+    }
 
     async function searchSongs(searchKey) {
         setFilterBy(searchKey)
@@ -76,7 +84,7 @@ export function SearchPage() {
 
     return (
         <section className="search-page">
-            <AddSongInput onUpdateStation={searchSongs} />
+            <SearchSongInput onUpdateStation={searchSongs} />
             {songs && <div className="results-container">
                 <div className="top-result-container">
                     <h2>Top result</h2>
@@ -131,7 +139,15 @@ export function SearchPage() {
                     </ul>
                 </div>
             </div>}
-            {!songs && <h2>Browse all</h2>}
+            {!songs && <div className="browse-container">
+                <h2>Browse all</h2>
+                <div className="ganre-container">
+                    {ganres.map((ganre, index) =>
+                        <article key={index} style={{ background: colors[index] }} className="ganre-card" onClick={() => onSearchGanre(ganre)}>
+                            <h3>{ganre}</h3>
+                        </article>)}
+                </div>
+            </div>}
             {songs && <div className="search-stations-container">
                 <h2>Featuring</h2>
                 <StationList stations={myStations.slice(0, 5)} isHome={false} isHideBodyContainer={true} />
