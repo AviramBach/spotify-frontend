@@ -34,3 +34,19 @@
 .login-button {
   @include round-button("login");
 }
+.user-menu-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 0;
+  background-color: $hover-light-spotify-black;
+  img {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    border: 0;
+  }
+}

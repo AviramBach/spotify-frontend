@@ -8,12 +8,14 @@ import { useSelector } from "react-redux";
 import { Popover } from "@mui/material";
 
 
-export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation, onLikedClicked, currStation }) {
+
+export function SongList({ songs, currUser, onRemoveSongFromStation, onPlaySongFromStation, onLikedClicked, currStation }) {
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
     const currSong = useSelector(storeState => storeState.playerModule.currSong)
     const [isSongOption, setIsSongOption] = useState(false)
     const [songOptionId, setSongOptionId] = useState(null)
     const [anchorEl, setAnchorEl] = useState(null);
+    const [isLiked, setIsLiked] = useState(false)
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -58,12 +60,13 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                         <p className="song-list-item-album"> {utilService.getTxtToShow(song.album, 15)}</p>
                                         <p className="song-list-item-added-at" >{moment(song.addedAt).fromNow()}</p>
                                         <div className="song-list-item-duration-container">
-                                            <button className="song-list-item-btn" onClick={(ev) => {
+                                            <button className={`song-list-item-btn ${isLiked ? '.liked-btn' : ''}`} onClick={(ev) => {
                                                 ev.stopPropagation()
+                                                setIsLiked(!isLiked)
                                                 onLikedClicked(song)
                                             }}>
-                                                <img className={`song-list-item-btn-img ${song.isLiked ? 'liked' : ''}`}
-                                                    src={song.isLiked ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />
+                                                <img className={`song-list-item-btn-img ${isLiked ? 'liked' : ''}`}
+                                                    src={isLiked ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />
                                             </button>
                                             <p className="song-list-item-duration">{song.duration}</p>
                                             <button className="song-list-item-btn" onClick={(ev) => {

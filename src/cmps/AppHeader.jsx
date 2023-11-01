@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { useEffect } from "react";
+import { logout } from "./../store/user.actions.js"
 
 export function AppHeader() {
+    const currUser = useSelector(storeState => storeState.userModule.user)
     const currColor = useSelector(storeState => storeState.colorModule.currColor)
     const navigate = useNavigate();
     useEffect(() => {
@@ -25,12 +27,19 @@ export function AppHeader() {
                 </button>
             </div>
 
-            <div>
-                <a className='signup-a' href="#">sign up</a>
-                <button className='login-button'>
-                    <span>login</span>
+            {currUser ?
+                <button className="user-menu-btn" onClick={() => { logout() }}>
+                    <img src={currUser.imgUrl} alt="" />
                 </button>
-            </div>
+                : <div>
+                    <a className='signup-a' href="/signup">sign up</a>
+                    <button className='login-button' onClick={() => navigate('/login')}>
+                        <span>login</span>
+                    </button>
+                </div>
+            }
+
+
         </header>
     )
 }

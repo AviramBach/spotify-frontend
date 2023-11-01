@@ -1,15 +1,14 @@
 import { userService } from "../services/user.service.js";
 import { socketService } from "../services/socket.service.js";
 import { store } from '../store/store.js'
-
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
-import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js";
+import { SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js";
 
 export async function loadUsers() {
     try {
         store.dispatch({ type: LOADING_START })
-        const users = await userService.getUsers()
+        const users = await userService.query()
         store.dispatch({ type: SET_USERS, users })
     } catch (err) {
         console.log('UserActions: err in loadUsers', err)
@@ -18,23 +17,14 @@ export async function loadUsers() {
     }
 }
 
-export async function removeUser(userId) {
-    try {
-        await userService.remove(userId)
-        store.dispatch({ type: REMOVE_USER, userId })
-    } catch (err) {
-        console.log('UserActions: err in removeUser', err)
-    }
-}
 
-export async function login(credentials) {
+export async function login(email, password) {
     try {
-        const user = await userService.login(credentials)
+        const user = await userService.login(email, password)
         store.dispatch({
             type: SET_USER,
             user
         })
-        socketService.login(user)
         return user
     } catch (err) {
         console.log('Cannot login', err)
@@ -42,14 +32,13 @@ export async function login(credentials) {
     }
 }
 
-export async function signup(credentials) {
+export async function signup(email, fullName, password) {
     try {
-        const user = await userService.signup(credentials)
+        const user = await userService.signup(email, fullName, password)
         store.dispatch({
             type: SET_USER,
             user
         })
-        socketService.login(user)
         return user
     } catch (err) {
         console.log('Cannot signup', err)

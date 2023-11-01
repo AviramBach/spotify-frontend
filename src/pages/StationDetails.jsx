@@ -16,12 +16,14 @@ import { AddSongInput } from "../cmps/AddSongInput.jsx"
 import { useColorFromImage } from "../customHooks/useColorFromImage.js"
 import { getSongs } from "../services/youtube-api.service.js"
 import { SongPreview } from "../cmps/SongPreview.jsx"
+import { userService } from "../services/user.service.js"
 
 
 
 export function StationDetails() {
   const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
   const currSong = useSelector(storeState => storeState.playerModule.currSong)
+  const currUser = useSelector(storeState => storeState.userModule.user)
   const params = useParams()
   const navigate = useNavigate()
   const [mycurrStation, setMyCurrStation] = useState(null)
@@ -106,7 +108,7 @@ export function StationDetails() {
     }
   }
   async function onLikedClicked(song) {
-    !song.isLiked ? await songService.saveToLikedSongs(song) : await songService.removeFromLikedSongs(song);
+    await userService.addToLikedSongs(song)
   }
   async function onRemoveSongFromStation(songId) {
     const updatedSongs = mycurrStation.songs.filter(song => songId !== song.id)
@@ -243,7 +245,7 @@ export function StationDetails() {
             </StationDetailsOptionMenu>
           </Popover>
           <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
-            <SongList songs={songs} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} onLikedClicked={onLikedClicked} currStation={mycurrStation}></SongList>
+            <SongList songs={songs} currUser={currUser} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} onLikedClicked={onLikedClicked} currStation={mycurrStation}></SongList>
             <AddSongInput onUpdateStation={onSearchSongs} />
           </DragDropContext>
         </div>
