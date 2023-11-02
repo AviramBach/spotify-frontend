@@ -139,7 +139,7 @@ export function Player() {
 
             <div className='player-song-preview'>
                 {currSong.id && <div className='player-song-preview-comp'>
-                    <SongPreview song={currSong} isCurrSongPlaying={false} />
+                    <SongPreview song={currSong} isCurrSongPlaying={false} charNumSong={15} charNumArtist={18} />
                 </div>}
                 <button className='player-btn' onClick={heartSong}>
                     {isLiked ? <img className='full-heart-icon' src="./../../public/img/selected-heart.svg" alt="" /> :

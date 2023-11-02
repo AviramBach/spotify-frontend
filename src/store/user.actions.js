@@ -28,6 +28,7 @@ export async function loadUsers() {
 export async function login(email, password) {
     try {
         const user = await userService.login(email, password)
+        console.log('user', user);
         store.dispatch({
             type: SET_USER,
             user

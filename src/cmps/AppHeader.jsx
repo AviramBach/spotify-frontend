@@ -2,18 +2,26 @@ import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { useEffect } from "react";
 import { logout } from "./../store/user.actions.js"
+import { setCurrColor } from "../store/color.actions.js";
 
 export function AppHeader() {
     const currUser = useSelector(storeState => storeState.userModule.user)
     const currColor = useSelector(storeState => storeState.colorModule.currColor)
     const navigate = useNavigate();
+
     useEffect(() => {
     }, [currColor])
     const goBack = () => {
         navigate(-1);
+        if (navigate(-1) === "/" || "/search") {
+            setCurrColor("18,18,18")
+        }
     };
     const goForward = () => {
         navigate(1);
+        if (navigate(1) === "/" || "/search") {
+            setCurrColor("18,18,18")
+        }
     };
     return (
         <header className="app-header flex" style={{ backgroundColor: `rgb(${currColor ?? "0,0,0"})` }}>

@@ -18,6 +18,8 @@ import { getSongs } from "../services/youtube-api.service.js"
 import { SongPreview } from "../cmps/SongPreview.jsx"
 import { userService } from "../services/user.service.js"
 import { updateUser } from "./../store/user.actions.js"
+import { Loader } from "../cmps/Loader.jsx"
+import { utilService } from "../services/util.service.js"
 
 
 
@@ -192,7 +194,7 @@ export function StationDetails() {
     }
   }
 
-  if (!mycurrStation) return <div>loading...</div>
+  if (!mycurrStation) return <Loader />
   const { name, tags, songs, imgUrl, createdBy, createdAt } = mycurrStation
   return (
     <div className="station-details" style={{
@@ -206,12 +208,13 @@ export function StationDetails() {
         <div className="station-details-header">
           <span className="station-details-tags">playlist</span>
           <h1 className="station-details-headline">{name}</h1>
+          <span className="station-details-created-at">{utilService.getTxtToShow(mycurrStation.desc, 100)}</span>
           <div className="station-details-header-info-container">
             <a className="station-details-created-by" href="#">{createdBy}</a>
             <span className="dot">•</span>
             <span className="station-details-tags">{tags.join()}</span>
             <span className="dot">•</span>
-            <span className="station-details-count">{songs.length} songs,</span>
+            {songs.length > 0 && <span className="station-details-count">{songs.length} songs, </span>}
             <span className="station-details-created-at">{moment(createdAt).fromNow()}</span>
           </div>
         </div>
@@ -262,7 +265,7 @@ export function StationDetails() {
           {searchSongs.map(song =>
             <li key={song.id}>
               <div className="side-container">
-                <SongPreview song={song} />
+                <SongPreview song={song} charNumSong={20} charNumArtist={18} />
                 <button className={`secondary-play-button ${(isPlaying && song.id === currSong.id) ? 'playing' : ''}`} onClick={(ev) => onPlaySongFromSearch(song, ev)}>
                   {(isPlaying && song.id === currSong.id) ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
                     <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}

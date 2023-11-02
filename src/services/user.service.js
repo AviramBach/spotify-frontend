@@ -74,7 +74,6 @@ async function save(user) {
 }
 
 function saveLocalUser(user) {
-    user = { _id: user._id, email: user.email, fullname: user.fullname, password: user.password, imgUrl: user.imgUrl, likedSongs: user.likedSongs }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
@@ -87,7 +86,7 @@ function getLoggedinUser() {
 
 function _createUsers() {
     return [
-        _createUser("almogj1998@gmail.com", "Almog Jan", "123456", "./../../public/img/user.svg", true),
+        _createUser("almogj1998@gmail.com", "Almog Jan", "123456", "./../../public/img/almog-profile.JPG", true),
         _createUser("almogj1998@gmail.col", "Puki", "./../../public/img/user.svg", "123456"),
         _createUser("almogj1998@gmail.cov", "Moki", "./../../public/img/user.svg", "123456"),
         _createUser("almogj1998@gmail.coz", "Pitzy", "./../../public/img/user.svg", "123456")

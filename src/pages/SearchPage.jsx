@@ -10,6 +10,7 @@ import { updateStation } from "../store/station.actions"
 import { StationPreview } from "../cmps/StationPreview"
 import { StationList } from "../cmps/StationList"
 import { SearchSongInput } from "../cmps/SearchSongInput"
+import { Loader } from "../cmps/Loader"
 
 
 export function SearchPage() {
@@ -43,9 +44,9 @@ export function SearchPage() {
 
     const open = Boolean(anchorEl)
     const id = open ? 'simple-popover' : undefined
-    const ganres = ['Pop', 'Rock', 'Hip-hop', 'Chill', 'R&B']
-    const colors = ['rgb(20, 138, 8)', 'rgb(233, 20, 41)', 'rgb(80, 55, 80)', 'rgb(0, 100, 80)', 'rgb(186, 93, 7)']
-    const imgs = ['Album_cover1.png', 'Album_cover4.jpg', 'Album-cover2.jpg', 'Outkast.jpg', 'Album_cover3.jpg']
+    const ganres = ["Made For You", 'Pop', 'vibe', 'Rock', 'Hip-hop', 'Chill', 'R&B', 'Mood', 'Indie', 'Soul', 'Latin', 'Alternative', 'Glow', 'Divas', 'Trending']
+    const colors = ['rgb(20, 138, 8)', 'rgb(186, 93, 7)', 'rgb(233, 20, 41)', 'rgb(80, 55, 80)', 'rgb(0, 100, 80)', 'rgb(186, 93, 7)', 'rgb(71,125,148)', 'rgb(140,103,171)', 'rgb(215,64,0)', 'rgb(233,21,40)', 'rgb(30,49,100)', 'rgb(232,16,91)', 'rgb(5,104,82)', 'rgb(164,103,82)', 'rgb(15,115,236)', 'rgb(139,26,50)']
+    const imgs = ['by-you.jpeg', 'pop.png', 'vibe.jpeg', 'rock.jpeg', 'hip-hop.jpeg', 'chill.jpeg', 'r&b.jpeg', 'mood.jpeg', 'indie.jpeg', 'soul.jpeg', 'latin.jpeg', 'alt.jpeg', 'glow.jpeg', 'divas.jpeg', 'trending.jpeg']
 
     function onSearchGanre(ganre) {
         const stationsByGanre = stations.filter(station => station.tags.includes(ganre))
@@ -94,7 +95,7 @@ export function SearchPage() {
                 <div className="top-result-container">
                     <h2>Top result</h2>
                     <div className="song-preview-container">
-                        <SongPreview song={songs[0]} />
+                        <SongPreview song={songs[0]} charNumSong={20} charNumArtist={20} />
                         <button className={`primary-play-button ${(isPlaying && songs[0].id === currSong.id) ? 'playing' : ''}`} onClick={(ev) => onPlaySongFromSearch(songs[0], ev)}>
                             {(isPlaying && songs[0].id === currSong.id) ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
                                 <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
@@ -107,7 +108,7 @@ export function SearchPage() {
                         {songs.map(song =>
                             <li key={song.id}>
                                 <div className="side-container">
-                                    <SongPreview song={song} />
+                                    <SongPreview song={song} charNumSong={40} charNumArtist={40} />
                                     <button className={`secondary-play-button ${(isPlaying && song.id === currSong.id) ? 'playing' : ''}`} onClick={(ev) => onPlaySongFromSearch(song, ev)}>
                                         {(isPlaying && song.id === currSong.id) ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
                                             <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
@@ -155,13 +156,13 @@ export function SearchPage() {
                 </div>}
                 {ganreStations && <div>
                     <h2>{ganre}</h2>
-                    <StationList stations={ganreStations} isHome={false} isHideBodyContainer={true} />
+                    <StationList stations={ganreStations} isHome={true} isHideBodyContainer={true} />
                 </div>
                 }
             </div>}
             {songs && <div className="search-stations-container">
                 <h2>Featuring</h2>
-                <StationList stations={myStations.slice(0, 5)} isHome={false} isHideBodyContainer={true} />
+                <StationList stations={myStations.slice(0, 5)} isHome={true} isHideBodyContainer={true} />
             </div>}
         </section>
     )

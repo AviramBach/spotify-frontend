@@ -8,6 +8,7 @@ export const utilService = {
     loadFromStorage,
     getAssetSrc,
     getTxtToShow,
+    getRandomAlbumName,
 }
 
 function makeId(length = 6) {
@@ -73,9 +74,16 @@ function getAssetSrc(name) {
 }
 
 function getTxtToShow(txt, length) {
+    if (txt.length < 1) return ""
     if (txt && txt.length <= length) return txt;
     else {
         return txt?.substring(0, length) + "...";
     }
+}
+
+function getRandomAlbumName() {
+    const albumNames = ["Greatest Hits", "Time Capsule", "Nostalgia", "Unpluged", "Acoustic"]
+    const albumName = albumNames[getRandomIntInclusive(0, albumNames.length - 1)]
+    return albumName
 }
 

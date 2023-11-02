@@ -148,11 +148,6 @@
     display: none;
   }
 }
-.song-option-menu-btn-img {
-  @include for-mobile-layout {
-    transform: rotate(90deg);
-  }
-}
 
 .liked-btn {
   visibility: visible;

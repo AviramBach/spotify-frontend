@@ -20,8 +20,14 @@ export async function getSongs(term) {
             video.snippet.title = video.snippet.title.split('- ')[1] || video.snippet.title
             video.snippet.title = video.snippet.title.split('(Official')[0]
             video.snippet.title = video.snippet.title.split('[Official')[0]
+            video.snippet.title = video.snippet.title.split('(ft')[0]
+            video.snippet.title = video.snippet.title.split('(Feat')[0]
+            video.snippet.title = video.snippet.title.split('(Ex')[0]
+            video.snippet.title = video.snippet.title.split('(Vi')[0]
+            video.snippet.title = video.snippet.title.split('(')[0]
             video.snippet.channelTitle = video.snippet.channelTitle.split('VEVO')[0]
             video.snippet.channelTitle = video.snippet.channelTitle.split('vevo')[0]
+            video.snippet.channelTitle = video.snippet.channelTitle.split('Official')[0]
             return video
         })
         const videoIds = videos.map(video => video.id.videoId)
@@ -35,7 +41,7 @@ export async function getSongs(term) {
             id: video.id.videoId,
             title: video.snippet.title,
             artist: video.snippet.channelTitle,
-            album: 'Greatest Hits',
+            album: utilService.getRandomAlbumName(),
             url: `https://www.youtube.com/watch?v=${video.id.videoId}`,
             imgUrl: video.snippet.thumbnails.default.url,
             isLiked: false,

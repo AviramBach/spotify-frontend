@@ -16,10 +16,6 @@
       gap: 1rem;
       margin: 0 1rem 0;
 
-      // h2 {
-      //   margin: 0;
-      // }
-
       .top-result-container {
         width: 30vw;
 
@@ -396,6 +392,10 @@
   color: $white;
   background-color: transparent;
   border: none;
+  margin-inline-end: 75px;
+  @include for-mobile-layout {
+    margin-inline-end: 0px;
+  }
 
   img {
     width: 1rem;

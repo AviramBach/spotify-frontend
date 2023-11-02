@@ -220,36 +220,37 @@ const sJump = {
 
 }
 
-
-
-
 function _createStations() {
     return [
-        _createStation('ANTI', './../../public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['Rihanna', 'R&B', 'Album']),
-        _createStation('R&B', './../../public/img/Channel_ORANGE.jpg', [sZion, sWork, sDooWop, sConsideration], 'Gilad', ['R&B', 'Vibe', 'Playlist']),
-        _createStation('Daily Mix 1', './../../public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify',),
-        _createStation('Hip hop', './../../public/img/Album-cover2.jpg', [sJuicy, sDang, sRoses, sWork], 'Gilad', ['Hip-hop', 'Rap', 'Playlist']),
-        _createStation('Daily Mix 3', './../../public/img/daily_mix_3.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify', ['daily mix', 'Vibe', 'Playlist']),
-        _createStation('Soul Mix', './../../public/img/Album_cover3.jpg', [sDooWop, sConsideration, sWash], 'Songify', ['R&B', 'Mix']),
-        _createStation('Rock', './../../public/img/Album_cover4.jpg', [sJump, sTime, sWash], 'Gilad', ['Rock', 'Playlist']),
-        _createStation('2010s Mix', './../../public/img/Rihanna_Loud.png', [sWork, sWash, sConsideration, sDang,], 'Songify', ['Mix', 'Vibe', 'Playlist']),
-        _createStation('Chill Mix', './../../public/img/Album_Chill.jpg', [sJuicy, sAdorn, sDang, sRoses, sWork], 'Gilad', ['Hip-hop', 'Rap', 'Playlist']),
-        _createStation('Outkast Mix', './../../public/img/Outkast.jpg', [sHeyYa, sJuicy, sRoses, sDang], 'Songify', ['Chill', 'Hip-hop', 'Vibe', 'Playlist']),
-        _createStation('Todays Top Hits', './../../public/img/Album_Pop.png', [sWork, sDang, sHeyYa, sConsideration,], 'Songify', ['Pop', 'hits', 'Playlist']),
-        _createStation('Rock Classics', './../../public/img/Queen_Album.png', [sTime, sJump, sDang,], 'Songify', ['Rock', 'Vibe', 'Playlist']),
-        _createStation('My Favs', './../../public/img/liked-songs-300.png', [sTime, sConsideration, sDang, sJuicy, sWash, sRoses, sDooWop, sAdorn, sHeyYa, sJump], 'Me', ['Yours', 'Playlist']),
-        _createStation('On Repeat', './../../public/img/On_Repeat.jpg', [sRoses, sWork, sDooWop], 'Gilad', ['Playlist']),
-        _createStation('Chill Hits', './../../public/img/Outkast.jpg', [sRoses, sJump, sTime, sDang,], 'Songify', ['Chill', 'Vibe', 'Playlist']),
-        _createStation('All Out 2010s', './../../public/img/Album_Starboy.png', [sWork, sDang, sConsideration,], 'Songify', ['2010', 'Pop', 'Playlist']),
-        _createStation('Rap Caviar', './../../public/img/RapCaviar.jpg', [sAdorn, sDang, sJuicy, sRoses, sHeyYa], 'Songify', ['Hip-hop', 'Rap', 'Playlist'])
+        _createStation('ANTI', "", './../../public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['vibe', 'Trending', 'R&B', 'Soul', 'Divas']),
+        _createStation('R&B', "", './../../public/img/Channel_ORANGE.jpg', [sZion, sWork, sDooWop, sConsideration], 'Gilad', ['Mood', 'Pop', 'Chill', 'Indie']),
+        _createStation('Daily Mix 1', "", './../../public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 2', "", './../../public/img/daily-mix-2.jpeg', [sTime, sJump, sDang,], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 3', "", './../../public/img/daily_mix_3.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 4', "", './../../public/img/daily-mix-4.jpeg', [sWash, sTime, sZion, sConsideration], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 5', "", './../../public/img/daily-mix-5.jpeg', [sDooWop, sConsideration, sWash], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 6', "", './../../public/img/daily-mix-6.jpeg', [sWash, sTime, sZion, sConsideration], 'Songify', ['Made For You']),
+        _createStation('Hip hop', "", './../../public/img/Album-cover2.jpg', [sJuicy, sDang, sRoses, sWork], 'Gilad', ['vibe', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
+        _createStation('Soul Mix', "", './../../public/img/Album_cover3.jpg', [sDooWop, sConsideration, sWash], 'Songify', ['Mood', 'Trending', 'Rock', 'R&B', 'Glow']),
+        _createStation('Rock', "", './../../public/img/Album_cover4.jpg', [sJump, sTime, sWash], 'Gilad', ['vibe', 'Latin', 'Alternative', 'Glow']),
+        _createStation('2010s Mix', "", './../../public/img/Rihanna_Loud.png', [sWork, sWash, sConsideration, sDang,], 'Songify', ['Mood', 'Pop', 'Hip-hop']),
+        _createStation('Chill Mix', "", './../../public/img/Album_Chill.jpg', [sJuicy, sAdorn, sDang, sRoses, sWork], 'Gilad', ['vibe', 'Trending', 'Rock', 'Divas']),
+        _createStation('Outkast Mix', "", './../../public/img/Outkast.jpg', [sHeyYa, sJuicy, sRoses, sDang], 'Songify', ['Mood', 'Rock', 'Hip-hop', 'R&B']),
+        _createStation('Todays Top Hits', "", './../../public/img/Album_Pop.png', [sWork, sDang, sHeyYa, sConsideration,], 'Songify', ['vibe', 'Pop', 'Latin']),
+        _createStation('Rock Classics', "", './../../public/img/Queen_Album.png', [sTime, sJump, sDang,], 'Songify', ['Mood', 'Trending', 'Hip-hop', 'Soul', 'Glow']),
+        _createStation('On Repeat', "", './../../public/img/On_Repeat.jpg', [sRoses, sWork, sDooWop], 'Gilad', ['vibe', 'Rock', 'R&B', 'Latin', 'Alternative']),
+        _createStation('Chill Hits', "", './../../public/img/Outkast.jpg', [sRoses, sJump, sTime, sDang,], 'Songify', ['Mood', 'Pop', 'Indie', 'Glow', 'Divas']),
+        _createStation('All Out 2010s', "", './../../public/img/Album_Starboy.png', [sWork, sDang, sConsideration,], 'Songify', ['vibe', 'Trending', 'Chill', 'Indie']),
+        _createStation('Rap Caviar', "", './../../public/img/RapCaviar.jpg', [sAdorn, sDang, sJuicy, sRoses, sHeyYa], 'Songify', ['Mood', 'Rock', 'Soul', 'Glow'])
     ]
 }
 
-function _createStation(name = 'New Playlist', imgUrl = '', songs = [], createdBy = 'Spotify', tags = []) {
+function _createStation(name = 'New Playlist', desc = "", imgUrl = '', songs = [], createdBy = 'Spotify', tags = []) {
     return {
         _id: utilService.makeId(),
         name,
         tags,
+        desc,
         songs,
         likedByUsers: [],
         imgUrl,

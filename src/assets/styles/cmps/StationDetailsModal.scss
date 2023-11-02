@@ -21,6 +21,8 @@
   width: 32px;
   justify-content: center;
   @include round-button("filter");
+  margin: 0;
+  padding-inline-end: 0;
   background-color: transparent;
   img {
     height: 16px;

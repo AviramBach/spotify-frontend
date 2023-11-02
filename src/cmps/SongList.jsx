@@ -56,7 +56,7 @@ export function SongList({ songs, currUser, onRemoveSongFromStation, onPlaySongF
                                     >
                                         <p className={`song-list-item-index`}>{isPlaying && song === currSong ? <img src="./../../public/img/download.gif" alt="" /> : idx + 1} </p>
                                         <div className="song-list-item-preview">
-                                            <SongPreview song={song} isPlaying={isPlaying} currSong={currSong} />
+                                            <SongPreview song={song} isPlaying={isPlaying} currSong={currSong} charNumSong={14} charNumArtist={18} />
                                         </div>
                                         <p className="song-list-item-album"> {utilService.getTxtToShow(song.album, 15)}</p>
                                         <p className="song-list-item-added-at" >{moment(song.addedAt).fromNow()}</p>
