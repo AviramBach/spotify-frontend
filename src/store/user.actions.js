@@ -40,9 +40,9 @@ export async function login(email, password) {
     }
 }
 
-export async function signup(email, fullName, password) {
+export async function signup(email, fullname, password) {
     try {
-        const user = await userService.signup(email, fullName, password)
+        const user = await userService.signup(email, fullname, password)
         store.dispatch({
             type: SET_USER,
             user

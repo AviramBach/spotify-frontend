@@ -37,11 +37,11 @@ export function HomePage() {
           )` }}>
             <h1>{greeting}</h1>
             <div className='top-station-list'>
-                <StationList stations={stations.slice(0, 6)} isHome={true} isHideBodyContainer={true} />
+                <StationList stations={stations.filter((station) => !station.name.toLowerCase().includes('daily mix')).slice(0, 6)} isHome={true} isHideBodyContainer={true} />
             </div>
             {currUser && <>
                 <h2>Made for
-                    <span> {currUser?.fullName}</span>
+                    <span> {currUser?.fullname}</span>
                 </h2>
                 <div className='bottom-station-list'>
                     <StationList stations={stations.filter((station) => station.name.toLowerCase().includes('daily mix'))} isHome={true} isHideBodyContainer={false} />
@@ -49,11 +49,11 @@ export function HomePage() {
             </>}
             <h2>Your Top Mixes</h2>
             <div className='bottom-station-list'>
-                <StationList stations={stations.slice(7, 12)} isHome={true} isHideBodyContainer={false} />
+                <StationList stations={stations.filter((station) => !station.name.toLowerCase().includes('daily mix')).slice(7, 12)} isHome={true} isHideBodyContainer={false} />
             </div>
             <h2>Songify Playlists</h2>
             <div className='bottom-station-list'>
-                <StationList stations={stations.slice(12, 17)} isHome={true} isHideBodyContainer={false} />
+                <StationList stations={stations.filter((station) => !station.name.toLowerCase().includes('daily mix')).slice(12, 17)} isHome={true} isHideBodyContainer={false} />
             </div>
         </section >
     )

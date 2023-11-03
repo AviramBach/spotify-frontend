@@ -1,4 +1,5 @@
 import { storageService } from "./async-storage.service";
+import { httpService } from "./http.service";
 import { utilService } from "./util.service";
 const STORAGE_KEY_USERS = 'user'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -16,35 +17,37 @@ export const userService = {
 window.userService = userService
 
 async function query() {
-    let users = await storageService.query(STORAGE_KEY_USERS)
-    if (!users || !users.length) {
-        users = _createUsers()
-        utilService.saveToStorage(STORAGE_KEY_USERS, users)
-    }
-    return users
+    // let users = await storageService.query(STORAGE_KEY_USERS)
+    // if (!users || !users.length) {
+    //     users = _createUsers()
+    //     utilService.saveToStorage(STORAGE_KEY_USERS, users)
+    // }
+    // return users
+    return httpService.get(STORAGE_KEY_USERS)
+
 }
 
 async function getById(userId) {
-    const user = await storageService.get(STORAGE_KEY_USERS, userId)
-    // const user = await httpService.get(`user/${userId}`)
+    // const user = await storageService.get(STORAGE_KEY_USERS, userId)
+    const user = await httpService.get(`user/${userId}`)
     return user
 }
 async function login(email, password) {
-    const users = await storageService.query(STORAGE_KEY_USERS)
-    const user = users.find(user => user.email === email && user.password === password)
-    // const user = await httpService.post('auth/login', userCred)
+    // const users = await storageService.query(STORAGE_KEY_USERS)
+    // const user = users.find(user => user.email === email && user.password === password)
+    const user = await httpService.post('auth/login', { email, password })
     if (user) {
         return saveLocalUser(user)
     }
 }
 async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-    // return await httpService.post('auth/logout')
+    return await httpService.post('auth/logout')
 }
 
-async function signup(email, fullName, password) {
-    const user = await storageService.post(STORAGE_KEY_USERS, _createUser(email, fullName, password, "./../../public/img/user.png"))
-    // const user = await httpService.post('auth/signup', userCred)
+async function signup(email, fullname, password) {
+    // const user = await storageService.post(STORAGE_KEY_USERS, _createUser(email, fullname, password, "./../../public/img/user.png"))
+    const user = await httpService.post('auth/signup', { email, fullname, password })
     return saveLocalUser(user)
 }
 
@@ -93,11 +96,11 @@ function _createUsers() {
     ]
 }
 
-function _createUser(email, fullName, password, imgUrl, isAdmin = false) {
+function _createUser(email, fullname, password, imgUrl, isAdmin = false) {
     return {
         _id: utilService.makeId(),
         email,
-        fullName,
+        fullname,
         password,
         imgUrl,
         likedSongs: [],

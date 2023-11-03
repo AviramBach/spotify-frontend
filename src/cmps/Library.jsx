@@ -12,6 +12,7 @@ export function Library() {
     const dispatch = useDispatch()
     const filterBy = useSelector(storeState => storeState.stationModule.filterBy)
     const stationsFromStore = useSelector(storeState => storeState.stationModule.stations)
+    const currUser = useSelector(storeState => storeState.userModule.user)
     const regex = new RegExp(filterBy.txt, 'i')
     const stations = stationsFromStore.filter(station => regex.test(station.name))
     const { sortBy } = filterBy
@@ -60,6 +61,6 @@ export function Library() {
             </button>
         </div>
         <LibraryFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-        <StationList stations={stations} isHideBodyContainer={false} />
+        <StationList stations={currUser ? stations : stations.filter((station) => !station.name.toLowerCase().includes('daily mix'))} isHideBodyContainer={false} />
     </section>
 }

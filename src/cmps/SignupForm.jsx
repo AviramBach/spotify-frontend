@@ -3,7 +3,7 @@ import { loadUsers, signup } from "./../store/user.actions.js"
 import { useNavigate } from "react-router"
 export function SignupForm() {
     const [signupEmail, setSignupEmail] = useState("")
-    const [signupFullName, setSignupFullName] = useState("")
+    const [signupfullname, setSignupfullname] = useState("")
     const [signupPassword, setSignupPassword] = useState("")
     const navigate = useNavigate()
 
@@ -12,8 +12,8 @@ export function SignupForm() {
     }, [])
 
 
-    async function onSignup(email, fullName, password) {
-        signup(email, fullName, password)
+    async function onSignup(email, fullname, password) {
+        signup(email, fullname, password)
         navigate("/")
     }
 
@@ -23,9 +23,9 @@ export function SignupForm() {
             <form className="signup-form" onSubmit={(ev) => {
                 ev.preventDefault()
                 setSignupEmail("")
-                setSignupFullName("")
+                setSignupfullname("")
                 setSignupPassword("")
-                onSignup(signupEmail, signupFullName, signupPassword)
+                onSignup(signupEmail, signupfullname, signupPassword)
             }} >
                 <label htmlFor="email">Email</label>
                 <input className="signup-email"
@@ -43,8 +43,8 @@ export function SignupForm() {
                     type="text"
                     name="fullname"
                     placeholder="Full name"
-                    value={signupFullName}
-                    onInput={(ev) => setSignupFullName(ev.target.value)}
+                    value={signupfullname}
+                    onInput={(ev) => setSignupfullname(ev.target.value)}
                 />
                 <label htmlFor="passwoed">Password</label>
                 <input
