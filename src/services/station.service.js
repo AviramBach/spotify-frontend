@@ -22,37 +22,38 @@ window.cs = stationService
 
 
 async function query(filterBy = { txt: '', tags: [] }) {
-    let stations = await storageService.query(STORAGE_KEY)
-    if (!stations || !stations.length) {
-        stations = _createStations()
-        utilService.saveToStorage(STORAGE_KEY, stations)
-    }
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        stations = stations.filter(station => regex.test(station.name))
-    }
-    return stations
-    // return httpService.get(STORAGE_KEY, filterBy)
+    // let stations = await storageService.query(STORAGE_KEY)
+    // if (!stations || !stations.length) {
+    //     stations = _createStations()
+    //     utilService.saveToStorage(STORAGE_KEY, stations)
+    // }
+    // if (filterBy.txt) {
+    //     const regex = new RegExp(filterBy.txt, 'i')
+    //     stations = stations.filter(station => regex.test(station.name))
+    // }
+    // return stations
+    return httpService.get(STORAGE_KEY, filterBy)
 }
 
 function getById(stationId) {
-    return storageService.get(STORAGE_KEY, stationId)
-    // return httpService.get(`station/${stationId}`)
+    // return storageService.get(STORAGE_KEY, stationId)
+    return httpService.get(`station/${stationId}`)
 }
 
 async function remove(stationId) {
-    await storageService.remove(STORAGE_KEY, stationId)
-    // return httpService.delete(`station/${stationId}`)
+    // await storageService.remove(STORAGE_KEY, stationId)
+    return httpService.delete(`station/${stationId}`)
 }
 async function save(station) {
     let savedStation
     if (station._id) {
-        savedStation = await storageService.put(STORAGE_KEY, station)
+        // savedStation = await storageService.put(STORAGE_KEY, station)
         // savedStation = await httpService.put(`station/${station._id}`, station)
+        savedStation = await httpService.put(STORAGE_KEY, station)
 
     } else {
-        savedStation = await storageService.post(STORAGE_KEY, station)
-        // savedStation = await httpService.post('station', station)
+        // savedStation = await storageService.post(STORAGE_KEY, station)
+        savedStation = await httpService.post('station', station)
     }
     return savedStation
 }
