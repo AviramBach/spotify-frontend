@@ -2,9 +2,8 @@ import { useState } from "react";
 import { StationDetailsModal } from "./StationDetailsModal";
 import { Modal } from '@mui/material';
 import { Box } from '@mui/material';
-// import { Typography } from '@mui/material';
 
-export function StationDetailsOptionMenuContent({ station, onRemoveStation, onUpdateStationDetails }) {
+export function StationDetailsOptionMenuContent({ station, onRemoveStation, onUpdateStationName, onUpdateStationdesc, onUpdateStationImage }) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -33,7 +32,7 @@ export function StationDetailsOptionMenuContent({ station, onRemoveStation, onUp
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <StationDetailsModal station={station} handleClose={handleClose} onUpdateStationDetails={onUpdateStationDetails} />
+                <StationDetailsModal station={station} handleClose={handleClose} onUpdateStationName={onUpdateStationName} onUpdateStationdesc={onUpdateStationdesc} onUpdateStationImage={onUpdateStationImage} />
             </Box>
         </Modal>
     </div>

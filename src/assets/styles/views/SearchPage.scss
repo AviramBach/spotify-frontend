@@ -1,11 +1,18 @@
 .search-page {
   height: calc(100vh - 72px - 65px - 16px);
   overflow-y: auto;
-
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 40%,
+    rgba($spotify-background-black, 1) 100%
+  );
   .results-container {
     display: flex;
     gap: 1rem;
     margin: 0 1rem 0;
+    @include for-mobile-layout {
+      flex-direction: column;
+    }
 
     h2 {
       margin: 0;
@@ -18,6 +25,9 @@
 
       .top-result-container {
         width: 30vw;
+        @include for-mobile-layout {
+          width: max-content;
+        }
 
         .song-preview-container {
           position: relative;
@@ -26,6 +36,9 @@
             $color: $spotify-background-black,
             $amount: 2%
           );
+          @include for-mobile-layout {
+            width: max-content;
+          }
 
           .primary-play-button {
             position: absolute;
@@ -61,7 +74,9 @@
           flex-direction: column;
           align-items: start;
           padding: 1rem;
-
+          @include for-mobile-layout {
+            width: max-content;
+          }
           .song-preview-title {
             font-size: 2rem;
             font-weight: bold;
@@ -196,6 +211,9 @@
           $color: $spotify-background-black,
           $amount: 2%
         );
+        @include for-mobile-layout {
+          width: max-content;
+        }
 
         .primary-play-button {
           position: absolute;
@@ -437,15 +455,25 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(5, 1fr);
+    @include for-mobile-layout {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     li {
       padding: 1rem;
       border-radius: 0.5rem;
-      background-color: $hover-light-spotify-black;
+      background-color: $spotify-background-black;
+
+      &:hover {
+        background-color: $hover-light-spotify-black;
+      }
     }
 
     button {
       display: none;
+    }
+    img {
+      aspect-ratio: 1/1;
     }
   }
 
@@ -481,7 +509,7 @@
   }
 
   .song-search-input {
-    position: fixed;
+    position: absolute;
     top: 1rem;
     left: 40%;
     height: 3rem;
@@ -509,6 +537,9 @@
       gap: 0.5rem;
       grid-template-columns: repeat(5, 1fr);
       margin: 0;
+      @include for-mobile-layout {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
       li {
         padding: 1rem;

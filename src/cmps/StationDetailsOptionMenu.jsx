@@ -1,13 +1,16 @@
 import { SongListOptionMenuContent } from "./SongListOptionMenuContent";
 import { StationDetailsOptionMenuContent } from "./StationDetailsOptionMenuContent";
-export function StationDetailsOptionMenu({ station, onRemoveStation, onUpdateStation, onUpdateStationDetails, onRemoveSongFromStation, songId, setIsSongOption, isSongOption, content }) {
+export function StationDetailsOptionMenu({ station, onRemoveStation, onUpdateStation, onUpdateStationName, onUpdateStationImage, onUpdateStationdesc, onRemoveSongFromStation, songId, setIsSongOption, isSongOption, content }) {
     return <div className="station-details-option-menu-container">
         {content === 'option-menu' &&
             <StationDetailsOptionMenuContent
                 station={station}
                 onRemoveStation={onRemoveStation}
                 onUpdateStation={onUpdateStation}
-                onUpdateStationDetails={onUpdateStationDetails}>
+                onUpdateStationName={onUpdateStationName}
+                onUpdateStationdesc={onUpdateStationdesc}
+                onUpdateStationImage={onUpdateStationImage}
+            >
             </StationDetailsOptionMenuContent>
         }
         {

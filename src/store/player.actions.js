@@ -68,6 +68,8 @@ export async function toggelIsPlaying(isPlaying) {
 
 export async function setCurrSong(song) {
     try {
+        localStorage.setItem("lastSong", song.id)
+        console.log(song);
         store.dispatch(getActionCurrSong(song))
         return song
     } catch (err) {

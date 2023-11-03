@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { AddSongInput } from "../cmps/AddSongInput"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { getSongs } from "../services/youtube-api.service"
 import { SongPreview } from "../cmps/SongPreview"
 import { setCurrSong, toggelIsPlaying } from "../store/player.actions"
@@ -47,6 +47,17 @@ export function SearchPage() {
     const ganres = ["Made For You", 'Pop', 'vibe', 'Rock', 'Hip-hop', 'Chill', 'R&B', 'Mood', 'Indie', 'Soul', 'Latin', 'Alternative', 'Glow', 'Divas', 'Trending']
     const colors = ['rgb(20, 138, 8)', 'rgb(186, 93, 7)', 'rgb(233, 20, 41)', 'rgb(80, 55, 80)', 'rgb(0, 100, 80)', 'rgb(186, 93, 7)', 'rgb(71,125,148)', 'rgb(140,103,171)', 'rgb(215,64,0)', 'rgb(233,21,40)', 'rgb(30,49,100)', 'rgb(232,16,91)', 'rgb(5,104,82)', 'rgb(164,103,82)', 'rgb(15,115,236)', 'rgb(139,26,50)']
     const imgs = ['by-you.jpeg', 'pop.png', 'vibe.jpeg', 'rock.jpeg', 'hip-hop.jpeg', 'chill.jpeg', 'r&b.jpeg', 'mood.jpeg', 'indie.jpeg', 'soul.jpeg', 'latin.jpeg', 'alt.jpeg', 'glow.jpeg', 'divas.jpeg', 'trending.jpeg']
+
+    useEffect(() => {
+        setCurrSongFromLocalStorage();
+    }, [stations])
+
+    const setCurrSongFromLocalStorage = async () => {
+        if (stations && stations.length) {
+            const songId = localStorage.getItem('lastSong')
+            await setCurrSong(stations.map(x => x.songs).reduce((prev, curr) => [...prev, ...curr], []).filter((v, i, a) => a.findIndex(v2 => (v2.id === v.id)) === i).find(x => x.id === songId))
+        }
+    }
 
     function onSearchGanre(ganre) {
         const stationsByGanre = stations.filter(station => station.tags.includes(ganre))

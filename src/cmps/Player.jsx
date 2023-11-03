@@ -15,7 +15,7 @@ export function Player() {
     const currStation = useSelector(storeState => storeState.playerModule.currStation)
     const nextSong = useSelector(storeState => storeState.playerModule.nextSong)
     const prevSong = useSelector(storeState => storeState.playerModule.prevSong)
-
+    const stations = useSelector(storeState => storeState.stationModule.stations)
 
     const [volume, setVolume] = useState(0.5)
     const [prevVolume, setPrevVolume] = useState(volume)
@@ -35,6 +35,7 @@ export function Player() {
         if (currSong) {
             setImageUrl(currSong.imgUrl)
         }
+        console.log(currSong);
     }, [currSong])
 
     const handleProgress = (state) => {

@@ -24,6 +24,7 @@ import { utilService } from "../services/util.service.js"
 
 
 export function StationDetails() {
+  const stations = useSelector(storeState => storeState.stationModule.stations)
   const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
   const currSong = useSelector(storeState => storeState.playerModule.currSong)
   const currUser = useSelector(storeState => storeState.userModule.user)
@@ -61,17 +62,18 @@ export function StationDetails() {
   useEffect(() => {
     setLoggedInUser(currUser)
   }, [currUser])
-  // async function getColor() {
-  //   try {
-  //     const color = await imageService.getColorFromImage(mycurrStation.imgUrl)
-  //     const formattedColor = color.join(',')
-  //     setGradientColor(formattedColor);
-  //     setCurrColor(formattedColor)
-  //     return color
-  //   } catch (ex) {
-  //     console.log('error', ex)
-  //   }
-  // }
+
+  useEffect(() => {
+    setCurrSongFromLocalStorage();
+  }, [stations])
+
+  const setCurrSongFromLocalStorage = async () => {
+    if (stations && stations.length) {
+      const songId = localStorage.getItem('lastSong')
+      await setCurrSong(stations.map(x => x.songs).reduce((prev, curr) => [...prev, ...curr], []).filter((v, i, a) => a.findIndex(v2 => (v2.id === v.id)) === i).find(x => x.id === songId))
+    }
+  }
+
   async function getStation() {
     try {
       const { id } = params
@@ -83,6 +85,10 @@ export function StationDetails() {
     }
   }
   function onPlaySongFromStation(station, song) {
+    if (isPlaying && mycurrStation._id === station._id) {
+      toggelIsPlaying(true)
+      return
+    }
     if (!song) song = station.songs[0]
     setCurrStation(station)
     setCurrSong(song)
@@ -90,6 +96,7 @@ export function StationDetails() {
     setPrevSong(song, station)
     toggelIsPlaying(false)
   }
+
   async function onRemoveStation() {
     setIsOption(false)
     try {
@@ -131,7 +138,7 @@ export function StationDetails() {
       console.error(err)
     }
   }
-  async function onUpdateStationDetails(stationNewName) {
+  async function onUpdateStationName(stationNewName) {
     const name = stationNewName
     const updatdStation = { ...mycurrStation, name: name }
     setMyCurrStation(updatdStation)
@@ -141,6 +148,27 @@ export function StationDetails() {
       console.error(err)
     }
   }
+  async function onUpdateStationdesc(stationNewDesc) {
+    const updatdStation = { ...mycurrStation, desc: stationNewDesc }
+    setMyCurrStation(updatdStation)
+    try {
+      await updateStation(updatdStation)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  async function onUpdateStationImage(image) {
+    const updatedStation = { ...mycurrStation, imgUrl: image }
+    setMyCurrStation(updatedStation)
+
+    try {
+      await updateStation(updatedStation)
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   async function onDragEnd(result) {
     if (!result.destination) return
     const { source, destination } = result
@@ -177,7 +205,6 @@ export function StationDetails() {
       toggelIsPlaying(true)
       return
     }
-
     setCurrSong(song)
     toggelIsPlaying(false)
   }
@@ -208,11 +235,11 @@ export function StationDetails() {
         <div className="station-details-header">
           <span className="station-details-tags">playlist</span>
           <h1 className="station-details-headline">{name}</h1>
-          <span className="station-details-created-at">{utilService.getTxtToShow(mycurrStation.desc, 100)}</span>
+          <span className="station-details-created-at">{mycurrStation.desc}</span>
           <div className="station-details-header-info-container">
             <a className="station-details-created-by" href="#">{createdBy}</a>
             <span className="dot">•</span>
-            <span className="station-details-tags">{tags.join()}</span>
+            <span className="station-details-tags">{tags.join(", ")}</span>
             <span className="dot">•</span>
             {songs.length > 0 && <span className="station-details-count">{songs.length} songs, </span>}
             <span className="station-details-created-at">{moment(createdAt).fromNow()}</span>
@@ -252,7 +279,9 @@ export function StationDetails() {
             <StationDetailsOptionMenu
               station={mycurrStation}
               onRemoveStation={onRemoveStation}
-              onUpdateStationDetails={onUpdateStationDetails}
+              onUpdateStationName={onUpdateStationName}
+              onUpdateStationdesc={onUpdateStationdesc}
+              onUpdateStationImage={onUpdateStationImage}
               content={'option-menu'}>
             </StationDetailsOptionMenu>
           </Popover>

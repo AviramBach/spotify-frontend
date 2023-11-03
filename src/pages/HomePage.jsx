@@ -3,6 +3,8 @@ import { StationList } from '../cmps/StationList.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadUsers } from "./../store/user.actions.js"
 import { setCurrSong } from '../store/player.actions.js'
+import { songService } from '../services/song.service.js'
+import { stationService } from '../services/station.service.js'
 
 
 export function HomePage() {
@@ -10,13 +12,22 @@ export function HomePage() {
     const stations = useSelector(storeState => storeState.stationModule.stations)
     const currColor = useSelector(storeState => storeState.colorModule.currColor)
     const currUser = useSelector(storeState => storeState.userModule.user)
-
     let time = new Date().getHours()
     const greeting = (time > 18) ? 'Good Evening' : (time > 12) ? 'Good Afternoon' : 'Good Morning'
     useEffect(() => {
         loadUsers()
-        console.log(currUser)
     }, [])
+
+    useEffect(() => {
+        setCurrSongFromLocalStorage();
+    }, [stations])
+
+    const setCurrSongFromLocalStorage = async () => {
+        if (stations && stations.length) {
+            const songId = localStorage.getItem('lastSong')
+            await setCurrSong(stations.map(x => x.songs).reduce((prev, curr) => [...prev, ...curr], []).filter((v, i, a) => a.findIndex(v2 => (v2.id === v.id)) === i).find(x => x.id === songId))
+        }
+    }
     return (
         <section className='homepage' style={{
             background: `linear-gradient(
