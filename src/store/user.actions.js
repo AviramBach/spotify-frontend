@@ -81,7 +81,7 @@ export async function loadUser(userId) {
 export async function updateUser(user) {
     try {
         const savedUser = await userService.save(user)
-        store.dispatch(getActionUpdateuser(savedUser.likedSongs))
+        store.dispatch(getActionUpdateuser(savedUser))
         return savedUser
     }
     catch (err) {

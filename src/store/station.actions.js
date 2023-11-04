@@ -80,9 +80,6 @@ export async function updateStation(station) {
     }
 }
 
-
-
-
 // Demo for Optimistic Mutation 
 // (IOW - Assuming the server call will work, so updating the UI first)
 export function onRemoveStationOptimistic(stationId) {

@@ -54,7 +54,14 @@ export function SongList({ songs, currUser, onRemoveSongFromStation, onPlaySongF
                                         {...provided.dragHandleProps}
                                         ref={provided.innerRef}
                                     >
-                                        <p className={`song-list-item-index`}>{isPlaying && song === currSong ? <img src="./../../public/img/download.gif" alt="" /> : idx + 1} </p>
+                                        <div className={`song-list-item-index-contaioner`}>
+                                            <p className={`song-list-item-index`}>
+                                                {isPlaying && song === currSong ? <img src="./../../public/img/download.gif" alt="" /> : idx + 1}
+                                            </p>
+                                            <span className="song-list-item-index-is-playing">
+                                                {isPlaying && song === currSong ? <img src="./../../public/img/pause.svg" alt="" /> : <img src="./../../public/img/play.svg" alt="" />}
+                                            </span>
+                                        </div>
                                         <div className="song-list-item-preview">
                                             <SongPreview song={song} isPlaying={isPlaying} currSong={currSong} charNumSong={14} charNumArtist={18} />
                                         </div>

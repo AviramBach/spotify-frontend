@@ -4,10 +4,10 @@ import { httpService } from './http.service.js'
 
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
-import { songService } from './song.service.js'
 
 
 const STORAGE_KEY = 'station'
+const LIKED_SONGS_STATION_ID = '65464ee83c4481ad60530116'
 
 
 export const stationService = {
@@ -16,6 +16,7 @@ export const stationService = {
     save,
     remove,
     getEmptyStation,
+    LIKED_SONGS_STATION_ID,
     // addStationMsg
 }
 window.cs = stationService
@@ -77,7 +78,7 @@ function getEmptyStation() {
         tags: ['By you'],
         songs: [],
         likedByUsers: [],
-        imgUrl: './../../public/img/spotify.png'
+        imgUrl: './../../public/img/no-img-new-playlist.png'
     }
 }
 

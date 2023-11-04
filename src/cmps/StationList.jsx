@@ -2,6 +2,7 @@ import { useNavigate } from "react-router"
 import { setCurrSong, setCurrStation, setNextSong, setPrevSong, toggelIsPlaying } from "../store/player.actions"
 import { StationPreview } from "./StationPreview.jsx"
 import { useSelector } from "react-redux"
+import { Loader } from "./Loader"
 
 export function StationList({ stations, isHideBodyContainer }) {
     const navigate = useNavigate()
@@ -23,7 +24,7 @@ export function StationList({ stations, isHideBodyContainer }) {
         toggelIsPlaying(false)
     }
 
-    if (!stations) return <h1>Loading...</h1>
+    if (!stations) return <Loader />
     return (
         <ul className="station-list">
             {!stations.length && <h1>No Stations Found</h1>}

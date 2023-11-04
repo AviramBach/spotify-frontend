@@ -48,6 +48,11 @@
 .main-station-details-black {
   background-color: rgba(0, 0, 0, 0.1);
 }
+.secondary-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .station-details-img {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);

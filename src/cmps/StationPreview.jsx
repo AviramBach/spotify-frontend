@@ -5,7 +5,14 @@ import { useSelector } from "react-redux";
 export function StationPreview({ station, isHideBodyContainer, onPlaySongFromStation }) {
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
     const currStation = useSelector(storeState => storeState.playerModule.currStation)
+    const currUser = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
+    const isLikedSongsStation = () => {
+        return currUser && station._id === '654643569f85a653d6c444fa'
+    }
+    const isSongsOrSong = (numOfSongs) => {
+        return numOfSongs === 0 || numOfSongs > 1 ? `${numOfSongs} songs` : '1 song'
+    }
     return (
         <article onClick={() => navigate(`/station/${station._id}`)}>
             <div className="img-container">
@@ -20,7 +27,7 @@ export function StationPreview({ station, isHideBodyContainer, onPlaySongFromSta
                 <div className={`station-preview-body-container ${isHideBodyContainer ? "hide-div" : ""}`}>
                     <span className="station-preview-created-by">{station.createdBy} • </span>
                     <span className="station-preview-songs">
-                        {station.songs.length} {(station.songs.length === 1) ? ' song' : ' songs'}
+                        {isSongsOrSong(isLikedSongsStation() ? currUser.likedSongs.length : station.songs.length)}
                     </span>
                     <p className="station-preview-songs-titles">
                         <span>{station.songs[0] && station.songs[0].artist}</span>, <span>{station.songs[1] && station.songs[1].artist}</span>

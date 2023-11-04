@@ -3,10 +3,8 @@ import { useEffect, useState } from "react"
 import { stationService } from '../services/station.service.js'
 import { SongList } from "../cmps/SongList.jsx"
 import { removeStation, updateStation } from '../store/station.actions.js'
-import { songService } from '../services/song.service.js'
 import { setCurrSong, setCurrStation, setNextSong, setPrevSong, toggelIsPlaying } from "../store/player.actions.js"
 import { useSelector } from "react-redux"
-import { imageService } from "../services/image.service.js"
 import { StationDetailsOptionMenu } from "../cmps/StationDetailsOptionMenu.jsx"
 import moment from "moment";
 import { DragDropContext } from "react-beautiful-dnd"
@@ -19,7 +17,6 @@ import { SongPreview } from "../cmps/SongPreview.jsx"
 import { userService } from "../services/user.service.js"
 import { updateUser } from "./../store/user.actions.js"
 import { Loader } from "../cmps/Loader.jsx"
-import { utilService } from "../services/util.service.js"
 
 
 
@@ -34,8 +31,7 @@ export function StationDetails() {
   const [isOption, setIsOption] = useState(false)
   const { color, setImageUrl } = useColorFromImage()
   const [searchSongs, setSearchSongs] = useState([])
-  const [loggedInUser, setLoggedInUser] = useState(currUser)
-
+  const [isLikedSongs, setIsLikedSongs] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -60,10 +56,6 @@ export function StationDetails() {
   }, [params])
 
   useEffect(() => {
-    setLoggedInUser(currUser)
-  }, [currUser])
-
-  useEffect(() => {
     setCurrSongFromLocalStorage();
   }, [stations])
 
@@ -79,7 +71,14 @@ export function StationDetails() {
       const { id } = params
       const station = await stationService.getById(id)
       if (!station) return navigate("/")
-      setMyCurrStation(station)
+      const likedSongsStation = station._id === '654643569f85a653d6c444fa'
+      if (currUser && likedSongsStation) {
+        setMyCurrStation({ ...station, songs: currUser.likedSongs })
+        setIsLikedSongs(true)
+      } else {
+        setMyCurrStation(station)
+        setIsLikedSongs(false)
+      }
     } catch (err) {
       console.log(err);
     }
@@ -108,17 +107,6 @@ export function StationDetails() {
       showErrorMsg('Cannot remove station')
     }
   }
-  async function onUpdateStation(songTitle) {
-    const title = songTitle
-    const songToAdd = songService.getRandomSong(title)
-    const updatdStation = { ...mycurrStation, songs: [songToAdd, ...mycurrStation.songs] }
-    setMyCurrStation(updatdStation)
-    try {
-      await updateStation(updatdStation)
-    } catch (err) {
-      console.error(err)
-    }
-  }
   async function onLikedClicked(song) {
     try {
       const updatedLikedSongs = await userService.addToLikedSongs(song)
@@ -139,8 +127,7 @@ export function StationDetails() {
     }
   }
   async function onUpdateStationName(stationNewName) {
-    const name = stationNewName
-    const updatdStation = { ...mycurrStation, name: name }
+    const updatdStation = { ...mycurrStation, name: stationNewName }
     setMyCurrStation(updatdStation)
     try {
       await updateStation(updatdStation)
@@ -168,6 +155,20 @@ export function StationDetails() {
       console.error(err);
     }
   }
+  async function onUpdateStationLikedByUser(user) {
+    console.log(mycurrStation);
+    let updatedStation = { ...mycurrStation }
+    updatedStation.likedByUsers.includes(user.email) ?
+      updatedStation.likedByUsers.splice(updatedStation.likedByUsers.findIndex(email => email === user.email), 1) :
+      updatedStation = { ...updatedStation, likedByUsers: [...updatedStation.likedByUsers, user.email] }
+    setMyCurrStation(updatedStation)
+    try {
+      await updateStation(updatedStation)
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
 
   async function onDragEnd(result) {
     if (!result.destination) return
@@ -209,11 +210,13 @@ export function StationDetails() {
     toggelIsPlaying(false)
   }
 
-  async function addSongToStation(song) {
-    const songsCopy = mycurrStation.songs.filter(s => s.id !== song.id)
+  async function addSongToStation(song, station = mycurrStation) {
+    const songsCopy = station.songs.filter((s) => s.id !== song.id)
     songsCopy.push(song)
-    const updatedStation = { ...mycurrStation, songs: songsCopy }
-    setMyCurrStation(updatedStation)
+    const updatedStation = { ...station, songs: songsCopy }
+    if (station === mycurrStation || mycurrStation === likedSongsStation) {
+      setMyCurrStation(updatedStation)
+    }
     try {
       await updateStation(updatedStation)
     } catch (err) {
@@ -253,12 +256,22 @@ export function StationDetails() {
               {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
                 <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
             </button>
-            <button className="station-details-svg-btn station-details-options-btn" onClick={(ev) => {
-              setIsOption(!isOption)
-              handleClick(ev);
-            }}>
-              <img className="station-details-svg-btn-img" src="./../../public/img/options.svg" alt="" />
-            </button>
+            {!isLikedSongs && <div className="secondary-btn-container">
+              <button className={`station-details-svg-btn liked-station-btn`}
+                onClick={() => {
+                  onUpdateStationLikedByUser(currUser)
+                }}>
+                <img className={`station-details-svg-btn-img ${currUser && mycurrStation.likedByUsers.includes(currUser.email) ? "liked" : ""}`} src={currUser && mycurrStation.likedByUsers.includes(currUser.email) ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />
+              </button >
+
+              <button className="station-details-svg-btn station-details-options-btn" onClick={(ev) => {
+                setIsOption(!isOption)
+                handleClick(ev);
+              }}>
+                <img className="station-details-svg-btn-img" src="./../../public/img/options.svg" alt="" />
+              </button>
+            </div>}
+
           </div>
           <Popover
             sx={{
@@ -287,7 +300,7 @@ export function StationDetails() {
           </Popover>
           <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
             <SongList songs={songs} currUser={currUser} onRemoveSongFromStation={onRemoveSongFromStation} onPlaySongFromStation={onPlaySongFromStation} onLikedClicked={onLikedClicked} currStation={mycurrStation}></SongList>
-            <AddSongInput onUpdateStation={onSearchSongs} />
+            {!isLikedSongs && <AddSongInput onUpdateStation={onSearchSongs} />}
           </DragDropContext>
         </div>
         <ul className="station-details-search-song-list">
@@ -308,6 +321,6 @@ export function StationDetails() {
             </li>)}
         </ul>
       </div>
-    </div>
+    </div >
   )
 }

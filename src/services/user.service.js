@@ -67,11 +67,11 @@ async function addToLikedSongs(clickedSong) {
 async function save(user) {
     let saveduser
     if (user._id) {
-        saveduser = await storageService.put(STORAGE_KEY_USERS, user)
-        // saveduser = await httpService.put(`user/${user._id}`, user)
+        // saveduser = await storageService.put(STORAGE_KEY_USERS, user)
+        saveduser = await httpService.put(`user/${user._id}`, user)
     } else {
-        saveduser = await storageService.post(STORAGE_KEY_USERS, user)
-        // saveduser = await httpService.post('user', user)
+        // saveduser = await storageService.post(STORAGE_KEY_USERS, user)
+        saveduser = await httpService.post('user', user)
     }
     return saveduser
 }
