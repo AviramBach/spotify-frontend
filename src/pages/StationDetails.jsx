@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router"
 import { useEffect, useState } from "react"
 import { stationService } from '../services/station.service.js'
 import { SongList } from "../cmps/SongList.jsx"
-import { removeStation, updateStation } from '../store/station.actions.js'
+import { getActionUpdateStation, removeStation, updateStation } from '../store/station.actions.js'
 import { setCurrSong, setCurrStation, setNextSong, setPrevSong, toggelIsPlaying } from "../store/player.actions.js"
 import { useSelector } from "react-redux"
 import { StationDetailsOptionMenu } from "../cmps/StationDetailsOptionMenu.jsx"
@@ -17,7 +17,8 @@ import { SongPreview } from "../cmps/SongPreview.jsx"
 import { userService } from "../services/user.service.js"
 import { updateUser } from "./../store/user.actions.js"
 import { Loader } from "../cmps/Loader.jsx"
-
+import { SOCKET_EMIT_PAUSE_STATION, SOCKET_EMIT_PLAY_STATION, SOCKET_EVENT_STATION_PAUSED, SOCKET_EVENT_STATION_PLAYING, SOCKET_EVENT_STATION_UPDATED, socketService } from "../services/socket.service.js"
+import { store } from "../store/store.js"
 
 
 export function StationDetails() {
@@ -59,6 +60,30 @@ export function StationDetails() {
     setCurrSongFromLocalStorage();
   }, [stations])
 
+  useEffect(() => {
+    socketService.on(SOCKET_EVENT_STATION_UPDATED, (station) => {
+      setMyCurrStation(station)
+      store.dispatch(getActionUpdateStation(station))
+    })
+    socketService.on(SOCKET_EVENT_STATION_PLAYING, (data) => {
+      const { station, song } = data
+      const { id } = params
+      console.log(data, 'from socket')
+      if (station._id !== id) return
+      setCurrStation(station)
+      setCurrSong(song)
+      setNextSong(song, station)
+      setPrevSong(song, station)
+      toggelIsPlaying(false)
+    })
+    socketService.on(SOCKET_EVENT_STATION_PAUSED, (data) => {
+      const { station, song } = data
+      const { id } = params
+      if (station._id !== id) return
+      toggelIsPlaying(true)
+    })
+  }, [])
+
   const setCurrSongFromLocalStorage = async () => {
     if (stations && stations.length) {
       const songId = localStorage.getItem('lastSong')
@@ -85,7 +110,9 @@ export function StationDetails() {
   }
   function onPlaySongFromStation(station, song) {
     if (isPlaying && mycurrStation._id === station._id) {
+      const res = { station, song, user: currUser }
       toggelIsPlaying(true)
+      socketService.emit(SOCKET_EMIT_PAUSE_STATION, res)
       return
     }
     if (!song) song = station.songs[0]
@@ -94,6 +121,8 @@ export function StationDetails() {
     setNextSong(song, station)
     setPrevSong(song, station)
     toggelIsPlaying(false)
+    const res = { station, song, user: currUser }
+    socketService.emit(SOCKET_EMIT_PLAY_STATION, res)
   }
 
   async function onRemoveStation() {

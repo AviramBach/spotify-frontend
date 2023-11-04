@@ -1,5 +1,4 @@
 
-import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 
 import { utilService } from './util.service.js'
@@ -17,6 +16,7 @@ export const stationService = {
     remove,
     getEmptyStation,
     LIKED_SONGS_STATION_ID,
+    getJointStation,
     // addStationMsg
 }
 window.cs = stationService
@@ -79,6 +79,17 @@ function getEmptyStation() {
         songs: [],
         likedByUsers: [],
         imgUrl: './../../public/img/no-img-new-playlist.png'
+    }
+}
+
+function getJointStation(user1, user2) {
+    return {
+        name: 'New Joint Playlist',
+        tags: ['Joint'],
+        songs: [],
+        likedByUsers: [user1.email, user2.email],
+        imgUrl: './../../public/img/spotify.png',
+        createdBy: `${user1.fullname} & ${user2.fullname}`
     }
 }
 
