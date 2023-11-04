@@ -16,6 +16,7 @@ export const stationService = {
     save,
     remove,
     getEmptyStation,
+    getJointStation,
     // addStationMsg
 }
 window.cs = stationService
@@ -78,6 +79,17 @@ function getEmptyStation() {
         songs: [],
         likedByUsers: [],
         imgUrl: './../../public/img/spotify.png'
+    }
+}
+
+function getJointStation(user1, user2) {
+    return {
+        name: 'New Joint Playlist',
+        tags: ['Joint'],
+        songs: [],
+        likedByUsers: [user1.email, user2.email],
+        imgUrl: './../../public/img/spotify.png',
+        createdBy: `${user1.fullname} & ${user2.fullname}`
     }
 }
 
