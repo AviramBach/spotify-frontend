@@ -1,6 +1,6 @@
 import { EditStationDetailsForm } from "./EditStationDetailsForm";
 
-export function StationDetailsModal({ station, handleClose, onUpdateStationName, onUpdateStationdesc, onUpdateStationImage }) {
+export function StationDetailsModal({ station, handleClose, onUpdateStationDetails, onUpdateStationImage }) {
     return <div className="modal-container" >
         <div className="modal">
             <div className="modal-header">
@@ -13,8 +13,7 @@ export function StationDetailsModal({ station, handleClose, onUpdateStationName,
                 <EditStationDetailsForm
                     station={station}
                     handleClose={handleClose}
-                    onUpdateStationName={onUpdateStationName}
-                    onUpdateStationdesc={onUpdateStationdesc}
+                    onUpdateStationDetails={onUpdateStationDetails}
                     onUpdateStationImage={onUpdateStationImage}
                 />
             </div>

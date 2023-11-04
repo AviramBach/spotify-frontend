@@ -5,10 +5,10 @@ import { showErrorMsg } from '../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
 import { SET_USER, SET_USERS, SET_WATCHED_USER, UPDATE_USER } from "./user.reducer.js";
 
-export function getActionUpdateuser(likedSongs) {
+export function getActionUpdateuser(user) {
     return {
         type: UPDATE_USER,
-        likedSongs
+        user
     }
 }
 

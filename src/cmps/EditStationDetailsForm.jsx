@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function EditStationDetailsForm({ station, handleClose, onUpdateStationName, onUpdateStationdesc, onUpdateStationImage }) {
+export function EditStationDetailsForm({ station, handleClose, onUpdateStationDetails, onUpdateStationImage }) {
     const [titleInput, setTitleInput] = useState(station.name)
     const [descInput, setDescInput] = useState(station.desc)
     const handleFileChange = (event) => {
@@ -8,8 +8,8 @@ export function EditStationDetailsForm({ station, handleClose, onUpdateStationNa
         if (file) {
             const reader = new FileReader();
 
-            reader.onload = (e) => {
-                const base64Image = e.target.result;
+            reader.onload = (ev) => {
+                const base64Image = ev.target.result;
                 onUpdateStationImage(base64Image)
             };
 
@@ -21,8 +21,7 @@ export function EditStationDetailsForm({ station, handleClose, onUpdateStationNa
         onSubmit={(ev) => {
             ev.preventDefault();
             handleClose()
-            onUpdateStationName(titleInput)
-            onUpdateStationdesc(descInput)
+            onUpdateStationDetails(titleInput, descInput)
         }}
     >
         <label className="modal-station-img-btn" htmlFor="file-input">
@@ -38,7 +37,10 @@ export function EditStationDetailsForm({ station, handleClose, onUpdateStationNa
         <input className="modal-station-title"
             type="text"
             value={titleInput}
-            onInput={(ev) => setTitleInput(ev.target.value)} />
+            onInput={(ev) => {
+                ev.stopPropagation()
+                setTitleInput(ev.target.value)
+            }} />
         <textarea className="modal-station-description"
             cols="50"
             rows="20"

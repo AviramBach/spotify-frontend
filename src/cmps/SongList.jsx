@@ -3,20 +3,17 @@ import { SongPreview } from "./SongPreview.jsx"
 import { utilService } from "../services/util.service.js";
 import moment from "moment";
 import { StationDetailsOptionMenu } from "./StationDetailsOptionMenu.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Popover } from "@mui/material";
-import { useEffect } from "react";
 
-
-
-export function SongList({ songs, currUser, onRemoveSongFromStation, onPlaySongFromStation, onLikedClicked, currStation }) {
+export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation, onLikedClicked, currStation }) {
     const isPlaying = useSelector(storeState => storeState.playerModule.isPlaying)
     const currSong = useSelector(storeState => storeState.playerModule.currSong)
+    const currUser = useSelector(storeState => storeState.userModule.user)
     const [isSongOption, setIsSongOption] = useState(false)
     const [songOptionId, setSongOptionId] = useState(null)
     const [anchorEl, setAnchorEl] = useState(null);
-    const [isLiked, setIsLiked] = useState(null)
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -26,6 +23,10 @@ export function SongList({ songs, currUser, onRemoveSongFromStation, onPlaySongF
         setAnchorEl(null);
     };
     const open = Boolean(anchorEl);
+
+    useEffect(() => {
+        console.log(currUser.likedSongs);
+    }, [currUser])
 
     return <div className="song-list-container">
         <div className="info-line">
@@ -71,7 +72,6 @@ export function SongList({ songs, currUser, onRemoveSongFromStation, onPlaySongF
                                             <button className={`song-list-item-btn ${currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? 'liked-btn' : ''}`} onClick={(ev) => {
                                                 ev.stopPropagation()
                                                 onLikedClicked(song)
-                                                setIsLiked(currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id))
                                             }}>
                                                 <img className={`song-list-item-btn-img ${currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? 'liked' : ''}`}
                                                     src={currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />

@@ -24,7 +24,7 @@ export function userReducer(state = initialState, action) {
             newState = { ...state, users: action.users }
             break
         case UPDATE_USER:
-            newState = { ...state, user: { ...state.user, likedSongs: action.likedSongs } }
+            newState = { ...state, user: { ...action.user } }
             break
         default:
     }

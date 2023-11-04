@@ -88,7 +88,7 @@ function getJointStation(user1, user2) {
         tags: ['Joint'],
         songs: [],
         likedByUsers: [user1.email, user2.email],
-        imgUrl: './../../public/img/spotify.png',
+        imgUrl: './../../public/img/no-img-new-playlist.png',
         createdBy: `${user1.fullname} & ${user2.fullname}`
     }
 }
