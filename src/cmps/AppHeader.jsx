@@ -85,11 +85,13 @@ export function AppHeader() {
                     <img className='arrow-button-icon' src="./../../public/img/forward.svg" alt="" />
                 </button>
             </div>
-            <button onClick={() => onSendInvite()}>Invite friend</button>
             {currUser ?
-                <button className="user-menu-btn" onClick={() => { logout() }}>
-                    <img src={currUser.imgUrl} alt="" />
-                </button>
+                <div className="logged-in-btn-container">
+                    <button className="blend-btn" onClick={() => onSendInvite()}>Invite friend</button>
+                    <button className="user-menu-btn" onClick={() => { logout() }}>
+                        <img src={currUser.imgUrl} alt="" />
+                    </button>
+                </div>
                 : <div>
                     <a className='signup-a' href="/signup">sign up</a>
                     <button className='login-button' onClick={() => navigate('/login')}>

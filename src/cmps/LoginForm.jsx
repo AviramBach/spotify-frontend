@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { loadUsers, login } from "./../store/user.actions.js"
 import { useNavigate } from "react-router"
+import { socketService } from "../services/socket.service.js"
 
 
 export function LoginForm() {
@@ -14,7 +15,8 @@ export function LoginForm() {
 
 
     async function onLogin(loginEmail, loginPassword) {
-        login(loginEmail, loginPassword)
+        const user = await login(loginEmail, loginPassword)
+        socketService.login(user._id)
         navigate("/")
     }
 
