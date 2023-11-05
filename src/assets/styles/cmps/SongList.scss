@@ -158,6 +158,7 @@
 .song-list-item-duration {
   margin-inline-end: 16px;
   margin-block-end: 0;
+  width: 24px;
   @include body-text("body");
   @include for-mobile-layout {
     display: none;

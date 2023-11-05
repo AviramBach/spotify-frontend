@@ -9,6 +9,7 @@ export const utilService = {
     getAssetSrc,
     getTxtToShow,
     getRandomAlbumName,
+    getFirstName,
 }
 
 function makeId(length = 6) {
@@ -86,4 +87,7 @@ function getRandomAlbumName() {
     const albumName = albumNames[getRandomIntInclusive(0, albumNames.length - 1)]
     return albumName
 }
-
+function getFirstName(fullname) {
+    const nameParts = fullname.split(" ");
+    return nameParts[0]
+}

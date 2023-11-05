@@ -84,12 +84,12 @@ function getEmptyStation() {
 
 function getJointStation(user1, user2) {
     return {
-        name: 'New Joint Playlist',
-        tags: ['Joint'],
+        name: 'New Blend Playlist',
+        tags: ['Blend', 'Made For You'],
         songs: [],
         likedByUsers: [user1.email, user2.email],
         imgUrl: './../../public/img/no-img-new-playlist.png',
-        createdBy: `${user1.fullname} & ${user2.fullname}`
+        createdBy: `${utilService.getFirstName(user1.fullname)} & ${utilService.getFirstName(user2.fullname)}`
     }
 }
 
