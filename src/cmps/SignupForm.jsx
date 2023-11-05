@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { loadUsers, signup } from "./../store/user.actions.js"
 import { useNavigate } from "react-router"
+import { socketService } from "../services/socket.service.js"
+
 export function SignupForm() {
     const [signupEmail, setSignupEmail] = useState("")
     const [signupfullname, setSignupfullname] = useState("")
@@ -13,7 +15,8 @@ export function SignupForm() {
 
 
     async function onSignup(email, fullname, password) {
-        signup(email, fullname, password)
+        const user = await signup(email, fullname, password)
+        socketService.login(user._id)
         navigate("/")
     }
 
