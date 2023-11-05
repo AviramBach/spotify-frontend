@@ -1,12 +1,29 @@
 import { useState } from "react";
+import axios from "axios";
 
 export function EditStationDetailsForm({ station, handleClose, onUpdateStationDetails, onUpdateStationImage }) {
     const [titleInput, setTitleInput] = useState(station.name)
     const [descInput, setDescInput] = useState(station.desc)
-    const handleFileChange = (event) => {
+    const handleFileChange = async (event) => {
+        const CLOUD_NAME = 'dollaguij'
+        const UPLOAD_PRESET = 'dine73mm'
+        const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`
+        const FORM_DATA = new FormData()
         const file = event.target.files[0];
+
         if (file) {
+            FORM_DATA.append('file', file)
+            FORM_DATA.append('upload_preset', UPLOAD_PRESET)
             const reader = new FileReader();
+
+            try {
+                const { data } = await axios.post(UPLOAD_URL, FORM_DATA)
+                const {url} = data
+                onUpdateStationImage(url)
+                return
+            } catch (error) {
+                console.error(error)
+            }
 
             reader.onload = (ev) => {
                 const base64Image = ev.target.result;

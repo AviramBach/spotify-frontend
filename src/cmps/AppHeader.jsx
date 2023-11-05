@@ -48,8 +48,9 @@ export function AppHeader() {
     }
 
     function onSendInvite() {
-        // const userId = currUser._id
-        socketService.emit(SOCKET_EMIT_SEND_INVITE, currUser)
+        const userEmail = prompt('Enter user Email', 'Enter Email')
+        const data = { userEmail, currUser }
+        socketService.emit(SOCKET_EMIT_SEND_INVITE, data)
         console.log('sending request')
     }
 
