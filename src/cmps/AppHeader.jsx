@@ -48,8 +48,9 @@ export function AppHeader() {
     }
 
     function onSendInvite() {
-        // const userId = currUser._id
-        socketService.emit(SOCKET_EMIT_SEND_INVITE, currUser)
+        const userEmail = prompt('Enter user Email', 'Enter Email')
+        const data = { userEmail, currUser }
+        socketService.emit(SOCKET_EMIT_SEND_INVITE, data)
         console.log('sending request')
     }
 
@@ -85,11 +86,13 @@ export function AppHeader() {
                     <img className='arrow-button-icon' src="./../../public/img/forward.svg" alt="" />
                 </button>
             </div>
-            <button onClick={() => onSendInvite()}>Invite friend</button>
             {currUser ?
-                <button className="user-menu-btn" onClick={() => { logout() }}>
-                    <img src={currUser.imgUrl} alt="" />
-                </button>
+                <div className="logged-in-btn-container">
+                    <button className="blend-btn" onClick={() => onSendInvite()}>Invite friend</button>
+                    <button className="user-menu-btn" onClick={() => { logout() }}>
+                        <img src={currUser.imgUrl} alt="" />
+                    </button>
+                </div>
                 : <div>
                     <a className='signup-a' href="/signup">sign up</a>
                     <button className='login-button' onClick={() => navigate('/login')}>
