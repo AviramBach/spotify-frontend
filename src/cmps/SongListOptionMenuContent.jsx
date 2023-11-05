@@ -6,7 +6,7 @@ export function SongListOptionMenuContent({ onRemoveSongFromStation, songId, set
             onRemoveSongFromStation(songId)
             setIsSongOption(!isSongOption)
         }}>
-            <img src="./../../public/img/delete.svg" alt="" />
+            <img src="https://res.cloudinary.com/dollaguij/image/upload/v1699194257/svg/delete_iwpynt.svg" alt="" />
             <p>Remove song from station</p>
         </li>
     </ul>

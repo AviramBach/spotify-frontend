@@ -4,7 +4,7 @@ export function SearchSongInput({ onUpdateStation }) {
     const [input, setInput] = useState("")
     return <div className="song-search-input-container">
         <div className="song-search-input" >
-            <img className="song-search-input-img" src="./../../public/img/search.svg" alt="" />
+            <img className="song-search-input-img" src="https://res.cloudinary.com/dollaguij/image/upload/v1699194280/svg/search_icsjot.svg" alt="" />
             <form onSubmit={(ev) => {
                 ev.preventDefault()
                 setInput("")

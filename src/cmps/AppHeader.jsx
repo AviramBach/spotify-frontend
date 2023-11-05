@@ -80,10 +80,10 @@ export function AppHeader() {
         <header className="app-header flex" style={{ backgroundColor: `rgb(${currColor ?? "0,0,0"})` }}>
             <div className='arrow-button-container flex'>
                 <button onClick={goBack} className='arrow-button'>
-                    <img className='arrow-button-icon' src="./../../public/img/back.svg" alt="" />
+                    <img className='arrow-button-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194252/back_zfwsnj.svg" alt="" />
                 </button>
                 <button onClick={goForward} className='arrow-button'>
-                    <img className='arrow-button-icon' src="./../../public/img/forward.svg" alt="" />
+                    <img className='arrow-button-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194261/forward_ohmney.svg" alt="" />
                 </button>
             </div>
             {currUser ?

@@ -278,22 +278,22 @@ export function StationDetails() {
         <div className="main-station-details-black">
           <div className="station-details-button-container">
             <button className="primary-play-button station-details-play-button" onClick={() => onPlaySongFromStation(mycurrStation)}>
-              {isPlaying ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
-                <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
+              {isPlaying ? <img className='pause-icon primary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194273/svg/pause_qemiyb.svg" alt="" /> :
+                <img className='play-icon primary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194275/svg/play_ttonbb.svg" alt="" />}
             </button>
             {!isLikedSongs && <div className="secondary-btn-container">
               <button className={`station-details-svg-btn liked-station-btn`}
                 onClick={() => {
                   onUpdateStationLikedByUser(currUser)
                 }}>
-                <img className={`station-details-svg-btn-img ${currUser && mycurrStation.likedByUsers.includes(currUser.email) ? "liked" : ""}`} src={currUser && mycurrStation.likedByUsers.includes(currUser.email) ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />
+                <img className={`station-details-svg-btn-img ${currUser && mycurrStation.likedByUsers.includes(currUser.email) ? "liked" : ""}`} src={currUser && mycurrStation.likedByUsers.includes(currUser.email) ? "https://res.cloudinary.com/dollaguij/image/upload/v1699194282/svg/selected-heart_f2qfi3.svg" : "https://res.cloudinary.com/dollaguij/image/upload/v1699194263/svg/heart_khtwal.svg"} alt="" />
               </button >
 
               <button className="station-details-svg-btn station-details-options-btn" onClick={(ev) => {
                 setIsOption(!isOption)
                 handleClick(ev);
               }}>
-                <img className="station-details-svg-btn-img" src="./../../public/img/options.svg" alt="" />
+                <img className="station-details-svg-btn-img" src="https://res.cloudinary.com/dollaguij/image/upload/v1699194271/svg/options_k7ygv8.svg" alt="" />
               </button>
             </div>}
 
@@ -333,8 +333,8 @@ export function StationDetails() {
               <div className="side-container">
                 <SongPreview song={song} charNumSong={20} charNumArtist={18} />
                 <button className={`secondary-play-button ${(isPlaying && song.id === currSong.id) ? 'playing' : ''}`} onClick={(ev) => onPlaySongFromSearch(song, ev)}>
-                  {(isPlaying && song.id === currSong.id) ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
-                    <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
+                  {(isPlaying && song.id === currSong.id) ? <img className='pause-icon primary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194273/svg/pause_qemiyb.svg" alt="" /> :
+                    <img className='play-icon primary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194275/svg/play_ttonbb.svg" alt="" />}
                 </button>
               </div>
               <div className="right-container">

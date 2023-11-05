@@ -78,7 +78,7 @@ function getEmptyStation() {
         tags: ['By you'],
         songs: [],
         likedByUsers: [],
-        imgUrl: './../../public/img/no-img-new-playlist.png'
+        imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699199706/no-img-new-playlist_r07sfz.png'
     }
 }
 
@@ -88,7 +88,7 @@ function getJointStation(user1, user2) {
         tags: ['Blend', 'Made For You'],
         songs: [],
         likedByUsers: [user1.email, user2.email],
-        imgUrl: './../../public/img/no-img-new-playlist.png',
+        imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699199706/no-img-new-playlist_r07sfz.png',
         createdBy: `${utilService.getFirstName(user1.fullname)} & ${utilService.getFirstName(user2.fullname)}`
     }
 }
@@ -99,23 +99,127 @@ const sTime = {
     artist: 'Pink Floyd',
     album: 'Dark side of thr moon',
     url: 'https://www.youtube.com/watch?v=Qr0-7Ds79zo&ab_channel=PinkFloyd',
-    imgUrl: './../../public/img/Album_cover4.jpg',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194250/Album_cover4_tblibx.jpg',
     addedBy: 'Gilad',
     duration: '3:33',
     addedAt: utilService.randomPastTime(),
-
 }
+const sMoney = {
+    id: utilService.makeId(),
+    title: 'Money',
+    artist: 'Pink Floyd',
+    album: 'Dark side of thr moon',
+    url: 'https://www.youtube.com/watch?v=rwPM01cbQBc&list=PL3PhWT10BW3Urh8ZXXpuU9h526ChwgWKy&index=6',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194250/Album_cover4_tblibx.jpg',
+    addedBy: 'Gilad',
+    duration: '3:33',
+    addedAt: utilService.randomPastTime(),
+}
+const sGreatGig = {
+    id: utilService.makeId(),
+    title: 'The Great Gig In The Sky',
+    artist: 'Pink Floyd',
+    album: 'Dark side of thr moon',
+    url: 'https://www.youtube.com/watch?v=mPGv8L3a_sY&list=PL3PhWT10BW3Urh8ZXXpuU9h526ChwgWKy&index=5',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194250/Album_cover4_tblibx.jpg',
+    addedBy: 'Gilad',
+    duration: '3:33',
+    addedAt: utilService.randomPastTime(),
+}
+
 const sConsideration = {
     id: utilService.makeId(),
     title: 'Consideration',
     artist: 'Rihanna',
     album: 'Anti',
     url: 'https://www.youtube.com/watch?v=WSSShAOKYfo&ab_channel=Rihanna-Topic',
-    imgUrl: './../../public/img/Album_cover1.png',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194247/Album_cover1_ebopdz.png',
     addedBy: 'Guest',
     duration: '2:41',
     addedAt: utilService.randomPastTime(),
 
+}
+const sWork = {
+    id: utilService.makeId(),
+    title: 'Work',
+    artist: 'Rihanna',
+    album: ' Anti',
+    url: 'https://www.youtube.com/watch?v=puxjq3p-fU0&ab_channel=Rihanna-Topic',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194247/Album_cover1_ebopdz.png',
+    addedBy: 'Gilad',
+    duration: '3:39',
+    addedAt: utilService.randomPastTime(),
+
+}
+const sLoveOnTheBrain = {
+    id: utilService.makeId(),
+    title: 'Love On The Brain',
+    artist: 'Rihanna',
+    album: ' Anti',
+    url: 'https://www.youtube.com/watch?v=Ni7rKJpQReU&list=PLVP1nukhQ7IkYT9Juzxp5rHlLLPiXzMw8&index=11',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194247/Album_cover1_ebopdz.png',
+    addedBy: 'Gilad',
+    duration: '3:39',
+    addedAt: utilService.randomPastTime(),
+
+}
+const sBohemianRhapsody = {
+    id: utilService.makeId(),
+    title: 'Bohemian Rhapsody',
+    artist: 'Queen',
+    album: ' A Night At the Opera',
+    url: 'https://www.youtube.com/watch?v=kZVH8Q2UqaA&list=PLBnJv6rImVe9XXPLwK2CvysVd_CnrYB81&index=11',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194232/Queen_Album_yt1hwf.png',
+    addedBy: 'Gilad',
+    duration: '3:39',
+    addedAt: utilService.randomPastTime(),
+
+}
+const sLoveOfMyLife = {
+    id: utilService.makeId(),
+    title: 'Love Of My Life',
+    artist: 'Queen',
+    album: ' A Night At the Opera',
+    url: 'https://www.youtube.com/watch?v=2bqm4gRY3mA&list=PLBnJv6rImVe9XXPLwK2CvysVd_CnrYB81&index=9',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194232/Queen_Album_yt1hwf.png',
+    addedBy: 'Gilad',
+    duration: '3:39',
+    addedAt: utilService.randomPastTime(),
+
+}
+
+const sOhDarling = {
+    id: utilService.makeId(),
+    title: 'Oh! Darling!',
+    artist: 'The Beatles',
+    album: 'Abby Road',
+    url: 'https://www.youtube.com/watch?v=erMgpfiOMSU&list=OLAK5uy_k2JcEE3_maNjnVBKU2s1JjhaZ4rxwgaME&index=5',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699207125/abby_road_wue6vz.jpg',
+    addedBy: 'Guest',
+    duration: '4:39',
+    addedAt: utilService.randomPastTime(),
+}
+const sComeTogether = {
+    id: utilService.makeId(),
+    title: 'Come Together!',
+    artist: 'The Beatles',
+    album: 'Abby Road',
+    url: 'https://www.youtube.com/watch?v=45cYwDMibGo&list=OLAK5uy_k2JcEE3_maNjnVBKU2s1JjhaZ4rxwgaME&index=2',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699207125/abby_road_wue6vz.jpg',
+    addedBy: 'Guest',
+    duration: '4:39',
+    addedAt: utilService.randomPastTime(),
+}
+const sIWantYou = {
+    id: utilService.makeId(),
+    title: 'I Want You',
+    artist: 'The Beatles',
+    album: 'Abby Road',
+    url: 'https://www.youtube.com/watch?v=wNL6bd7SpDE&list=OLAK5uy_k2JcEE3_maNjnVBKU2s1JjhaZ4rxwgaME&index=7',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699207125/abby_road_wue6vz.jpg',
+    addedBy: 'Guest',
+    duration: '4:39',
+    addedAt: utilService.randomPastTime(),
 }
 const sDang = {
     id: utilService.makeId(),
@@ -123,7 +227,7 @@ const sDang = {
     artist: 'Mac Miller',
     album: 'The Divine Feminine',
     url: 'https://www.youtube.com/watch?v=LR3GQfryp9M&ab_channel=MacMiller',
-    imgUrl: './../../public/img/Album-cover2.jpg',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699205675/mac_miller_jgyzun.jpg',
     addedBy: 'Guest',
     duration: '4:39',
     addedAt: utilService.randomPastTime(),
@@ -135,7 +239,7 @@ const sJuicy = {
     artist: 'B.I.G',
     album: 'Ready to Die.',
     url: 'https://www.youtube.com/watch?v=7Y8VPQcPHhY&ab_channel=TheNotoriousB.I.G.-Topic',
-    imgUrl: './../../public/img/Album-cover2.jpg',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194251/Album-cover2_llwqpw.jpg',
     addedBy: 'Gilad',
     duration: '4:13',
     addedAt: utilService.randomPastTime(),
@@ -147,7 +251,7 @@ const sZion = {
     artist: 'Lauryn Hill',
     album: ' The Miseducation of Lauryn Hill',
     url: 'https://www.youtube.com/watch?v=1sQjh261rU8&ab_channel=JeNnILoVeSmUsIc',
-    imgUrl: './../../public/img/Album_cover3.jpg',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194248/Album_cover3_rmsuaj.jpg',
     addedBy: 'Guest',
     duration: '6:09',
     addedAt: utilService.randomPastTime(),
@@ -159,31 +263,20 @@ const sDooWop = {
     artist: 'Lauryn Hill',
     album: ' The Miseducation of Lauryn Hill',
     url: 'https://www.youtube.com/watch?v=T6QKqFPRZSA&ab_channel=laurynhillvevo',
-    imgUrl: './../../public/img/Album_cover3.jpg',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194248/Album_cover3_rmsuaj.jpg',
     addedBy: 'Guest',
     duration: '3:56',
     addedAt: utilService.randomPastTime(),
 
 }
-const sWork = {
-    id: utilService.makeId(),
-    title: 'Work',
-    artist: 'Rihanna',
-    album: ' Anti',
-    url: 'https://www.youtube.com/watch?v=puxjq3p-fU0&ab_channel=Rihanna-Topic',
-    imgUrl: './../../public/img/Album_cover1.png',
-    addedBy: 'Gilad',
-    duration: '3:39',
-    addedAt: utilService.randomPastTime(),
 
-}
 const sWash = {
     id: utilService.makeId(),
     title: 'Wash.',
     artist: 'Bon Iver',
     album: 'Bon Iver',
     url: 'https://www.youtube.com/watch?v=KMfL7rVAu0U&ab_channel=BonIver',
-    imgUrl: './../../public/img/Album_cover3.jpg',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699205676/wash_bon_iver_i8fjta.jpg',
     addedBy: 'Spotify',
     duration: '4:54',
     addedAt: utilService.randomPastTime(),
@@ -195,7 +288,7 @@ const sHeyYa = {
     artist: 'Outkast',
     album: 'Speakerboxxx',
     url: 'https://www.youtube.com/watch?v=JzqYDWBkX_Q&ab_channel=AOK',
-    imgUrl: './../../public/img/Outkast.jpg',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194272/Outkast_in3z3w.jpg',
     addedBy: 'Gilad',
     duration: '3:52',
     addedAt: utilService.randomPastTime(),
@@ -207,7 +300,7 @@ const sRoses = {
     artist: 'Outkast',
     album: 'Speakerboxxx',
     url: 'https://www.youtube.com/watch?v=sZ1vT0aPcYE&ab_channel=Outkast-Topic',
-    imgUrl: './../../public/img/Outkast.jpg',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699194272/Outkast_in3z3w.jpg',
     addedBy: 'Guest',
     duration: '6:10',
     addedAt: utilService.randomPastTime(),
@@ -219,7 +312,7 @@ const sAdorn = {
     artist: 'Miguel',
     album: 'Dream',
     url: 'https://www.youtube.com/watch?v=rtHhxrgfOcw&ab_channel=MiguelVEVO',
-    imgUrl: './../../public/img/Album_cover4.jpg',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699205675/adorn_miguel_nnaldq.jpg',
     addedBy: 'Guest',
     duration: '3:15',
     addedAt: utilService.randomPastTime(),
@@ -231,39 +324,46 @@ const sJump = {
     artist: 'Van Halen',
     album: '1984',
     url: 'https://www.youtube.com/watch?v=ggJI9dKBk48&ab_channel=VanHalen-Topic',
-    imgUrl: './../../public/img/Album_cover4.jpg',
+    imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699205676/jump_van_halen_wectxk.jpg',
     addedBy: 'Gilad',
     duration: '3:59',
     addedAt: utilService.randomPastTime(),
 
 }
+const songs = [sTime, sMoney, sGreatGig, sConsideration, sWork, sLoveOnTheBrain, sBohemianRhapsody, sLoveOfMyLife, sOhDarling, sComeTogether, sIWantYou, sDang, sJuicy, sZion, sDooWop, sWash, sHeyYa, sRoses, sAdorn, sJump]
 
 function _createStations() {
     return [
-        _createStation('ANTI', "", './../../public/img/Album_cover1.png', [sConsideration, sWork], 'Rihanna', ['vibe', 'Trending', 'R&B', 'Soul', 'Divas']),
-        _createStation('R&B', "", './../../public/img/Channel_ORANGE.jpg', [sZion, sWork, sDooWop, sConsideration], 'Gilad', ['Mood', 'Pop', 'Chill', 'Indie']),
-        _createStation('Daily Mix 1', "", './../../public/img/daily_mix_1.jpg', [sWash, sTime, sZion, sConsideration], 'Songify', ['Made For You']),
-        _createStation('Daily Mix 2', "", './../../public/img/daily-mix-2.jpeg', [sTime, sJump, sDang,], 'Songify', ['Made For You']),
-        _createStation('Daily Mix 3', "", './../../public/img/daily_mix_3.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify', ['Made For You']),
-        _createStation('Daily Mix 4', "", './../../public/img/daily-mix-4.jpeg', [sWash, sTime, sZion, sConsideration], 'Songify', ['Made For You']),
-        _createStation('Daily Mix 5', "", './../../public/img/daily-mix-5.jpeg', [sDooWop, sConsideration, sWash], 'Songify', ['Made For You']),
-        _createStation('Daily Mix 6', "", './../../public/img/daily-mix-6.jpeg', [sWash, sTime, sZion, sConsideration], 'Songify', ['Made For You']),
-        _createStation('Hip hop', "", './../../public/img/Album-cover2.jpg', [sJuicy, sDang, sRoses, sWork], 'Gilad', ['vibe', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
-        _createStation('Soul Mix', "", './../../public/img/Album_cover3.jpg', [sDooWop, sConsideration, sWash], 'Songify', ['Mood', 'Trending', 'Rock', 'R&B', 'Glow']),
-        _createStation('Rock', "", './../../public/img/Album_cover4.jpg', [sJump, sTime, sWash], 'Gilad', ['vibe', 'Latin', 'Alternative', 'Glow']),
-        _createStation('2010s Mix', "", './../../public/img/Rihanna_Loud.png', [sWork, sWash, sConsideration, sDang,], 'Songify', ['Mood', 'Pop', 'Hip-hop']),
-        _createStation('Chill Mix', "", './../../public/img/Album_Chill.jpg', [sJuicy, sAdorn, sDang, sRoses, sWork], 'Gilad', ['vibe', 'Trending', 'Rock', 'Divas']),
-        _createStation('Outkast Mix', "", './../../public/img/Outkast.jpg', [sHeyYa, sJuicy, sRoses, sDang], 'Songify', ['Mood', 'Rock', 'Hip-hop', 'R&B']),
-        _createStation('Todays Top Hits', "", './../../public/img/Album_Pop.png', [sWork, sDang, sHeyYa, sConsideration,], 'Songify', ['vibe', 'Pop', 'Latin']),
-        _createStation('Rock Classics', "", './../../public/img/Queen_Album.png', [sTime, sJump, sDang,], 'Songify', ['Mood', 'Trending', 'Hip-hop', 'Soul', 'Glow']),
-        _createStation('On Repeat', "", './../../public/img/On_Repeat.jpg', [sRoses, sWork, sDooWop], 'Gilad', ['vibe', 'Rock', 'R&B', 'Latin', 'Alternative']),
-        _createStation('Chill Hits', "", './../../public/img/Outkast.jpg', [sRoses, sJump, sTime, sDang,], 'Songify', ['Mood', 'Pop', 'Indie', 'Glow', 'Divas']),
-        _createStation('All Out 2010s', "", './../../public/img/Album_Starboy.png', [sWork, sDang, sConsideration,], 'Songify', ['vibe', 'Trending', 'Chill', 'Indie']),
-        _createStation('Rap Caviar', "", './../../public/img/RapCaviar.jpg', [sAdorn, sDang, sJuicy, sRoses, sHeyYa], 'Songify', ['Mood', 'Rock', 'Soul', 'Glow'])
+        _createStation('Daily Mix 1', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194255/daily_mix_1_ckdbid.jpg', [sGreatGig, sBohemianRhapsody, sLoveOnTheBrain, sOhDarling, sDooWop], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 2', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194213/daily-mix-2_s9gddo.jpg', [sComeTogether, sLoveOfMyLife, sTime, sWash], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 3', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194256/daily_mix_3_cplkwz.jpg', [sLoveOfMyLife, sOhDarling, sComeTogether, sIWantYou, sDang, sJuicy, sZion, sDooWop, sWash, sHeyYa, sRoses, sAdorn,], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 4', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194214/daily-mix-4_odfsdk.jpg', [sMoney, sGreatGig, sConsideration, sWork, sLoveOnTheBrain, sBohemianRhapsody,], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 5', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194215/daily-mix-5_c7cgnx.jpg', [sDooWop, sConsideration, sWash], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 6', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194217/daily-mix-6_ejocvp.jpg', [sIWantYou, sDang, sJuicy, sZion, sDooWop, sWash, sHeyYa,], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 1', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194571/daily-mix-1-_2_wmapjq.jpg', [sBohemianRhapsody, sLoveOnTheBrain, sOhDarling, sWash, sTime, sZion, sConsideration], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 2', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194571/daily-mix-2-_2_xe6pc2.jpg', [sTime, sJump, sGreatGig, sConsideration, sDang,], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 3', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194571/daily-mix-3-_2_tjslky.jpg', [sDang, sConsideration, sWork, sJuicy], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 4', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194571/daily-mix-4-_2_aepfbd.jpg', [sWash, sTime, sZion, sConsideration], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 5', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194571/daily-mix-5-_2_dtops9.jpg', [sDooWop, sConsideration, sWash], 'Songify', ['Made For You']),
+        _createStation('Daily Mix 6', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194571/daily-mix-6-_2_j896jd.jpg', [ssLoveOfMyLife, sOhDarling, sComeTogether, sIWantYou, sDang, sJuicy, sZion, sDooWop, sWash, sHeyYa, sRoses, sAdorn,], 'Songify', ['Made For You']),
+        _createStation('R&B', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699195202/asset_5_eua8e7.jpg', [sZion, sWork, sDooWop, sConsideration], 'Gilad', ['Mood', 'Pop', 'Chill', 'Indie']),
+        _createStation('Rap Caviar', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194235/RapCaviar_cnw5eb.jpg', [sDang, sJuicy, sWash, sHeyYa, sRoses, sAdorn, sJump], 'Songify', ['Mood', 'Rock', 'Soul', 'Glow']),
+        _createStation('Soul Mix', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699195203/asset_36_ulmkuq.jpg', [sDooWop, sConsideration, sWash], 'Songify', ['Mood', 'Trending', 'Rock', 'R&B', 'Glow']),
+        _createStation('Rock Legends', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699195202/asset_3_aq0u4v.jpg', [sJump, sTime, sWash], 'Gilad', ['vibe', 'Latin', 'Alternative', 'Glow']),
+        _createStation('2010s Mix', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194236/Rihanna_Loud_ewyyod.pngg', [sWork, sWash, sConsideration, sDang,], 'Songify', ['Mood', 'Pop', 'Hip-hop']),
+        _createStation('Soft Pop Hits', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699195202/asset_6_lqp40j.jpg', [sJuicy, sAdorn, sDang, sRoses, sWork], 'Gilad', ['vibe', 'Trending', 'Rock', 'Divas']),
+        _createStation('Outkast Mix', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194272/Outkast_in3z3w.jpg', [sHeyYa, sJuicy, sRoses, sDang], 'Songify', ['Mood', 'Rock', 'Hip-hop', 'R&B']),
+        _createStation('Party Hits', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194229/party_ht7t5h.jpg', [sWork, sDang, sHeyYa, sConsideration,], 'Songify', ['vibe', 'Pop', 'Latin']),
+        _createStation('On Repeat', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194228/On_Repeat_lvgcoz.jpg', [sRoses, sWork, sDooWop], 'Gilad', ['vibe', 'Rock', 'R&B', 'Latin', 'Alternative']),
+        _createStation('Chill Hits', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194243/vibe_uxko8k.jpg', [sRoses, sJump, sTime, sDang,], 'Songify', ['Mood', 'Pop', 'Indie', 'Glow', 'Divas']),
+        _createStation('Songs To Scream In The Car', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699195205/asset_42_sjtxeg.jpg', [sWork, sDang, sConsideration,], 'Songify', ['vibe', 'Trending', 'Chill', 'Indie']),
+        _createStation('ANTI', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194247/Album_cover1_ebopdz.png', [sConsideration, sWork, sLoveOnTheBrain], 'Rihanna', ['vibe', 'Trending', 'R&B', 'Soul', 'Divas']),
+        _createStation('Hip hop', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699195203/asset_38_nsjm8m.jpg', [sJuicy, sDang, sRoses, sWork], 'Gilad', ['vibe', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
+        _createStation('Rock Classics', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699195202/asset_7_nhlje2.jpg', [sTime, sMoney, sGreatGig, sBohemianRhapsody, sLoveOfMyLife, sOhDarling, sComeTogether, sIWantYou,], 'Songify', ['Mood', 'Trending', 'Hip-hop', 'Soul', 'Glow']),
     ]
 }
 
-function _createStation(name = 'New Playlist', desc = "", imgUrl = '', songs = [], createdBy = 'Spotify', tags = []) {
+function _createStation(name = 'New Playlist', desc = "", imgUrl = '', songs = [], createdBy = 'Songify', tags = []) {
     return {
         // _id: utilService.makeId(),
         name,

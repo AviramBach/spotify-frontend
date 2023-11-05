@@ -17,11 +17,11 @@ export function StationDetailsOptionMenuContent({ station, onRemoveStation, onUp
     return <div>
         <ul className="clean-list station-details-option-menu">
             <li className="station-details-option-menu-li" onClick={handleOpen}>
-                <img src="./../../public/img/edit.svg" alt="" />
+                <img src="https://res.cloudinary.com/dollaguij/image/upload/v1699194260/svg/edit_fxztwg.svg" alt="" />
                 <p>Edit station</p>
             </li>
             <li className="station-details-option-menu-li" onClick={() => onRemoveStation()}>
-                <img src="./../../public/img/delete.svg" alt="" />
+                <img src="https://res.cloudinary.com/dollaguij/image/upload/v1699194257/svg/delete_iwpynt.svg" alt="" />
                 <p>Remove station</p>
             </li>
         </ul>

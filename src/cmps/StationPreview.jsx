@@ -17,10 +17,10 @@ export function StationPreview({ station, isHideBodyContainer, onPlaySongFromSta
         <article onClick={() => navigate(`/station/${station._id}`)}>
             <div className="img-container">
                 {station.imgUrl && <img src={station.imgUrl} alt="" />}
-                {!station.imgUrl && <img src="public/img/spotify.png" alt="" />}
+                {!station.imgUrl && <img src="https://res.cloudinary.com/dollaguij/image/upload/v1699199706/no-img-new-playlist_r07sfz.png" alt="" />}
                 <button className={`primary-play-button ${(isPlaying && currStation._id === station._id) ? 'playing' : ''}`} onClick={(ev) => onPlaySongFromStation(station, null, ev)}>
-                    {(isPlaying && currStation._id === station._id) ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
-                        <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}                </button>
+                    {(isPlaying && currStation._id === station._id) ? <img className='pause-icon primary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194273/svg/pause_qemiyb.svg" alt="" /> :
+                        <img className='play-icon primary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194275/svg/play_ttonbb.svg" alt="" />}                </button>
             </div>
             <div className="station-preview-container">
                 <h1 className="station-preview-title">{utilService.getTxtToShow(station.name, 12)}</h1>

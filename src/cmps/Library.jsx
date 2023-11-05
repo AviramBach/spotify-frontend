@@ -53,11 +53,11 @@ export function Library() {
     return <section className='library'>
         <div className='library-header'>
             <div>
-                <img className='library-icon' src="./../../public/img/library.svg" alt="" />
+                <img className='library-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194220/empty-library_vbnmu6.svg" alt="" />
                 <h1>Your Library</h1>
             </div>
             <button onClick={onAddStation}>
-                <img className='add-icon' src="./../../public/img/plus.svg" alt="" />
+                <img className='add-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194276/plus_tuhixu.svg" alt="" />
             </button>
         </div>
         <LibraryFilter filterBy={filterBy} onSetFilter={onSetFilter} />

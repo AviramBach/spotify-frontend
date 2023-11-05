@@ -46,7 +46,23 @@ export function SearchPage() {
     const id = open ? 'simple-popover' : undefined
     const ganres = ["Made For You", 'Pop', 'vibe', 'Rock', 'Hip-hop', 'Chill', 'R&B', 'Mood', 'Indie', 'Soul', 'Latin', 'Alternative', 'Glow', 'Divas', 'Trending']
     const colors = ['rgb(20, 138, 8)', 'rgb(186, 93, 7)', 'rgb(233, 20, 41)', 'rgb(80, 55, 80)', 'rgb(0, 100, 80)', 'rgb(186, 93, 7)', 'rgb(71,125,148)', 'rgb(140,103,171)', 'rgb(215,64,0)', 'rgb(233,21,40)', 'rgb(30,49,100)', 'rgb(232,16,91)', 'rgb(5,104,82)', 'rgb(164,103,82)', 'rgb(15,115,236)', 'rgb(139,26,50)']
-    const imgs = ['by-you.jpeg', 'pop.png', 'vibe.jpeg', 'rock.jpeg', 'hip-hop.jpeg', 'chill.jpeg', 'r&b.jpeg', 'mood.jpeg', 'indie.jpeg', 'soul.jpeg', 'latin.jpeg', 'alt.jpeg', 'glow.jpeg', 'divas.jpeg', 'trending.jpeg']
+    const imgs = [
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194209/by-you_cvvfft.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194231/pop_zcoino.png',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699195203/asset_33_xdccus.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194237/rock_wdhkoh.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194223/hip-hop_ldrf04.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194211/chill_qgrvqm.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194233/r_b_nvvtda.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194227/mood_pfhyy1.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194224/indie_m4wls2.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194238/soul_uzuojp.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194225/latin_oos0kd.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194208/alt_squod0.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699195203/asset_35_a7bptk.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699194218/divas_o9eulb.jpg',
+        'https://res.cloudinary.com/dollaguij/image/upload/v1699195204/asset_40_n54bpt.jpg'
+    ]
 
     useEffect(() => {
         setCurrSongFromLocalStorage();
@@ -108,8 +124,8 @@ export function SearchPage() {
                     <div className="song-preview-container">
                         <SongPreview song={songs[0]} charNumSong={20} charNumArtist={20} />
                         <button className={`primary-play-button ${(isPlaying && songs[0].id === currSong.id) ? 'playing' : ''}`} onClick={(ev) => onPlaySongFromSearch(songs[0], ev)}>
-                            {(isPlaying && songs[0].id === currSong.id) ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
-                                <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
+                            {(isPlaying && songs[0].id === currSong.id) ? <img className='pause-icon primary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194273/svg/pause_qemiyb.svg" alt="" /> :
+                                <img className='play-icon primary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194275/svg/play_ttonbb.svg" alt="" />}
                         </button>
                     </div>
                 </div>
@@ -121,14 +137,14 @@ export function SearchPage() {
                                 <div className="side-container">
                                     <SongPreview song={song} charNumSong={40} charNumArtist={40} />
                                     <button className={`secondary-play-button ${(isPlaying && song.id === currSong.id) ? 'playing' : ''}`} onClick={(ev) => onPlaySongFromSearch(song, ev)}>
-                                        {(isPlaying && song.id === currSong.id) ? <img className='pause-icon primary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
-                                            <img className='play-icon primary-play-button-img' src="./../../public/img/play.svg" alt="" />}
+                                        {(isPlaying && song.id === currSong.id) ? <img className='pause-icon primary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194273/svg/pause_qemiyb.svg" alt="" /> :
+                                            <img className='play-icon primary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194275/svg/play_ttonbb.svg" alt="" />}
                                     </button>
                                 </div>
                                 <div className="right-container">
                                     <p className="song-list-item-duration">{song.duration}</p>
                                     <button className="options-btn" onClick={(ev) => handleClick(ev, song)}>
-                                        <img className="options-btn-img" src="./../../public/img/options.svg" alt="" />
+                                        <img className="options-btn-img" src="https://res.cloudinary.com/dollaguij/image/upload/v1699194271/svg/options_k7ygv8.svg" alt="" />
                                     </button>
                                     <Popover
                                         sx={{
@@ -162,7 +178,7 @@ export function SearchPage() {
                     {ganres.map((ganre, index) =>
                         <article key={index} style={{ background: colors[index] }} className="ganre-card" onClick={() => onSearchGanre(ganre)}>
                             <h3>{ganre}</h3>
-                            <img src={`./../../public/img/${imgs[index]}`} alt="" />
+                            <img src={imgs[index]} alt="" />
                         </article>)}
                 </div>}
                 {ganreStations && <div>

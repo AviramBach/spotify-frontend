@@ -143,8 +143,8 @@ export function Player() {
                     <SongPreview song={currSong} isCurrSongPlaying={false} charNumSong={15} charNumArtist={18} />
                 </div>}
                 <button className='player-btn' onClick={heartSong}>
-                    {isLiked ? <img className='full-heart-icon' src="./../../public/img/selected-heart.svg" alt="" /> :
-                        <img className='empty-heart-icon player-btn-img' src="./../../public/img/heart.svg" alt="" />}
+                    {isLiked ? <img className='full-heart-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194282/svg/selected-heart_f2qfi3.svg" alt="" /> :
+                        <img className='empty-heart-icon player-btn-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194263/svg/heart_khtwal.svg" alt="" />}
                 </button>
             </div>
 
@@ -152,23 +152,23 @@ export function Player() {
                 <div className='main-controls'>
                     <div className='player-controls-left'>
                         <button className='player-btn' onClick={shuffelSong}>
-                            <img className={`shuffle-icon player-btn-img ${isShuffle ? 'active-shuffle-btn' : ''}`} src="./../../public/img/shuffle.svg" alt="" />
+                            <img className={`shuffle-icon player-btn-img ${isShuffle ? 'active-shuffle-btn' : ''}`} src="https://res.cloudinary.com/dollaguij/image/upload/v1699194286/svg/shuffle_oolifh.svg" alt="" />
                         </button>
                         <button className='player-btn player-btn-img' onClick={goToPrevSong}>
-                            <img className='prev-song-icon' src="./../../public/img/prev-song.svg" alt="" />
+                            <img className='prev-song-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194277/svg/prev-song_at3pvu.svg" alt="" />
                         </button>
                     </div>
 
                     <button className='player-play-btn secondary-play-button' onClick={playSong}>
-                        {isPlaying ? <img className='pause-icon secondary-play-button-img' src="./../../public/img/pause.svg" alt="" /> :
-                            <img className='play-icon secondary-play-button-img' src="./../../public/img/play.svg" alt="" />}
+                        {isPlaying ? <img className='pause-icon secondary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194273/svg/pause_qemiyb.svg" alt="" /> :
+                            <img className='play-icon secondary-play-button-img' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194275/svg/play_ttonbb.svg" alt="" />}
                     </button>
 
                     <div className='player-controls-right'>
                         <button className='player-btn player-btn-img' onClick={goToNextSong}>
-                            <img className='next-song-icon' src="./../../public/img/next-song.svg" alt="" /></button>
+                            <img className='next-song-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194269/svg/next-song_xumrbk.svg" alt="" /></button>
                         <button className='player-btn ' onClick={loopSong}>
-                            <img className={`looped-icon player-btn-img ${isLooped ? 'active-loop-btn' : ''}`} src="./../../public/img/repeat.svg" alt="" /> :
+                            <img className={`looped-icon player-btn-img ${isLooped ? 'active-loop-btn' : ''}`} src="https://res.cloudinary.com/dollaguij/image/upload/v1699194279/svg/repeat_bspcpp.svg" alt="" /> :
                         </button>
                     </div>
                 </div>
@@ -215,8 +215,8 @@ export function Player() {
             </div>
             <div className='player-side-controls'>
                 <button className='player-btn player-btn-img' onClick={muteSong}>
-                    {isMuted ? <img className='mute-icon' src="./../../public/img/mute.svg" alt="" /> :
-                        <img className='unmute-icon' src="./../../public/img/unmute.svg" alt="" />}
+                    {isMuted ? <img className='mute-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194268/svg/mute_hmcaut.svg" alt="" /> :
+                        <img className='unmute-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194525/svg/unmute_yk2ce3.svg" alt="" />}
                 </button>
                 <div className="volume-bar">
                     <label htmlFor="volumeRange"></label>

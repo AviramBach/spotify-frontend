@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Popover } from "@mui/material";
 
 
-export function StationsModal({ onAddSongToStation, song}) {
+export function StationsModal({ onAddSongToStation, song }) {
     const stations = useSelector(storeState => storeState.stationModule.stations)
 
     const [anchorEl, setAnchorEl] = useState(null)
@@ -28,11 +28,11 @@ export function StationsModal({ onAddSongToStation, song}) {
     return (
         <section className="stations-modal">
             <button className="add-to-station-btn" onClick={handleClick}>
-                <img className='add-icon' src="./../../public/img/plus.svg" alt="" />
+                <img className='add-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194276/svg/plus_tuhixu.svg" alt="" />
                 <p>Add to playlist</p>
             </button>
             <button className="add-to-liked-btn">
-                <img className='add-icon' src="./../../public/img/plus.svg" alt="" />
+                <img className='add-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194276/svg/plus_tuhixu.svg" alt="" />
                 <p>Save to your liked songs</p>
             </button>
             <Popover

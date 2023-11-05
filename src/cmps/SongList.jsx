@@ -34,7 +34,7 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
             <span className="info-line-title">Title</span>
             <span className="info-line-album">Album</span>
             <span className="info-line-added-at">Date added</span>
-            <img className="info-line-duration" src="./../../public/img/duration.svg" alt="" />
+            <img className="info-line-duration" src="https://res.cloudinary.com/dollaguij/image/upload/v1699194259/svg/duration_gfi5de.svg" alt="" />
         </div>
         {songs &&
             <Droppable droppableId="station-details">
@@ -57,10 +57,10 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                     >
                                         <div className={`song-list-item-index-contaioner`}>
                                             <p className={`song-list-item-index`}>
-                                                {isPlaying && song === currSong ? <img src="./../../public/img/download.gif" alt="" /> : idx + 1}
+                                                {isPlaying && song === currSong ? <img src="https://res.cloudinary.com/dollaguij/image/upload/v1699194219/svg/download_acsgkq.gif" alt="" /> : idx + 1}
                                             </p>
                                             <span className="song-list-item-index-is-playing">
-                                                {isPlaying && song === currSong ? <img src="./../../public/img/pause.svg" alt="" /> : <img src="./../../public/img/play.svg" alt="" />}
+                                                {isPlaying && song === currSong ? <img src="https://res.cloudinary.com/dollaguij/image/upload/v1699194273/svg/pause_qemiyb.svg" alt="" /> : <img src="https://res.cloudinary.com/dollaguij/image/upload/v1699194275/svg/play_ttonbb.svg" alt="" />}
                                             </span>
                                         </div>
                                         <div className="song-list-item-preview">
@@ -74,7 +74,7 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                                 onLikedClicked(song)
                                             }}>
                                                 <img className={`song-list-item-btn-img ${currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? 'liked' : ''}`}
-                                                    src={currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? "./../../public/img/selected-heart.svg" : "./../../public/img/heart.svg"} alt="" />
+                                                    src={currUser && currUser.likedSongs.find((likedSong) => likedSong.id === song.id) ? "https://res.cloudinary.com/dollaguij/image/upload/v1699194282/svg/selected-heart_f2qfi3.svg" : "https://res.cloudinary.com/dollaguij/image/upload/v1699194263/svg/heart_khtwal.svg"} alt="" />
                                             </button>
                                             <p className="song-list-item-duration">{song.duration}</p>
                                             <button className="song-list-item-btn" onClick={(ev) => {
@@ -83,7 +83,7 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                                 setSongOptionId(song.id)
                                                 handleClick(ev);
                                             }}>
-                                                <img className="song-list-item-btn-img song-option-menu-btn-img" src="./../../public/img/options.svg" alt="" />
+                                                <img className="song-list-item-btn-img song-option-menu-btn-img" src="https://res.cloudinary.com/dollaguij/image/upload/v1699194271/svg/options_k7ygv8.svg" alt="" />
                                             </button>
                                             <Popover
                                                 sx={{
