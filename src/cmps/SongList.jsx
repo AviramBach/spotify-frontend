@@ -24,9 +24,9 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
     };
     const open = Boolean(anchorEl);
 
-    useEffect(() => {
-        console.log(currUser.likedSongs);
-    }, [currUser])
+    // useEffect(() => {
+    //     console.log(currUser.likedSongs);
+    // }, [currUser])
 
     return <div className="song-list-container">
         <div className="info-line">

@@ -5,8 +5,8 @@ export function EditStationDetailsForm({ station, handleClose, onUpdateStationDe
     const [titleInput, setTitleInput] = useState(station.name)
     const [descInput, setDescInput] = useState(station.desc)
     const handleFileChange = async (event) => {
-        const CLOUD_NAME = 'dollaguij'
-        const UPLOAD_PRESET = 'dine73mm'
+        const CLOUD_NAME = import.meta.env.VITE_CLOUD_NAME
+        const UPLOAD_PRESET = import.meta.env.VITE_UPLOAD_PRESET
         const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`
         const FORM_DATA = new FormData()
         const file = event.target.files[0];
@@ -18,7 +18,7 @@ export function EditStationDetailsForm({ station, handleClose, onUpdateStationDe
 
             try {
                 const { data } = await axios.post(UPLOAD_URL, FORM_DATA)
-                const {url} = data
+                const { url } = data
                 onUpdateStationImage(url)
                 return
             } catch (error) {
