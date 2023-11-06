@@ -57,7 +57,7 @@ export function SongList({ songs, onRemoveSongFromStation, onPlaySongFromStation
                                     >
                                         <div className={`song-list-item-index-contaioner`}>
                                             <p className={`song-list-item-index`}>
-                                                {isPlaying && song === currSong ? <img src="https://res.cloudinary.com/dollaguij/image/upload/v1699194219/svg/download_acsgkq.gif" alt="" /> : idx + 1}
+                                                {isPlaying && song.id === currSong.id ? <img src="https://res.cloudinary.com/dollaguij/image/upload/v1699194219/svg/download_acsgkq.gif" alt="" /> : idx + 1}
                                             </p>
                                             <span className="song-list-item-index-is-playing">
                                                 {isPlaying && song.id === currSong.id ? <img src="https://res.cloudinary.com/dollaguij/image/upload/v1699194273/svg/pause_qemiyb.svg" alt="" /> : <img src="https://res.cloudinary.com/dollaguij/image/upload/v1699194275/svg/play_ttonbb.svg" alt="" />}

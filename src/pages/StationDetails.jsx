@@ -310,6 +310,7 @@ export function StationDetails() {
           >
             <StationDetailsOptionMenu
               station={mycurrStation}
+              onClose={handleClose}
               onRemoveStation={onRemoveStation}
               onUpdateStationDetails={onUpdateStationDetails}
               onUpdateStationImage={onUpdateStationImage}
