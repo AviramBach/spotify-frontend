@@ -44,7 +44,7 @@ export function HomePage() {
                     <span> {currUser?.fullname}</span>
                 </h2>
                 <div className='bottom-station-list'>
-                    <StationList stations={stations.filter((station) => station.name.toLowerCase().includes('daily mix'))} isHome={true} isHideBodyContainer={false} />
+                    <StationList stations={stations.filter((station) => station.name.toLowerCase().includes('daily mix') || station.likedByUsers.includes(currUser.email))} isHome={true} isHideBodyContainer={false} />
                 </div>
             </>}
             <h2>Your Top Mixes</h2>

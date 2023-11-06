@@ -15,13 +15,20 @@
   justify-items: start;
 }
 .song-preview-title {
+  height: 26px;
+  width: 120px;
   margin: 0;
   grid-row: 1/2;
   @include body-link("primary");
+  overflow: hidden;
+  text-align: start;
 }
 .song-preview-artist {
+  height: 23px;
+  width: 120px;
   margin: 0;
   grid-row: 2/3;
+  text-align: start;
   @include body-link("secondary");
   @include for-mobile-layout {
     color: $white;

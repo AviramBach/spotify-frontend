@@ -77,7 +77,6 @@ export function AppHeader() {
         const userEmail = form['email'].value
         const data = { userEmail, currUser }
         socketService.emit(SOCKET_EMIT_SEND_INVITE, data)
-        console.log(`sending request to ${userEmail}`)
         handleClose1()
     }
 
@@ -86,7 +85,6 @@ export function AppHeader() {
             alert('sorry your invitation was declined :(')
             return
         }
-        console.log(answer)
         navigate(`/station/${answer.jointStation._id}`)
     }
 
@@ -107,10 +105,10 @@ export function AppHeader() {
         <header className="app-header flex" style={{ backgroundColor: `rgb(${currColor ?? "0,0,0"})` }}>
             <div className='arrow-button-container flex'>
                 <button onClick={goBack} className='arrow-button'>
-                    <img className='arrow-button-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194252/back_zfwsnj.svg" alt="" />
+                    <img className='arrow-button-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194252/svg/back_zfwsnj.svg" alt="" />
                 </button>
                 <button onClick={goForward} className='arrow-button'>
-                    <img className='arrow-button-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194261/forward_ohmney.svg" alt="" />
+                    <img className='arrow-button-icon' src="https://res.cloudinary.com/dollaguij/image/upload/v1699194261/svg/forward_ohmney.svg" alt="" />
                 </button>
             </div>
             {currUser ?

@@ -68,7 +68,6 @@ export function StationDetails() {
     socketService.on(SOCKET_EVENT_STATION_PLAYING, (data) => {
       const { station, song } = data
       const { id } = params
-      console.log(data, 'from socket')
       if (station._id !== id) return
       setCurrStation(station)
       setCurrSong(song)
@@ -96,7 +95,7 @@ export function StationDetails() {
       const { id } = params
       const station = await stationService.getById(id)
       if (!station) return navigate("/")
-      const likedSongsStation = station._id === '654643569f85a653d6c444fa'
+      const likedSongsStation = station._id === '6548b4959f85a653d6c44525'
       if (currUser && likedSongsStation) {
         setMyCurrStation({ ...station, songs: currUser.likedSongs })
         setIsLikedSongs(true)
@@ -157,11 +156,9 @@ export function StationDetails() {
   }
   async function onUpdateStationDetails(stationNewName, stationNewDesc) {
     const updatedStation = { ...mycurrStation, name: stationNewName, desc: stationNewDesc }
-    console.log(updatedStation);
     setMyCurrStation(updatedStation)
     try {
       await updateStation(updatedStation)
-      console.log("updated name");
 
     } catch (err) {
       console.error(err)
@@ -170,18 +167,15 @@ export function StationDetails() {
 
   async function onUpdateStationImage(image) {
     const updatedStation = { ...mycurrStation, imgUrl: image }
-    console.log(updatedStation);
     setMyCurrStation(updatedStation)
 
     try {
       await updateStation(updatedStation)
-      console.log("updated img");
     } catch (err) {
       console.error(err);
     }
   }
   async function onUpdateStationLikedByUser(user) {
-    console.log(mycurrStation);
     let updatedStation = { ...mycurrStation }
     updatedStation.likedByUsers.includes(user.email) ?
       updatedStation.likedByUsers.splice(updatedStation.likedByUsers.findIndex(email => email === user.email), 1) :

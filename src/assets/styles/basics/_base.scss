@@ -37,6 +37,10 @@ body {
     display: block;
     grid-column: 1;
     grid-row: 3/4;
+    background-color: $black;
+    position: absolute;
+    left: 0;
+    width: calc(100vw - 16px);
   }
 }
 footer {

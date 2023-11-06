@@ -66,6 +66,9 @@
     }
     .song-list-item-index-is-playing {
       display: block;
+      @include for-mobile-layout {
+        display: none;
+      }
     }
     .song-list-item-index {
       display: none;

@@ -1,4 +1,6 @@
 .homepage {
+  height: calc(100vh - 72px - 65px - 16px);
+
   h1 {
     margin: 1rem;
     margin-top: 0.5rem;
@@ -11,8 +13,10 @@
   }
 
   overflow-y: auto;
-  height: calc(100vh - 72px - 65px - 112px);
 
+  @include for-mobile-layout {
+    height: calc(100vh - 72px - 65px - 112px);
+  }
   .top-station-list {
     .station-list {
       margin: 1rem;
@@ -162,7 +166,7 @@
         background-color: rgba(255, 255, 255, 6%);
         transition: background-color 0.3s;
         @include for-mobile-layout {
-          height: 200px;
+          height: 187px;
         }
 
         article {

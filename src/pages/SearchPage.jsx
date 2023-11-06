@@ -44,7 +44,7 @@ export function SearchPage() {
 
     const open = Boolean(anchorEl)
     const id = open ? 'simple-popover' : undefined
-    const ganres = ["Made For You", 'Pop', 'vibe', 'Rock', 'Hip-hop', 'Chill', 'R&B', 'Mood', 'Indie', 'Soul', 'Latin', 'Alternative', 'Glow', 'Divas', 'Trending']
+    const ganres = ["Made For You", 'Pop', 'Vibe', 'Rock', 'Hip-hop', 'Chill', 'R&B', 'Mood', 'Indie', 'Soul', 'Latin', 'Alternative', 'Glow', 'Divas', 'Trending']
     const colors = ['rgb(20, 138, 8)', 'rgb(186, 93, 7)', 'rgb(233, 20, 41)', 'rgb(80, 55, 80)', 'rgb(0, 100, 80)', 'rgb(186, 93, 7)', 'rgb(71,125,148)', 'rgb(140,103,171)', 'rgb(215,64,0)', 'rgb(233,21,40)', 'rgb(30,49,100)', 'rgb(232,16,91)', 'rgb(5,104,82)', 'rgb(164,103,82)', 'rgb(15,115,236)', 'rgb(139,26,50)']
     const imgs = [
         'https://res.cloudinary.com/dollaguij/image/upload/v1699194209/by-you_cvvfft.jpg',

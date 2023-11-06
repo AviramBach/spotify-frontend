@@ -35,7 +35,6 @@ export function Player() {
         if (currSong) {
             setImageUrl(currSong.imgUrl)
         }
-        console.log(currSong);
     }, [currSong])
 
     const handleProgress = (state) => {
@@ -51,6 +50,13 @@ export function Player() {
         const seekTime = e.target.value
         setCurrentTime(seekTime)
         playerRef.current.seekTo(seekTime)
+    }
+
+    function darkenColor(color) {
+        let newColor = color.split(",")
+        newColor.map((c) => {
+            c = Number(c) - 30
+        })
     }
 
     function getRandSong(song) {
@@ -135,7 +141,7 @@ export function Player() {
     }
     return (
         <div className='app-player' style={{
-            backgroundColor: isMobile ? `rgb(${color})` : 'black'
+            backgroundColor: isMobile ? `rgb(${color})` : 'rgb(40, 40, 40)'
         }}>
 
             <div className='player-song-preview'>

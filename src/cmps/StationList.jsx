@@ -27,7 +27,7 @@ export function StationList({ stations, isHideBodyContainer }) {
     if (!stations) return <Loader />
     return (
         <ul className="station-list">
-            {!stations.length && <h1>No Stations Found</h1>}
+            {!stations.length && <h1>Start saving stations</h1>}
             {stations.map(station =>
                 <li className="station-preview" key={station._id}
                     onClick={() => navigate(`/station/${station._id}`)}>

@@ -13,6 +13,7 @@ async function getColorFromImage(src) {
 
 async function loadImage(src) {
     const image = document.createElement('img');
+    image.crossOrigin = "anonymous"
     image.src = src;
     await new Promise((resolve) => { image.onload = resolve; });
     return image;

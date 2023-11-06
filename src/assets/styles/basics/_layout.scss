@@ -4,7 +4,8 @@
   grid-template-rows: 1fr auto;
   height: 100vh;
   min-height: 100%;
-  padding: 8px;
+  padding-block-start: 8px;
+  padding-inline: 8px;
   position: relative;
   width: 100%;
   @include for-mobile-layout {

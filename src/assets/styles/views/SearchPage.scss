@@ -37,7 +37,7 @@
             $amount: 2%
           );
           @include for-mobile-layout {
-            width: max-content;
+            width: 85vw;
           }
 
           .primary-play-button {
@@ -71,7 +71,6 @@
         }
 
         .song-preview {
-          flex-direction: column;
           align-items: start;
           padding: 1rem;
           @include for-mobile-layout {
@@ -80,6 +79,8 @@
           .song-preview-title {
             font-size: 2rem;
             font-weight: bold;
+            height: fit-content;
+            width: fit-content;
 
             &:hover {
               text-decoration: none;
@@ -516,7 +517,13 @@
     border-radius: 4rem;
 
     img {
-      margin-inline-start: 1rem;
+      margin-inline-start: 6px;
+    }
+
+    input {
+      @include for-mobile-layout {
+        width: calc(100% - 6px);
+      }
     }
 
     &:focus-within {

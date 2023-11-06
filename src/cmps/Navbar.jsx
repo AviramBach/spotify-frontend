@@ -6,7 +6,7 @@ export function Navbar() {
         <ul className="navbar clean-list">
             <NavbarLink route='/'
                 onSelected={() => setSelected('home')}
-                isSelected={selected === 'home'} selectedSource=".https://res.cloudinary.com/dollaguij/image/upload/v1699194283/svg/selected-home_sdspes.svg" source="https://res.cloudinary.com/dollaguij/image/upload/v1699194264/svg/home_l4p7sr.svg" text="Home" />
+                isSelected={selected === 'home'} selectedSource="https://res.cloudinary.com/dollaguij/image/upload/v1699194283/svg/selected-home_sdspes.svg" source="https://res.cloudinary.com/dollaguij/image/upload/v1699194264/svg/home_l4p7sr.svg" text="Home" />
             <NavbarLink route='/search'
                 onSelected={() => setSelected('search')}
                 isSelected={selected === 'search'} selectedSource="https://res.cloudinary.com/dollaguij/image/upload/v1699194284/svg/selected-search_t3upeo.svg" source="https://res.cloudinary.com/dollaguij/image/upload/v1699194280/svg/search_icsjot.svg" text="Search" />
