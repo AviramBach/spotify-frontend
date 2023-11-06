@@ -12,7 +12,7 @@ export function AppHeader() {
     const currUser = useSelector(storeState => storeState.userModule.user)
     const currColor = useSelector(storeState => storeState.colorModule.currColor)
     const navigate = useNavigate();
-    
+
     const [anchorEl1, setAnchorEl1] = useState(null);
     const [anchorEl2, setAnchorEl2] = useState(null);
     const [userInvite, setUserInvite] = useState(null);
@@ -23,14 +23,16 @@ export function AppHeader() {
         setAnchorEl1(null);
     };
     const open1 = Boolean(anchorEl1);
-    
-    const handleClick2 = (event) => {
-        setAnchorEl2(event.currentTarget);
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '54%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: 'rgb(40, 40, 40)',
+        boxShadow: '0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)',
+        borderRadius: '8px',
     };
-    const handleClose2 = () => {
-        setAnchorEl2(null);
-    };
-    const open2 = Boolean(anchorEl2);
 
     useEffect(() => {
         socketService.on(SOCKET_EVENT_INVITE_REQUEST, onInviteRequest)
@@ -60,7 +62,7 @@ export function AppHeader() {
         setUserInvite(user)
     }
 
-    async function sendAnswer(accept){
+    async function sendAnswer(accept) {
         setUserInvite(null)
         if (!accept) {
             return
@@ -120,7 +122,14 @@ export function AppHeader() {
                     <Popover
                         sx={{
                             "& .MuiPopover-paper": {
-                                backgroundColor: "transparent"
+                                // position: 'absolute',
+                                // top: '50%',
+                                // left: '54%',
+                                transform: 'translate(-50%, -50%)',
+                                backgroundColor: 'rgb(40, 40, 40)',
+                                boxShadow: '0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)',
+                                borderRadius: '8px',
+
                             }
                         }}
                         onClick={ev => ev.stopPropagation()}
@@ -128,23 +137,46 @@ export function AppHeader() {
                         open={open1}
                         anchorEl={anchorEl1}
                         onClose={handleClose1}
+                        anchorReference="anchorPosition"
+                        anchorPosition={{ top: 300, left: 650 }}
                         anchorOrigin={{
-                            vertical: 'bottom',
+                            vertical: 'top',
+                            horizontal: 'left',
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
                             horizontal: 'left',
                         }}
                     >
-                        <form onSubmit={onSendInvite}>
-                            <input type="text" name="email" placeholder="Enter User Email"/>
-                        </form>
+                        <div style={
+                            {
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                alignItems: "center",
+                            }
+                        }>
+                            <h3 className="invitation-header">invite a friend to create a blend</h3>
+                            <form onSubmit={onSendInvite}>
+                                <input className="invitation-input" type="text" name="email" placeholder="Enter User Email" />
+                            </form>
+                        </div>
                     </Popover>
-                    {userInvite && <div className="invitation">
-                        <p>{`${userInvite.fullname} invited you to make a blended playlist`}</p>
-                        <button onClick={() => sendAnswer(true)}>
-                            Accept
-                        </button>
-                    </div>}
-                    
-                </div>
+                    {
+                        userInvite && <div className="invitation-container">
+                            <p>{`${userInvite.fullname} invited you to make a blended playlist`}</p>
+                            <div className="invitation-btn-container">
+                                <button className="invitation-btn" onClick={() => sendAnswer(true)}>
+                                    Accept
+                                </button>
+                                <button className="invitation-btn" onClick={() => sendAnswer(false)}>
+                                    Decline
+                                </button>
+                            </div>
+                        </div>
+                    }
+
+                </div >
                 : <div>
                     <a className='signup-a' href="/signup">sign up</a>
                     <button className='login-button' onClick={() => navigate('/login')}>
@@ -154,6 +186,6 @@ export function AppHeader() {
             }
 
 
-        </header>
+        </header >
     )
 }
