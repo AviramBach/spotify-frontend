@@ -33,7 +33,7 @@ async function query(filterBy = { txt: '', tags: [], likedByUsers: 'Songify' }) 
     //     stations = stations.filter(station => regex.test(station.name))
     // }
     // return stations
-    // console.log(JSON.stringify(_createStations()));
+    console.log(JSON.stringify(_createStations()));
     const user = userService.getLoggedinUser()
     if (user) {
         filterBy.likedByUsers = `Songify,${user.email}`
