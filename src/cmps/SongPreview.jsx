@@ -4,7 +4,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 export function SongPreview({ song, isPlaying, currSong, charNumSong, charNumArtist }) {
     const isMobile = useMediaQuery('(max-width:476px)');
     return <div className="song-preview">
-        {song?.imgUrl && <img crossorigin="anonymous" className="song-preview-img" src={song.imgUrl} alt={song.title} />}
+        {song?.imgUrl && <img className="song-preview-img" src={song.imgUrl} alt={song.title} />}
         <div className="song-preview-details">
             <a href="#"
                 className={`song-preview-title ${isPlaying && song === currSong ? 'playing-song' : ''}`}>

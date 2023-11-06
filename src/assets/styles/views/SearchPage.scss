@@ -213,7 +213,7 @@
           $amount: 2%
         );
         @include for-mobile-layout {
-          width: max-content;
+          width: 85vw;
         }
 
         .primary-play-button {
@@ -247,7 +247,6 @@
       }
 
       .song-preview {
-        flex-direction: column;
         align-items: start;
         padding: 1rem;
 
