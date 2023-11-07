@@ -56,20 +56,26 @@
   }
 }
 .blend-btn {
-  @include round-button("filter");
+  @include round-button("login");
   padding-inline: 1em;
   padding-block: 1em;
   margin-inline-end: 1em;
 }
 
 .invitation-header {
-  padding: 12px;
   color: $white;
+  margin-block-start: 0;
 }
-.invitation-input {
+
+.invitation-txt {
+  @include body-text("body");
   margin-block-end: 24px;
+}
+
+.invitation-input {
   padding-block: 8px;
   padding-inline-end: 8px;
+  margin-inline-end: 8px;
   padding-inline-start: 16px;
   border: 1px solid $spotify-body-text-grey;
   border-radius: 500px;
@@ -79,23 +85,52 @@
     border-color: $white;
   }
 }
-
+.backdrop {
+  z-index: 998;
+  opacity: 0.3;
+  background-color: $black;
+}
 .invitation-container {
   position: absolute;
-  bottom: 50%;
-  left: 45%;
+  bottom: 70%;
+  right: 1%;
+  left: 80%;
   background-color: $hover-light-spotify-black;
   z-index: 999;
   padding: 24px;
   border-radius: 8px;
+  transition: opacity 291ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    transform 194ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  @include for-mobile-layout {
+    bottom: 60%;
+    left: 44%;
+    right: 4%;
+  }
+  @include for-narrow-layout {
+    bottom: 70%;
+    left: 66%;
+    right: 7%;
+  }
 }
 .invitation-btn-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-
+.invitation-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+}
 .invitation-btn {
+  @include round-button("login");
+  padding: 12px;
+}
+
+.invitation-decline-btn {
   @include round-button("filter");
   padding: 4px;
 }

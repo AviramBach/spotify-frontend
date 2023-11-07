@@ -103,6 +103,9 @@
     @include for-mobile-layout {
       font-size: 2rem;
     }
+    @include for-narrow-layout {
+      font-size: 3rem;
+    }
   }
   p {
     @include body-text("secondary");
@@ -117,6 +120,10 @@
     flex-direction: column;
     align-items: start;
   }
+  @include for-narrow-layout {
+    letter-spacing: 0;
+    font-size: 12px;
+  }
 }
 .dot {
   margin-inline: 4px;
@@ -129,6 +136,9 @@
   @include for-mobile-layout {
     margin-block-end: 12px;
   }
+  @include for-narrow-layout {
+    font-size: 12px;
+  }
 }
 .station-details-tags,
 .station-details-count {
@@ -136,9 +146,19 @@
   @include for-mobile-layout {
     display: none;
   }
+  @include for-narrow-layout {
+    font-size: 12px;
+  }
 }
+.station-details-count {
+  margin-inline-end: 5px;
+}
+
 .station-details-created-at {
   @include body-text("body");
+  @include for-narrow-layout {
+    font-size: 12px;
+  }
 }
 .station-details-svg-btn {
   display: flex;

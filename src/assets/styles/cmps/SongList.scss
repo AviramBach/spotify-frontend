@@ -33,12 +33,19 @@
 }
 .info-line-title {
   grid-area: title;
+  @include for-narrow-layout {
+    padding-inline-end: 60px;
+    margin-inline-end: 85px;
+  }
 }
 .info-line-album {
   grid-area: album;
 }
 .info-line-added-at {
   grid-area: added;
+  @include for-narrow-layout {
+    visibility: hidden;
+  }
 }
 .info-line-duration {
   margin-inline-start: 24px;
@@ -121,6 +128,9 @@
   margin: 0;
   @include for-mobile-layout {
     display: none;
+  }
+  @include for-narrow-layout {
+    visibility: hidden;
   }
 }
 .song-list-item-duration-container {

@@ -521,6 +521,9 @@
     left: 40%;
     height: 3rem;
     border-radius: 4rem;
+    @include for-mobile-layout {
+      top: 8px;
+    }
 
     img {
       margin-inline-start: 6px;

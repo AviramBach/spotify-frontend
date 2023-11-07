@@ -113,12 +113,16 @@ export function AppHeader() {
             </div>
             {currUser ?
                 <div className="logged-in-btn-container">
-                    <button className="blend-btn" onClick={(ev) => handleClick1(ev)}>Invite friend</button>
+                    <button className="blend-btn" onClick={(ev) => handleClick1(ev)}>Create a Blend</button>
                     <button className="user-menu-btn" onClick={() => { logout() }}>
                         <img src={currUser.imgUrl} alt="" />
                     </button>
                     <Popover
                         sx={{
+                            "MuiModal-backdrop": {
+                                opacity: 0.3,
+                                backgroundColor: 'black'
+                            },
                             "& .MuiPopover-paper": {
                                 // position: 'absolute',
                                 // top: '50%',
@@ -136,7 +140,7 @@ export function AppHeader() {
                         anchorEl={anchorEl1}
                         onClose={handleClose1}
                         anchorReference="anchorPosition"
-                        anchorPosition={{ top: 300, left: 650 }}
+                        anchorPosition={{ top: 70, left: 1100 }}
                         anchorOrigin={{
                             vertical: 'top',
                             horizontal: 'left',
@@ -146,32 +150,36 @@ export function AppHeader() {
                             horizontal: 'left',
                         }}
                     >
-                        <div style={
-                            {
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: "center",
-                            }
-                        }>
-                            <h3 className="invitation-header">invite a friend to create a blend</h3>
-                            <form onSubmit={onSendInvite}>
+                        <div className="invitation-modal">
+                            <h3 className="invitation-header"> Invite friends</h3>
+                            <p className="invitation-txt">Pick a friend to create a Blend with a playlist that <br />shows how your music taste matches up.</p>
+                            <form className="invitation-form" onSubmit={onSendInvite} style={
+                                {
+                                    display: 'flex',
+                                    justifyContent: 'space-around',
+                                    alignItems: "center",
+                                    width: '100 %'
+                                }
+                            }>
                                 <input className="invitation-input" type="text" name="email" placeholder="Enter User Email" />
+                                <button className="invitation-btn">Invite </button>
                             </form>
                         </div>
                     </Popover>
                     {
-                        userInvite && <div className="invitation-container">
+                        userInvite &&
+                        <div className="invitation-container">
                             <p>{`${userInvite.fullname} invited you to make a blended playlist`}</p>
                             <div className="invitation-btn-container">
                                 <button className="invitation-btn" onClick={() => sendAnswer(true)}>
                                     Accept
                                 </button>
-                                <button className="invitation-btn" onClick={() => sendAnswer(false)}>
+                                <button className="invitation-decline-btn" onClick={() => sendAnswer(false)}>
                                     Decline
                                 </button>
                             </div>
                         </div>
+
                     }
 
                 </div >
