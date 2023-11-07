@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export function EditStationDetailsForm({ station, handleClose, onUpdateStationDetails, onUpdateStationImage }) {
+export function EditStationDetailsForm({ station, onClose, onUpdateStationDetails, onUpdateStationImage }) {
     const [titleInput, setTitleInput] = useState(station.name)
     const [descInput, setDescInput] = useState(station.desc)
     const handleFileChange = async (event) => {
@@ -37,7 +37,7 @@ export function EditStationDetailsForm({ station, handleClose, onUpdateStationDe
         className="modal-station-form"
         onSubmit={(ev) => {
             ev.preventDefault();
-            handleClose()
+            onClose()
             onUpdateStationDetails(titleInput, descInput)
         }}
     >

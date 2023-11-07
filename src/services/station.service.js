@@ -84,8 +84,8 @@ function getEmptyStation() {
 
 function getJointStation(user1, user2) {
     return {
-        name: 'New Blend Playlist',
-        tags: ['Blend', 'Made For You'],
+        name: 'New Blend',
+        tags: ['Made For You'],
         songs: [],
         likedByUsers: [user1.email, user2.email],
         imgUrl: 'https://res.cloudinary.com/dollaguij/image/upload/v1699199706/no-img-new-playlist_r07sfz.png',
