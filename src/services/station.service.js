@@ -360,6 +360,15 @@ function _createStations() {
         _createStation('ANTI', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699194247/Album_cover1_ebopdz.png', [sConsideration, sWork, sLoveOnTheBrain], ['Songify'], 'Rihanna', ['vibe', 'Trending', 'R&B', 'Soul', 'Divas']),
         _createStation('Hip hop', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699195203/asset_38_nsjm8m.jpg', [sJuicy, sDang, sRoses, sWork], ['Songify'], 'Gilad', ['vibe', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
         _createStation('Rock Classics', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699195202/asset_7_nhlje2.jpg', [sTime, sMoney, sGreatGig, sBohemianRhapsody, sLoveOfMyLife, sOhDarling, sComeTogether, sIWantYou,], ['Songify'], 'Songify', ['Mood', 'Trending', 'Hip-hop', 'Soul', 'Glow']),
+        _createStation('Latin', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699387056/asset_44_e5r9pw.jpg', [sJuicy, sDang, sRoses, sWork], ['Songify'], 'Songify', ['latin', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
+        _createStation('Israeli Pop', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699387057/asset_35_k4tv09.jpg', [sJuicy, sDang, sRoses, sWork], ['Songify'], 'Songify', ['latin', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
+        _createStation('Israeli Pop Hits', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699387059/asset_42_cjjdku.jpg', [sJuicy, sDang, sRoses, sWork], ['Songify'], 'Songify', ['latin', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
+        _createStation('Pop Hits', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699387057/asset_47_ogz6nb.jpg', [sJuicy, sDang, sRoses, sWork], ['Songify'], 'Songify', ['latin', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
+        _createStation('El Nuevo Pop', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699387058/asset_45_uhcuk1.jpg', [sJuicy, sDang, sRoses, sWork], ['Songify'], 'Songify', ['latin', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
+        _createStation('Just Hits', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699387058/asset_38_cluxvt.jpg', [sJuicy, sDang, sRoses, sWork], ['Songify'], 'Songify', ['latin', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
+        _createStation('La Pop Wave', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699387059/asset_50_lmmonn.jpg', [sJuicy, sDang, sRoses, sWork], ['Songify'], 'Songify', ['latin', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
+        _createStation('Wake Up Happy', "", 'https://res.cloudinary.com/dollaguij/image/upload/v1699387059/asset_40_ccviuw.jpg', [sJuicy, sDang, sRoses, sWork], ['Songify'], 'Songify', ['latin', 'Pop', 'Chill', 'Indie', 'Soul', 'Glow', 'Divas']),
+
     ]
 }
 

@@ -55,6 +55,10 @@ export function HomePage() {
             <div className='bottom-station-list'>
                 <StationList stations={stations.filter((station) => !station.name.toLowerCase().includes('daily mix')).slice(12, 17)} isHome={true} isHideBodyContainer={false} />
             </div>
+            <h2>All About Pop</h2>
+            <div className='bottom-station-list'>
+                <StationList stations={stations.filter((station) => station.name.toLowerCase().includes('pop')).slice(0, 5)} isHome={true} isHideBodyContainer={false} />
+            </div>
         </section >
     )
 }
