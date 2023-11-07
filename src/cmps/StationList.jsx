@@ -21,7 +21,7 @@ export function StationList({ stations, isHideBodyContainer }) {
         setCurrSong(song)
         setNextSong(song, station)
         setPrevSong(song, station)
-        toggelIsPlaying(false)
+        setTimeout(toggelIsPlaying, 200, false)
     }
 
     if (!stations) return <Loader />

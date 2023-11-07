@@ -62,23 +62,24 @@ export function StationDetails() {
 
   useEffect(() => {
     socketService.on(SOCKET_EVENT_STATION_UPDATED, (station) => {
+      const { id } = params
+      if (station._id !== id) return
       setMyCurrStation(station)
-      store.dispatch(getActionUpdateStation(station))
     })
     socketService.on(SOCKET_EVENT_STATION_PLAYING, (data) => {
       const { station, song } = data
       const { id } = params
-      if (station._id !== id) return
+      if (station._id !== id || !currUser) return
       setCurrStation(station)
       setCurrSong(song)
       setNextSong(song, station)
       setPrevSong(song, station)
-      toggelIsPlaying(false)
+      setTimeout(toggelIsPlaying, 200, false)
     })
     socketService.on(SOCKET_EVENT_STATION_PAUSED, (data) => {
       const { station, song } = data
       const { id } = params
-      if (station._id !== id) return
+      if (station._id !== id || !currUser) return
       toggelIsPlaying(true)
     })
   }, [])
@@ -119,7 +120,7 @@ export function StationDetails() {
     setCurrSong(song)
     setNextSong(song, station)
     setPrevSong(song, station)
-    toggelIsPlaying(false)
+    setTimeout(toggelIsPlaying, 200, false)
     const res = { station, song, user: currUser }
     socketService.emit(SOCKET_EMIT_PLAY_STATION, res)
   }
