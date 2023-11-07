@@ -104,12 +104,6 @@
   @include for-mobile-layout {
     bottom: 60%;
     left: 44%;
-    right: 4%;
-  }
-  @include for-narrow-layout {
-    bottom: 70%;
-    left: 66%;
-    right: 7%;
   }
 }
 .invitation-btn-container {
